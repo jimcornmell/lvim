@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Vim Cheatsheet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+    body{
+        -moz-column-width: 450px;
+        -webkit-column-width: 450px;
+        column-width: 450px;
+        background: #3f3f3f;
+        color: #ffffff;
+        font: 9pt sans-serif;
+    }
+    div.clean {
+    }
+    div.border {
+        border: 2px solid #fa5522;
+    }
+    div.inner {
+        break-inside: avoid;
+        border-radius: 5px;
+        min-width: 450px;
+        max-width: 450px;
+        margin: 5px;
+    }
+    th{
+        color: White;
+        font: bold 1.2em monospace;
+        text-align: right;
+        vertical-align: top;
+        min-width: 150px;
+        max-width: 150px;
+    }
+    td{
+        color: #fff;
+        vertical-align: top;
+        font: normal 1em sans-serif;
+        min-width: 250px;
+        max-width: 250px;
+    }
+    h1{
+        color: #fa5522;
+        padding: 0;
+        margin: 0;
+    }
+    kbd {
+        color: #ff6;
+        border-radius: 4px;
+        padding: 1px;
+        border: 1px solid gray;
+        background: black;
+        font-family: monospace;
+    }
+    kbd.cmd {
+        color: white;
+        border-radius: 4px;
+        padding: 1px;
+        border: 1px solid black;
+        background: gray;
+        font-family: monospace;
+    }
+    a {
+        color: Cyan;
+    }
+    @media print {
+        body{ background: #fff; color: #000; font-size: 5pt; }
+        dt{ color: #000; text-decoration: none; }
+        dd{ color: #000; font: normal 1.0em sans-serif; padding-left: 1em; }
+        h1,h2,h3,h4{ color: #000; } span.font1 { color: #000; }
+        span.font2 { color: #000; }
+    }
+    @page { margin: 0.25in; }
+</style>
+</head>
+
+<body>
+<div class="outer">
+<div class="inner clean">
+The following are a mixture of standard key bindings and my own, which I find
+useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've marked mine and other non-default
+(from plugins) key-bindings with <img src="media/tick.png"/> in the table below.
+
+</div><div class="inner border" id="help">
+<h1>Help <a target="_new" href="https://neovim.io/doc/user/usr_02.html#02.8"><kbd class="cmd">:h topic</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:h quickref</kbd></th><td>                                                                Quick reference</td></tr>
+<tr><th><kbd>Ctrl-]</kbd></th><td>                                                            Follow help link</td></tr>
+<tr><th><kbd>Ctrl-t</kbd></th><td>                                                            Back to previous</td></tr>
+</tbody></table>
+</div><div class="inner border" id="modes">
+<h1>Modes <a target="_new" href="https://neovim.io/doc/user/intro.html#vim-modes"><kbd class="cmd">:h vim-modes</kbd></a></h1>
+<table><tbody>
+The far left of the tagline at the bottom of the screen is colour coded according to the mode
+<tr><th>Normal (Blue)</th><td>Enter all the normal editor commands</td></tr>
+<tr><th>Insert (Red)</th><td><kbd>i</kbd>,<kbd>a</kbd>,<kbd>o</kbd> etc. Text is inserted</td></tr>
+<tr><th>Visual (Purple)</th><td>Movement commands extend highlighted area.  A non-movement command is executed against selection</td></tr>
+<tr><th>Block (Yellow)</th><td>Select a rectangular region</td></tr>
+<tr><th>Command (Green)</th><td><kbd>:</kbd> Enter a command at the bottom<br/> <kbd>/</kbd> Search forwards<br/> <kbd>?</kbd> Search backwards</td></tr>
+</tbody></table>
+</div><div class="inner border" id="filecommands">
+<h1>File Commands <a target="_new" href="https://neovim.io/doc/user/editing.html"><kbd class="cmd">:h editing.txt</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:e file</kbd></th><td>                                                                    Open <kbd class="cmd">file</kbd></td></tr>
+<tr><th><kbd class="cmd">:enew</kbd></th><td>                                                                      New file</td></tr>
+<tr><th><kbd class="cmd">:e .</kbd> or <kbd>-</kbd> or <kbd>F12</kbd></th><td>                                     Explore dir, opens Ranger</td></tr>
+<tr><th><kbd class="cmd">:e sftp://me@example.com/myfile</kbd></th><td>                                            Open sftp</td></tr>
+<tr><th><kbd class="cmd">:e!</kbd></th><td>                                                                        Revert to saved version</td></tr>
+<tr><th><kbd>Ctrl-s</kbd></th><td>                                                            <img src="media/tick.png"/> Save the current file</td></tr>
+<tr><th><kbd class="cmd">:w file</kbd></th><td>                                                                    Save to <kbd class="cmd">file</kbd></td></tr>
+<tr><th><kbd class="cmd">:wq</kbd> or <kbd>Z</kbd><kbd>Z</kbd></th><td>                                            Save and close</td></tr>
+<tr><th><kbd class="cmd">:q!</kbd> or <kbd>Z</kbd><kbd>Q</kbd></th><td>                                            Close without saving</td></tr>
+<tr><th><kbd class="cmd">:qa</kbd></th><td>                                                                        Close all</td></tr>
+<tr><th><kbd class="cmd">:qa!</kbd></th><td>                                                                       Close all, don't save</td></tr>
+<tr><th><kbd class="cmd">:SudoWrite</kbd></th><td>                                                                 <a target="_new" href="https://github.com/tpope/vim-eunuch">Vim-Eunuch</a> plug-in : Write even if you don't have permission</td></tr>
+</tbody></table>
+</div><div class="inner border" id="motionmovement">
+<h1>Motion/Movement <a target="_new" href="https://neovim.io/doc/user/motion.html"><kbd class="cmd">:h motion.txt</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd></th><td>                       Char left, down, up, right</td></tr>
+<tr><th><kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$</th><td></kbd>                         Start, middle, end of line</td></tr>
+<tr><th><kbd>^</kbd></th><td>                                                                 First non-white character of line</td></tr>
+<tr><th><kbd>Enter</kbd></th><td>                                                             First non-white char of next line</td></tr>
+<tr><th><kbd>*</kbd>, <kbd>#</kbd></th><td>                                                   Find forwards/backwards word under cursor</td></tr>
+<tr><th><kbd>b</kbd>, <kbd>w</kbd></th><td>                                                   Word left, right</td></tr>
+<tr><th><kbd>B</kbd>, <kbd>W</kbd></th><td>                                                   White spaced word left, right</td></tr>
+<tr><th><kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd></th><td>                           Next, previous character <kbd class="cmd">x</kbd></td></tr>
+<tr><th><kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd></th><td>                                     Top, middle, bottom of screen</td></tr>
+<tr><th><kbd>z</kbd><kbd>z</kbd>, <kbd>z</kbd><kbd>t</kbd>, <kbd>z</kbd><kbd>b</kbd></th><td> View line center, top, bottom</td></tr>
+<tr><th><kbd>Ctrl-e</kbd>, <kbd>Ctrl-y</kbd></th><td>                                         Move up/down, keeping cursor on same line</td></tr>
+<tr><th><kbd>Ctrl-f</kbd>, <kbd>Ctrl-b</kbd></th><td>                                         Next, previous screen</td></tr>
+<tr><th><kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd></th><td>                                         Next, previous half-screen</td></tr>
+<tr><th><kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd></th><td>                                       Start, end of file</td></tr>
+<tr><th><kbd>g</kbd><kbd>;</kbd>, <kbd>g</kbd><kbd>,</kbd></th><td>                           Previous, next change</td></tr>
+<tr><th><kbd>%</kbd></th><td>                                                                 Jump forward or backwards to matching brace</td></tr>
+<tr><th><kbd>{</kbd>, <kbd>}</kbd></th><td>                                                   Next, previous empty line</td></tr>
+<tr><th><kbd>(</kbd>, <kbd>)</kbd></th><td>                                                   Next, previous sentence</td></tr>
+<tr><th><kbd class="cmd">n</kbd><kbd>G</kbd>, <kbd class="cmd">:n</kbd></th><td>                                                        Goto line number <kbd class="cmd">n</kbd></td></tr>
+<tr><th><kbd class="cmd">n</kbd><kbd>|</kbd></th><td>                                                             Column <kbd class="cmd">n</kbd></td></tr>
+<tr><th><kbd>]</kbd><kbd>s</kbd>, <kbd>[</kbd><kbd>s</kbd></th><td>                           Next, last misspelled</td></tr>
+<tr><th><kbd>g</kbd><kbd>d</kbd></th><td>                                                     Goto definition</td></tr>
+<tr><th><kbd>g</kbd><kbd>f</kbd></th><td>                                                     Open file under cursor</td></tr>
+<tr><th><kbd>g</kbd><kbd>j</kbd></th><td>                                                     <img src="media/tick.png"/> JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, <kbd class="cmd">#AABBCC</kbd>jump to that colour on <a target="_new" href="https://www.colorhexa.com">ColorHexa.com</a> <li>Else if line contains a github project name of the format <kbd class="cmd">user/repository</kbd> then jump to this GitHub project.  <li>Else if the word looks like a ticket id, open that in your browser (only works with Jira at the moment)<li>Else if try and open the current word in <a target="_new" href="https://cheat.sh">cheat.sh</a> uses the buffers language to help get the right command.  </ul></td></tr>
+</tbody></table>
+</div><div class="inner border" id="jumping">
+<h1>Jumping </h1>
+<table><tbody>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>a</kbd></th><td>                                    <img src="media/tick.png"/> Jump to artifact in Artifactory/jFrog</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>c</kbd></th><td>                                    <img src="media/tick.png"/> Jump to Jenkins</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>e</kbd></th><td>                                    <img src="media/tick.png"/> Jump to reports</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>h</kbd></th><td>                                    <img src="media/tick.png"/> Open help page</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>i</kbd></th><td>                                    <img src="media/tick.png"/> Jump to live Rundeck job</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>j</kbd></th><td>                                    <img src="media/tick.png"/> Same as gj</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>l</kbd></th><td>                                    <img src="media/tick.png"/> Jump to Lint output, SonarQube</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>m</kbd></th><td>                                    <img src="media/tick.png"/> Open manual page</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>n</kbd></th><td>                                    <img src="media/tick.png"/> Jump to notes</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>r</kbd></th><td>                                    <img src="media/tick.png"/> Jump to repository</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>s</kbd></th><td>                                    <img src="media/tick.png"/> Show jira information</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>t</kbd></th><td>                                    <img src="media/tick.png"/> Jump to ticket</td></tr>
+</tbody></table>
+</div><div class="inner border" id="insertmode">
+<h1>Insert Mode <a target="_new" href="https://neovim.io/doc/user/insert.html#Insert"><kbd class="cmd">:h inserting</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>ESC</kbd></th><td>                                                               Exit insert mode</td></tr>
+<tr><th><kbd>i</kbd>, <kbd>a</kbd></th><td>                                                   Insert before, after cursor</td></tr>
+<tr><th><kbd>I</kbd>, <kbd>A</kbd></th><td>                                                   Insert start, end of line</td></tr>
+<tr><th><kbd>g</kbd><kbd>I</kbd></th><td>                                                     Insert start of line, even before whitespace</td></tr>
+<tr><th><kbd>o</kbd>, <kbd>O</kbd></th><td>                                                   Insert new line below, above</td></tr>
+<tr><th><kbd>g</kbd><kbd>i</kbd></th><td>                                                     Insert at last insert point</td></tr>
+<tr><th><kbd>C</kbd></th><td>                                                                 Change to end of line</td></tr>
+<tr><th><kbd>S</kbd></th><td>                                                                 Substitute line</td></tr>
+<tr><th><kbd>s</kbd></th><td>                                                                 Substitute character</td></tr>
+<tr><th><kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd></th><td>                                         Complete word</td></tr>
+<tr><th><kbd>Ctrl-x-l</kbd></th><td>                                                          Complete line</td></tr>
+<tr><th><kbd>Ctrl-d</kbd></th><td>                                                            De-indent</td></tr>
+</tbody></table>
+</div><div class="inner border" id="visualmodeandselection">
+<h1>Visual Mode And Selection <a target="_new" href="https://neovim.io/doc/user/visual.html#Visual"><kbd class="cmd">:h visual-mode</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>v</kbd></th><td>                                                                 Enter visual mode</td></tr>
+<tr><th><kbd>V</kbd></th><td>                                                                 Enter line-wise visual mode</td></tr>
+<tr><th><kbd>Ctrl-v</kbd></th><td>                                                            Block mode</td></tr>
+<tr><th><kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd></th><td>                                     Prepend, append, delete block selection</td></tr>
+<tr><th><kbd>&lt;</kbd>, <kbd>&gt;</kbd></th><td>                                             Indent selection</td></tr>
+<tr><th><kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd></th><td>                             Select whole file</td></tr>
+<tr><th><kbd>=</kbd></th><td>                                                                 Auto format selected</td></tr>
+<tr><th><kbd>g</kbd><kbd>v</kbd></th><td>                                                     Re-select visual area</td></tr>
+</tbody></table>
+</div><div class="inner border" id="commandmode">
+<h1>Command Mode <a target="_new" href="https://neovim.io/doc/user/cmdline.html#Command-line"><kbd class="cmd">:h command-mode</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:ls</kbd> (or <kbd class="cmd">:buffers</kbd>)</th><td>                                                        List buffers</td></tr>
+<tr><th><kbd class="cmd">:changes</kbd></th><td>                                                                   Show changes</td></tr>
+<tr><th><kbd class="cmd">:map</kbd></th><td>                                                                       Show custom key mappings</td></tr>
+<tr><th><kbd class="cmd">:history</kbd></th><td>                                                                   Show command history</td></tr>
+<tr><th><kbd class="cmd">:jumps</kbd></th><td>                                                                     Show jump list</td></tr>
+<tr><th><kbd class="cmd">:Man</kbd></th><td>                                                                       Man page for word under cursor</td></tr>
+<tr><th><kbd class="cmd">:VsnipOpenEdit</kbd></th><td>                                                             Edit the snippet configuration for the current language or global</td></tr>
+<tr><th><kbd class="cmd">/foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> forward</td></tr>
+<tr><th><kbd class="cmd">?foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> backward</td></tr>
+<tr><th><kbd>n</kbd>, <kbd>N</kbd></th><td>                                                   Next, previous search result</td></tr>
+<tr><th><kbd class="cmd">:s/foo/bar/gI</kbd></th><td>                                                              Replace all on current line, mind case</td></tr>
+<tr><th><kbd class="cmd">:s/%Vfoo/bar/g</kbd></th><td>                                                            Match only within visual selection with %V</td></tr>
+</tbody></table>
+</div><div class="inner border" id="ranges">
+<h1>Ranges <a target="_new" href="https://neovim.io/doc/user/cmdline.html#%5Brange%5D"><kbd class="cmd">:h ranges</kbd></a></h1>
+<table><tbody>
+<tr><th>&nbsp;</th><td>                                                                       Any of the following can be used when you see <kbd class="cmd">[range]</kbd> in the rest of this table</td></tr>
+<tr><th><kbd class="cmd">.</kbd></th><td>                                                                          <strong>Current line</strong>, can be omitted as in <kbd class="cmd">1,.d</kbd> and <kbd class="cmd">1,d</kbd> are equivalent</td></tr>
+<tr><th><kbd class="cmd">1</kbd></th><td>                                                                          <strong>First line</strong></td></tr>
+<tr><th><kbd class="cmd">$</kbd></th><td>                                                                          <strong>Last line</strong> of file</td></tr>
+<tr><th><kbd class="cmd">$-n</kbd></th><td>                                                                        n lines before the last line of the file</td></tr>
+<tr><th><kbd class="cmd">%</kbd></th><td>                                                                          The <strong>whole</strong> file, same as <kbd class="cmd">1,$</kbd></td></tr>
+<tr><th><kbd class="cmd">*</kbd></th><td>                                                                          Use <strong>last range</strong>, whatever it was!</td></tr>
+<tr><th><kbd class="cmd">n</kbd></th><td>                                                                          Absolute <strong>line number</strong> n</td></tr>
+<tr><th><kbd class="cmd">+n</kbd></th><td>                                                                         Relative n lines down</td></tr>
+<tr><th><kbd class="cmd">-n</kbd></th><td>                                                                         Relative n lines up</td></tr>
+<tr><th><kbd class="cmd">'m</kbd></th><td>                                                                         A <strong>marker</strong>, a-z</td></tr>
+<tr><th><kbd class="cmd">'<</kbd></th><td>                                                                         Start of selection</td></tr>
+<tr><th><kbd class="cmd">'></kbd></th><td>                                                                         End of selection</td></tr>
+<tr><th>&nbsp;</th><td>                                                                       <strong>Add any of the above together with a comma to specify a range</strong></td></tr>
+<tr><th><kbd class="cmd">n,m</kbd> e.g: <kbd class="cmd">20,30</kbd></th><td>                                                           Absolute position in file, e.g. lines 20 to 30 inclusive</td></tr>
+<tr><th><kbd class="cmd">+n,+m</kbd> e.g: <kbd class="cmd">+20,+30</kbd></th><td>                                                       Relative position from current line, e.g. lines +20 to +30 inclusive</td></tr>
+<tr><th><kbd class="cmd">'a,'b</kbd></th><td>                                                                      From marker a to marker b inclusive</td></tr>
+<tr><th><kbd class="cmd">'<,'></kbd></th><td>                                                                      Selection, if you hit <kbd class="cmd">:</kbd> to go to command mode when something is selected you will see this</td></tr>
+<tr><th><kbd class="cmd">'a,'<</kbd></th><td>                                                                      You can mix start and ends, so this is from marker a to start of selection</td></tr>
+</tbody></table>
+</div><div class="inner border" id="rangeactions">
+<h1>Range Actions </h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:[range]d</kbd></th><td>                                                                  Delete range</td></tr>
+<tr><th><kbd class="cmd">:[range]!{cmd}</kbd></th><td>                                                             Run a command over the selection, the contents are overwritten!</td></tr>
+<tr><th><kbd class="cmd">:[range]!sort -u</kbd></th><td>                                                           Sort unique selection</td></tr>
+<tr><th><kbd class="cmd">:[range]!column -t</kbd></th><td>                                                         Tabulate range</td></tr>
+<tr><th><kbd class="cmd">:[range]!grep {word}</kbd></th><td>                                                       Only return lines containing word</td></tr>
+<tr><th><kbd class="cmd">:[range]w new.txt</kbd></th><td>                                                          Write range to new file</td></tr>
+<tr><th><kbd class="cmd">:[range]w !{cmd}</kbd></th><td>                                                           Execute cmd with range as stdin, <kbd class="cmd">:'a,'bw !python3</kbd>, output is to command window</td></tr>
+<tr><th><kbd class="cmd">:[range]g/pattern/{cmd}</kbd></th><td>                                                    TODO: Run the command on all lines in [range] matching <kbd class="cmd">pattern</kbd></td></tr>
+<tr><th><kbd class="cmd">:[range]s/pattern//gn</kbd></th><td>                                                      Count matches</td></tr>
+<tr><th><kbd class="cmd">:[range]!par</kbd></th><td>                                                               Format range</td></tr>
+<tr><th><kbd class="cmd">:[range]!par j1w80</kbd></th><td>                                                         Format range to j1w80</td></tr>
+<tr><th><kbd>g</kbd><kbd>w</kbd></th><td>                                                     <img src="media/tick.png"/> Wrap, quick format current paragraph</td></tr>
+<tr><th><kbd class="cmd">:[range]ce [width]</kbd></th><td>                                                         Centre lines <kbd class="cmd">:.,+3 ce 80</kbd>, to centre current line on 80 cols use <kbd class="cmd">:ce 80</kbd></td></tr>
+<tr><th><kbd class="cmd">:[range]ri [right edge]</kbd></th><td>                                                    Right alignment <kbd class="cmd">:% right 100</kbd></td></tr>
+<tr><th><kbd class="cmd">:[range]le [indent]</kbd></th><td>                                                        Left alignment.(Unit of identation is space) <kbd class="cmd">:% left 4</kbd></td></tr>
+<tr><th><kbd class="cmd">:[range]s/foo(d+)/bar1/gic</kbd></th><td>                                            TODO: Replace all, ignore case, confirm each. Note backreference and escaped parens</td></tr>
+<tr><th><kbd class="cmd">:[range]&</kbd></th><td>                                                                  Repeat last :s on range</td></tr>
+<tr><th><kbd class="cmd">:/foo/+1d</kbd></th><td>                                                                  Delete line after next line containing <kbd class="cmd">foo</kbd></td></tr>
+</tbody></table>
+</div><div class="inner border" id="operators">
+<h1>Operators <a target="_new" href="https://neovim.io/doc/user/motion.html"><kbd class="cmd">:h operator</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>d</kbd></th><td>                                                                 Delete/cut</td></tr>
+<tr><th><kbd>d</kbd><kbd>d</kbd></th><td>                                                     Delete current line</td></tr>
+<tr><th><kbd>d</kbd><kbd>^</kbd></th><td>                                                     Delete to start of line</td></tr>
+<tr><th><kbd>D</kbd></th><td>                                                                 Delete to end of line</td></tr>
+<tr><th><kbd>x</kbd>, <kbd>X</kbd></th><td>                                                   Delete forward, back</td></tr>
+<tr><th><kbd>y</kbd></th><td>                                                                 Yank/copy</td></tr>
+<tr><th><kbd>y</kbd><kbd>y</kbd></th><td>                                                     Yank current line</td></tr>
+<tr><th><kbd>p</kbd>, <kbd>P</kbd></th><td>                                                   Paste before, after cursor</td></tr>
+<tr><th><kbd>c</kbd></th><td>                                                                 Change</td></tr>
+<tr><th><kbd>u</kbd></th><td>                                                                 Undo</td></tr>
+<tr><th><kbd>U</kbd></th><td>                                                                 Undo all changes to line</td></tr>
+<tr><th><kbd>Ctrl-r</kbd></th><td>                                                            Redo</td></tr>
+<tr><th><kbd>r</kbd></th><td>                                                                 Replace character</td></tr>
+<tr><th><kbd>R</kbd></th><td>                                                                 Type over</td></tr>
+<tr><th><kbd>.</kbd></th><td>                                                                 Repeat last operation</td></tr>
+<tr><th><kbd>J</kbd></th><td>                                                                 Join with next line with space between</td></tr>
+<tr><th><kbd>g</kbd><kbd>J</kbd></th><td>                                                     Join without spaces</td></tr>
+<tr><th><kbd>&gt;</kbd><kbd>&gt;</kbd>, <kbd>&lt;</kbd><kbd>&lt;</kbd></th><td>               Indent, deindent</td></tr>
+<tr><th><kbd>=</kbd><kbd>=</kbd></th><td>                                                     Autoindent</td></tr>
+</tbody></table>
+</div><div class="inner border" id="textobjects">
+<h1>Text Objects <a target="_new" href="https://neovim.io/doc/user/motion.html#text-objects"><kbd class="cmd">:h text-objects</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>[char]</kbd> can be any of <kbd>[</kbd>, <kbd>(</kbd>, <kbd>{</kbd></th><td>     Motion chars </td></tr>
+<tr><th><kbd>c</kbd><kbd>c</kbd></th><td>                                                     Change current line</td></tr>
+<tr><th><kbd>c</kbd><kbd>i</kbd><kbd>w</kbd></th><td>                                         Change in word</td></tr>
+<tr><th><kbd>c</kbd><kbd>i</kbd><kbd>s</kbd></th><td>                                         Change in sentence</td></tr>
+<tr><th><kbd>c</kbd><kbd>i</kbd><kbd>p</kbd></th><td>                                         Change in paragraph</td></tr>
+<tr><th><kbd>c</kbd><kbd>i</kbd><kbd>[char]</kbd></th><td>                                    Change inside char</td></tr>
+<tr><th><kbd>c</kbd><kbd>i</kbd><kbd>t</kbd></th><td>                                         Change inside tags (HTML/XML)</td></tr>
+<tr><th><kbd>c</kbd><kbd>f</kbd><kbd>char</kbd></th><td>                                      Change forward upto and including any char</td></tr>
+<tr><th><kbd>c</kbd><kbd>t</kbd><kbd>char</kbd></th><td>                                      Change to but not including any char</td></tr>
+<tr><th><kbd>d</kbd><kbd>f</kbd><kbd>char</kbd></th><td>                                      Delete forward upto and including any char</td></tr>
+<tr><th><kbd>d</kbd><kbd>t</kbd><kbd>char</kbd></th><td>                                      Delete to but not including any char</td></tr>
+<tr><th><kbd>d</kbd><kbd>a</kbd><kbd>w</kbd></th><td>                                         Delete around word</td></tr>
+<tr><th><kbd>d</kbd><kbd>a</kbd><kbd>p</kbd></th><td>                                         Delete around paragraph</td></tr>
+<tr><th><kbd>y</kbd><kbd>i</kbd><kbd>"</kbd></th><td>                                         Yank in quotes</td></tr>
+<tr><th><kbd>v</kbd><kbd>i</kbd><kbd>b</kbd></th><td>                                         Visual in block</td></tr>
+<tr><th><kbd>v</kbd><kbd>i</kbd><kbd>p</kbd></th><td>                                         Select paragraph</td></tr>
+</tbody></table>
+</div><div class="inner border" id="surround">
+<h1>Surround <a target="_new" href="https://github.com/tpope/vim-surround">plugin</a></h1>
+<table><tbody>
+<tr><th><kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd></th><td>                             <img src="media/tick.png"/> "aWord" to 'aWord'</td></tr>
+<tr><th><kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd></th><td>                             <img src="media/tick.png"/> 'aWord' to "aWord"</td></tr>
+<tr><th><kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd></th><td><img src="media/tick.png"/> 'aWord' to &lt;q&gt;aWord&lt;/q&gt;</td></tr>
+<tr><th><kbd>d</kbd><kbd>s</kbd><kbd>'</kbd></th><td>                                         <img src="media/tick.png"/> 'aWord' to aWord</td></tr>
+<tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd></th><td>                 <img src="media/tick.png"/> aWord to [aWord]</td></tr>
+<tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to (Whole-Line)</td></tr>
+<tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to "Whole-Line"</td></tr>
+</tbody></table>
+</div><div class="inner border" id="macros">
+<h1>Macros <a target="_new" href="https://neovim.io/doc/user/repeat.html#complex-repeat"><kbd class="cmd">:h complex-repeat</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>q</kbd><kbd>x</kbd></th><td>                                                     Record to <kbd class="cmd">x</kbd></td></tr>
+<tr><th><kbd>q</kbd></th><td>                                                                 Stop recording</td></tr>
+<tr><th><kbd>@</kbd><kbd>x</kbd></th><td>                                                     Execute macro <kbd class="cmd">x</kbd></td></tr>
+<tr><th><kbd>@</kbd><kbd>@</kbd></th><td>                                                     Repeat last macro</td></tr>
+<tr><th><kbd>q</kbd><kbd>q</kbd></th><td>                                                     Record macro (as q), double <kbd>q</kbd> is a quick shortcut</td></tr>
+<tr><th><kbd>Q</kbd></th><td>                                                                 <img src="media/tick.png"/> Play macro <kbd>q</kbd>, shortcut for <kbd>@q</kbd></td></tr>
+<tr><th><kbd class="cmd">:%norm @x</kbd></th><td>                                                                  Run macro @x on all lines</td></tr>
+<tr><th><kbd class="cmd">:5,10norm @x</kbd></th><td>                                                               Run macro @x on lines 5-10</td></tr>
+</tbody></table>
+</div><div class="inner border" id="marks">
+<h1>Marks <a target="_new" href="https://neovim.io/doc/user/motion.html#mark-motions"><kbd class="cmd">:h mark-motions</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>m</kbd><kbd>space</kbd></th><td>                                                 Remove all marks</td></tr>
+<tr><th><kbd>m</kbd><kbd>x</kbd></th><td>                                                     Toggle mark <kbd>x</kbd></td></tr>
+<tr><th><kbd>'</kbd><kbd>x</kbd>, <kbd>`</kbd><kbd>x</kbd></th><td>                           Goto to mark <kbd class="cmd">x</kbd> (a-z), '=start of line, `=end</td></tr>
+<tr><th><kbd>m</kbd><kbd>X</kbd></th><td>                                                     Set GLOBAL mark <kbd class="cmd">X</kbd> (A-Z), i.e. a mark in another file</td></tr>
+<tr><th><kbd class="cmd">:Telescope marks</kbd></th><td>                                                           List marks, select and jump</td></tr>
+<tr><th><kbd class="cmd">:marks</kbd></th><td>                                                                     List marks</td></tr>
+<tr><th><kbd class="cmd">:'x,'y s/foo/bar/g</kbd></th><td>                                                         Replace between marks <kbd class="cmd">x</kbd> and <kbd class="cmd">y</kbd></td></tr>
+<tr><th><kbd class="cmd">:'<,'> s/foo/bar/g</kbd></th><td>                                                         Replace between selected text</td></tr>
+</tbody></table>
+</div><div class="inner border" id="options">
+<h1>Options <a target="_new" href="https://neovim.io/doc/user/options.html"><kbd class="cmd">:h options</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:set number!</kbd></th><td>                                                               Toggle line numbers</td></tr>
+<tr><th><kbd class="cmd">:set rnu!</kbd></th><td>                                                                  Toggle relative line numbers</td></tr>
+<tr><th><kbd class="cmd">:set ft={markdown,java,...}</kbd></th><td>                                                Set file type</td></tr>
+<tr><th><kbd class="cmd">:set ff={unix,html,dos}</kbd></th><td>                                                    Set file format</td></tr>
+<tr><th><kbd class="cmd">:set syntax?</kbd></th><td>                                                               Syntax type</td></tr>
+<tr><th><kbd class="cmd">:set syntax=perl</kbd></th><td>                                                           Set syntax</td></tr>
+<tr><th><kbd class="cmd">:set paste</kbd></th><td>                                                                 Autoindent off</td></tr>
+<tr><th><kbd class="cmd">:set hlsearch</kbd></th><td>                                                              Highlight matches</td></tr>
+<tr><th><kbd class="cmd">:set noOPT</kbd></th><td>                                                                 Turn off <kbd class="cmd">opt</kbd></td></tr>
+<tr><th><kbd class="cmd">:set OPT?</kbd></th><td>                                                                  Show value of <kbd class="cmd">opt</kbd></td></tr>
+<tr><th><kbd class="cmd">:set</kbd></th><td>                                                                       Show current options</td></tr>
+</tbody></table>
+</div><div class="inner border" id="windowsandbuffers">
+<h1>Windows and Buffers <a target="_new" href="https://neovim.io/doc/user/windows.html"><kbd class="cmd">:h windows</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
+<tr><th><kbd class="cmd">:sp, :vsp</kbd></th><td>                                                                  Split view horizontal, vertical</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>[sv]</kbd></th><td>                                            Split view horizontal, vertical</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>w</kbd></th><td>                                               Switch view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd></th><td>                                          Switch view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>q</kbd></th><td>                                               Close view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> [-+=_]</th><td>                                                     Resize view</td></tr>
+<tr><th><kbd class="cmd">:bufdo %s/foo/bar</kbd></th><td>                                                          Do to all buffers</td></tr>
+</tbody></table>
+</div><div class="inner border" id="registers">
+<h1>Registers <a target="_new" href="https://neovim.io/doc/user/fold.html#Folding"><kbd class="cmd">:h registers</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:reg</kbd></th><td>                                                                       Show register contents</td></tr>
+<tr><th><kbd>"</kbd><kbd>a</kbd><kbd>Y</kbd></th><td>                                         Yank(copy) to register a</td></tr>
+<tr><th><kbd>"</kbd><kbd>a</kbd><kbd>p</kbd></th><td>                                         Paste from register a</td></tr>
+<tr><th><kbd>Y</kbd></th><td>                                                                 Yank(copy) to default register, " or 0</td></tr>
+<tr><th><kbd>p</kbd></th><td>                                                                 Paste from default register</td></tr>
+</tbody></table>
+</div><div class="inner border" id="folding">
+<h1>Folding <a target="_new" href="https://neovim.io/doc/user/fold.html#Folding"><kbd class="cmd">:h folding</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>F2</kbd></th><td>                                                                Cycle through fold methods</td></tr>
+<tr><th><kbd class="cmd">:set foldmethod=manual</kbd></th><td>                                                     or syntax, indent, etc</td></tr>
+<tr><th><kbd class="cmd">:[range]fold</kbd></th><td>                                                               Create fold on range or selection</td></tr>
+<tr><th><kbd>z</kbd><kbd>f</kbd>[move]</th><td>                                               Create fold</td></tr>
+<tr><th><kbd>z</kbd><kbd>a</kbd></th><td>                                                     Toggle fold</td></tr>
+<tr><th><kbd>z</kbd><kbd>o</kbd></th><td>                                                     Open fold</td></tr>
+<tr><th><kbd>z</kbd><kbd>c</kbd></th><td>                                                     Close fold</td></tr>
+<tr><th><kbd>z</kbd><kbd>d</kbd></th><td>                                                     Delete this fold</td></tr>
+<tr><th><kbd>z</kbd><kbd>E</kbd></th><td>                                                     Delete all folds</td></tr>
+<tr><th><kbd>z</kbd><kbd>R</kbd></th><td>                                                     Fold open</td></tr>
+<tr><th><kbd>z</kbd><kbd>M</kbd></th><td>                                                     Fold collapse</td></tr>
+</tbody></table>
+</div><div class="inner border" id="formatting">
+<h1>Formatting <a target="_new" href="https://neovim.io/doc/user/options.html#formatoptions"><kbd class="cmd">:h formatoptions</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:set textwidth=80</kbd></th><td>                                                          Set default width to 80 columns</td></tr>
+<tr><th><kbd class="cmd">:set formatprg=par -w79</kbd></th><td>                                                   Format using paragraph to at most 79 chars</td></tr>
+<tr><th><kbd>g</kbd><kbd>q</kbd><kbd>[motion]</kbd></th><td>                                  like gqip to format around paragraph</td></tr>
+<tr><th><kbd>Ctrl-w</kbd></th><td>                                                            does a gqip</td></tr>
+<tr><th><kbd>g</kbd><kbd>s</kbd></th><td>                                                     Delete trailing whitespace in whole file</td></tr>
+<tr><th><kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd></th><td>                             Auto (re)indent entire document</td></tr>
+<tr><th><kbd>=</kbd></th><td>                                                                 (re)indent the text on the current line or on the area selected (SUPER)</td></tr>
+<tr><th><kbd>=</kbd><kbd>%</kbd></th><td>                                                     (re)indent the current braces { ... }</td></tr>
+</tbody></table>
+</div><div class="inner border" id="changingcase">
+<h1>Changing case <a target="_new" href="https://neovim.io/doc/user/change.html#case"><kbd class="cmd">:h case</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>~</kbd></th><td>                                                                 Toggle case</td></tr>
+<tr><th><kbd>g</kbd><kbd>U</kbd><kbd>U</kbd></th><td>                                         Upper case whole line</td></tr>
+<tr><th><kbd>g</kbd><kbd>u</kbd><kbd>u</kbd></th><td>                                         Lower case whole line</td></tr>
+<tr><th><kbd>g</kbd><kbd>~</kbd><kbd>~</kbd></th><td>                                         Flip case whole line</td></tr>
+<tr><th><kbd>g</kbd><kbd>~</kbd><kbd>[motion]</kbd></th><td>                                  Togglecase</td></tr>
+<tr><th><kbd>g</kbd><kbd>u</kbd><kbd>[motion]</kbd></th><td>                                  Lowercase</td></tr>
+<tr><th><kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd></th><td>                                  Uppercase</td></tr>
+<kbd class="cmd">:%s/\v(\a+)/\u\1/g</kbd> Title Case regex, \u,\l=Upper/lower next char, \U,\L=Up/Low following chars<br/><kbd class="cmd">:%s/\v(\w)_(\a+)/\1\u\2/g</kbd> Change <kbd class="cmd">variable_name</kbd> to camel case, <kbd class="cmd">variableName</kbd>
+</tbody></table>
+</div><div class="inner border" id="incrementdecavalue">
+<h1>Increment/Dec a value <a target="_new" href="https://github.com/tpope/vim-speeddating">plugin</a></h1>
+<table><tbody>
+<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times.</td></tr>
+<tr><th><kbd>Ctrl-x</kbd></th><td>                                                            <img src="media/tick.png"/> Decrement value under cursor by 1.</td></tr>
+A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd><br/><kbd class="cmd">:let i=1 | g/WEEKNUMBER/s//\=i/ | let i=i+1</kbd>
+</tbody></table>
+</div><div class="inner border" id="movinglines">
+<h1>Moving Lines </h1>
+<table><tbody>
+<tr><th><kbd>Alt-Up</kbd></th><td>                                                            <img src="media/tick.png"/> Move current line/selection up 1 line</td></tr>
+<tr><th><kbd>Alt-Down</kbd></th><td>                                                          <img src="media/tick.png"/> Move current line/selection down 1 line</td></tr>
+</tbody></table>
+</div><div class="inner border" id="commenting">
+<h1>Commenting </h1>
+<table><tbody>
+<tr><th><kbd>Ctrl-/</kbd></th><td>                                                            <img src="media/tick.png"/> (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!</td></tr>
+</tbody></table>
+</div><div class="inner border" id="functionkeys">
+<h1>Function Keys </h1>
+<table><tbody>
+<tr><th><kbd>F1</kbd></th><td>                                                                <img src="media/tick.png"/> Open this cheatsheet</td></tr>
+<tr><th><kbd>F2</kbd></th><td>                                                                <img src="media/tick.png"/> Cycle through different folding methods</td></tr>
+<tr><th><kbd>F3</kbd></th><td>                                                                <img src="media/tick.png"/> Toggle most visual items</td></tr>
+<tr><th><kbd>F4</kbd></th><td>                                                                <img src="media/tick.png"/> Open left file menu</td></tr>
+<tr><th><kbd>F5</kbd></th><td>                                                                <img src="media/tick.png"/> Kitty command - assumes text highlighted is a filename and opens it</td></tr>
+<tr><th><kbd>F6</kbd></th><td>                                                                <img src="media/tick.png"/> Runs the last range substitute, see * and &</td></tr>
+<tr><th><kbd>F7</kbd></th><td>                                                                <img src="media/tick.png"/> Diff current buffer and next (split and windo diffthis)</td></tr>
+<tr><th><kbd>F8</kbd></th><td>                                                                <img src="media/tick.png"/> Open Lazygit</td></tr>
+<tr><th><kbd>F9</kbd></th><td>                                                                <img src="media/tick.png"/> Open Telescope</td></tr>
+<tr><th><kbd>F10</kbd></th><td>                                                               <img src="media/tick.png"/> Kitty command - New terminal in new tab</td></tr>
+<tr><th><kbd>F11</kbd></th><td>                                                               <img src="media/tick.png"/> Kitty command - full screen</td></tr>
+<tr><th><kbd>F12</kbd></th><td>                                                               <img src="media/tick.png"/> Toggle right tags bar</td></tr>
+</tbody></table>
+</div><div class="inner border" id="executinglinescommands">
+<h1>Executing lines/commands </h1>
+<table><tbody>
+<tr><th><kbd>g</kbd><kbd>r</kbd></th><td>                                                     <img src="media/tick.png"/> Run line under cursor in shell, **USE WITH CARE!**</td></tr>
+<tr><th><kbd>g</kbd><kbd>t</kbd></th><td>                                                     <img src="media/tick.png"/> Run line under cursor as if it were a vim command</td></tr>
+<tr><th><kbd>Alt-r</kbd></th><td>                                                             <img src="media/tick.png"/> Run the current file</td></tr>
+<tr><th><kbd>Alt-e</kbd></th><td>                                                             <img src="media/tick.png"/> Make the current file executable <kbd class="cmd">chmod a+x file</kbd><br/>The Eunuch plugin also makes files starting with <kbd class="cmd">#!</kbd> executable</td></tr>
+<tr><th><kbd class="cmd">:g/^Foo/norm 0xxxBar</kbd></th><td>                                                       Norm runs commands as if you typed them</td></tr>
+</tbody></table>
+</div><div class="inner border" id="spelling">
+<h1>Spelling <a target="_new" href="https://neovim.io/doc/user/spell.html"><kbd class="cmd">:h spell</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd>z</kbd><kbd>=</kbd></th><td>                                                     Suggest spelling</td></tr>
+<tr><th><kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd></th><td>               Add to dict, undo add</td></tr>
+</tbody></table>
+</div><div class="inner border" id="miscellaneous">
+<h1>Miscellaneous </h1>
+<table><tbody>
+<tr><th><kbd>g</kbd><kbd>Ctrl-g</kbd></th><td>                                                Word count</td></tr>
+<tr><th><kbd>g</kbd><kbd>?</kbd></th><td>                                                     Rot 13</td></tr>
+<tr><th><kbd class="cmd">:ascii</kbd> or <kbd>g</kbd><kbd>a</kbd></th><td>                                         Ascii, octal val of char under cursor</td></tr>
+<tr><th><kbd class="cmd">:r !date</kbd></th><td>                                                                   Insert external command output (e.g. date)</td></tr>
+<tr><th><kbd class="cmd">:so ~/.vimrc</kbd></th><td>                                                               Reload .vimrc</td></tr>
+<tr><th><kbd class="cmd">:v/pattern/[command]</kbd></th><td>                                                       Like :g but finds NON-matching lines</td></tr>
+<tr><th><kbd class="cmd">:g/foobar/y A</kbd></th><td>                                                              Yank all lines matching <kbd class="cmd">foobar</kbd> into copy buffer</td></tr>
+<tr><th><kbd>Ctrl-l</kbd></th><td>                                                            <img src="media/tick.png"/> Redraws the screen and removes any search highlighting</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

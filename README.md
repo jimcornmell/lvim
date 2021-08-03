@@ -1,8 +1,8 @@
 <!-- Shields -->
 <!-- {{{1 -->
 
-[![GitHub License](https://img.shields.io/github/license/jimcornmell/LunarVim)](https://github.com/jimcornmell/LunarVim/blob/master/LICENSE)
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/jimcornmell/lunarvim)
+[![GitHub License](https://img.shields.io/github/license/jimcornmell/lvim)](https://github.com/jimcornmell/lvim/blob/master/LICENSE)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/jimcornmell/lvim)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Web Site](https://img.shields.io/badge/Jims%20Cosmos-website-red)](https://JimsCosmos.com)
 
@@ -92,7 +92,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
 <!-- {{{1 -->
 
-The Galaxy line configuration can be found [here](https://github.com/jimcornmell/LunarVim/blob/master/lua/lv-galaxyline/init.lua).
+The Galaxy line configuration can be found [here](https://github.com/jimcornmell/lvim/blob/f7db626efb3fe982a7b7c82dcf5a48e43a56400d/lua/user/galaxyline.lua)
 This image shows what is in the different sections.
 
 ![Galaxy Line](./media/galaxy_line.png)

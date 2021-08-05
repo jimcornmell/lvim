@@ -34,6 +34,7 @@ syn match logDebug       "\[DEBUG\]"
 syn match logTimestamp   "^\d\d:\d\d:\d\d.\d\d\d"
 syn match testError      "TEST FAILED:"
 syn match testStart      "TEST STARTED:"
+syn match testSkipped    "TEST SKIPPED:"
 syn match testPass       "TEST PASSED:"
 
 hi TypeError       guifg=#EEEEEE guibg=Red
@@ -44,6 +45,7 @@ hi TypeGreen       guifg=#EEEEEE guibg=DarkGreen
 hi TypeGrey        guifg=#EEEEEE guibg=DarkGrey
 hi TypeTime        guifg=#EEEEEE guibg=DarkGrey
 hi TypeTestStart   guifg=Black   guibg=LightBlue
+hi TypeTestSkipped guifg=Black   guibg=#ffaf00
 hi TypeTestError   guifg=Black   guibg=Red
 hi TypeTestPass    guifg=Black   guibg=Green
 hi TypeNormal      guifg=Black
@@ -59,6 +61,7 @@ HiLink logDebug           TypeGrey
 HiLink logTimestamp       TypeTime
 HiLink testError          TypeTestError
 HiLink testStart          TypeTestStart
+HiLink testSkipped        TypeTestSkipped
 HiLink testPass           TypeTestPass
 HiLink noError            TypeNormal
 

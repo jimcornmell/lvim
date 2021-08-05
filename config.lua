@@ -1,9 +1,9 @@
 --[[ Notes: {{{1
 
- Useful Links and TODO
- https://github.com/Kethku/neovide
- http://cheat.sh
- Buffer bar info: https://github.com/romgrk/barbar.nvim
+Useful Links and TODO
+https://github.com/Kethku/neovide
+http://cheat.sh
+Buffer bar info: https://github.com/romgrk/barbar.nvim
 
 TODO: LSP Java
 TODO: LSP Perl
@@ -89,122 +89,132 @@ lvim.builtin.dashboard.custom_section = {
 
 -- Additional Plugins {{{1
 lvim.plugins = {
-  -- Colorizer: #ff0000, Blue, #f0f
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("user.colorizer").config()
-    end,
-  },
-  -- Zen Mode
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    config = function()
-      require("user.zen").config()
-    end,
-  },
-  -- Better motions
-  {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("user.hop").config()
-    end,
-  },
-  -- Symbols outline - F12
-  {
-    'simrat39/symbols-outline.nvim',
-    cmd = 'SymbolsOutline'
-  },
-  -- Enhanced increment/decrement : True, true
-  {
-    "monaqa/dial.nvim",
-    event = "BufRead",
-    config = function()
-      require("user.dial").config()
-    end,
-  },
-  -- SQL LSP.
-  {
-    "nanotee/sqls.nvim",
-    event = "BufRead",
-    ft = "sql",
-    config = function()
-      require("user.sqls").config()
-    end,
-  },
-  -- Markdown preview
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-  },
-  -- Codi: Interactive scratchpad
-  {
-    "metakirby5/codi.vim",
-    cmd = "Codi",
-  },
-  -- Markers in margin. 'ma' adds marker
-  {"kshenoy/vim-signature",
-    event = "BufRead",
-  },
-  -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
-  {
-    "tpope/vim-surround",
-    event = "BufRead",
-  },
-  -- Unix commands. Try ":SudoWrite"
-  {
-    "tpope/vim-eunuch",
-    event = "BufRead",
-  },
-  -- Highlight URL's. http://www.vivaldi.com
-  {
-    "itchyny/vim-highlighturl",
-    event = "BufRead",
-  },
-  -- Git plugin.  Try ":Git "
-  {
-    "tpope/vim-fugitive",
-    event = "BufRead",
-  },
-  -- Kitty config syntax.  Edit kitty, with vk
-  {
-    "fladson/vim-kitty",
-    event = "BufRead",
-    ft = "conf",
-  },
-  -- Lazygit: Try F8
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = "LazyGit",
-  },
-  -- Todo comments.
-    -- PERF:Something to describe.
-    -- HACK:Something to describe.
-    -- TODO:Something to describe.
-    -- NOTE:Something to describe.
-    -- WARNING:Something to describe.
+    -- Colorizer: #ff0000, Blue, #f0f
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("user.colorizer").config()
+        end,
+    },
+    -- Zen Mode
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+        config = function()
+            require("user.zen").config()
+        end,
+    },
+    -- Better motions
+    {
+        "phaazon/hop.nvim",
+        event = "BufRead",
+        config = function()
+            require("user.hop").config()
+        end,
+    },
+    -- Todo comments.
     -- FIX:Something to describe.
-    -- BUG:Something to describe.
     -- FIXME: Something to describe.
+    -- BUG:Something to describe.
+    -- FIXIT: Something to describe.
+    -- ISSUE: Something to describe.
+    -- TODO:Something to describe.
+    -- HACK:Something to describe.
+    -- WARN:Something to describe.
+    -- WARNING:Something to describe.
+    -- XXX:Something to describe.
+    -- PERF:Something to describe.
+    -- OPTIM:Something to describe.
+    -- PERFORMANCE:Something to describe.
+    -- OPTIMIZE:Something to describe.
+    -- NOTE:Something to describe.
+    -- INFO:Something to describe.
+    -- OK: Something.
+    -- ISH: Something.
+    -- BAD: Something.
     -- :TodoQuickFix
     -- :TodoTelescope
     -- :TodoTrouble
-  {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup {
-      }
-    end
-  },
-  -- Ranger, Leader r
-  {
-    "kevinhwang91/rnvimr",
-    cmd = "RnvimrToggle",
-  }
+    {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("user.todo-comments").config()
+        end
+    },
+    -- Symbols outline - F12
+    {
+        'simrat39/symbols-outline.nvim',
+        cmd = 'SymbolsOutline'
+    },
+    -- Enhanced increment/decrement : True, true
+    {
+        "monaqa/dial.nvim",
+        event = "BufRead",
+        config = function()
+            require("user.dial").config()
+        end,
+    },
+    -- SQL LSP.
+    {
+        "nanotee/sqls.nvim",
+        event = "BufRead",
+        ft = "sql",
+        config = function()
+            require("user.sqls").config()
+        end,
+    },
+    -- Markdown preview
+    {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        ft = "markdown",
+    },
+    -- Codi: Interactive scratchpad
+    {
+        "metakirby5/codi.vim",
+        cmd = "Codi",
+    },
+    -- Markers in margin. 'ma' adds marker
+    {"kshenoy/vim-signature",
+        event = "BufRead",
+    },
+    -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
+    {
+        "tpope/vim-surround",
+        event = "BufRead",
+    },
+    -- Unix commands. Try ":SudoWrite"
+    {
+        "tpope/vim-eunuch",
+        event = "BufRead",
+    },
+    -- Highlight URL's. http://www.vivaldi.com
+    {
+        "itchyny/vim-highlighturl",
+        event = "BufRead",
+    },
+    -- Git plugin.  Try ":Git "
+    {
+        "tpope/vim-fugitive",
+        event = "BufRead",
+    },
+    -- Kitty config syntax.  Edit kitty, with vk
+    {
+        "fladson/vim-kitty",
+        event = "BufRead",
+        ft = "conf",
+    },
+    -- Lazygit: Try F8
+    {
+        "kdheepak/lazygit.nvim",
+        cmd = "LazyGit",
+    },
+    -- Ranger, Leader r
+    {
+        "kevinhwang91/rnvimr",
+        cmd = "RnvimrToggle",
+    }
 }
 -- }}}1
 

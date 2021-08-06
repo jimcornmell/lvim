@@ -19,7 +19,7 @@
 <!-- Introduction -->
 <!-- {{{1 -->
 
-This is a fork of the **brilliant** configuration project
+This is a set of config files for the **brilliant** configuration project
 [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian
 Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
 I've been using VI on and off as my daily editor since the early 1990's and
@@ -32,8 +32,7 @@ The main changes are documented below:
 - My dashboard.
 - Custom Keybindings.
 - Custom Colours.
-
-Most of my configuration is contained in `user.vim`.
+- and much more.
 
 I intend to merge Christian's changes into my config regularly to keep up with
 his brilliant work.
@@ -120,53 +119,21 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 
 I've added a few extra plugins I use to the configuration:
 
-- [Vim Signature](https://github.com/kshenoy/vim-signature)
-
-  - A plugin to place, toggle and display marks.
-
-- [Vim Eunuch](https://github.com/tpope/vim-eunuch)
-
-  - Vim sugar for the UNIX shell commands that need it the most.
-  - Also makes files starting with `#!` executable.
-
-- [Vim Surround](https://github.com/tpope/vim-surround)
-
-  - Surround.vim is all about "surroundings": parentheses, brackets, quotes,
-    XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
-
-- [Dial](https://github.com/monaqa/dial.nvim)
-
-  - I've enabled a bunch of the predefined "incrementors", also added a few of my own, e.g: True<->False and full month names.
-  - [See the config for details](lua/lv-dial/init.lua)I
-
-- [Hop](https://github.com/phaazon/hop.nvim)
-
-- [Markdown_preview](https://github.com/iamcco/markdown-preview.nvim)
-
-  - Open a markdown file and ":MarkdownPreview"
-
-- [Codi](https://github.com/metakirby5/codi.vim)
-
-  - I alias "bc" on the command line to get a powerful calculator scratchpad using python.
-
-- [Highlighturl](https://github.com/itchyny/vim-highlighturl)
-
-- [Fugitive](https://github.com/tpope/vim-fugitive)
-
-- [Lazygit](https://github.com/kdheepak/lazygit.nvim)
-
-  - <kbd>F8</kbd> to open.
-
-<!-- - [Ranger](https://github.com/kevinhwang91/rnvimr) -->
-  <!-- - Enabled with <kbd>-</kbd> key. -->
-
-<!-- - [Tagbar](https://github.com/preservim/tagbar) -->
-<!--   - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure. -->
-<!--   - Opened with <kbd>F12</kbd> -->
-
-<!-- TODO -->
-<!-- TABNINE -->
-<!-- https://github.com/ChristianChiarulli/LunarVim/commit/15603354acdc5ab88a5eb0d70a7b3e17a1792efe -->
+- [Codi](https://github.com/metakirby5/codi.vim) I alias "bc" on the command line to get a powerful calculator scratchpad using python.
+- [Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
+- [Dial](https://github.com/monaqa/dial.nvim) I've enabled a bunch of the predefined "increment's", also added a few of my own, e.g: True<->False and full month names.  [See the config for details](lua/lv-dial/init.lua)I
+- [Fugitive](https://github.com/tpope/vim-fugitive) Git plugin from Tim Pope
+- [Highlighturl](https://github.com/itchyny/vim-highlighturl) Highlight urls, jump to them with <kbd>g</kbd><kbd>j</kbd>
+- [Hop](https://github.com/phaazon/hop.nvim) Better motions with <kbd>S</kbd>
+- [Lazygit](https://github.com/kdheepak/lazygit.nvim) <kbd>F8</kbd> to open.
+- [Markdown_preview](https://github.com/iamcco/markdown-preview.nvim) Open a markdown file and ":MarkdownPreview"
+- [Ranger](https://github.com/kevinhwang91/rnvimr) Display with <kbd>Leader</kbd><kbd>r</kbd>
+- [Symbols outline](https://github.com/simrat39/symbols-outline.nvim) Display with <kbd>F12</kbd>
+- [Todo comments](https://github.com/folke/todo-comments.nvim) With a few tweaks....
+- [Vim Eunuch](https://github.com/tpope/vim-eunuch) Vim sugar for the UNIX shell commands that need it the most.  Also makes files starting with `#!` executable.
+- [Vim Signature](https://github.com/kshenoy/vim-signature) A plugin to place, toggle and display marks.
+- [Vim Surround](https://github.com/tpope/vim-surround) Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+- [Zen Mode]( https://github.com/folke/zen-mode.nvim) Toggle with <kbd>Leader</kbd><kbd>z</kbd>
 
 <!-- }}}1 -->
 

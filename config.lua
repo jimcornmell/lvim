@@ -129,6 +129,7 @@ lvim.plugins = {
     -- OPTIMIZE:Something to describe.
     -- NOTE:Something to describe.
     -- INFO:Something to describe.
+    -- TEST: Test something.
     -- OK: Something.
     -- ISH: Something.
     -- BAD: Something.

@@ -177,6 +177,7 @@ lvim.builtin.galaxyline.on_config_done = function(gl)
     local gls = gl.section
     local condition = require "galaxyline.condition"
     vim.cmd('source ~/.config/lvim/user_colors.vim')
+    vim.cmd('source ~/.config/lvim/user_keys.vim')
 
     -- Left {{{1
     gls.left = {}

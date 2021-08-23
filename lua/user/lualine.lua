@@ -35,6 +35,8 @@ local colors = {
     lsptext         = '#C5C5C5',
 
     typeiconbg      = '#FF8800',
+    typeiconbgro    = '#FF3300',
+    typeiconbgrw    = '#229900',
     typebg          = '#5C2C2E',
     typetext        = '#C5C5C5',
 
@@ -100,14 +102,14 @@ local mode_map = {
 local icons = {
     bracketleft       = '',
     bracketright      = '',
-    vim               = '', -- 'e62b',
+    vim               = '',
     git               = '',
-    gitadd            = ' ',
-    -- gitadd         = ' ',
+    gitadd            = ' ',
+    -- gitadd         = ' ',
     gitmod            = ' ',
     -- gitmod         = '柳',
-    gitdel            = ' ',
-    -- gitdel         = ' ',
+    gitdel            = ' ',
+    -- gitdel         = ' ',
     lsp               = '',
     lspdiagerror      = ' ',
     -- lspdiagerror   = ' ',
@@ -116,18 +118,19 @@ local icons = {
     lspdiaginfo       = ' ',
     -- lspdiaginfo    = ' ',
     lspdiaghint       = ' ',
-    dos               = '', -- 'e70f',
-    unix              = '', -- 'f17c',
-    mac               = '', -- 'f179',
+    dos               = '',
+    unix              = '',
+    mac               = '',
     typewriteable     = '',
     typereadonly      = '',
-    typesize          = '',
+    typesize          = '',
+    -- typesize       = '',
     typeenc           = '',
     stats             = '⅑',
-    statsvert         = '⇳',
-    -- statsvert      = '⬍',
-    statshoriz        = '⇔',
-    -- statshoriz     = '⬌',
+    -- statsvert      = '⇳',
+    statsvert         = '⬍',
+    -- statshoriz     = '⇔',
+    statshoriz        = '⬌',
     statsspace        = '⯀',
     statstab          = '⯈',
 }
@@ -385,12 +388,14 @@ ins_right {
 ins_right {
     function()
         if (vim.api.nvim_get_option('readonly')) then
+            highlight('LualineTypeMidLock', colors.typeiconbgro, colors.typebg)
             return icons['typereadonly']
         else
+            highlight('LualineTypeMidLock', colors.typeiconbgrw, colors.typebg)
             return icons['typewriteable']
         end
     end,
-    color = 'LualineTypeMid',
+    color = 'LualineTypeMidLock',
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }

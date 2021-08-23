@@ -344,7 +344,8 @@ set foldenable             " Folding enabled
 set foldmethod=marker      " Folding method, based on { { {1
 set clipboard=unnamedplus  " Copy paste between Vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
-set ignorecase             " When searching ignore case of words.
+set ignorecase             " When searching ignore case of words
+set scrolloff=3            " Keep 3 line buffer at top and bottom of the screen
 
 " Setup spelling
 set spell

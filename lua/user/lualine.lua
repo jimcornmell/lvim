@@ -5,14 +5,9 @@
 -- Settings {{{2
 local lineLengthWarning = 80
 local lineLengthError = 120
-
 local leftbracket = ""
 local rightbracket = ""
-local leftbracketthin = ""
-local rightbracketthin = ""
-
 lvim.builtin.lualine.options.theme = "iceberg_dark"
-
 lvim.builtin.lualine.sections = {
     lualine_a = {}, lualine_c = {}, lualine_b = {},
     lualine_x = {}, lualine_y = {}, lualine_z = {}
@@ -135,28 +130,32 @@ local mode_map = {
 
 -- See: https://www.nerdfonts.com/cheat-sheet
 local icons = {
-    dos            = u 'e70f',
-    unix           = u 'f17c',
-    mac            = u 'f179',
-    vim            = u 'e62b',
-    git            = '',
-    gitadd         = '',
-    -- gitadd      = '',
-    gitmod         = '',
-    -- gitmod      = '柳',
-    gitdel         = '',
-    -- gitdel      = '',
-    lsp            = '',
-    lspdiagerror   = '',
-    lspdiagwarning = '',
-    lspdiaghint    = '',
-    typesize       = '',
-    typeenc        = '',
-    stats          = '⅑',
-    statsvert      = '⇕',
-    statshoriz     = '⇔',
-    statsspace     = '⯀',
-    statstab       = '⯈',
+    dos               = u 'e70f',
+    unix              = u 'f17c',
+    mac               = u 'f179',
+    vim               = u 'e62b',
+    git               = '',
+    gitadd            = ' ',
+    -- gitadd         = ' ',
+    gitmod            = ' ',
+    -- gitmod         = '柳',
+    gitdel            = ' ',
+    -- gitdel         = ' ',
+    lsp               = '',
+    lspdiagerror      = ' ',
+    -- lspdiagerror   = ' ',
+    lspdiagwarning    = ' ',
+    -- lspdiagwarning = ' ',
+    lspdiaginfo       = ' ',
+    -- lspdiaginfo    = ' ',
+    lspdiaghint       = ' ',
+    typesize          = '',
+    typeenc           = '',
+    stats             = '⅑',
+    statsvert         = '⇕',
+    statshoriz        = '⇔',
+    statsspace        = '⯀',
+    statstab          = '⯈',
 }
 -- }}}2
 
@@ -291,19 +290,23 @@ ins_left {
     left_padding = 0,
     right_padding = 0,
 }
-    -- FIX:
-    -- 'diff',
-    -- symbols = {added = ' ', modified = '柳 ', removed = ' '},
-    -- symbols = {added = '  ', modified = '  ', removed = '  '},
-    -- color_added = {fg = colors.green, bg=colors.bg},
-    -- color_modified = {fg = colors.orange, bg=colors.bg},
-    -- color_removed = {fg = colors.red, bg=colors.bg},
-    -- condition = conditions.hide_in_width
+-- }}}3
+
+-- Git diffs {{{3
+ins_left {
+    'diff',
+    color = 'LualineGitTxt',
+    symbols = {added = icons['gitadd'], modified = icons['gitmod'], removed = icons['gitdel']},
+    color_added = {fg = colors.green, bg=colors.gitbg},
+    color_modified = {fg = colors.orange, bg=colors.gitbg},
+    color_removed = {fg = colors.red, bg=colors.gitbg},
+    condition = conditions.hide_in_width,
+    icon='', left_padding = 0, right_padding = 0,
+}
 ins_left {
     function() return rightbracket end,
     color = 'LualineGitEnd',
-    left_padding = 0,
-    right_padding = 0
+    left_padding = 0, right_padding = 0
 }
 -- }}}3
 
@@ -334,7 +337,6 @@ ins_left {
     right_padding = 0
 }
 ins_left {
-    -- FIX: 
     function()
         local msg = 'No Active Lsp'
         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -350,16 +352,24 @@ ins_left {
     end,
     color = 'LualineLspTxt',
     left_padding = 1,
-    right_padding = 0,
+    right_padding = 1,
 }
 -- }}}3
 
 -- Diagnostics {{{3
--- FIX:
 ins_left {
     'diagnostics',
     sources = { "nvim_lsp" },
-    symbols = { error = " ", warn = " ", info = " ", hint = " " },
+    symbols = {
+        error = icons['lspdiagerror'],
+        warn = icons['lspdiagwarning'],
+        info = icons['lspdiaginfo'],
+        hint = icons['lspdiaghint']
+    },
+    color_error = {fg = colors.red, bg=colors.lspbg},
+    color_warn = {fg = colors.orange, bg=colors.lspbg},
+    color_info = {fg = colors.cyan, bg=colors.lspbg},
+    color_hint = {fg = colors.green, bg=colors.lspbg},
     color = 'LualineLspMid',
     left_padding = 0,
     right_padding = 0
@@ -402,20 +412,22 @@ ins_right {
     color = 'LualineTypeTxt',
     left_padding = 1, right_padding = 0
 }
--- ins_right {
-    -- function()
-    -- end,
-    -- color = 'LualineTypeTxt',
-    -- left_padding = 1, right_padding = 0
--- }
 ins_right {
     -- FIX: File Type Icon
+    function()
+            return 't'
+    end,
+    color = 'LualineTypeTxt',
+    left_padding = 1, right_padding = 0
+}
+ins_right {
+    -- FIX: File readonly/writable icon
     -- function() return icons[vim.bo.filetype] end,
     function()
         if (vim.g.readonly) then
-            return 'a'
+            return 'r'
         else
-            return 'b'
+            return 'w'
         end
     end,
     color = 'LualineTypeMid',
@@ -442,6 +454,12 @@ ins_right {
                 size = size / 1024
                 i = i + 1
             end
+
+            if (i == 1)
+            then
+                return string.format('%.0f%s', size, sufixes[i])
+            end
+
             return string.format('%.1f%s', size, sufixes[i])
         end
         local file = vim.fn.expand('%:p')

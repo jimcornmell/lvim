@@ -5,8 +5,6 @@
 -- Settings {{{2
 local lineLengthWarning = 80
 local lineLengthError = 120
-local leftbracket = ""
-local rightbracket = ""
 lvim.builtin.lualine.options.theme = "iceberg_dark"
 lvim.builtin.lualine.sections = {
     lualine_a = {}, lualine_c = {}, lualine_b = {},
@@ -18,39 +16,9 @@ lvim.builtin.lualine.inactive_sections = {
 }
 -- }}}2
 
--- u Function {{{2
-local function u(code)
-    if type(code) == 'string' then
-        code = tonumber('0x' .. code)
-    end
-    local c = string.char
-    if code <= 0x7f then
-        return c(code)
-    end
-    local t = {}
-
-    if code <= 0x07ff then
-        t[1] = c(bit.bor(0xc0, bit.rshift(code, 6)))
-        t[2] = c(bit.bor(0x80, bit.band(code, 0x3f)))
-    elseif code <= 0xffff then
-        t[1] = c(bit.bor(0xe0, bit.rshift(code, 12)))
-        t[2] = c(bit.bor(0x80, bit.band(bit.rshift(code, 6), 0x3f)))
-        t[3] = c(bit.bor(0x80, bit.band(code, 0x3f)))
-    else
-        t[1] = c(bit.bor(0xf0, bit.rshift(code, 18)))
-        t[2] = c(bit.bor(0x80, bit.band(bit.rshift(code, 12), 0x3f)))
-        t[3] = c(bit.bor(0x80, bit.band(bit.rshift(code, 6), 0x3f)))
-        t[4] = c(bit.bor(0x80, bit.band(code, 0x3f)))
-    end
-
-    return table.concat(t)
-end
--- }}}2
-
 -- Colours, maps and icons {{{2
 local colors = {
     bg              = '#0f1117',
-    -- bg              = '#663333',
     modetext        = '#000000',
 
     giticonbg       = '#FF8800',
@@ -130,11 +98,10 @@ local mode_map = {
 
 -- See: https://www.nerdfonts.com/cheat-sheet
 local icons = {
-    dos               = u 'e70f',
-    unix              = u 'f17c',
-    mac               = u 'f179',
-    vim               = u 'e62b',
-    git               = '',
+    bracketleft       = '',
+    bracketright      = '',
+    vim               = '', -- 'e62b',
+    git               = '',
     gitadd            = ' ',
     -- gitadd         = ' ',
     gitmod            = ' ',
@@ -149,11 +116,18 @@ local icons = {
     lspdiaginfo       = ' ',
     -- lspdiaginfo    = ' ',
     lspdiaghint       = ' ',
+    dos               = '', -- 'e70f',
+    unix              = '', -- 'f17c',
+    mac               = '', -- 'f179',
+    typewriteable     = '',
+    typereadonly      = '',
     typesize          = '',
     typeenc           = '',
     stats             = '⅑',
-    statsvert         = '⇕',
+    statsvert         = '⇳',
+    -- statsvert      = '⬍',
     statshoriz        = '⇔',
+    -- statshoriz     = '⬌',
     statsspace        = '⯀',
     statstab          = '⯈',
 }
@@ -189,7 +163,7 @@ end
 
 local function setLineWidthColours()
     local colbg = colors.statsbg
-    local linebg = colors.statsbg
+    local linebg = colors.statsiconbg
 
     if (vim.fn.col('.') > lineLengthError)
     then
@@ -207,21 +181,19 @@ local function setLineWidthColours()
         linebg = colors.linelongwarnfg
     end
 
-    highlight('LinePosHighlightStart', colbg, colors.statsbg)
+    highlight('LinePosHighlightStart',  colbg,            colors.statsbg)
     highlight('LinePosHighlightColNum', colors.statstext, colbg)
-    highlight('LinePosHighlightMid', linebg, colbg)
-    highlight('LineLenHighlightLenNum', colors.statstext, linebg)
-    highlight('LinePosHighlightEnd', linebg, colors.statsbg)
+    highlight('LinePosHighlightMid',    linebg,           colbg)
+    highlight('LinePosHighlightLenNum', colors.statstext, linebg)
+    highlight('LinePosHighlightEnd',    linebg,           colors.statsbg)
 end
 
 local conditions = {
-  buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
-  hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
-  check_git_workspace = function()
-    local filepath = vim.fn.expand('%:p:h')
-    local gitdir = vim.fn.finddir('.git', filepath .. ';')
-    return gitdir and #gitdir > 0 and #gitdir < #filepath
-  end
+  display_mode      = function() return vim.fn.winwidth(0) >  60 end,
+  display_pos       = function() return vim.fn.winwidth(0) >  80 end,
+  display_stats     = function() return vim.fn.winwidth(0) > 100 end,
+  display_git       = function() return vim.fn.winwidth(0) > 120 end,
+  display_lsp       = function() return vim.fn.winwidth(0) > 140 end,
 }
 -- }}}2
 
@@ -234,28 +206,27 @@ ins_left {
     function()
         highlight('LualineMode', colors.bg, mode_map[vim.fn.mode()][1])
         highlight('LualineModeText', colors.modetext, mode_map[vim.fn.mode()][1])
-        return leftbracket
+        return icons['bracketleft']
     end,
     color = 'LualineModeInv',
-    left_padding = 1,
-    right_padding = 0
+    condition = conditions.display_mode,
+    left_padding = 1, right_padding = 0
 }
 ins_left {
     function()
         return mode_map[vim.fn.mode()][2]
     end,
-    icon = icons['vim'],
     color = 'LualineModeText',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_mode,
+    icon = icons['vim'], left_padding = 0, right_padding = 0
 }
 ins_left {
     function()
-        return rightbracket
+        return icons['bracketright']
     end,
     color = 'LualineModeInv',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_mode,
+    left_padding = 0, right_padding = 0
 }
 -- }}}2
 
@@ -265,30 +236,29 @@ ins_left {
 ins_left {
     function()
         highlightGroup('Git', colors.giticonbg, colors.gitbg, colors.gittext)
-        return leftbracket
+        return icons['bracketleft']
     end,
     color = 'LualineGitLft',
-    left_padding = 1,
-    right_padding = 0
+    condition = conditions.display_git,
+    left_padding = 1, right_padding = 0
 }
 ins_left {
     function() return icons['git'] end,
     color = 'LualineGitMidInv',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_git,
+    left_padding = 0, right_padding = 0,
 }
 ins_left {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineGitMid',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_git,
+    left_padding = 0, right_padding = 0
 }
 ins_left {
     'branch',
     color = 'LualineGitTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_git,
+    icon='', left_padding = 0, right_padding = 0,
 }
 -- }}}3
 
@@ -300,12 +270,13 @@ ins_left {
     color_added = {fg = colors.green, bg=colors.gitbg},
     color_modified = {fg = colors.orange, bg=colors.gitbg},
     color_removed = {fg = colors.red, bg=colors.gitbg},
-    condition = conditions.hide_in_width,
+    condition = conditions.display_git,
     icon='', left_padding = 0, right_padding = 0,
 }
 ins_left {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineGitEnd',
+    condition = conditions.display_git,
     left_padding = 0, right_padding = 0
 }
 -- }}}3
@@ -318,23 +289,23 @@ ins_left {
 ins_left {
     function()
         highlightGroup('Lsp', colors.lspiconbg, colors.lspbg, colors.lsptext)
-        return leftbracket
+        return icons['bracketleft']
     end,
     color = 'LualineLspLft',
-    left_padding = 1,
-    right_padding = 0
+    condition = conditions.display_lsp,
+    left_padding = 1, right_padding = 0
 }
 ins_left {
     function() return icons['lsp'] end,
     color = 'LualineLspMidInv',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_lsp,
+    left_padding = 0, right_padding = 0,
 }
 ins_left {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineLspMid',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_lsp,
+    left_padding = 0, right_padding = 0
 }
 ins_left {
     function()
@@ -351,8 +322,8 @@ ins_left {
         return msg
     end,
     color = 'LualineLspTxt',
-    left_padding = 1,
-    right_padding = 1,
+    condition = conditions.display_lsp,
+    left_padding = 1, right_padding = 1,
 }
 -- }}}3
 
@@ -371,14 +342,14 @@ ins_left {
     color_info = {fg = colors.cyan, bg=colors.lspbg},
     color_hint = {fg = colors.green, bg=colors.lspbg},
     color = 'LualineLspMid',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_lsp,
+    left_padding = 0, right_padding = 0
 }
 ins_left {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineLspEnd',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_lsp,
+    left_padding = 0, right_padding = 0
 }
 -- }}}3
 
@@ -392,57 +363,72 @@ ins_left {
 ins_right {
     function()
         highlightGroup('Type', colors.typeiconbg, colors.typebg, colors.typetext)
-        return leftbracket
+        return icons['bracketleft']
     end,
     color = 'LualineTypeLft',
+    condition = conditions.display_stats,
     left_padding = 0, right_padding = 0
 }
 ins_right {
     function() return icons[vim.bo.fileformat] or '' end,
     color = 'LualineTypeMidInv',
+    condition = conditions.display_stats,
     left_padding = 0, right_padding = 0
 }
 ins_right {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineTypeMid',
+    condition = conditions.display_stats,
     left_padding = 0, right_padding = 0
 }
+-- Padlock if the file is readonly.
 ins_right {
-    function() return vim.fn.bufname("%") end,
-    color = 'LualineTypeTxt',
-    left_padding = 1, right_padding = 0
-}
-ins_right {
-    -- FIX: File Type Icon
     function()
-            return 't'
-    end,
-    color = 'LualineTypeTxt',
-    left_padding = 1, right_padding = 0
-}
-ins_right {
-    -- FIX: File readonly/writable icon
-    -- function() return icons[vim.bo.filetype] end,
-    function()
-        if (vim.g.readonly) then
-            return 'r'
+        if (vim.api.nvim_get_option('readonly')) then
+            return icons['typereadonly']
         else
-            return 'w'
+            return icons['typewriteable']
         end
     end,
     color = 'LualineTypeMid',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
+-- File name.
+ins_right {
+    function() return vim.fn.expand("%:t") end,
+    color = 'LualineTypeTxt',
+    condition = conditions.display_stats,
+    left_padding = 1, right_padding = 0
+}
+-- File type icon.
+ins_right {
+    function()
+        local filetype = vim.bo.filetype
+        if filetype == '' then return '' end
+        local filename, fileext = vim.fn.expand("%:t"), vim.fn.expand("%:e")
+        local icon = require'nvim-web-devicons'.get_icon(filename, fileext, { default = true })
+        return string.format('%s', icon)
+    end,
+    color = 'LualineTypeMid',
+    condition = conditions.display_stats,
+    left_padding = 1, right_padding = 0
+}
+-- File type text.
 ins_right {
     function() return vim.bo.filetype end,
     color = 'LualineTypeTxt',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
+-- File size icon.
 ins_right {
     function() return icons['typesize'] end,
     color = 'LualineTypeMid',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
+-- File size in b, k, m or g.
 ins_right {
     function()
         local function format_file_size(file)
@@ -467,21 +453,25 @@ ins_right {
         return format_file_size(file)
     end,
     color = 'LualineTypeTxt',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
 ins_right {
     function() return icons['typeenc'] end,
     color = 'LualineTypeMid',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
 ins_right {
     'encoding',
     color = 'LualineTypeTxt',
+    condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
 ins_right {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineTypeEnd',
+    condition = conditions.display_stats,
     left_padding = 0, right_padding = 0
 }
 -- }}}2
@@ -490,37 +480,37 @@ ins_right {
 ins_right {
     function()
         highlightGroup('Stats', colors.statsiconbg, colors.statsbg, colors.statstext)
-        return leftbracket
+        return icons['bracketleft']
     end,
     color = 'LualineStatsLft',
-    left_padding = 1,
-    right_padding = 0
+    condition = conditions.display_pos,
+    left_padding = 1, right_padding = 0
 }
 ins_right {
     function() return icons['stats'] end,
     color = 'LualineStatsMidInv',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    left_padding = 0, right_padding = 0,
 }
 ins_right {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineStatsMid',
-    left_padding = 0,
-    right_padding = 0
+    condition = conditions.display_pos,
+    left_padding = 0, right_padding = 0
 }
+-- Percentage/Top/Bottom/All
 ins_right {
     'progress',
     color = 'LualineStatsTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
+-- Vertical icon.
 ins_right {
     function() return icons['statsvert'] end,
     color = 'LualineStatsMid',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
 -- File line position and number of lines.
 ins_right {
@@ -528,35 +518,58 @@ ins_right {
         return string.format("%4i/%4i", vim.fn.line('.'), vim.fn.line('$'))
     end,
     color = 'LualineStatsTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
+-- Horiz icon.
 ins_right {
     function() return icons['statshoriz'] end,
     color = 'LualineStatsMid',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
--- Column and line width -- FIX: Colour when too long.
+ -- Left bracket for line length.
 ins_right {
     function()
-        return " " .. string.format("%3i", vim.fn.col('.')) .. "/"
+        setLineWidthColours()
+        return icons['bracketleft']
     end,
-    color = 'LualineStatsTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    color = 'LinePosHighlightStart',
+    condition = conditions.display_pos,
+    left_padding = 1, right_padding = 0
+}
+-- Column and line width
+ins_right {
+    function()
+        return string.format("%4i", vim.fn.col('.'))
+    end,
+    color = 'LinePosHighlightColNum',
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
 ins_right {
     function()
-        return ' ' .. string.format("%3i", string.len(vim.fn.getline('.')))
+        return icons['bracketleft']
     end,
-    color = 'LualineStatsTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    color = 'LinePosHighlightMid',
+    condition = conditions.display_pos,
+    icon = '', left_padding = 0, right_padding = 0
+}
+ins_right {
+    function()
+        return string.format("%4i", string.len(vim.fn.getline('.')))
+    end,
+    color = 'LinePosHighlightLenNum',
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
+}
+ins_right {
+    function()
+        return icons['bracketright']
+    end,
+    color = 'LinePosHighlightEnd',
+    condition = conditions.display_pos,
+    left_padding = 0, right_padding = 0
 }
 ins_right {
     function()
@@ -568,72 +581,22 @@ ins_right {
         end
     end,
     color = 'LualineStatsMid',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
 ins_right {
     function() return ''..vim.bo.shiftwidth end,
     color = 'LualineStatsTxt',
-    icon='',
-    left_padding = 0,
-    right_padding = 0,
+    condition = conditions.display_pos,
+    icon='', left_padding = 0, right_padding = 0,
 }
 ins_right {
-    function() return rightbracket end,
+    function() return icons['bracketright'] end,
     color = 'LualineStatsEnd',
-    left_padding = 0,
-    right_padding = 1
+    condition = conditions.display_pos,
+    left_padding = 0, right_padding = 1
 }
 -- }}}2
 
--- }}}1
-
--- Left Short {{{1
---       table.insert(gls.short_line_left, {
---           ShortSectionStart = {
---               provider = function() return leftbracket  end,
---               highlight = {colors.shortbg, colors.bg}
---           }
---       })
---       table.insert(gls.short_line_left, {
---           ShortSectionSpace = {
---               provider = function() return " "  end, highlight = {colors.shorttext, colors.shortbg}
---           }
---       })
---       table.insert(gls.short_line_left, {
---           LeftShortName = {
---               provider = 'FileTypeName',
---               highlight = {colors.shorttext, colors.shortbg},
---           }
---       })
---       table.insert(gls.short_line_left, {
---           ShortSectionMid = {
---               provider = function() return " " end,
---               highlight = {colors.shortbg, colors.shortbg}
---           }
---       })
---       table.insert(gls.short_line_left, {
---           LeftShortFileName = {
---               provider = 'SFileName',
---               condition = condition.buffer_not_empty,
---               separator_highlight = {colors.shorttext, colors.shortbg},
---               highlight = {colors.shorttext, colors.shortbg},
---           }
---       })
---       table.insert(gls.short_line_left, {
---           ShortSectionEnd = {
---               provider = function() return rightbracket end,
---               highlight = {colors.shortbg, colors.bg}
---           }
---       })
--- }}}1
-
--- Right Short {{{1
---           BufferIcon = {
---               provider = 'BufferIcon',
---               separator_highlight = {colors.shorttext, colors.bg},
---               highlight = {colors.shortrighttext, colors.bg}
---           }
 -- }}}1
 

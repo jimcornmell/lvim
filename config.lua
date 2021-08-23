@@ -27,11 +27,13 @@ lvim.ignore_case = true
 lvim.smart_case = true
 lvim.termguicolors = true
 lvim.builtin.dashboard.active = true
-lvim.builtin.galaxyline.active = true
 lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
 lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+-- FIX: Disable java for now.
+-- lvim.builtin.jdtls.active = false
 
 --}}}
 
@@ -148,7 +150,7 @@ lvim.plugins = {
         'simrat39/symbols-outline.nvim',
         cmd = 'SymbolsOutline'
     },
-    -- Enhanced increment/decrement : True, true
+    -- Enhanced increment/decrement : True, true, January
     {
         "monaqa/dial.nvim",
         event = "BufRead",
@@ -284,5 +286,13 @@ vim.api.nvim_set_keymap("n", "<S-x>",   ":BufferClose<CR>", { noremap = true, si
 
 -- }}}1
 
-vim.cmd('source ~/.config/lvim/lua/user/galaxyline.lua')
 vim.cmd('source ~/.config/lvim/user.vim')
+vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
+
+-- See end of this file for my other config.
+-- ~/.local/share/lunarvim/lvim/init.lua
+-- Two lines added:
+--     vim.cmd('source ~/.config/lvim/user_colors.vim')
+--     vim.cmd('source ~/.config/lvim/user_keys.vim')
+
+

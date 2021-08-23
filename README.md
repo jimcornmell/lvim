@@ -28,7 +28,7 @@ few of my own twists.
 
 The main changes are documented below:
 
-- My config for GalaxyLine.
+- My config for status line.
 - My dashboard.
 - Custom Keybindings.
 - Custom Colours.
@@ -47,7 +47,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
 - [Installation](#installation)
 - [Visual Appearance](#visual-appearance)
-- [Galaxy Line](#galaxy-line)
+- [Status Line](#status-line)
 - [Extra Plugins](#extra-plugins)
 - [Configured LSP's](#configures-lsp's)
 - [Key Bindings](#key-bindings-cheatsheet)
@@ -74,7 +74,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
   any plug-in/app/program that allows theming, so I can near consistent code theming
   everywhere.
 - I've added vertical markers at 80 and 120 characters.
-  - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.
+  - The status line displays the current column and line length, these change colour at 80 and 120 characters.
 - The current cursor line is highlighted in light red
 - The current cursor column is highlighted in light blue
 - Whitespace at the end of a line in highlighted in bright red.
@@ -87,25 +87,31 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
   <!-- }}}1 -->
 
-# Galaxy line
+# Status line
 
 <!-- {{{1 -->
 
-The Galaxy line configuration can be found [here](https://github.com/jimcornmell/lvim/blob/f7db626efb3fe982a7b7c82dcf5a48e43a56400d/lua/user/galaxyline.lua)
+The status line configuration can be found [here](https://github.com/jimcornmell/lvim/blob/main/lua/user/lualine.lua)
+
+![Status Line Normal](./media/status-line-normal.png)
+![Status Line Insert](./media/status-line-insert.png)
+![Status Line Visual](./media/status-line-visual.png)
+![Status Line Replace](./media/status-line-replace.png)
+
 This image shows what is in the different sections.
 
-![Galaxy Line](./media/galaxy_line.png)
+![Status Line](./media/status_line.png)
 
 The line is split into 5 main sections, 3 on the left and 2 on the right:
 
 - On the left:
-  - VIM Mode is colour coded, see the init.lua for details
+  - VIM Mode is colour coded, see the lualine.lua for details
   - Git information
   - LSP information
 - On the right:
   - File information
     - Line Ending, Linux ![tux](./media/tux.png), Mac ![mac](./media/mac.png) or Windows ![windows](./media/win.png)
-    - File Name
+    - File Name (red padlock when the file is readonly)
     - File Type
     - File Size
     - Character encoding

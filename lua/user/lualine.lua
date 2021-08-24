@@ -17,52 +17,54 @@ lvim.builtin.lualine.inactive_sections = {
 
 -- Colours, maps and icons {{{2
 local colors = {
-    bg              = '#0f1117',
-    modetext        = '#000000',
+    bg               = '#0f1117',
+    modetext         = '#000000',
 
-    giticonbg       = '#FF8800',
-    gitbg           = '#5C2C2E',
-    gittext         = '#C5C5C5',
+    giticonbg        = '#FF8800',
+    gitbg            = '#5C2C2E',
+    gittext          = '#C5C5C5',
 
-    diagerror       = '#F44747',
-    diagwarn        = '#FF8800',
-    diaghint        = '#4FC1FF',
-    diaginfo        = '#FFCC66',
+    diagerror        = '#F44747',
+    diagwarn         = '#FF8800',
+    diaghint         = '#4FC1FF',
+    diaginfo         = '#FFCC66',
 
-    lspiconbg       = '#68AF00',
-    lspbg           = '#304B2E',
-    lsptext         = '#C5C5C5',
+    lspiconbg        = '#68AF00',
+    lspbg            = '#304B2E',
+    lsptext          = '#C5C5C5',
 
-    typeiconbg      = '#FF8800',
-    typeiconbgro    = '#FF3300',
-    typeiconbgrw    = '#229900',
-    typebg          = '#5C2C2E',
-    typetext        = '#C5C5C5',
+    typeiconbg       = '#FF8800',
+    typebg           = '#5C2C2E',
+    typetext         = '#C5C5C5',
+    typeiconbgrw     = '#229900',
+    typetextmodified = '#FF3300',
+    typeiconbgro     = '#000000',
+    typetextreadonly = '#000000',
 
-    statsiconbg     = '#9CDCFE',
-    statsbg         = '#5080A0',
-    statstext       = '#000000',
+    statsiconbg      = '#9CDCFE',
+    statsbg          = '#5080A0',
+    statstext        = '#000000',
 
-    lineokfg        = '#000000',
-    lineokbg        = '#5080A0',
-    linelongerrorfg = '#FF0000',
-    linelongwarnfg  = '#FFFF00',
-    linelongbg      = '#5080A0',
+    lineokfg         = '#000000',
+    lineokbg         = '#5080A0',
+    linelongerrorfg  = '#FF0000',
+    linelongwarnfg   = '#FFFF00',
+    linelongbg       = '#5080A0',
 
-    shortbg         = '#DCDCAA',
-    shorttext       = '#000000',
+    shortbg          = '#DCDCAA',
+    shorttext        = '#000000',
 
-    shortrightbg    = '#3F3F3F',
-    shortrighttext  = '#7C4C4E',
+    shortrightbg     = '#3F3F3F',
+    shortrighttext   = '#7C4C4E',
 
-    red             = '#D16969',
-    yellow          = '#DCDCAA',
-    magenta         = '#D16D9E',
-    green           = '#608B4E',
-    orange          = '#FF8800',
-    purple          = '#C586C0',
-    blue            = '#569CD6',
-    cyan            = '#4EC9B0'
+    red              = '#D16969',
+    yellow           = '#DCDCAA',
+    magenta          = '#D16D9E',
+    green            = '#608B4E',
+    orange           = '#FF8800',
+    purple           = '#C586C0',
+    blue             = '#569CD6',
+    cyan             = '#4EC9B0'
 }
 
 local mode_map = {
@@ -191,11 +193,19 @@ local function setLineWidthColours()
 end
 
 local conditions = {
-  display_mode      = function() return vim.fn.winwidth(0) >  60 end,
-  display_pos       = function() return vim.fn.winwidth(0) >  80 end,
-  display_stats     = function() return vim.fn.winwidth(0) > 100 end,
-  display_git       = function() return vim.fn.winwidth(0) > 120 end,
-  display_lsp       = function() return vim.fn.winwidth(0) > 140 end,
+    display_mode      = function() return vim.fn.winwidth(0) >  60 end,
+    display_pos       = function() return vim.fn.winwidth(0) >  80 end,
+    display_stats     = function() return vim.fn.winwidth(0) > 100 end,
+    display_git       = function() return vim.fn.winwidth(0) > 120 end,
+    display_lsp       = function()
+        local clients = vim.lsp.get_active_clients()
+
+        if next(clients) == nil then
+            return false
+        end
+
+        return vim.fn.winwidth(0) > 140
+    end,
 }
 -- }}}2
 
@@ -386,13 +396,18 @@ ins_right {
 -- Padlock if the file is readonly.
 ins_right {
     function()
-        if (vim.api.nvim_get_option('readonly')) then
-            highlight('LualineTypeMidLock', colors.typeiconbgro, colors.typebg)
-            return icons['typereadonly']
-        else
-            highlight('LualineTypeMidLock', colors.typeiconbgrw, colors.typebg)
-            return icons['typewriteable']
+        local lockcolour = colors.typeiconbgrw
+        local lockicon = icons['typewriteable']
+        local isReadonly = vim.bo.readonly or not vim.bo.modifiable
+
+        if isReadonly
+        then
+            lockcolour = colors.typeiconbgro
+            lockicon = icons['typereadonly']
         end
+
+        highlight('LualineTypeMidLock', lockcolour, colors.typebg)
+        return lockicon
     end,
     color = 'LualineTypeMidLock',
     condition = conditions.display_stats,
@@ -400,8 +415,22 @@ ins_right {
 }
 -- File name.
 ins_right {
-    function() return vim.fn.expand("%:t") end,
-    color = 'LualineTypeTxt',
+    function()
+        local filenameColour = colors.typetext
+        local isModified = vim.bo.modified
+        local isReadonly = vim.bo.readonly or not vim.bo.modifiable
+
+        if isModified
+        then
+            filenameColour = colors.typetextmodified
+        elseif isReadonly then
+            filenameColour = colors.typetextreadonly
+        end
+
+        highlight('LualineTypeFileName', filenameColour, colors.typebg)
+        return '%t'
+    end,
+    color = 'LualineTypeFileName',
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
@@ -605,28 +634,28 @@ ins_right {
 -- }}}1
 
 -- local function tprint (tbl, indent)
-  -- if not indent then indent = 0 end
-  -- local toprint = string.rep(" ", indent) .. "{\r\n"
-  -- indent = indent + 2
-  -- for k, v in pairs(tbl) do
-    -- toprint = toprint .. string.rep(" ", indent)
-    -- if (type(k) == "number") then
-      -- toprint = toprint .. "[" .. k .. "] = "
-    -- elseif (type(k) == "string") then
-      -- toprint = toprint  .. k ..  "= "
-    -- end
-    -- if (type(v) == "number") then
-      -- toprint = toprint .. v .. ",\r\n"
-    -- elseif (type(v) == "string") then
-      -- toprint = toprint .. "\"" .. v .. "\",\r\n"
-    -- elseif (type(v) == "table") then
-      -- toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
-    -- else
-      -- toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-    -- end
-  -- end
-  -- toprint = toprint .. string.rep(" ", indent-2) .. "}"
-  -- return toprint
+--   if not indent then indent = 0 end
+--   local toprint = string.rep(" ", indent) .. "{\r\n"
+--   indent = indent + 2
+--   for k, v in pairs(tbl) do
+--     toprint = toprint .. string.rep(" ", indent)
+--     if (type(k) == "number") then
+--       toprint = toprint .. "[" .. k .. "] = "
+--     elseif (type(k) == "string") then
+--       toprint = toprint  .. k ..  "= "
+--     end
+--     if (type(v) == "number") then
+--       toprint = toprint .. v .. ",\r\n"
+--     elseif (type(v) == "string") then
+--       toprint = toprint .. "\"" .. v .. "\",\r\n"
+--     elseif (type(v) == "table") then
+--       toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+--     else
+--       toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+--     end
+--   end
+--   toprint = toprint .. string.rep(" ", indent-2) .. "}"
+--   return toprint
 -- end
 
 -- local fw = io.open("/home/jim/l.log", "w")
@@ -634,5 +663,15 @@ ins_right {
 -- fw:write(tprint(lvim.builtin.lualine))
 -- fw:write(tprint(lvim.builtin))
 -- fw:write(tprint(lvim))
+-- fw.write(tprint(vim.bo.modifiable))
+
+-- if vim.bo.modifiable
+-- if vim.api.nvim_get_option('readonly')
+-- then
+    -- fw:write("modifiable")
+-- else
+    -- fw:write("NOT modifiable")
+-- end
+
 -- fw:close()
 

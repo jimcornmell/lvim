@@ -31,9 +31,7 @@ lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
 lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-
--- FIX: Disable java for now.
--- lvim.builtin.jdtls.active = false
+lvim.builtin.lualine.options.theme = "curvywurvy"
 
 --}}}
 

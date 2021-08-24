@@ -5,13 +5,12 @@
 -- Settings {{{2
 local lineLengthWarning = 80
 local lineLengthError = 120
-lvim.builtin.lualine.options.theme = "iceberg_dark"
 lvim.builtin.lualine.sections = {
-    lualine_a = {}, lualine_c = {}, lualine_b = {},
+    lualine_a = {}, lualine_b = {}, lualine_c = {},
     lualine_x = {}, lualine_y = {}, lualine_z = {}
 }
 lvim.builtin.lualine.inactive_sections = {
-    lualine_a = {}, lualine_c = {}, lualine_b = {},
+    lualine_a = {}, lualine_b = {}, lualine_c = {},
     lualine_x = {}, lualine_y = {}, lualine_z = {}
 }
 -- }}}2
@@ -604,4 +603,36 @@ ins_right {
 -- }}}2
 
 -- }}}1
+
+-- local function tprint (tbl, indent)
+  -- if not indent then indent = 0 end
+  -- local toprint = string.rep(" ", indent) .. "{\r\n"
+  -- indent = indent + 2
+  -- for k, v in pairs(tbl) do
+    -- toprint = toprint .. string.rep(" ", indent)
+    -- if (type(k) == "number") then
+      -- toprint = toprint .. "[" .. k .. "] = "
+    -- elseif (type(k) == "string") then
+      -- toprint = toprint  .. k ..  "= "
+    -- end
+    -- if (type(v) == "number") then
+      -- toprint = toprint .. v .. ",\r\n"
+    -- elseif (type(v) == "string") then
+      -- toprint = toprint .. "\"" .. v .. "\",\r\n"
+    -- elseif (type(v) == "table") then
+      -- toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+    -- else
+      -- toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+    -- end
+  -- end
+  -- toprint = toprint .. string.rep(" ", indent-2) .. "}"
+  -- return toprint
+-- end
+
+-- local fw = io.open("/home/jim/l.log", "w")
+-- fw:write("--------------------")
+-- fw:write(tprint(lvim.builtin.lualine))
+-- fw:write(tprint(lvim.builtin))
+-- fw:write(tprint(lvim))
+-- fw:close()
 

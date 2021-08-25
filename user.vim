@@ -277,7 +277,7 @@ let g:rnvimr_enable_bw = 1
 
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.icons="both"
-let bufferline.icon_close_tab_modified=''
+let bufferline.icon_close_tab_modified=''
 let bufferline.icon_custom_colors="false"
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
@@ -333,12 +333,15 @@ set signcolumn=yes         " Always show, otherwise it would shift the text each
 set updatetime=300         " Faster completion
 set timeoutlen=750         " By default this is 1000 ms
 set incsearch              " Highlight all matches
-set foldenable             " Folding enabled
-set foldmethod=marker      " Folding method, based on { { {1
 set clipboard=unnamedplus  " Copy paste between Vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 set ignorecase             " When searching ignore case of words
 set scrolloff=3            " Keep 3 line buffer at top and bottom of the screen
+
+" Setup folding
+set foldenable             " Folding enabled
+set foldmethod=marker      " Folding method, based on { { {1
+set fillchars=stl:\ ,foldclose:,foldopen:,foldsep:┃,fold:\ ,eob:~,msgsep:‾,vert:\│
 
 " Setup spelling
 set spell

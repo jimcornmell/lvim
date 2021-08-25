@@ -99,7 +99,7 @@ local mode_map = {
     ['Rx']       = {'#DCDCAA', 'Replace mode |i_CTRL-X| completion'},
 }
 
--- See: https://www.nerdfonts.com/cheat-sheet
+-- For icons see this cheatsheet and just copy and paste the icons: https://www.nerdfonts.com/cheat-sheet
 -- I use the Nerd Font Sauce Code Pro: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 local icons = {
     bracketleft       = '',
@@ -402,26 +402,21 @@ ins_right {
     condition = conditions.display_stats,
     left_padding = 0, right_padding = 0
 }
--- Padlock if the file is readonly.
+
+-- File type icon.
 ins_right {
     function()
-        local lockcolour = colors.typeiconbgrw
-        local lockicon = icons['typewriteable']
-        local isReadonly = vim.bo.readonly or not vim.bo.modifiable
-
-        if isReadonly
-        then
-            lockcolour = colors.typeiconbgro
-            lockicon = icons['typereadonly']
-        end
-
-        highlight('LualineTypeMidLock', lockcolour, colors.typebg)
-        return lockicon
+        local filetype = vim.bo.filetype
+        if filetype == '' then return '' end
+        local filename, fileext = vim.fn.expand("%:t"), vim.fn.expand("%:e")
+        local icon = require'nvim-web-devicons'.get_icon(filename, fileext, { default = true })
+        return string.format('%s', icon)
     end,
-    color = 'LualineTypeMidLock',
+    color = 'LualineTypeMid',
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
+
 -- File name.
 ins_right {
     function()
@@ -443,16 +438,22 @@ ins_right {
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
--- File type icon.
+
+-- Padlock if the file is readonly.
 ins_right {
     function()
-        local filetype = vim.bo.filetype
-        if filetype == '' then return '' end
-        local filename, fileext = vim.fn.expand("%:t"), vim.fn.expand("%:e")
-        local icon = require'nvim-web-devicons'.get_icon(filename, fileext, { default = true })
-        return string.format('%s', icon)
+        local lockcolour = colors.typeiconbgrw
+        local lockicon = icons['typewriteable']
+        local isReadonly = vim.bo.readonly or not vim.bo.modifiable
+        if isReadonly
+        then
+            lockcolour = colors.typeiconbgro
+            lockicon = icons['typereadonly']
+        end
+        highlight('LualineTypeMidLock', lockcolour, colors.typebg)
+        return lockicon
     end,
-    color = 'LualineTypeMid',
+    color = 'LualineTypeMidLock',
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
@@ -463,6 +464,7 @@ ins_right {
     condition = conditions.display_stats,
     left_padding = 1, right_padding = 0
 }
+
 -- File size icon.
 ins_right {
     function() return icons['typesize'] end,

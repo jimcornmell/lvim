@@ -2,13 +2,6 @@
 " https://github.com/Kethku/neovide
 " http://cheat.sh
 " Buffer bar info: https://github.com/romgrk/barbar.nvim
-
-" TODO: LSP Perl
-" TODO: LSP Java
-" TODO: LSP JavaScript
-" TODO: LSP React
-" TODO: LSP PHP
-
 " }}}
 
 " Functions {{{1

@@ -33,6 +33,12 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.lualine.options.theme = "curvywurvy"
 
+lvim.builtin.gitsigns.opts.signs.add.text = ''
+lvim.builtin.gitsigns.opts.signs.change.text = ''
+lvim.builtin.gitsigns.opts.signs.delete.text = ''
+lvim.builtin.gitsigns.opts.signs.topdelete.text = ''
+lvim.builtin.gitsigns.opts.signs.changedelete.text = ''
+
 --}}}
 
 -- Dashboard {{{1

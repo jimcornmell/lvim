@@ -25,7 +25,7 @@ local colors = {
     gittext          = '#C5C5C5',
 
     diagerror        = '#F44747',
-    diagwarn         = '#FF8800',
+    diagwarning      = '#FF8800',
     diaghint         = '#4FC1FF',
     diaginfo         = '#FFCC66',
 
@@ -358,10 +358,10 @@ ins_left {
         info = icons['lspdiaginfo'],
         hint = icons['lspdiaghint']
     },
-    color_error = {fg = colors.red, bg=colors.lspbg},
-    color_warn = {fg = colors.orange, bg=colors.lspbg},
-    color_info = {fg = colors.cyan, bg=colors.lspbg},
-    color_hint = {fg = colors.green, bg=colors.lspbg},
+    color_error = {fg = colors.diagerror, bg=colors.lspbg},
+    color_warn = {fg = colors.diagwarning, bg=colors.lspbg},
+    color_info = {fg = colors.diaginfo, bg=colors.lspbg},
+    color_hint = {fg = colors.diaghint, bg=colors.lspbg},
     color = 'LualineLspMid',
     condition = conditions.display_lsp,
     left_padding = 0, right_padding = 0

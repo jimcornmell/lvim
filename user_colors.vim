@@ -60,10 +60,6 @@ highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
 highlight GitSignsChange                       guifg=#FF8800     guibg=#343434
 highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#605555
 highlight default link gitblame GitSignsCurrentLineBlame
-" highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
-" highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
-" highlight GitSignsChange                       guifg=#5497cf     guibg=#5497cf
-" highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#605555
 
 " Tab bar at top!
 highlight BufferCurrent                        guifg=Black       guibg=#CCCCCC

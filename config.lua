@@ -4,14 +4,6 @@ Useful Links and TODO
 https://github.com/Kethku/neovide
 http://cheat.sh
 Buffer bar info: https://github.com/romgrk/barbar.nvim
-
-TODO: LSP Java
-TODO: LSP Perl
-TODO: LSP JavaScript
-TODO: LSP React
-TODO: LSP PHP
-TODO: LSP Bash
-TODO: LSP Python
 }}}1 ]]
 
 -- Settings {{{1
@@ -26,11 +18,14 @@ lvim.leader = "space"
 lvim.ignore_case = true
 lvim.smart_case = true
 lvim.termguicolors = true
-lvim.builtin.dashboard.active = true
 lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
+
+lvim.builtin.dashboard.active = true
+
 lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
 lvim.builtin.lualine.options.theme = "curvywurvy"
 
 lvim.builtin.gitsigns.opts.signs.add.text = ''
@@ -38,6 +33,13 @@ lvim.builtin.gitsigns.opts.signs.change.text = ''
 lvim.builtin.gitsigns.opts.signs.delete.text = ''
 lvim.builtin.gitsigns.opts.signs.topdelete.text = ''
 lvim.builtin.gitsigns.opts.signs.changedelete.text = ''
+
+lvim.lsp.diagnostics.signs.values = {
+  { name = "LspDiagnosticsSignError", text = "" },
+  { name = "LspDiagnosticsSignWarning", text = "" },
+  { name = "LspDiagnosticsSignHint", text = '' },
+  { name = "LspDiagnosticsSignInformation", text = "" },
+}
 
 --}}}
 
@@ -298,5 +300,3 @@ vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 -- Two lines added:
 --     vim.cmd('source ~/.config/lvim/user_colors.vim')
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
-
-

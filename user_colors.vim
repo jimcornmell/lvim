@@ -41,7 +41,7 @@ highlight Pmenu                                guifg=Wheat       guibg=Black
 highlight PmenuSbar                                              guibg=Gray35
 highlight PmenuThumb                                             guibg=Wheat
 highlight PmenuSel                    gui=bold guifg=Black       guibg=Wheat
-highlight NormalFloat                 gui=NONE guifg=Gold        guibg=Black
+highlight NormalFloat                 gui=NONE guifg=Wheat       guibg=#343434
 highlight NormalNC                                               guibg=Black
 
 " Line number colour

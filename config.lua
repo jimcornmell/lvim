@@ -223,6 +223,10 @@ lvim.plugins = {
     {
         "kevinhwang91/rnvimr",
         cmd = "RnvimrToggle",
+    },
+    -- Dev docs
+    {
+        "rhysd/devdocs.vim"
     }
 }
 -- }}}1

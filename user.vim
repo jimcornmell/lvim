@@ -1,10 +1,74 @@
-" Useful Links and TODO {{{1
-" https://github.com/Kethku/neovide
-" http://cheat.sh
-" Buffer bar info: https://github.com/romgrk/barbar.nvim
-" }}}
-
 " Functions {{{1
+
+function! OpenHelpAndCheatSheets()
+    let folder="/home/jim/Documents/CheatSheets/"
+    let number = 2 " The number to display to the user.
+    let cheattext = [] " The text to display to the user.
+    let cheaturis = [] " The files/URL's to open.
+
+    " Header and blank line.
+    call add(cheattext, " ﯭ Help and Cheat Sheets for ".&filetype)
+    call add(cheattext, "")
+
+    if filereadable(folder.&filetype.'.md')
+        call add(cheattext, '   1  Edit פֿ '.&filetype.'.md')
+        call add(cheaturis, folder.&filetype.'.md')
+        call add(cheattext, "")
+    endif
+
+    " Get list of PDF's.
+    " Note java and javascript are treated as different languages.
+    " java_script is treated as part of java's help....
+    let files = readdir(folder, {n -> n =~ &filetype.'.pdf$'})
+    let files += readdir(folder, {n -> n =~ &filetype.'_.*.pdf$'})
+
+    for file in files
+        let text = substitute(file, '.pdf$', '', '')
+        let text = substitute(text, '^'.&filetype.'_', '', '')
+        let text = substitute(text, '_', ' ', 'g')
+        let text = substitute(text, '^'.&filetype.'$', 'Main Help Document', '')
+        let text=printf("%-40s", text)
+        let numberstr=printf("%2d", number)
+        call add(cheattext, '  '.numberstr.'  '.text.'      '.file)
+        call add(cheaturis, folder.file)
+        let number += 1
+    endfor
+
+    if number > 2
+        call add(cheattext, "")
+    endif
+
+    " Get list of URL's from Markdown files.
+    let files = readdir(folder, {n -> n =~ &filetype.'.*.md$'})
+    call add(files, 'universal.md')
+
+    for file in files
+        let lines = readfile(folder.file)
+
+        for line in lines
+            let p = stridx(line, "](")
+            let text = printf("%-40s", strpart(line, 1, p-1))
+            let url = strpart(line, p+2, strlen(line)-p-3)
+            let numberstr=printf("%2d", number)
+            call add(cheattext, '  '.numberstr.'  '.text.'     爵'.url)
+            let url = substitute(url, '#', '\\#', 'g')
+            call add(cheaturis, url)
+            let number += 1
+        endfor
+    endfor
+
+    " Add a blank line.
+    call add(cheattext, "")
+
+    " Ask user:
+    let answer = inputlist(cheattext)
+
+    if filereadable(folder.&filetype.'.md') && answer == 1
+        silent execute "e " . fnameescape(cheaturis[answer-1])
+    elseif answer > 0 && answer <= len(cheaturis)
+        silent exec ':!openf "'.cheaturis[answer-1].'"'
+    endif
+endfunction
 
 function! ExecuteCurrentLine()
     let line=getline('.')
@@ -193,7 +257,7 @@ function ToggleAll()
 endfunction
 
 " Delete whitespace at end of lines, and put cursor back to where it started.
-function! DeleteTrailingWhiteSpace()
+function! DeleteEndingWhiteSpace()
     let current_position=getpos(".")
     let reg=@/
     %s/\s*$//
@@ -338,15 +402,16 @@ set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 set ignorecase             " When searching ignore case of words
 set scrolloff=3            " Keep 3 line buffer at top and bottom of the screen
 
-" Setup folding
-set foldenable             " Folding enabled
-set foldmethod=marker      " Folding method, based on { { {1
-set fillchars=stl:\ ,foldclose:,foldopen:,foldsep:┃,fold:\ ,eob:~,msgsep:‾,vert:\│
-
 " Setup spelling
 set spell
 setlocal spell spelllang=en_gb
 set spellfile=~/bin/dictionary.add
+
+" Setup folding
+set foldenable             " Folding enabled
+set foldmethod=marker      " Folding method, based on { { {1
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+set fillchars=stl:\ ,foldclose:,foldopen:,foldsep:┃,fold:\ ,eob:~,msgsep:‾,vert:\│
 
 " }}}
 
@@ -418,10 +483,10 @@ autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif |
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Remove white space on save for certain file types.
-autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-autocmd BufWrite *.java :call DeleteTrailingWhiteSpace()
-autocmd BufWrite * if &ft=="sh" | :call DeleteTrailingWhiteSpace() | endif
-autocmd BufWrite * if &ft=="vim" | :call DeleteTrailingWhiteSpace() | endif
+autocmd BufWrite *.py :call DeleteEndingWhiteSpace()
+autocmd BufWrite *.java :call DeleteEndingWhiteSpace()
+autocmd BufWrite * if &ft=="sh" | :call DeleteEndingWhiteSpace() | endif
+autocmd BufWrite * if &ft=="vim" | :call DeleteEndingWhiteSpace() | endif
 
 " I prefer -- for comments in SQL
 autocmd FileType sql set commentstring=--\ %s
@@ -439,4 +504,3 @@ autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 " augroup end
 
 " }}}
-

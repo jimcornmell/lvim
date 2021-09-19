@@ -13,12 +13,20 @@ map <silent> <A-r> :w<CR>:!%:p<CR>
 nmap gr :call ExecuteCurrentLine()<CR>
 nmap gt :exe getline('.')<CR>
 
+" Lookup documentation for current word on DevDocs
+nmap gm <Plug>(devdocs-under-cursor)
+let g:devdocs_filetype_map = {
+    \   'javascript.js': 'react',
+    \   'java': 'openjdk',
+    \ }
+
 " gq to format selection as 80 char justified.
 " set formatoptions q
 set formatprg=par\ -w79
 map gw gqip
 
-noremap <silent> gs :call DeleteTrailingWhiteSpace()<CR>
+map <silent> ge :call DeleteEndingWhiteSpace()<CR>
+map <silent> gh :call OpenHelpAndCheatSheets()<CR>
 
 " Saves a few key presses.
 " nnoremap ; :

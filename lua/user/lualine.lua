@@ -106,9 +106,12 @@ local icons = {
     bracketright      = '',
     vim               = '',
     -- vim            = '',
-    github            = '',
-    bitbucket         = '',
     git               = '',
+    -- git            = '',
+    github            = '',
+    gitlab            = '',
+    gitbitbucket      = '',
+    hg                = '',
     gitadd            = ' ',
     -- gitadd         = ' ',
     gitmod            = ' ',
@@ -201,11 +204,46 @@ local function setLineWidthColours()
     highlight('LinePosHighlightEnd',    linebg,           colors.statsbg)
 end
 
+local function getGitUrl()
+    local cmd="git ls-remote --get-url 2> /dev/null"
+    local file = assert(io.popen(cmd , 'r'))
+    local url = file:read('*all')
+    file:close()
+    return url
+    -- return "github"
+end
+
+local function getGitIcon()
+    local giturl = getGitUrl()
+
+    if giturl == nil then
+        return icons['git']
+    elseif string.find(giturl, "github") then
+        return icons['github']
+    elseif string.find(giturl, "bitbucket") then
+        return icons['gitbitbucket']
+    elseif string.find(giturl, "stash") then
+        return icons['gitbitbucket']
+    elseif string.find(giturl, "gitlab") then
+        return icons['gitlab']
+    elseif string.find(giturl, "hg") then
+        return icons['hg']
+    end
+
+    return icons['git']
+end
+
 local conditions = {
     display_mode      = function() return vim.fn.winwidth(0) >  60 end,
     display_pos       = function() return vim.fn.winwidth(0) >  80 end,
     display_stats     = function() return vim.fn.winwidth(0) > 100 end,
-    display_git       = function() return vim.fn.winwidth(0) > 120 end,
+    display_git       = function()
+        if getGitUrl() == nil then
+            return false
+        end
+
+        return vim.fn.winwidth(0) > 120
+    end,
     display_lsp       = function()
         local clients = vim.lsp.get_active_clients()
 
@@ -264,7 +302,7 @@ ins_left {
     left_padding = 1, right_padding = 0
 }
 ins_left {
-    function() return icons['git'] end,
+    function() return getGitIcon() end,
     color = 'LualineGitMidInv',
     condition = conditions.display_git,
     left_padding = 0, right_padding = 0,
@@ -559,7 +597,7 @@ ins_right {
 -- File line position and number of lines.
 ins_right {
     function()
-        return string.format("%4i/%4i", vim.fn.line('.'), vim.fn.line('$'))
+        return string.format("%4s/%4i", "%l", vim.fn.line('$'))
     end,
     color = 'LualineStatsTxt',
     condition = conditions.display_pos,
@@ -585,7 +623,7 @@ ins_right {
 -- Column and line width
 ins_right {
     function()
-        return string.format("%4i", vim.fn.col('.'))
+        return string.format("%4s", "%c")
     end,
     color = 'LinePosHighlightColNum',
     condition = conditions.display_pos,

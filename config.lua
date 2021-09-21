@@ -27,6 +27,7 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 lvim.builtin.lualine.options.theme = "curvywurvy"
+-- lvim.builtin.lualine.options.theme = "ayu_light"
 
 lvim.builtin.gitsigns.opts.signs.add.text = ''
 lvim.builtin.gitsigns.opts.signs.change.text = ''
@@ -301,6 +302,10 @@ vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 
 -- See end of this file for my other config.
 -- ~/.local/share/lunarvim/lvim/init.lua
--- Two lines added:
+-- It has two lines added:
 --     vim.cmd('source ~/.config/lvim/user_colors.vim')
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
+
+-- Link in the style so the background is correct.
+--     cd ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes
+--     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua curvywurvy.lua

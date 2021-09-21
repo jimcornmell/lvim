@@ -268,24 +268,25 @@ ins_left {
         return icons['bracketleft']
     end,
     color = 'LualineModeInv',
-    condition = conditions.display_mode,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_mode,
+    padding = { left = 1, right = 0 }
 }
 ins_left {
     function()
         return mode_map[vim.fn.mode()][2]
     end,
     color = 'LualineModeText',
-    condition = conditions.display_mode,
-    icon = icons['vim'], left_padding = 0, right_padding = 0
+    cond = conditions.display_mode,
+    icon = icons['vim'],
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function()
         return icons['bracketright']
     end,
     color = 'LualineModeInv',
-    condition = conditions.display_mode,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_mode,
+    padding = { left = 0, right = 0 }
 }
 -- }}}2
 
@@ -298,26 +299,27 @@ ins_left {
         return icons['bracketleft']
     end,
     color = 'LualineGitLft',
-    condition = conditions.display_git,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_git,
+    padding = { left = 1, right = 0 }
 }
 ins_left {
     function() return getGitIcon() end,
     color = 'LualineGitMidInv',
-    condition = conditions.display_git,
-    left_padding = 0, right_padding = 0,
+    cond = conditions.display_git,
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function() return icons['bracketright'] end,
     color = 'LualineGitMid',
-    condition = conditions.display_git,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_git,
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     'branch',
     color = 'LualineGitTxt',
-    condition = conditions.display_git,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_git,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 -- }}}3
 
@@ -326,17 +328,20 @@ ins_left {
     'diff',
     color = 'LualineGitTxt',
     symbols = {added = icons['gitadd'], modified = icons['gitmod'], removed = icons['gitdel']},
-    color_added = {fg = colors.green, bg=colors.gitbg},
-    color_modified = {fg = colors.orange, bg=colors.gitbg},
-    color_removed = {fg = colors.red, bg=colors.gitbg},
-    condition = conditions.display_git,
-    icon='', left_padding = 0, right_padding = 0,
+    diff_color = {
+        added = {fg = colors.green, bg=colors.gitbg},
+        modified = {fg = colors.orange, bg=colors.gitbg},
+        removed = {fg = colors.red, bg=colors.gitbg},
+    },
+    cond = conditions.display_git,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function() return icons['bracketright'] end,
     color = 'LualineGitEnd',
-    condition = conditions.display_git,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_git,
+    padding = { left = 0, right = 0 }
 }
 -- }}}3
 
@@ -351,20 +356,20 @@ ins_left {
         return icons['bracketleft']
     end,
     color = 'LualineLspLft',
-    condition = conditions.display_lsp,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_lsp,
+    padding = { left = 1, right = 0 }
 }
 ins_left {
     function() return icons['lsp'] end,
     color = 'LualineLspMidInv',
-    condition = conditions.display_lsp,
-    left_padding = 0, right_padding = 0,
+    cond = conditions.display_lsp,
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function() return icons['bracketright'] end,
     color = 'LualineLspMid',
-    condition = conditions.display_lsp,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_lsp,
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function()
@@ -381,8 +386,8 @@ ins_left {
         return msg
     end,
     color = 'LualineLspTxt',
-    condition = conditions.display_lsp,
-    left_padding = 1, right_padding = 1,
+    cond = conditions.display_lsp,
+    padding = { left = 1, right = 1 }
 }
 -- }}}3
 
@@ -396,19 +401,21 @@ ins_left {
         info = icons['lspdiaginfo'],
         hint = icons['lspdiaghint']
     },
-    color_error = {fg = colors.diagerror, bg=colors.lspbg},
-    color_warn = {fg = colors.diagwarning, bg=colors.lspbg},
-    color_info = {fg = colors.diaginfo, bg=colors.lspbg},
-    color_hint = {fg = colors.diaghint, bg=colors.lspbg},
+    diagnostics_color = {
+        error = {fg = colors.diagerror, bg=colors.lspbg},
+        warn = {fg = colors.diagwarning, bg=colors.lspbg},
+        info = {fg = colors.diaginfo, bg=colors.lspbg},
+        hint = {fg = colors.diaghint, bg=colors.lspbg},
+    },
     color = 'LualineLspMid',
-    condition = conditions.display_lsp,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_lsp,
+    padding = { left = 0, right = 0 }
 }
 ins_left {
     function() return icons['bracketright'] end,
     color = 'LualineLspEnd',
-    condition = conditions.display_lsp,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_lsp,
+    padding = { left = 0, right = 0 }
 }
 -- }}}3
 
@@ -425,20 +432,20 @@ ins_right {
         return icons['bracketleft']
     end,
     color = 'LualineTypeLft',
-    condition = conditions.display_stats,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function() return icons[vim.bo.fileformat] or '' end,
     color = 'LualineTypeMidInv',
-    condition = conditions.display_stats,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function() return icons['bracketright'] end,
     color = 'LualineTypeMid',
-    condition = conditions.display_stats,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 0, right = 0 }
 }
 
 -- File type icon.
@@ -451,8 +458,8 @@ ins_right {
         return string.format('%s', icon)
     end,
     color = 'LualineTypeMid',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 
 -- File name.
@@ -473,8 +480,8 @@ ins_right {
         return '%t'
     end,
     color = 'LualineTypeFileName',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 
 -- Padlock if the file is readonly.
@@ -492,23 +499,23 @@ ins_right {
         return lockicon
     end,
     color = 'LualineTypeMidLock',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 -- File type text.
 ins_right {
     function() return vim.bo.filetype end,
     color = 'LualineTypeTxt',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 
 -- File size icon.
 ins_right {
     function() return icons['typesize'] end,
     color = 'LualineTypeMid',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 -- File size in b, k, m or g.
 ins_right {
@@ -535,26 +542,26 @@ ins_right {
         return format_file_size(file)
     end,
     color = 'LualineTypeTxt',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 ins_right {
     function() return icons['typeenc'] end,
     color = 'LualineTypeMid',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 ins_right {
     'encoding',
     color = 'LualineTypeTxt',
-    condition = conditions.display_stats,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 1, right = 0 }
 }
 ins_right {
     function() return icons['bracketright'] end,
     color = 'LualineTypeEnd',
-    condition = conditions.display_stats,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_stats,
+    padding = { left = 0, right = 0 }
 }
 -- }}}2
 
@@ -565,34 +572,36 @@ ins_right {
         return icons['bracketleft']
     end,
     color = 'LualineStatsLft',
-    condition = conditions.display_pos,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_pos,
+    padding = { left = 1, right = 0 }
 }
 ins_right {
     function() return icons['stats'] end,
     color = 'LualineStatsMidInv',
-    condition = conditions.display_pos,
-    left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function() return icons['bracketright'] end,
     color = 'LualineStatsMid',
-    condition = conditions.display_pos,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_pos,
+    padding = { left = 0, right = 0 }
 }
 -- Percentage/Top/Bottom/All
 ins_right {
     'progress',
     color = 'LualineStatsTxt',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 -- Vertical icon.
 ins_right {
     function() return icons['statsvert'] end,
     color = 'LualineStatsMid',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 -- File line position and number of lines.
 ins_right {
@@ -600,15 +609,17 @@ ins_right {
         return string.format("%4s/%4i", "%l", vim.fn.line('$'))
     end,
     color = 'LualineStatsTxt',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 -- Horiz icon.
 ins_right {
     function() return icons['statshoriz'] end,
     color = 'LualineStatsMid',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
  -- Left bracket for line length.
 ins_right {
@@ -617,8 +628,8 @@ ins_right {
         return icons['bracketleft']
     end,
     color = 'LinePosHighlightStart',
-    condition = conditions.display_pos,
-    left_padding = 1, right_padding = 0
+    cond = conditions.display_pos,
+    padding = { left = 1, right = 0 }
 }
 -- Column and line width
 ins_right {
@@ -626,32 +637,36 @@ ins_right {
         return string.format("%4s", "%c")
     end,
     color = 'LinePosHighlightColNum',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
+
 }
 ins_right {
     function()
         return icons['bracketleft']
     end,
     color = 'LinePosHighlightMid',
-    condition = conditions.display_pos,
-    icon = '', left_padding = 0, right_padding = 0
+    cond = conditions.display_pos,
+    icon = '',
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function()
         return string.format("%4i", string.len(vim.fn.getline('.')))
     end,
     color = 'LinePosHighlightLenNum',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function()
         return icons['bracketright']
     end,
     color = 'LinePosHighlightEnd',
-    condition = conditions.display_pos,
-    left_padding = 0, right_padding = 0
+    cond = conditions.display_pos,
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function()
@@ -663,20 +678,22 @@ ins_right {
         end
     end,
     color = 'LualineStatsMid',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function() return ''..vim.bo.shiftwidth end,
     color = 'LualineStatsTxt',
-    condition = conditions.display_pos,
-    icon='', left_padding = 0, right_padding = 0,
+    cond = conditions.display_pos,
+    icon='',
+    padding = { left = 0, right = 0 }
 }
 ins_right {
     function() return icons['bracketright'] end,
     color = 'LualineStatsEnd',
-    condition = conditions.display_pos,
-    left_padding = 0, right_padding = 1
+    cond = conditions.display_pos,
+    padding = { left = 0, right = 1 }
 }
 -- }}}2
 

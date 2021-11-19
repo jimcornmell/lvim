@@ -297,6 +297,11 @@ vim.api.nvim_set_keymap("n", "<S-x>",   ":BufferClose<CR>", { noremap = true, si
 
 -- }}}1
 
+-- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.config/lvim/snippets" } })
+-- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.config/lvim/snippets/" } })
+-- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.vsnip" } })
+-- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.vsnip/" } })
+
 vim.cmd('source ~/.config/lvim/user.vim')
 vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 
@@ -309,3 +314,6 @@ vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 -- Link in the style so the background is correct.
 --     cd ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes
 --     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua curvywurvy.lua
+
+-- TODO: snippets vsnip -> luasnip/friendly_snippets
+

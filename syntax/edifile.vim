@@ -46,7 +46,8 @@ hi Comment         guifg=White
 hi Type            guifg=LightGreen
 hi TypeIrf         guifg=#00FFFF gui=bold
 hi TypeOdd         guifg=Magenta
-hi TypeDna         guifg=Red
+hi TypeDna         guifg=#DD0000
+" hi TypeDna         guifg=#DDDDDD
 hi Apos            guifg=Red gui=bold
 hi Terminator      guifg=LightBlue gui=bold
 hi Operator        guifg=LightBlue gui=bold
@@ -56,7 +57,8 @@ hi Text            guifg=Cyan
 hi VatS            guifg=Green gui=bold
 hi VatM            guifg=#8800FF gui=bold
 hi VatZ            guifg=#0088FF gui=bold
-hi TypeHighlight   guifg=Orange
+" hi TypeHighlight   guifg=Orange
+hi TypeHighlight   guifg=Magenta gui=bold
 hi TypeDivideStart guifg=Green gui=bold
 hi TypeDivideEnd   guifg=Brown gui=bold
 

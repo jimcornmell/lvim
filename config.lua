@@ -105,6 +105,13 @@ lvim.plugins = {
             require("user.colorizer").config()
         end,
     },
+    -- Tabnine.
+    {
+        "tzachar/cmp-tabnine",
+        run = "./install.sh",
+        requires = "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+    },
     -- Zen Mode
     {
         "folke/zen-mode.nvim",
@@ -119,6 +126,44 @@ lvim.plugins = {
         event = "BufRead",
         config = function()
             require("user.hop").config()
+        end,
+    },
+    -- Jump to line.
+    {
+        "nacro90/numb.nvim",
+        event = "BufRead",
+        config = function()
+            require("numb").setup {
+                show_numbers = true, -- Enable 'number' for the window while peeking
+                show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+            }
+        end,
+    },
+    -- Better quickfix.
+    {
+        "kevinhwang91/nvim-bqf",
+        event = { "BufRead", "BufNew" },
+        config = function()
+            require("bqf").setup({
+                auto_enable = true,
+                preview = {
+                    win_height = 12,
+                    win_vheight = 12,
+                    delay_syntax = 80,
+                    border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+                },
+                func_map = {
+                    vsplit = "",
+                    ptogglemode = "z,",
+                    stoggleup = "",
+                },
+                filter = {
+                    fzf = {
+                        action_for = { ["ctrl-s"] = "split" },
+                        extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+                    },
+                },
+            })
         end,
     },
     -- Todo comments.
@@ -179,6 +224,9 @@ lvim.plugins = {
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
         ft = "markdown",
+        config = function()
+            vim.g.mkdp_auto_start = 1
+        end,
     },
     -- Codi: Interactive scratchpad
     {

@@ -1,0 +1,22 @@
+{
+    "Show processes": {
+        "prefix": "showp",
+        "body": [
+            "SHOW processlist;",
+            "SHOW FULL processlist;"
+        ],
+        "description": "Show processes"
+    },
+    "Find constraint links": {
+        "prefix": "select_find_constraint_links",
+        "body": [
+            "SELECT",
+            "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
+            "FROM",
+            "  INFORMATION_SCHEMA.KEY_COLUMN_USAGE",
+            "WHERE",
+            "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
+        ],
+        "description": "Find constraint links"
+    }
+}

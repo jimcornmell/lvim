@@ -1,0 +1,17 @@
+{
+    "gradle": {
+        "prefix": "new_gradle_file",
+        "body": [
+            "apply plugin: 'java'",
+            "",
+            "repositories {",
+            "\tmavenCentral()",
+            "}",
+            "",
+            "dependencies {",
+            "\ttestCompile 'junit:junit:+'",
+            "}",
+            ""
+        ]
+    }
+}

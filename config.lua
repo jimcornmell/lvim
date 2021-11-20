@@ -297,13 +297,16 @@ vim.api.nvim_set_keymap("n", "<S-x>",   ":BufferClose<CR>", { noremap = true, si
 
 -- }}}1
 
--- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.config/lvim/snippets" } })
--- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.config/lvim/snippets/" } })
--- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.vsnip" } })
--- require("luasnip/loaders/from_vscode").load({ paths = { "/home/jim/.vsnip/" } })
-
+-- Vim config {{{1
 vim.cmd('source ~/.config/lvim/user.vim')
 vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
+-- }}}1
+
+-- Load my snippets {{{1
+-- See ~/.config/lvim/snippets/package.json
+-- And this site to make snippets: https://snippet-generator.app
+require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
+-- }}}1
 
 -- See end of this file for my other config.
 -- ~/.local/share/lunarvim/lvim/init.lua
@@ -314,6 +317,4 @@ vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 -- Link in the style so the background is correct.
 --     cd ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes
 --     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua curvywurvy.lua
-
--- TODO: snippets vsnip -> luasnip/friendly_snippets
 

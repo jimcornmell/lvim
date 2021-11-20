@@ -1,0 +1,72 @@
+{
+    "new_java_class": {
+        "prefix": "new_java_class",
+        "body": [
+            "/* Copyright ${VIM:\\$USER_FULL_NAME} - $CURRENT_YEAR */",
+            "package $TM_DIRECTORY;",
+            "",
+            "import org.slf4j.Logger;",
+            "import org.slf4j.LoggerFactory;",
+            "",
+            "/**",
+            " * Main class for $1",
+            " *",
+            " * @author ${VIM:\\$USER_FULL_NAME} [${VIM:\\$USER_EMAIL}]",
+            " * @since $CURRENT_DATE $CURRENT_MONTH_NAME $CURRENT_YEAR",
+            " */",
+            "public final class $TM_FILENAME_BASE {",
+            "\t/** Logger! */",
+            "\tprivate static final Logger LOG = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+            "",
+            "\t/**",
+            "\t * Main.",
+            "\t *",
+            "\t * @param args Command line arguments.",
+            "\t */",
+            "\tpublic static void main(final String[] args) throws CmdLineException {",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ]
+    },
+    "log": {
+        "prefix": "log",
+        "body": [
+            "import org.slf4j.Logger;",
+            "import org.slf4j.LoggerFactory;",
+            "",
+            "$0",
+            "\t/** Logger! */",
+            "\tprivate static final Logger LOG = LoggerFactory.getLogger($TM_FILENAME_BASE.class);"
+        ]
+    },
+    "int_to_string": {
+        "prefix":"int_to_string",
+        "body": [
+            "String str = String.valueOf(2);"
+        ]
+    },
+    "string_to_int": {
+        "prefix":"string_to_int",
+        "body": [
+            "int i = Integer.parseInt(str);"
+        ]
+    },
+    "file_append_text": {
+        "prefix":"file_append_text",
+        "body": [
+            "BufferedWriter out = null;",
+            "try {",
+            "\tout = new BufferedWriter(new FileWriter(”filename”, true));",
+            "\tout.write(”aString”);",
+            "} catch (IOException e) {",
+            "\t// error processing code",
+            "} finally {",
+            "\tif (out != null) {",
+            "\t\tout.close();",
+            "\t}",
+            "}"
+        ]
+    }
+}
+

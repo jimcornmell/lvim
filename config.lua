@@ -98,185 +98,671 @@ lvim.builtin.dashboard.custom_section = {
 
 -- Additional Plugins {{{1
 lvim.plugins = {
-    -- Colorizer: #ff0000, Blue, #f0f
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("user.colorizer").config()
-        end,
+  -- Zen Mode
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    config = function()
+      require("user.zen").config()
+    end,
+  },
+
+  -- SQL LSP.
+  {
+    "nanotee/sqls.nvim",
+    event = "BufRead",
+    ft = "sql",
+    config = function()
+      require("user.sqls").config()
+    end,
+  },
+
+  -- Unix commands. Try ":SudoWrite"
+  {
+    "tpope/vim-eunuch",
+    event = "BufRead",
+  },
+
+  -- Markers in margin. 'ma' adds marker
+  {"kshenoy/vim-signature",
+    event = "BufRead",
+  },
+
+  -- Highlight URL's. http://www.vivaldi.com
+  {
+    "itchyny/vim-highlighturl",
+    event = "BufRead",
+  },
+
+  -- Kitty config syntax.  Edit kitty, with vk
+  {
+    "fladson/vim-kitty",
+    event = "BufRead",
+    ft = "conf",
+  },
+
+  -- Lazygit: Try F8
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+  },
+
+  -- Dev docs
+  {
+    "rhysd/devdocs.vim"
+  },
+
+  -- -----------------------------------------------------------------------
+  -- Suggestions from https://www.lunarvim.org/plugins/03-extra-plugins.html
+  -- Navigation plugins
+  -- hop
+  -- neovim motions on speed!
+  -- Better motions
+  {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("hop").setup()
+      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+    end,
+  },
+
+  -- lightspeed
+  -- jetpack codebase navigation
+  -- {
+  --   "ggandor/lightspeed.nvim",
+  --   event = "BufRead",
+  -- },
+
+  -- minimap
+  -- blazing fast minimap/scrollbar written in Rust
+  -- {
+  --   'wfxr/minimap.vim',
+  --   run = "cargo install --locked code-minimap",
+  --   -- cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
+  --   config = function ()
+  --     vim.cmd ("let g:minimap_width = 10")
+  --     vim.cmd ("let g:minimap_auto_start = 1")
+  --     vim.cmd ("let g:minimap_auto_start_win_enter = 1")
+  --   end,
+  -- },
+
+  -- numb
+  -- jump to the line
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
+    end,
+  },
+
+  -- nvim-bqf
+  -- better quickfix window
+  {
+    "kevinhwang91/nvim-bqf",
+    event = { "BufRead", "BufNew" },
+    config = function()
+      require("bqf").setup({
+        auto_enable = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+        },
+        func_map = {
+          vsplit = "",
+          ptogglemode = "z,",
+          stoggleup = "",
+        },
+        filter = {
+          fzf = {
+            action_for = { ["ctrl-s"] = "split" },
+            extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+          },
+        },
+      })
+    end,
+  },
+
+  -- nvim-spectre
+  -- search and replace
+  -- {
+  --   "windwp/nvim-spectre",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("spectre").setup()
+  --   end,
+  -- },
+
+  -- rnvimr
+  -- ranger file explorer window
+  -- Ranger, Leader r
+  {
+    "kevinhwang91/rnvimr",
+    cmd = "RnvimrToggle",
+  --   config = function()
+  --     vim.g.rnvimr_draw_border = 1
+  --     vim.g.rnvimr_pick_enable = 1
+  --     vim.g.rnvimr_bw_enable = 1
+  --   end,
+  },
+
+  -- snap
+  -- fast finder system
+  -- {
+  --   "camspiers/snap",
+  --   rocks = "fzy",
+  --   config = function()
+  --     local snap = require "snap"
+  --     local layout = snap.get("layout").bottom
+  --     local file = snap.config.file:with { consumer = "fzy", layout = layout }
+  --     local vimgrep = snap.config.vimgrep:with { layout = layout }
+  --     snap.register.command("find_files", file { producer = "ripgrep.file" })
+  --     snap.register.command("buffers", file { producer = "vim.buffer" })
+  --     snap.register.command("oldfiles", file { producer = "vim.oldfile" })
+  --     snap.register.command("live_grep", vimgrep {})
+  --   end,
+  -- },
+
+  -- vim-matchup
+  -- navigate and highlight matching words
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "CursorMoved",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  -- },
+
+  -- Git
+  -- diffview
+  -- git diff in a single tabpage
+  -- {
+  --   "sindrets/diffview.nvim",
+  --   event = "BufRead",
+  -- },
+
+  -- git-blame
+  -- show git blame
+  {
+    "f-person/git-blame.nvim",
+    event = "BufRead",
+    config = function()
+      vim.cmd "highlight default link gitblame SpecialComment"
+      vim.g.gitblame_enabled = 0
+    end,
+  },
+
+  -- gitlinker
+  -- generate shareable file permalinks for several git web frontend hosts
+  -- {
+  --   "ruifm/gitlinker.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("gitlinker").setup {
+  --       opts = {
+  --         -- remote = 'github', -- force the use of a specific remote
+  --         -- adds current line nr in the url for normal mode
+  --         add_current_line_on_normal_mode = true,
+  --         -- callback for what to do with the url
+  --         action_callback = require("gitlinker.actions").open_in_browser,
+  --         -- print the url after performing the action
+  --         print_url = false,
+  --         -- mapping to call url generation
+  --         mappings = "<leader>gy",
+  --       },
+  --     }
+  --   end,
+  --   requires = "nvim-lua/plenary.nvim",
+  -- },
+
+  -- octo
+  -- edit and review GitHub issues and pull requests
+  -- {
+  --   "pwntester/octo.nvim",
+  --   event = "BufRead",
+  -- },
+
+  -- vim-fugitive
+  -- git wrapper Try ":Git "
+  {
+    "tpope/vim-fugitive",
+    -- event = "BufRead",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
     },
-    -- Tabnine.
-    {
-        "tzachar/cmp-tabnine",
-        run = "./install.sh",
-        requires = "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-    },
-    -- Zen Mode
-    {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        config = function()
-            require("user.zen").config()
-        end,
-    },
-    -- Better motions
-    {
-        "phaazon/hop.nvim",
-        event = "BufRead",
-        config = function()
-            require("user.hop").config()
-        end,
-    },
-    -- Jump to line.
-    {
-        "nacro90/numb.nvim",
-        event = "BufRead",
-        config = function()
-            require("numb").setup {
-                show_numbers = true, -- Enable 'number' for the window while peeking
-                show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-            }
-        end,
-    },
-    -- Better quickfix.
-    {
-        "kevinhwang91/nvim-bqf",
-        event = { "BufRead", "BufNew" },
-        config = function()
-            require("bqf").setup({
-                auto_enable = true,
-                preview = {
-                    win_height = 12,
-                    win_vheight = 12,
-                    delay_syntax = 80,
-                    border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
-                },
-                func_map = {
-                    vsplit = "",
-                    ptogglemode = "z,",
-                    stoggleup = "",
-                },
-                filter = {
-                    fzf = {
-                        action_for = { ["ctrl-s"] = "split" },
-                        extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
-                    },
-                },
-            })
-        end,
-    },
-    -- Todo comments.
-    -- FIX:Something to describe.
-    -- FIXME: Something to describe.
-    -- BUG:Something to describe.
-    -- FIXIT: Something to describe.
-    -- ISSUE: Something to describe.
-    -- TODO:Something to describe.
-    -- HACK:Something to describe.
-    -- WARN:Something to describe.
-    -- WARNING:Something to describe.
-    -- XXX:Something to describe.
-    -- PERF:Something to describe.
-    -- OPTIM:Something to describe.
-    -- PERFORMANCE:Something to describe.
-    -- OPTIMIZE:Something to describe.
-    -- NOTE:Something to describe.
-    -- INFO:Something to describe.
-    -- TEST: Test something.
-    -- OK: Something.
-    -- ISH: Something.
-    -- BAD: Something.
-    -- :TodoQuickFix
-    -- :TodoTelescope
-    -- :TodoTrouble
-    {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require("user.todo-comments").config()
-        end
-    },
-    -- Symbols outline - F12
-    {
-        'simrat39/symbols-outline.nvim',
-        cmd = 'SymbolsOutline'
-    },
-    -- Enhanced increment/decrement : True, true, January
-    {
-        "monaqa/dial.nvim",
-        event = "BufRead",
-        config = function()
-            require("user.dial").config()
-        end,
-    },
-    -- SQL LSP.
-    {
-        "nanotee/sqls.nvim",
-        event = "BufRead",
-        ft = "sql",
-        config = function()
-            require("user.sqls").config()
-        end,
-    },
-    -- Markdown preview
-    {
-        "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        ft = "markdown",
-        config = function()
-            vim.g.mkdp_auto_start = 1
-        end,
-    },
-    -- Codi: Interactive scratchpad
-    {
-        "metakirby5/codi.vim",
-        cmd = "Codi",
-    },
-    -- Markers in margin. 'ma' adds marker
-    {"kshenoy/vim-signature",
-        event = "BufRead",
-    },
-    -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
-    {
-        "tpope/vim-surround",
-        event = "BufRead",
-    },
-    -- Unix commands. Try ":SudoWrite"
-    {
-        "tpope/vim-eunuch",
-        event = "BufRead",
-    },
-    -- Highlight URL's. http://www.vivaldi.com
-    {
-        "itchyny/vim-highlighturl",
-        event = "BufRead",
-    },
-    -- Git plugin.  Try ":Git "
-    {
-        "tpope/vim-fugitive",
-        event = "BufRead",
-    },
-    -- Kitty config syntax.  Edit kitty, with vk
-    {
-        "fladson/vim-kitty",
-        event = "BufRead",
-        ft = "conf",
-    },
-    -- Lazygit: Try F8
-    {
-        "kdheepak/lazygit.nvim",
-        cmd = "LazyGit",
-    },
-    -- Ranger, Leader r
-    {
-        "kevinhwang91/rnvimr",
-        cmd = "RnvimrToggle",
-    },
-    -- Dev docs
-    {
-        "rhysd/devdocs.vim"
-    }
+    ft = {"fugitive"}
+  },
+
+  -- vim-gist
+  -- create/edit Github gists
+  -- {
+  --   "mattn/vim-gist",
+  --   event = "BufRead",
+  --   requires = "mattn/webapi-vim",
+  -- },
+
+  -- Treesitter
+  -- nvim-ts-autotag
+  -- autoclose and autorename html tag
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("nvim-ts-autotag").setup()
+  --   end,
+  -- },
+
+  -- nvim-ts-context-commentstring
+  -- commentstring option based on the cursor location
+  -- {
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  --   event = "BufRead",
+  -- },
+
+  -- nvim-ts-rainbow
+  -- rainbow parentheses
+  {
+    "p00f/nvim-ts-rainbow",
+  },
+
+  -- playground
+  -- view treesitter information
+  -- {
+  --   "nvim-treesitter/playground",
+  --   event = "BufRead",
+  -- },
+
+  -- Telescope Extensions
+  -- telescope-fzy-native.nvim
+  -- fzy style sorter that is compiled
+  -- {
+  --   "nvim-telescope/telescope-fzy-native.nvim",
+  --   run = "make",
+  --   event = "BufRead",
+  -- },
+
+  -- telescope-project
+  -- switch between projects
+  -- {
+  --   "nvim-telescope/telescope-project.nvim",
+  --   event = "BufWinEnter",
+  --   setup = function()
+  --     vim.cmd [[packadd telescope.nvim]]
+  --   end,
+  -- },
+
+  -- Colorschemes
+  -- lsp-colors
+  -- lsp diagnostics highlight groups for non lsp colorschemes
+  -- {
+  --   "folke/lsp-colors.nvim",
+  --   event = "BufRead",
+  -- },
+
+  -- lush.nvim
+  -- colorscheme creation aid
+  -- {
+  --   "rktjmp/lush.nvim",
+  -- },
+
+  -- nvim-colorizer
+  -- color highlighter #ff0000, Blue, #f0f
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "*" }, {
+        RGB      = true,         -- #RGB hex codes like #f0f
+        RRGGBB   = true,         -- #RRGGBB hex codes like #ffff00
+        RRGGBBAA = true,         -- #RRGGBBAA hex codes like #ffff00ff
+        rgb_fn   = true,         -- CSS rgb() and rgba() functions
+        hsl_fn   = true,         -- CSS hsl() and hsla() functions
+        css      = true,         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn   = true,         -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        names    = true;         -- "Name" codes like Blue
+        mode     = 'background'; -- Set the display mode.
+    })
+    end,
+  },
+
+  -- LSP Enhancement
+  -- cmp-tabnine
+  -- TabNine completion engine for hrsh7th/nvim-cmp
+  {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+  },
+
+  -- goto-preview
+  -- previewing goto definition calls
+  -- {
+  --   "rmagatti/goto-preview",
+  --   config = function()
+  --     require('goto-preview').setup {
+  --       width = 120; -- Width of the floating window
+  --       height = 25; -- Height of the floating window
+  --       default_mappings = false; -- Bind default mappings
+  --       debug = false; -- Print debug information
+  --       opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+  --       post_open_hook = nil -- A function taking two arguments, a buffer and a window to be ran as a hook.
+  --       -- You can use "default_mappings = true" setup option
+  --       -- Or explicitly set keybindings
+  --       -- vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+  --       -- vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+  --       -- vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>")
+  --     }
+  --   end
+  -- },
+
+  -- lsp-rooter
+  -- cwd to the project's root directory
+  -- {
+  --   "ahmedkhalf/lsp-rooter.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("lsp-rooter").setup()
+  --   end,
+  -- },
+
+  -- lsp_signature.nvim
+  -- hint when you type
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".setup()
+    end
+  },
+
+  -- symbols-outline.nvim - F12
+  -- a tree like view for symbols
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
+
+  -- trouble.nvim
+  -- diagnostics, references, telescope results, quickfix and location lists
+  -- {
+    -- "folke/trouble.nvim",
+    -- cmd = "TroubleToggle",
+  -- },
+  -- Also define keybindings in config.lua
+
+  -- lvim.builtin.which_key.mappings["t"] = {
+  --   name = "Diagnostics",
+  --   t = { "<cmd>TroubleToggle<cr>", "trouble" },
+  --   w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+  --   d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
+  --   q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+  --   l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+  --   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+  -- },
+
+  -- General
+  -- autosave
+  -- automatically saving your work whenever you make changes to it
+  {
+    "Pocco81/AutoSave.nvim",
+    config = function()
+      require("autosave").setup()
+    end,
+  },
+
+  -- codi.vim
+  -- interactive scratchpad for hackers
+  {
+    "metakirby5/codi.vim",
+    cmd = "Codi",
+  },
+
+  -- Enhanced increment/decrement : True, true, January
+  -- dial.nvim
+  -- extended incrementing/decrementing
+  {
+    "monaqa/dial.nvim",
+    event = "BufRead",
+    config = function()
+      require("user.dial").config()
+    end,
+  },
+
+  -- glow.nvim
+  -- preview markdown in neovim
+  -- You must install glow globally
+  -- https://github.com/charmbracelet/glow
+  -- yay -S glow
+  -- {
+  --   "npxbr/glow.nvim",
+  --   ft = {"markdown"}
+  --   -- run = "yay -S glow"
+  -- },
+
+  -- indent-blankline
+  -- indentation guides for every line
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
+    setup = function()
+      vim.g.indentLine_enabled = 1
+      vim.g.indent_blankline_char = "▏"
+      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+      vim.g.indent_blankline_buftype_exclude = {"terminal"}
+      vim.g.indent_blankline_show_trailing_blankline_indent = false
+      vim.g.indent_blankline_show_first_indent_level = false
+    end
+  },
+
+  -- markdown-preview.nvim
+  -- preview markdown in the browser
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
+  },
+
+  -- neoscroll
+  -- smooth scrolling
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+
+  -- neuron
+  -- next generation note-taking
+  -- {"oberblastmeister/neuron.nvim"},
+
+  -- nvim-lastplace
+  -- pick up where you left off
+  -- {
+  --   "ethanholz/nvim-lastplace",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("nvim-lastplace").setup({
+  --       lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+  --       lastplace_ignore_filetype = {
+  --         "gitcommit", "gitrebase", "svn", "hgcommit",
+  --       },
+  --       lastplace_open_folds = true,
+  --     })
+  --   end,
+  -- },
+
+  -- persistence
+  -- simple session management
+  -- {
+  --   "folke/persistence.nvim",
+  --   event = "BufReadPre", -- this will only start session saving when an actual file was opened
+  --   module = "persistence",
+  --   config = function()
+  --     require("persistence").setup {
+  --       dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+  --       options = { "buffers", "curdir", "tabpages", "winsize" },
+  --     }
+  --   end,
+  -- },
+
+  -- Also define keybindings in your config.lua
+  -- lvim.builtin.which_key.mappings["S"]= {
+  --   name = "Session",
+  --   c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+  --   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+  --   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+  -- },
+
+  -- todo-comments.nvim
+  -- highlight and search for todo comments
+  -- FIX:Something to describe.
+  -- FIXME: Something to describe.
+  -- BUG:Something to describe.
+  -- FIXIT: Something to describe.
+  -- ISSUE: Something to describe.
+  -- TODO:Something to describe.
+  -- HACK:Something to describe.
+  -- WARN:Something to describe.
+  -- WARNING:Something to describe.
+  -- XXX:Something to describe.
+  -- PERF:Something to describe.
+  -- OPTIM:Something to describe.
+  -- PERFORMANCE:Something to describe.
+  -- OPTIMIZE:Something to describe.
+  -- NOTE:Something to describe.
+  -- INFO:Something to describe.
+  -- TEST: Test something.
+  -- OK: Something.
+  -- ISH: Something.
+  -- BAD: Something.
+  -- :TodoQuickFix
+  -- :TodoTelescope
+  -- :TodoTrouble
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    -- requires = "nvim-lua/plenary.nvim",
+    config = function()
+        require("user.todo-comments").config()
+    end,
+  },
+
+  -- vim-cursorword
+  -- underlines the word under the cursor
+  -- {
+  --   "itchyny/vim-cursorword",
+  --   event = {"BufEnter", "BufNewFile"},
+  --   config = function()
+  --     vim.api.nvim_command("augroup user_plugin_cursorword")
+  --     vim.api.nvim_command("autocmd!")
+  --     vim.api.nvim_command("autocmd FileType NvimTree,lspsagafinder,dashboard,vista let b:cursorword = 0")
+  --     vim.api.nvim_command("autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
+  --     vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
+  --     vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
+  --     vim.api.nvim_command("augroup END")
+  --   end
+  -- },
+
+  -- vim-repeat
+  -- enable repeating supported plugin maps with "."
+  { "tpope/vim-repeat" },
+
+  -- vim-sanegx
+  -- open url with gx
+  {
+    "felipec/vim-sanegx",
+    event = "BufRead",
+  },
+
+  -- vim-surround
+  -- mappings to delete, change and add surroundings
+  -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
+  {
+    "tpope/vim-surround",
+    -- event = "BufRead",
+    --   keys = {"c", "d", "y"}
+  },
+
+  -- vim-wakatime
+  -- metrics, insights, and time tracking automatically generated from your programming activity
+  -- {
+  --   "wakatime/vim-wakatime"
+  -- },
+  -- Once installed and synced, add your WakaTime API Key via :WakaTimeApiKey command
+
+  -- Language specific
+  -- bracey
+  -- live edit html, css, and javascript
+  -- {
+  --   "turbio/bracey.vim",
+  --   cmd = {"Bracey", "BracyStop", "BraceyReload", "BraceyEval"},
+  --   run = "npm install --prefix server",
+  -- },
+
+  -- vim-bundler
+  -- lightweight support for ruby's bundler
+  -- {
+  --   "tpope/vim-bundler",
+  --   cmd = {"Bundler", "Bopen", "Bsplit", "Btabedit"}
+  -- },
+
+  -- vim-rails
+  -- edit ruby on rails applications
+  -- {
+  --   "tpope/vim-rails",
+  --   cmd = {
+  --     "Eview",
+  --     "Econtroller",
+  --     "Emodel",
+  --     "Smodel",
+  --     "Sview",
+  --     "Scontroller",
+  --     "Vmodel",
+  --     "Vview",
+  --     "Vcontroller",
+  --     "Tmodel",
+  --     "Tview",
+  --     "Tcontroller",
+  --     "Rails",
+  --     "Generate",
+  --     "Runner",
+  --     "Extract"
+  --   }
+  -- }
 }
 -- }}}1
 

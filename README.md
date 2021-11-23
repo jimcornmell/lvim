@@ -127,7 +127,7 @@ I've added a few extra plugins I use to the configuration:
 
 - [Codi](https://github.com/metakirby5/codi.vim) I alias "bc" on the command line to get a powerful calculator scratchpad using python.
 - [Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
-- [Dial](https://github.com/monaqa/dial.nvim) I've enabled a bunch of the predefined "increment's", also added a few of my own, e.g: True<->False and full month names.  [See the config for details](lua/lv-dial/init.lua)I
+- [Dial](https://github.com/monaqa/dial.nvim) I've enabled a bunch of the predefined "increment's", also added a few of my own, e.g: True<->False and full month names, logging levels and more.  [See the config for details](lua/user/dial.lua)I
 - [Fugitive](https://github.com/tpope/vim-fugitive) Git plugin from Tim Pope
 - [Highlighturl](https://github.com/itchyny/vim-highlighturl) Highlight urls, jump to them with <kbd>g</kbd><kbd>j</kbd>
 - [Hop](https://github.com/phaazon/hop.nvim) Better motions with <kbd>S</kbd>

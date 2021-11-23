@@ -24,6 +24,7 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
     "markup#markdown#header",
   }
 
+  -- Lowercase boolean.
   dial.augends["custom#boolean"] = dial.common.enum_cyclic {
     name = "boolean",
     strlist = { "true", "false" },
@@ -37,6 +38,34 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
   }
   table.insert(dial.config.searchlist.normal, "custom#Boolean")
 
+  -- Foreground <-> Background
+  dial.augends["custom#ForeBack"] = dial.common.enum_cyclic {
+    name = "ForeBack",
+    strlist = { "Foreground", "Background" },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#ForeBack")
+
+  -- foreground <-> background
+  dial.augends["custom#foreback"] = dial.common.enum_cyclic {
+    name = "foreback",
+    strlist = { "foreground", "background" },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#foreback")
+
+  -- Logging error levels.
+  dial.augends["custom#errorlevels"] = dial.common.enum_cyclic {
+    name = "errorlevels",
+    strlist = { "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "OFF" },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#errorlevels")
+
+  -- Logging command levels.
+  dial.augends["custom#errorcalls"] = dial.common.enum_cyclic {
+    name = "errorcalls",
+    strlist = { "fatal", "error", "warn", "info", "debug", "trace" },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#errorcalls")
+
   -- For Calendar.
   dial.augends["custom#Calendar"] = dial.common.enum_cyclic {
     name = "Calendar",
@@ -46,7 +75,7 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
   }
   table.insert(dial.config.searchlist.normal, "custom#Calendar")
 
-  -- For CAL.
+  -- For CALendar.
   dial.augends["custom#CAL"] = dial.common.enum_cyclic {
     name = "CAL",
     strlist = {
@@ -58,3 +87,4 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
 end
 
 return M
+

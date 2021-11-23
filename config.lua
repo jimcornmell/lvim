@@ -18,7 +18,7 @@ lvim.leader = "space"
 lvim.ignore_case = true
 lvim.smart_case = true
 lvim.termguicolors = true
-lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
+-- lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
 
 lvim.builtin.dashboard.active = true
 
@@ -522,12 +522,12 @@ lvim.plugins = {
   -- General
   -- autosave
   -- automatically saving your work whenever you make changes to it
-  {
-    "Pocco81/AutoSave.nvim",
-    config = function()
-      require("autosave").setup()
-    end,
-  },
+  -- {
+    -- "Pocco81/AutoSave.nvim",
+    -- config = function()
+      -- require("autosave").setup()
+    -- end,
+  -- },
 
   -- codi.vim
   -- interactive scratchpad for hackers
@@ -839,6 +839,7 @@ vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
 -- Load my snippets {{{1
 -- See ~/.config/lvim/snippets/package.json
 -- And this site to make snippets: https://snippet-generator.app
+-- For variables see: https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
 -- }}}1
 

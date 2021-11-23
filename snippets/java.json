@@ -3,7 +3,7 @@
         "prefix": "new_java_class",
         "body": [
             "/* Copyright ${VIM:\\$USER_FULL_NAME} - $CURRENT_YEAR */",
-            "package $TM_DIRECTORY;",
+            "package a ${TM_DIRECTORY/(.*)/${1:/upcase}/};",
             "",
             "import org.slf4j.Logger;",
             "import org.slf4j.LoggerFactory;",
@@ -16,7 +16,7 @@
             " */",
             "public final class $TM_FILENAME_BASE {",
             "\t/** Logger! */",
-            "\tprivate static final Logger LOG = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+            "\tprivate static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
             "",
             "\t/**",
             "\t * Main.",
@@ -37,7 +37,7 @@
             "",
             "$0",
             "\t/** Logger! */",
-            "\tprivate static final Logger LOG = LoggerFactory.getLogger($TM_FILENAME_BASE.class);"
+            "\tprivate static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);"
         ]
     },
     "int_to_string": {

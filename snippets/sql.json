@@ -18,5 +18,14 @@
             "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
         ],
         "description": "Find constraint links"
+    },
+    "mysql": {
+        "prefix": "mysql drop fk checks",
+        "body": [
+            "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
+            "DROP SCHEMA suppliers;",
+            "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
+        ],
+        "description": "mysql"
     }
 }

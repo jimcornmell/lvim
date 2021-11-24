@@ -67,6 +67,15 @@
             "\t}",
             "}"
         ]
+    },
+    "@Value": {
+        "prefix": "@Value",
+        "body": [
+            "// https://www.baeldung.com/spring-value-annotation",
+            "@Value(\"\\${${1:propertyName}:${2:someDefault}}\")",
+            "private String ${3:variableName};"
+        ],
+        "description": "@Value"
     }
 }
 

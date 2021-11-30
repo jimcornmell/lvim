@@ -66,6 +66,13 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
   }
   table.insert(dial.config.searchlist.normal, "custom#errorcalls")
 
+  -- Access levels.
+  dial.augends["custom#access"] = dial.common.enum_cyclic {
+    name = "access",
+    strlist = { "public", "protected", "private" },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#access")
+
   -- For Calendar.
   dial.augends["custom#Calendar"] = dial.common.enum_cyclic {
     name = "Calendar",

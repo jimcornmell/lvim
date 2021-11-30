@@ -76,6 +76,25 @@
             "private String ${3:variableName};"
         ],
         "description": "@Value"
+    },
+    "init_map": {
+        "prefix": "init_map",
+        "body": [
+            "public class VatTotalAccumulator {",
+            "    private static final float ZERO_VAT = 0.0f;",
+            "    private static final float STANDARD_VAT = 0.20f;",
+            "    private static final float LOW_VAT = 0.05f;",
+            "    private static Map<VatCategory, Percentage> vatRates = new EnumMap<VatCategory, Percentage>(VatCategory.class);",
+            "",
+            "    static {",
+            "        vatRates.put(VatCategory.Zero, new Percentage(ZERO_VAT));",
+            "        vatRates.put(VatCategory.Exempt, new Percentage(ZERO_VAT));",
+            "        vatRates.put(VatCategory.Std, new Percentage(STANDARD_VAT));",
+            "        vatRates.put(VatCategory.Low, new Percentage(LOW_VAT));",
+            "    }",
+            ""
+        ],
+        "description": "init_map"
     }
 }
 

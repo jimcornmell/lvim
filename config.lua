@@ -778,7 +778,7 @@ lvim.builtin.which_key.mappings["r"] = {
 }
 
 lvim.builtin.which_key.mappings["z"] = {
-    "<cmd>ZenMode<CR>",                             "Zen Mode"
+    "<cmd>ZenMode<CR>:set nospell<CR>",                    "Zen Mode"
 }
 
 lvim.builtin.which_key.mappings["t"] = {

@@ -6,7 +6,7 @@ vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call
 vmap yy    y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 
 " Make current file executable using Eunuch.
-map <silent> <A-e> :Chmod a+x<CR>:echo "File is now executable!"<CR>
+map <silent> <A-e> :Chmod a+x<CR>:set filetype=sh<CR>:echo "File is now executable!"<CR>
 
 " Execute current file, line and vim command.
 map <silent> <A-r> :w<CR>:!%:p<CR>

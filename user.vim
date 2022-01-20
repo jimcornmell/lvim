@@ -503,4 +503,10 @@ autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
   " au FileType java lua require('jdtls').start_or_attach({cmd = {'java-linux-ls'}})
 " augroup end
 
+" Return to last edit position when opening files.
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 " }}}

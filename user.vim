@@ -231,14 +231,16 @@ let s:markerline=1
 function! ToggleMarkerLines()
     if s:markerline
         let s:markerline=0
-        highlight markerLineCommentAmber  NONE
-        highlight markerLineCommentGreen  NONE
-        highlight markerLineCommentRed    NONE
+        highlight markerLineCommentAmber        NONE
+        highlight markerLineCommentGreen        NONE
+        highlight markerLineCommentRed          NONE
+        highlight markerLineCommentBrightRed    NONE
     else
         let s:markerline=1
         highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
         highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
         highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
+        highlight markerLineCommentBrightRed           guifg=#000000     guibg=#FF0000
     endif
 endfunction
 

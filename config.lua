@@ -85,10 +85,10 @@ lvim.builtin.dashboard.custom_section = {
     d = {description = {"  Recently Used Files"}, command = "Telescope oldfiles", },
     e = {description = {"  Find Word          "}, command = "Telescope live_grep", },
     f = {description = {"  Marks              "}, command = "Telescope marks"},
-    g = {description = {"  Settings           "}, command = ":e ~/.config/lvim/config.lua", },
+    g = {description = {"  Settings           "}, command = ":e ~/bin/config/configFiles.md" },
     h = {description = {"  Git Status         "}, command = "Telescope git_status" },
-    i = {description = {"  Zshrc              "}, command = ":e ~/.zshrc" },
-    j = {description = {"  Kitty Config       "}, command = ":e ~/.config/kitty/kitty.conf" }
+    -- i = {description = {"  Zshrc              "}, command = ":e ~/.zshrc" },
+    -- j = {description = {"  Kitty Config       "}, command = ":e ~/.config/kitty/kitty.conf" }
     -- f = {description = {"  Neovim Config Files"}, command = "Telescope find_files cwd=" .. CONFIG_PATH, },
     -- h = {description = {"  File Browser       "}, command = "Telescope file_browser" },
     -- i = {description = {"  Load Last Session  "}, command = "SessionLoad"},

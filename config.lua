@@ -22,7 +22,22 @@ lvim.termguicolors = true
 
 lvim.builtin.dashboard.active = true
 
-lvim.builtin.treesitter.ensure_installed = "all"
+lvim.builtin.notify.active = true
+lvim.builtin.terminal.active = true
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 0
+-- lvim.builtin.treesitter.ensure_installed = "all"
+lvim.builtin.treesitter.ensure_installed = {
+  "bash",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+  "typescript",
+  "css",
+  "java",
+  "yaml",
+}
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -844,12 +859,11 @@ require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets
 -- }}}1
 
 -- See end of this file for my other config.
--- ~/.local/share/lunarvim/lvim/init.lua
+--    ~/.local/share/lunarvim/lvim/init.lua
 -- It has two lines added:
 --     vim.cmd('source ~/.config/lvim/user_colors.vim')
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
--- Link in the style so the background is correct.
---     cd ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes
---     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua curvywurvy.lua
+-- HACK: Link in the style so the background is correct.
+--   ln -s /home/jim.cornmell/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

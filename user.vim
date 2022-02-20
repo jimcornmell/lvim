@@ -405,7 +405,7 @@ set scrolloff=3            " Keep 3 line buffer at top and bottom of the screen
 " Setup spelling
 set spell
 setlocal spell spelllang=en_gb
-set spellfile=~/bin/dictionary.add
+set spellfile= ~/bin/dictionaries/dictionary.add
 
 " Setup folding
 set foldenable             " Folding enabled

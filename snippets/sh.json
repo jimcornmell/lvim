@@ -132,6 +132,18 @@
         "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
     ],
     "description": "If statement and conditionals"
+  },
+  "while_here_doc": {
+    "prefix": ["while_here_doc"],
+    "body": [
+        "while read pass port user ip files directs; do",
+        "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
+        "done <<DATA",
+        "PASS    PORT    USER    IP    FILES    DIRECTS1",
+        "PASS    PORT    USER    IP    FILES    DIRECTS2",
+        "DATA"
+    ],
+    "description": "Heredoc"
   }
 }
 

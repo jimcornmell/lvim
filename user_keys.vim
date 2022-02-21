@@ -1,6 +1,18 @@
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Dial
+nmap  <C-a>  <Plug>(dial-increment)
+nmap  <C-x>  <Plug>(dial-decrement)
+vmap  <C-a>  <Plug>(dial-increment)
+vmap  <C-x>  <Plug>(dial-decrement)
+vmap g<C-a> g<Plug>(dial-increment)
+vmap g<C-x> g<Plug>(dial-decrement)
+
+" Buffer next and previous with tab.
+" nmap <Tab> :bnext<CR>
+" nmap <S-Tab> :bprevious<CR>
+
 " <Ctrl-c> and yy copies to clipboard, paste with <shift-insert>
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 vmap yy    y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
@@ -78,5 +90,5 @@ map <F9> :Telescope find_files<CR>
 map <F12> :SymbolsOutline<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
-nunmap X
+" nunmap X
 

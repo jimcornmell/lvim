@@ -1,7 +1,7 @@
 " Functions {{{1
 
 function! OpenHelpAndCheatSheets()
-    let folder="/home/jim/Documents/CheatSheets/"
+    let folder="/home/jim.cornmell/Nextcloud/CheatSheets/"
     let number = 2 " The number to display to the user.
     let cheattext = [] " The text to display to the user.
     let cheaturis = [] " The files/URL's to open.

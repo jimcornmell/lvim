@@ -1,7 +1,7 @@
 " Functions {{{1
 
 function! OpenHelpAndCheatSheets()
-    let folder="/home/jim.cornmell/Nextcloud/CheatSheets/"
+    let folder="/home/jim.cornmell/Documents/CheatSheets/"
     let number = 2 " The number to display to the user.
     let cheattext = [] " The text to display to the user.
     let cheaturis = [] " The files/URL's to open.
@@ -329,6 +329,93 @@ function FullScreenToggle()
     let g:neovide_fullscreen=!g:neovide_fullscreen
 endfunction
 
+function! s:SilentSudoCmd(editor) abort
+  let cmd = 'env SUDO_EDITOR=' . a:editor . ' VISUAL=' . a:editor . ' sudo -e'
+  let local_nvim = has('nvim') && len($DISPLAY . $SECURITYSESSIONID . $TERM_PROGRAM)
+  if !has('gui_running') && !local_nvim
+    return ['silent', cmd]
+  elseif !empty($SUDO_ASKPASS) ||
+        \ filereadable('/etc/sudo.conf') &&
+        \ len(filter(readfile('/etc/sudo.conf', '', 50), 'v:val =~# "^Path askpass "'))
+    return ['silent', cmd . ' -A']
+  else
+    return [local_nvim ? 'silent' : '', cmd]
+  endif
+endfunction
+
+function! s:SudoSetup(file) abort
+  if !filereadable(a:file) && !exists('#BufReadCmd#'.fnameescape(a:file))
+    execute 'autocmd BufReadCmd ' fnameescape(a:file) 'exe s:SudoReadCmd()'
+  endif
+  if !filewritable(a:file) && !exists('#BufWriteCmd#'.fnameescape(a:file))
+    execute 'autocmd BufReadPost ' fnameescape(a:file) 'set noreadonly'
+    execute 'autocmd BufWriteCmd ' fnameescape(a:file) 'exe s:SudoWriteCmd()'
+  endif
+endfunction
+
+let s:error_file = tempname()
+
+function! s:SudoError() abort
+  let error = join(readfile(s:error_file), " | ")
+  if error =~# '^sudo' || v:shell_error
+    return len(error) ? error : 'Error invoking sudo'
+  else
+    return error
+  endif
+endfunction
+
+function! s:SudoReadCmd() abort
+  if &shellpipe =~ '|&'
+    return 'echoerr ' . string('eunuch.vim: no sudo read support for csh')
+  endif
+  silent %delete_
+  silent doautocmd <nomodeline> BufReadPre
+  let [silent, cmd] = s:SilentSudoCmd('cat')
+  execute silent 'read !' . cmd . ' "%" 2> ' . s:error_file
+  let exit_status = v:shell_error
+  silent 1delete_
+  setlocal nomodified
+  if exit_status
+    return 'echoerr ' . string(s:SudoError())
+  else
+    return 'silent doautocmd BufReadPost'
+  endif
+endfunction
+
+function! s:SudoWriteCmd() abort
+  silent doautocmd <nomodeline> BufWritePre
+  let [silent, cmd] = s:SilentSudoCmd('tee')
+  let cmd .= ' "%" >/dev/null'
+  if &shellpipe =~ '|&'
+    let cmd = '(' . cmd . ')>& ' . s:error_file
+  else
+    let cmd .= ' 2> ' . s:error_file
+  endif
+  execute silent 'write !'.cmd
+  let error = s:SudoError()
+  if !empty(error)
+    return 'echoerr ' . string(error)
+  else
+    setlocal nomodified
+    return 'silent doautocmd <nomodeline> BufWritePost'
+  endif
+endfunction
+
+command! -bar -bang -complete=file -nargs=? SudoEdit
+      \ call s:SudoSetup(fnamemodify(empty(<q-args>) ? expand('%') : <q-args>, ':p')) |
+      \ if !&modified || !empty(<q-args>) |
+      \   edit<bang> <args> |
+      \ endif |
+      \ if empty(<q-args>) || expand('%:p') ==# fnamemodify(<q-args>, ':p') |
+      \   set noreadonly |
+      \ endif
+
+if exists(':SudoWrite') != 2
+command! -bar SudoWrite
+      \ call s:SudoSetup(expand('%:p')) |
+      \ write!
+endif
+
 " }}}1
 
 " Settings {{{1
@@ -473,13 +560,13 @@ iab adn and
 " }}}
 
 " Auto Commands, e.g. source init.vim {{{1
-
+" https://vimhelp.org/autocmd.txt.html#autocmd-events
 " Auto reload my init.vim file.
 " autocmd! bufwritepost ~/.config/lvim/init.vim source ~/.config/lvim/init.vim | echo "Reloaded my init.vim"
 
 " Disable some things on the dashboard.
-autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#5F3F3F
-autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif | autocmd WinLeave <buffer> highlight extraWhitespace guibg=Red
+" autocmd! Filetype * if &ft=="alpha"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#5F3F3F
+autocmd! BufEnter,BufLeave,Filetype * if &ft=="alpha"| highlight extraWhitespace NONE |endif | autocmd WinLeave <buffer> highlight extraWhitespace guibg=Red
 
 " Highlight matching words in buffer.
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))

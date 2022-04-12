@@ -28,6 +28,10 @@ M.config = function()
                 word = false, cyclic = true,
             },
             augend.constant.new{
+                elements = {"true", "false"},
+                word = false, cyclic = true,
+            },
+            augend.constant.new{
                 elements = {"True", "False"},
                 word = false, cyclic = true,
             },

@@ -28,7 +28,8 @@ lvim.termguicolors = true
 -- lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
@@ -70,56 +71,29 @@ lvim.lsp.diagnostics.signs.values = {
 
 --}}}
 
--- Dashboard {{{1
+-- Dashboard/Alpha {{{1
 
--- Several shorter ASCII art logos, so not too much space is taken up.
-lvim.builtin.dashboard.custom_header = {
-    -- "⠀⣿⡟",
-    -- "⠀⣿⠇⠀⠀⠀⠀⠀⣤⡄⠀⠀⢠⣤⡄⠀⢠⣤⣠⣤⣤⣤⡀⠀⠀⢀⣤⣤⣤⣤⡄⠀⠀⠀⣤⣄⣤⣤⣤⠀⠀⣤⣤  ⣤⡄⠀ ⢠⣤⣤⣤⣤⣤⠀⠀⣠⣤⣤⣤⣄⣤⣤",
-    -- "⢠⣿⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⣸⣿⠁⠀⣿⣿⠉⠀⠈⣿⡇⠀⠀⠛⠋⠀⠀⢹⣿⠀⠀⠀⣿⠏⠀⠸⠿⠃⠀⣿⣿⠀⣰⡟⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⣿⡟⢸⣿⡇⢀⣿",
-    -- "⣸⡇⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⣿⡟⠀⢠⣿⡇⠀⠀⢰⣿⡇⠀⣰⣾⠟⠛⠛⣻⡇⠀⠀⢸⡿⠀⠀⠀⠀⠀⠀⢻⣿⢰⣿⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀⢸⣿⠇⢸⣿⠀⢸⡏",
-    -- "⣿⣧⣤⣤⣤⡄⠀⠘⣿⣤⣤⡤⣿⠇⠀⢸⣿⠁⠀⠀⣼⣿⠀⠀⢿⣿⣤⣤⠔⣿⠃⠀⠀⣾⡇⠀⠀⠀⠀⠀⠀⢸⣿⣿⠋⠀⠀⠀⢠⣤⣤⣿⣥⣤⡄⠀⣼⣿⠀⣸⡏⠀⣿⠃",
-    -- "⠉⠉⠉⠉⠉⠁⠀⠀⠈⠉⠉⠀⠉⠀⠀⠈⠉⠀⠀⠀⠉⠉⠀⠀⠀⠉⠉⠁⠈⠉⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠉⠁⠀⠉⠁⠀⠉",
-
-    -- "█                                  █░  ░█   █",
-    -- "█                                  ▓▒  ▒▓",
-    -- "█      █   █  █▒██▒  ░███░   █▒██▒ ▒█  █▒ ███    ██▓█▓",
-    -- "█      █   █  █▓ ▒█  █▒ ▒█   ██  █  █  █    █    █▒█▒█",
-    -- "█      █   █  █   █      █   █      █░░█    █    █ █ █",
-    -- "█      █   █  █   █  ▒████   █      ▓▒▒▓    █    █ █ █",
-    -- "█      █   █  █   █  █▒  █   █      ▒██▒    █    █ █ █",
-    -- "█      █▒ ▓█  █   █  █░ ▓█   █       ██     █    █ █ █",
-    -- "██████ ▒██▒█  █   █  ▒██▒█   █       ██   █████  █ █ █",
-
-    -- "    __                          _    ___         ",
-    -- "   / /   __  ______  ____ _____| |  / (_)___ ___ ",
-    -- "  / /   / / / / __ \\/ __ `/ ___/ | / / / __ `__ \\",
-    -- " / /___/ /_/ / / / / /_/ / /   | |/ / / / / / / /",
-    -- "/_____/\\__,_/_/ /_/\\__,_/_/    |___/_/_/ /_/ /_/ ",
-    -- "                                                 ",
-
+lvim.builtin.alpha.dashboard.section.header.opts.hl = ""
+-- Shorter ASCII art logo, so not too much space is taken up.
+lvim.builtin.alpha.dashboard.section.header.val = {
     "▌              ▌ ▌▗",
     "▌  ▌ ▌▛▀▖▝▀▖▙▀▖▚▗▘▄ ▛▚▀▖",
     "▌  ▌ ▌▌ ▌▞▀▌▌  ▝▞ ▐ ▌▐ ▌",
     "▀▀▘▝▀▘▘ ▘▝▀▘▘   ▘ ▀▘▘▝ ▘",
 }
 
-lvim.builtin.dashboard.custom_section = {
-    a = {description = {"  New File           "}, command = "DashboardNewFile" },
-    b = {description = {"  Find File          "}, command = "Telescope find_files", },
-    c = {description = {"  Ranger             "}, command = "RnvimrToggle"},
-    d = {description = {"  Recently Used Files"}, command = "Telescope oldfiles", },
-    e = {description = {"  Find Word          "}, command = "Telescope live_grep", },
-    f = {description = {"  Marks              "}, command = "Telescope marks"},
-    g = {description = {"  Settings           "}, command = ":e ~/bin/config/configFiles.md" },
-    h = {description = {"  Git Status         "}, command = "Telescope git_status" },
-    -- i = {description = {"  Zshrc              "}, command = ":e ~/.zshrc" },
-    -- j = {description = {"  Kitty Config       "}, command = ":e ~/.config/kitty/kitty.conf" }
-    -- f = {description = {"  Neovim Config Files"}, command = "Telescope find_files cwd=" .. CONFIG_PATH, },
-    -- h = {description = {"  File Browser       "}, command = "Telescope file_browser" },
-    -- i = {description = {"  Load Last Session  "}, command = "SessionLoad"},
+lvim.builtin.alpha.dashboard.section.buttons.entries = {
+{ "SPC f",   "  Find File",                   "<CMD>Telescope find_files<CR>" },
+{ "SPC n",   "  New File",                    "<CMD>ene!<CR>" },
+{ "SPC p",   "  Recent Projects ",            "<CMD>Telescope projects<CR>" },
+{ "SPC u",   "  Recently Used Files",         "<CMD>Telescope oldfiles<CR>" },
+-- { "SPC s",   "  Load last session",           "<CMD>SessionLoad<CR>" },
+{ "SPC r",   "  Ranger",                      "<CMD>RnvimrToggle<CR>" },
+{ "SPC m",   "  Marks              ",         "<CMD>Telescope marks<CR>" },
+{ "SPC w",   "  Find Word",                   "<CMD>Telescope live_grep<CR>" },
+{ "SPC c",   "  Edit Configuration",          "<CMD>e ~/bin/config/configFiles.md<CR>" },
+{ "SPC g",   "  Git status",                  "<CMD>Telescope git_status<CR>" }
 }
-
 --}}}
 
 -- Additional Plugins {{{1
@@ -144,10 +118,10 @@ lvim.plugins = {
   },
 
   -- Unix commands. Try ":SudoWrite"
-  {
-    "tpope/vim-eunuch",
-    event = "BufRead",
-  },
+  -- {
+    -- "tpope/vim-eunuch",
+    -- event = "BufRead",
+  -- },
 
   -- Markers in margin. 'ma' adds marker
   {"kshenoy/vim-signature",
@@ -784,6 +758,7 @@ lvim.plugins = {
   -- todo-comments.nvim
   -- highlight and search for todo comments
   -- FIX:Something to describe.
+  -- FIXJC:Something to describe.
   -- FIXME: Something to describe.
   -- BUG:Something to describe.
   -- FIXIT: Something to describe.

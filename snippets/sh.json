@@ -1,6 +1,8 @@
 {
   "new_bash_file": {
-    "prefix": ["new_bash_file"],
+    "prefix": [
+      "new_bash_file"
+    ],
     "body": [
       "#!/usr/bin/env bash",
       ". ~/bin/libs/globals.sh",
@@ -43,7 +45,9 @@
     "description": "New bash file template."
   },
   "case_statement": {
-    "prefix": ["case_statement"],
+    "prefix": [
+      "case_statement"
+    ],
     "body": [
       "case $0 in",
       "    PATTERN_1)",
@@ -61,89 +65,111 @@
     ],
     "description": "New bash file template."
   },
-   "while_text_file": {
-    "prefix": ["while_text_file"],
+  "while_text_file": {
+    "prefix": [
+      "while_text_file"
+    ],
     "body": [
-        "INPUT=\"data.cvs\"",
-        "",
-        "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
-        "",
-        "while IFS=\\$'\\\\t' read -r flname dob ssn tel status",
-        "do",
-        "    $0echo \"Name : \\$flname\"",
-        "    echo \"DOB : \\$dob\"",
-        "    echo \"SSN : \\$ssn\"",
-        "    echo \"Telephone : \\$tel\"",
-        "    echo \"Status : \\$status\"",
-        "done <\"\\$INPUT\""
+      "INPUT=\"data.cvs\"",
+      "",
+      "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
+      "",
+      "while IFS=\\$'\\\\t' read -r flname dob ssn tel status",
+      "do",
+      "    $0echo \"Name : \\$flname\"",
+      "    echo \"DOB : \\$dob\"",
+      "    echo \"SSN : \\$ssn\"",
+      "    echo \"Telephone : \\$tel\"",
+      "    echo \"Status : \\$status\"",
+      "done <\"\\$INPUT\""
     ],
     "description": "New while loop iterating over lines in tsv file."
   },
   "if_statement": {
-    "prefix": ["if_statement"],
+    "prefix": [
+      "if_statement"
+    ],
     "body": [
-        "if [[ \\$val -ne 0 ]]; then",
-        "    $0",
-        "elif [[ \\$val -ne 0 ]]",
-        "    x=\\$((x-1))",
-        "else",
-        "    x=\"\\$x\\n\\$line\"",
-        "fi"
+      "if [[ \\$val -ne 0 ]]; then",
+      "    $0",
+      "elif [[ \\$val -ne 0 ]]",
+      "    x=\\$((x-1))",
+      "else",
+      "    x=\"\\$x\\n\\$line\"",
+      "fi"
     ],
     "description": "If statement and conditionals"
   },
   "if_statement_full": {
-    "prefix": ["if_statement_full"],
+    "prefix": [
+      "if_statement_full"
+    ],
     "body": [
-        "# See: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/",
-        "$0# ! EXPRESSION             The EXPRESSION is false.",
-        "# -n STRING                The length of STRING is greater than zero.",
-        "# -z STRING                The lengh of STRING is zero (ie it is empty).",
-        "# STRING1 = STRING2        STRING1 is equal to STRING2",
-        "# STRING1 != STRING2       STRING1 is not equal to STRING2",
-        "# INTEGER1 -eq INTEGER2    INTEGER1 is numerically equal to INTEGER2",
-        "# INTEGER1 -gt INTEGER2    INTEGER1 is numerically greater than INTEGER2",
-        "# INTEGER1 -lt INTEGER2    INTEGER1 is numerically less than INTEGER2",
-        "# -d FILE                  FILE exists and is a directory.",
-        "# -e FILE                  FILE exists.",
-        "# -r FILE                  FILE exists and the read permission is granted.",
-        "# -s FILE                  FILE exists and it's size is greater than zero (ie. it is not empty).",
-        "# -w FILE                  FILE exists and the write permission is granted.",
-        "# -x FILE                  FILE exists and the execute permission is granted.",
-        "if [[ \"\\$line\" = *\"--\"* ]] || [ \"\\$line\" = \"#\"* ]",
-        "if [[ \"\\$line\" != *\"--\"* ]] && [ \"\\$line\" != \"#\"* ]",
-        "if [[ \"\\$line\" != *\"#\"* ]]",
-        "if [[ \\$val -ne 0 ]]; then",
-        "    x=\\$((x+1))",
-        "elif [[ \\$val -ne 0 ]]",
-        "    x=((x-1))",
-        "else",
-        "    x=\"\\$x\\n\\$line\"",
-        "fi",
-        "#",
-        "pie=good",
-        "# => 0, it matches the regex!",
-        "[[ \\$pie =~ d ]]; echo \\$?",
-        "# => 0, still matches",
-        "[[ \\$pie =~ [aeiou]d ]]; echo \\$?",
-        "# => 1, no match",
-        "[[ \\$pie =~ [aei]d ]]; echo \\$?",
-        "# => 1, no match because there's no literal '[aeoiu]d' inside the word \"good\"",
-        "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
+      "# See: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/",
+      "$0# ! EXPRESSION             The EXPRESSION is false.",
+      "# -n STRING                The length of STRING is greater than zero.",
+      "# -z STRING                The lengh of STRING is zero (ie it is empty).",
+      "# STRING1 = STRING2        STRING1 is equal to STRING2",
+      "# STRING1 != STRING2       STRING1 is not equal to STRING2",
+      "# INTEGER1 -eq INTEGER2    INTEGER1 is numerically equal to INTEGER2",
+      "# INTEGER1 -gt INTEGER2    INTEGER1 is numerically greater than INTEGER2",
+      "# INTEGER1 -lt INTEGER2    INTEGER1 is numerically less than INTEGER2",
+      "# -d FILE                  FILE exists and is a directory.",
+      "# -e FILE                  FILE exists.",
+      "# -r FILE                  FILE exists and the read permission is granted.",
+      "# -s FILE                  FILE exists and it's size is greater than zero (ie. it is not empty).",
+      "# -w FILE                  FILE exists and the write permission is granted.",
+      "# -x FILE                  FILE exists and the execute permission is granted.",
+      "if [[ \"\\$line\" = *\"--\"* ]] || [ \"\\$line\" = \"#\"* ]",
+      "if [[ \"\\$line\" != *\"--\"* ]] && [ \"\\$line\" != \"#\"* ]",
+      "if [[ \"\\$line\" != *\"#\"* ]]",
+      "if [[ \\$val -ne 0 ]]; then",
+      "    x=\\$((x+1))",
+      "elif [[ \\$val -ne 0 ]]",
+      "    x=((x-1))",
+      "else",
+      "    x=\"\\$x\\n\\$line\"",
+      "fi",
+      "#",
+      "pie=good",
+      "# => 0, it matches the regex!",
+      "[[ \\$pie =~ d ]]; echo \\$?",
+      "# => 0, still matches",
+      "[[ \\$pie =~ [aeiou]d ]]; echo \\$?",
+      "# => 1, no match",
+      "[[ \\$pie =~ [aei]d ]]; echo \\$?",
+      "# => 1, no match because there's no literal '[aeoiu]d' inside the word \"good\"",
+      "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
     ],
     "description": "If statement and conditionals"
   },
   "while_here_doc": {
-    "prefix": ["while_here_doc"],
+    "prefix": [
+      "while_here_doc"
+    ],
     "body": [
-        "while read pass port user ip files directs; do",
-        "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
-        "done <<DATA",
-        "PASS    PORT    USER    IP    FILES    DIRECTS1",
-        "PASS    PORT    USER    IP    FILES    DIRECTS2",
-        "DATA"
+      "while read pass port user ip files directs; do",
+      "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
+      "done <<DATA",
+      "PASS    PORT    USER    IP    FILES    DIRECTS1",
+      "PASS    PORT    USER    IP    FILES    DIRECTS2",
+      "DATA"
     ],
     "description": "Heredoc"
+  },
+  "func": {
+    "prefix": [
+      "func"
+    ],
+    "body": [
+      "",
+      "# $1 {{{",
+      "$2() {",
+      "    $3",
+      "}",
+      "# }}}",
+      ""
+    ],
+    "description": "Function with blocks"
   }
 }
-

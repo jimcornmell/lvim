@@ -7,14 +7,31 @@ M.config = function()
         -- "number#decimal#fixed#zero",
         -- "markup#markdown#header",
         default = {
-            "augend.integer.alias.hex",
-            "augend.integer.alias.binary",
-            "augend.date.alias[%Y/%m/%d]",
-            "augend.date.alias[%Y-%m-%d]",
-            "augend.date.alias[%H:%M:%S]",
-            "augend.date.alias[%H:%M]",
-            "augend.hexcolor.new{}",
-
+            augend.integer.alias.decimal_int,
+            augend.integer.alias.hex,
+            augend.integer.alias.octal,
+            augend.integer.alias.binary,
+            augend.constant.alias.bool,
+            augend.semver.alias.semver,
+            augend.date.alias["%Y/%m/%d"],
+            augend.date.alias["%Y-%m-%d"],
+            augend.date.alias["%H:%M:%S"],
+            augend.date.alias["%H:%M"],
+            -- lowercase hex colour #1a1a1a
+            augend.hexcolor.new{
+                case = "lower"
+            },
+            -- uppercase hex colour #1A1A1A
+            -- augend.user.new{
+                -- find = require("dial.augend.common").find_pattern("%d+"),
+                -- add = function(text, addend, cursor)
+                    -- local n = tonumber(text)
+                    -- n = math.floor(n * (2 ^ addend))
+                    -- text = tostring(n)
+                    -- cursor = #text
+                    -- return {text = text, cursor = cursor}
+                -- end
+            -- },
             augend.constant.new{
                 elements = {"Foreground", "Background"},
                 word = true, cyclic = true,
@@ -28,7 +45,11 @@ M.config = function()
                 word = false, cyclic = true,
             },
             augend.constant.new{
-                elements = {"true", "false"},
+                elements = {"yes", "no"},
+                word = false, cyclic = true,
+            },
+            augend.constant.new{
+                elements = {"Yes", "No"},
                 word = false, cyclic = true,
             },
             augend.constant.new{

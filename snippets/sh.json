@@ -1,49 +1,4 @@
 {
-  "new_bash_file": {
-    "prefix": [
-      "new_bash_file"
-    ],
-    "body": [
-      "#!/usr/bin/env bash",
-      ". ~/bin/libs/globals.sh",
-      "",
-      "# $1",
-      "# E.g: $2",
-      "",
-      "CMD=$(basename \\$0)",
-      "",
-      "# printUsage {{{",
-      "printUsage() {",
-      "    TXT=\\$1",
-      "    outnl $cyan \\\"$CMD tool v1.0\\\"",
-      "    outnl $red \\\"ERROR: $TXT\\\"",
-      "",
-      "    echo \\\"",
-      "Usage:",
-      "    COMMAND          PROJECT   BRANCH          DESCRIPTION",
-      "    all             {PROJECT} {BRANCH}        Goto All of the below locations",
-      "    art*            {PROJECT}                 Goto artifactory",
-      "",
-      "Some command accept 1 or 2 more arguments, the first is the project, the second is the branch.",
-      "",
-      "E.g:",
-      "    dev ticket",
-      "    dev ticket ABC-1234",
-      "    dev health",
-      "    dev health my-project-name",
-      "\\\"",
-      "    exit 1",
-      "}",
-      "# }}}",
-      "",
-      "if [[ \\$# != 1 ]]; then",
-      "    printUsage \"Missing Arguments\" 1",
-      "fi",
-      "",
-      "$0"
-    ],
-    "description": "New bash file template."
-  },
   "case_statement": {
     "prefix": [
       "case_statement"

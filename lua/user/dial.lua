@@ -76,6 +76,10 @@ M.config = function()
                 elements = { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" },
                 word = false, cyclic = true,
             },
+            augend.constant.new{
+                elements = { "FIX:", "FIXJC:", "FIXME:", "BUG:", "FIXIT:", "ISSUE:", "TODO:", "HACK:", "WARN:", "WARNING:", "XXX:", "PERF:", "OPTIM:", "PERFORMANCE:", "OPTIMIZE:", "NOTE:", "INFO:", "TEST:", "OK:", "ISH:", "BAD:" },
+                word = false, cyclic = true,
+            },
         },
     }
 

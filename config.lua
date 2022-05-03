@@ -118,10 +118,10 @@ lvim.plugins = {
   },
 
   -- Unix commands. Try ":SudoWrite"
-  -- {
-    -- "tpope/vim-eunuch",
-    -- event = "BufRead",
-  -- },
+  {
+    "tpope/vim-eunuch",
+    event = "BufRead",
+  },
 
   -- Markers in margin. 'ma' adds marker
   {"kshenoy/vim-signature",

@@ -22,7 +22,9 @@ set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#605555
-highlight CursorLine                                             guibg=#2A426B
+" highlight CursorLine                                             guibg=#2A426B
+highlight CursorLine                                             guibg=#0A396F
+
 " highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
 " highlight CursorLine                                             guibg=#605555
 
@@ -60,7 +62,7 @@ highlight DiffText                             guifg=#CC2222     guibg=#222266
 highlight GitSignsAdd                          guifg=#608b4e     guibg=#343434
 highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
 highlight GitSignsChange                       guifg=#FF8800     guibg=#343434
-highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#2A426B
+highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#0A396F
 highlight default link gitblame GitSignsCurrentLineBlame
 
 " Tab bar at top!

@@ -37,6 +37,10 @@ let g:devdocs_filetype_map = {
 set formatprg=par\ -w79
 map gw gqip
 
+" Margin numbers.
+nmap <silent> <leader>n :set norelativenumber<cr>
+nmap <silent> <leader>r :set relativenumber<cr>
+
 map <silent> ge :call DeleteEndingWhiteSpace()<CR>
 map <silent> gh :call OpenHelpAndCheatSheets()<CR>
 

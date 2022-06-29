@@ -11,6 +11,7 @@
             { "language": "javascript",     "path": "./javascript.json" },
             { "language": "jproperties",    "path": "./jproperties.json" },
             { "language": "lua",            "path": "./lua.json" },
+            { "language": "python",         "path": "./python.json" },
             { "language": "react-ts",       "path": "./react-ts.json" },
             { "language": "sh",             "path": "./sh.json" },
             { "language": "sql",            "path": "./sql.json" },

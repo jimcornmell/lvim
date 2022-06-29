@@ -13,5 +13,33 @@
             "}",
             ""
         ]
+    },
+    "spock": {
+        "prefix": "new_spock_test",
+        "body": [
+            "    def \"Name #variable\"() {",
+            "        given:",
+            "            Map<String, Object> settings = [:]",
+            "",
+            "        expect:",
+            "            DataRequest dataRequest = new DataRequest([",
+            "                    title   : rank, firstname: fname, middlename: mname, surname: sname",
+            "            ])",
+            "            dataRequest.setIdScreenRequest(new IdScreenRequest(phone, ip))",
+            "",
+            "        when:",
+            "            validateUser(user)",
+            "",
+            "        then:",
+            "            def error = thrown(expectedException)",
+            "            error.message == expectedMessage",
+            "",
+            "        where:",
+            "            rank   | fname  | mname   | sname       || expectedErrorName | expectedErrorString",
+            "            // _______________________ Valid data ____________________",
+            "            \"Dr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
+            "            \"Mr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
+            "    }"
+        ]
     }
 }

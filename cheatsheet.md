@@ -263,6 +263,9 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |__Increment/Dec a value__|[plugin](https://github.com/tpope/vim-speeddating)|
 |<kbd>Ctrl-a</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
 |<kbd>Ctrl-x</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
+|<kbd>Ctrl-h</kbd>|                                                            :heavy_check_mark: In visual block mode insert sequence starting at 1|
+|<kbd>Ctrl-j</kbd>|                                                            :heavy_check_mark: In visual block mode increment sequence|
+|<kbd>Ctrl-k</kbd>|                                                            :heavy_check_mark: In visual block mode decrement sequence|
 A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`<br/>`:let i=1 \| g/WEEKNUMBER/s//\=i/ \| let i=i+1`
 |__Moving Lines__||
 |<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line/selection up 1 line|

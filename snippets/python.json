@@ -1,0 +1,12 @@
+{
+    "python": {
+        "prefix": "new_python_file",
+        "body": [
+            "#!/usr/bin/env python3",
+            "import globals",
+            "",
+            "globals.runCommand( \"Start message 1...\", \"Done [yellow]thing 1\", f\"sleep 2\",)",
+            "globals.runCommand( \"Start message 2...\", \"Done [yellow]thing 2\", f\"sleep 3\",)"
+        ]
+    }
+}

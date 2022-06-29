@@ -406,6 +406,9 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <table><tbody>
 <tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times.</td></tr>
 <tr><th><kbd>Ctrl-x</kbd></th><td>                                                            <img src="media/tick.png"/> Decrement value under cursor by 1.</td></tr>
+<tr><th><kbd>Ctrl-h</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode insert sequence starting at 1</td></tr>
+<tr><th><kbd>Ctrl-j</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode increment sequence</td></tr>
+<tr><th><kbd>Ctrl-k</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode decrement sequence</td></tr>
 A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd><br/><kbd class="cmd">:let i=1 | g/WEEKNUMBER/s//\=i/ | let i=i+1</kbd>
 </tbody></table>
 </div><div class="inner border" id="movinglines">

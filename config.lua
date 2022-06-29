@@ -118,10 +118,12 @@ lvim.plugins = {
   },
 
   -- Unix commands. Try ":SudoWrite"
-  {
-    "tpope/vim-eunuch",
-    event = "BufRead",
-  },
+    -- Issue with cmp.u.k.recursive appearing when you hit enter.
+    -- See: https://github.com/hrsh7th/nvim-cmp/issues/770
+  -- {
+    -- "tpope/vim-eunuch",
+    -- event = "BufRead",
+  -- },
 
   -- Markers in margin. 'ma' adds marker
   {"kshenoy/vim-signature",
@@ -882,9 +884,9 @@ lvim.plugins = {
 -- }}}1
 
 -- Additional Leader bindings for WhichKey and key mappings {{{1
-lvim.builtin.which_key.mappings["r"] = {
-    "<cmd>RnvimrToggle<CR>",                             "Ranger"
-}
+-- lvim.builtin.which_key.mappings["r"] = {
+    -- "<cmd>RnvimrToggle<CR>",                             "Ranger"
+-- }
 
 lvim.builtin.which_key.mappings["z"] = {
     "<cmd>ZenMode<CR>:set nospell<CR>",                    "Zen Mode"

@@ -1,12 +1,4 @@
 {
-    "Show processes": {
-        "prefix": "showp",
-        "body": [
-            "SHOW processlist;",
-            "SHOW FULL processlist;"
-        ],
-        "description": "Show processes"
-    },
     "Find constraint links": {
         "prefix": "select_find_constraint_links",
         "body": [
@@ -18,6 +10,14 @@
             "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
         ],
         "description": "Find constraint links"
+    },
+    "Show processes": {
+        "prefix": "showp",
+        "body": [
+            "SHOW processlist;",
+            "SHOW FULL processlist;"
+        ],
+        "description": "Show processes"
     },
     "mysql": {
         "prefix": "mysql drop fk checks",

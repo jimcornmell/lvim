@@ -99,6 +99,37 @@
     ],
     "description": "New bash file template."
   },
+  "new_python_file": {
+    "prefix": [
+      "new_python_file"
+    ],
+    "body": [
+        "#!/usr/bin/env python3",
+        "# ~/bin/libs/globals.py",
+        "from globals import RichWrapper",
+        "",
+        "rw = RichWrapper()",
+        "",
+        "rw.outerror(\"A serious error!\")",
+        "rw.outwarning(\"A warning!\")",
+        "rw.outinfo(\"Some information!\")",
+        "rw.outnote(\"A note!\")",
+        "rw.outbox(\"Colour [red]box\")",
+        "rw.outnonl(\"hello [yellow]world from first outnonl\")",
+        "rw.outnl(\" [red on white] hello [yellow]world from outnl\")",
+        "rw.outline(\"Progress [red]text\")",
+        "rw.runcmd( \"Start message 1...\", \"Done [yellow]thing 1\", \"sleep 1\",)",
+        "",
+        "rw.outline(\"Progress\")",
+        "for step in track(range(100), description=\"Writing some long thing Story...\"):",
+        "    sleep(0.01)",
+        "",
+        "rw.outhr()",
+        "$0",
+        ""
+    ],
+    "description": "New python file template."
+  },
   "variables": {
     "prefix": "variables",
     "body": [

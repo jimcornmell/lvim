@@ -5,7 +5,8 @@
       "describe('${1:Title}', function()",
       "\t${2}",
       "end)"
-    ]
+    ],
+    "description": ""
   },
   "doc": {
     "prefix": "doc",
@@ -13,37 +14,43 @@
       "-----------------------------------------------------------------------------//",
       "-- ${0:document}",
       "-----------------------------------------------------------------------------//"
-    ]
+    ],
+    "description": ""
   },
   "apifun": {
     "prefix": "api.",
     "body": [
       "vim.api.nvim_${1:buf}_${2:get}_${3:name}"
-    ]
+    ],
+    "description": ""
   },
   "fn": {
     "prefix": "lfn",
     "body": [
       "local fn = vim.fn"
-    ]
+    ],
+    "description": ""
   },
   "api": {
     "prefix": "lapi",
     "body": [
       "local api = vim.api"
-    ]
+    ],
+    "description": ""
   },
   "fmt": {
     "prefix": "lfmt",
     "body": [
       "local fmt = string.format"
-    ]
+    ],
+    "description": ""
   },
   "inspect": {
     "prefix": "vi",
     "body": [
       "print(\"${1}: \" .. vim.inspect(${1}))"
-    ]
+    ],
+    "description": ""
   },
   "for": {
     "body": "for ${1:i}=${2:1},${3:10} do\n\t${0:print(i)}\nend",
@@ -77,7 +84,7 @@
   },
   "getmetatable": {
     "body": "getmetatable(${1:object})",
-    "description": "5.1,5.2,5.3\n\ngetmetatable (object)",
+    "description": "getmetatable (object)",
     "prefix": "getmetatable",
     "scope": "source.lua"
   },
@@ -95,25 +102,25 @@
   },
   "ipairs": {
     "body": "ipairs(${0:...})",
-    "description": "5.1,5.2,5.3\n\nipairs (t)",
+    "description": "ipairs (t)",
     "prefix": "ipairs",
     "scope": "source.lua"
   },
   "load": {
     "body": "load(${0:...})",
-    "description": "5.1,5.2,5.3\n\nload (func [, chunkname])",
+    "description": "load (func [, chunkname])",
     "prefix": "load",
     "scope": "source.lua"
   },
   "loadfile": {
     "body": "loadfile(${0:...})",
-    "description": "5.1,5.2,5.3\n\nloadfile ([filename])",
+    "description": "loadfile ([filename])",
     "prefix": "loadfile",
     "scope": "source.lua"
   },
   "loadstring": {
     "body": "loadstring(${0:...})",
-    "description": "5.1\n\nloadstring (string [, chunkname])",
+    "description": "loadstring (string [, chunkname])",
     "prefix": "loadstring",
     "scope": "source.lua"
   },
@@ -125,43 +132,43 @@
   },
   "pairs": {
     "body": "pairs(${0:...})",
-    "description": "5.1,5.2,5.3\n\npairs (t)",
+    "description": "pairs (t)",
     "prefix": "pairs",
     "scope": "source.lua"
   },
   "pcall": {
     "body": "pcall(${0:...})",
-    "description": "5.1,5.2,5.3\n\npcall (f, arg1, ...)",
+    "description": "pcall (f, arg1, ...)",
     "prefix": "pcall",
     "scope": "source.lua"
   },
   "print": {
     "body": "print(${1:...})",
-    "description": "5.1,5.2,5.3\n\nprint(...)",
+    "description": "print(...)",
     "prefix": "print",
     "scope": "source.lua"
   },
   "rawequal": {
     "body": "rawequal(${0:...})",
-    "description": "5.1,5.2,5.3\n\nrawequal (v1, v2)",
+    "description": "rawequal (v1, v2)",
     "prefix": "rawequal",
     "scope": "source.lua"
   },
   "rawget": {
     "body": "rawget(${0:...})",
-    "description": "5.1,5.2,5.3\n\nrawget (table, index)",
+    "description": "rawget (table, index)",
     "prefix": "rawget",
     "scope": "source.lua"
   },
   "rawlen": {
     "body": "rawlen(${0:...})",
-    "description": "5.2,5.3\n\nrawlen (v)",
+    "description": "rawlen (v)",
     "prefix": "rawlen",
     "scope": "source.lua"
   },
   "rawset": {
     "body": "rawset(${0:...})",
-    "description": "5.1,5.2,5.3\n\nrawset (table, index, value)",
+    "description": "rawset (table, index, value)",
     "prefix": "rawset",
     "scope": "source.lua"
   },
@@ -173,7 +180,7 @@
   },
   "require": {
     "body": "require(\"${1:module}\")",
-    "description": "5.1,5.2,5.3\n\nrequire()",
+    "description": "require()",
     "prefix": "require",
     "scope": "source.lua"
   },
@@ -185,193 +192,193 @@
   },
   "select": {
     "body": "select(${1:index}, ${2:...})",
-    "description": "5.1,5.2,5.3\n\nselect (index, ···)",
+    "description": "select (index, ···)",
     "prefix": "select",
     "scope": "source.lua"
   },
   "setfenv": {
     "body": "setfenv(${0:...})",
-    "description": "5.1\n\nsetfenv (f, table)",
+    "description": "setfenv (f, table)",
     "prefix": "setfenv",
     "scope": "source.lua"
   },
   "setmetatable": {
     "body": "setmetatable(${1:table}, ${2:metatable})",
-    "description": "5.1,5.2,5.3\n\nsetmetatable (table, metatable)",
+    "description": "setmetatable (table, metatable)",
     "prefix": "setmetatable",
     "scope": "source.lua"
   },
   "string.byte": {
     "body": "string.byte(${1:s}${2:[, i]}${3:[, j]})",
-    "description": "5.1,5.2,5.3\n\nstring.byte",
+    "description": "string.byte",
     "prefix": "string.byte",
     "scope": "source.lua"
   },
   "string.char": {
     "body": "string.char(${1:...})",
-    "description": "5.1,5.2,5.3\n\nstring.char",
+    "description": "string.char",
     "prefix": "string.char",
     "scope": "source.lua"
   },
   "string.dump": {
     "body": "string.dump(${0:...})",
-    "description": "5.1,5.2,5.3\n\nstring.dump (function)",
+    "description": "string.dump (function)",
     "prefix": "string.dump",
     "scope": "source.lua"
   },
   "string.find": {
     "body": "string.find(${1:s},${2:pattern}${3:[, init]}${4:[, plain]})",
-    "description": "5.1,5.2,5.3\n\nstring.find",
+    "description": "string.find",
     "prefix": "string.find",
     "scope": "source.lua"
   },
   "string.format": {
     "body": "string.format(\"${1:formatstring}\",${2:...})",
-    "description": "5.1,5.2,5.3\n\nstring.format",
+    "description": "string.format",
     "prefix": "string.format",
     "scope": "source.lua"
   },
   "string.gmatch": {
     "body": "string.gmatch(${1:s},${2:pattern})",
-    "description": "5.1,5.2,5.3\n\nstring.gmatch",
+    "description": "string.gmatch",
     "prefix": "string.gmatch",
     "scope": "source.lua"
   },
   "string.gsub": {
     "body": "string.gsub(${1:s},${2:pattern},${3:repl}${4:[, n]})",
-    "description": "5.1,5.2,5.3\n\nstring.gsub",
+    "description": "string.gsub",
     "prefix": "string.gsub",
     "scope": "source.lua"
   },
   "string.len": {
     "body": "string.len(${1:s})",
-    "description": "5.1,5.2,5.3\n\nstring.len",
+    "description": "string.len",
     "prefix": "string.len",
     "scope": "source.lua"
   },
   "string.lower": {
     "body": "string.lower(${1:s})",
-    "description": "5.1,5.2,5.3\n\nstring.lower",
+    "description": "string.lower",
     "prefix": "string.lower",
     "scope": "source.lua"
   },
   "string.match": {
     "body": "string.match(${1:s},${2:pattern}${3:[, init]})",
-    "description": "5.1,5.2,5.3\n\nstring.match",
+    "description": "string.match",
     "prefix": "string.match",
     "scope": "source.lua"
   },
   "string.pack": {
     "body": "string.pack(${0:...})",
-    "description": "5.3\n\nstring.pack (fmt, v1, v2, ...)",
+    "description": "string.pack (fmt, v1, v2, ...)",
     "prefix": "string.pack",
     "scope": "source.lua"
   },
   "string.packsize": {
     "body": "string.packsize(${0:...})",
-    "description": "5.3\n\nstring.packsize (fmt)",
+    "description": "string.packsize (fmt)",
     "prefix": "string.packsize",
     "scope": "source.lua"
   },
   "string.rep": {
     "body": "string.rep(${1:s}, ${2:n}${3:[, rep]})",
-    "description": "5.1,5.2,5.3\n\nstring.rep",
+    "description": "string.rep",
     "prefix": "string.rep",
     "scope": "source.lua"
   },
   "string.reverse": {
     "body": "string.reverse(${1:s})",
-    "description": "5.1,5.2,5.3\n\nstring.reverse",
+    "description": "string.reverse",
     "prefix": "string.reverse",
     "scope": "source.lua"
   },
   "string.sub": {
     "body": "string.sub(${1:s}, ${2:i}${3:[, j]})",
-    "description": "5.1,5.2,5.3\n\nstring.sub",
+    "description": "string.sub",
     "prefix": "string.sub",
     "scope": "source.lua"
   },
   "string.unpack": {
     "body": "string.unpack(${0:...})",
-    "description": "5.3\n\nstring.unpack (fmt, s [, pos])",
+    "description": "string.unpack (fmt, s [, pos])",
     "prefix": "string.unpack",
     "scope": "source.lua"
   },
   "string.upper": {
     "body": "string.upper(${1:s})",
-    "description": "5.1,5.2,5.3\n\nstring.upper",
+    "description": "string.upper",
     "prefix": "string.upper",
     "scope": "source.lua"
   },
   "table.concat": {
     "body": "table.concat(${1:tablename}${2:, \", \"}${3:, start_index}${4:, end_index})",
-    "description": "5.1,5.2,5.3\n\ntable.concat",
+    "description": "table.concat",
     "prefix": "table.concat",
     "scope": "source.lua"
   },
   "table.insert": {
     "body": "table.insert(${1:list},${2: [pos,]}${3: value})",
-    "description": "5.1,5.2,5.3\n\ntable.insert",
+    "description": "table.insert",
     "prefix": "table.insert",
     "scope": "source.lua"
   },
   "table.maxn": {
     "body": "table.maxn(${0:...})",
-    "description": "5.1\n\ntable.maxn (table)",
+    "description": "table.maxn (table)",
     "prefix": "table.maxn",
     "scope": "source.lua"
   },
   "table.move": {
     "body": "table.move(${0:...})",
-    "description": "5.3\n\ntable.move (a1, f, e, t [,a2])",
+    "description": "table.move (a1, f, e, t [,a2])",
     "prefix": "table.move",
     "scope": "source.lua"
   },
   "table.pack": {
     "body": "table.pack(${0:...})",
-    "description": "5.2,5.3\n\ntable.pack (...)",
+    "description": "table.pack (...)",
     "prefix": "table.pack",
     "scope": "source.lua"
   },
   "table.remove": {
     "body": "table.remove(${1:list},${2: [pos,]})",
-    "description": "5.1,5.2,5.3\n\ntable.remove",
+    "description": "table.remove",
     "prefix": "table.remove",
     "scope": "source.lua"
   },
   "table.sort": {
     "body": "table.sort(${1:tablename}${2:, sortfunction})",
-    "description": "5.1,5.2,5.3\n\ntable.sort",
+    "description": "table.sort",
     "prefix": "table.sort",
     "scope": "source.lua"
   },
   "table.unpack": {
     "body": "table.unpack(${0:...})",
-    "description": "5.2,5.3\n\ntable.unpack (list [, i [, j]])",
+    "description": "table.unpack (list [, i [, j]])",
     "prefix": "table.unpack",
     "scope": "source.lua"
   },
   "tonumber": {
     "body": "tonumber(${1:e}${2:[, base]})",
-    "description": "5.1,5.2,5.3\n\ntonumber (e [, base])",
+    "description": "tonumber (e [, base])",
     "prefix": "tonumber",
     "scope": "source.lua"
   },
   "tostring": {
     "body": "tostring(${1:v})",
-    "description": "5.1,5.2,5.3\n\ntostring (v)",
+    "description": "tostring (v)",
     "prefix": "tostring",
     "scope": "source.lua"
   },
   "type": {
     "body": "type(${1:v})",
-    "description": "5.1,5.2,5.3\n\ntype (v)",
+    "description": "type (v)",
     "prefix": "type",
     "scope": "source.lua"
   },
   "unpack": {
     "body": "unpack(${0:...})",
-    "description": "5.1\n\nunpack (list [, i [, j]])",
+    "description": "unpack (list [, i [, j]])",
     "prefix": "unpack",
     "scope": "source.lua"
   },

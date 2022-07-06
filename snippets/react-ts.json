@@ -3,13 +3,15 @@
     "prefix": "dp",
     "body": [
       "const { ${1:name} } = this.props"
-    ]
+    ],
+    "description": "Destructuring of props"
   },
   "destructuring of state": {
     "prefix": "ds",
     "body": [
       "const { ${1:name} } = this.state"
-    ]
+    ],
+    "description": "Destructuring of state"
   },
   "reactClassCompoment": {
     "prefix": "rcc",

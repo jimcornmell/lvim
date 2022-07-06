@@ -27,5 +27,13 @@
       "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
     ],
     "description": "mysql drop fk checks"
-  }
+  },
+  "Create DB": {
+    "prefix": "createdb",
+    "body": [
+            "-- Create a new database called '${1:DatabaseName}'",
+			"CREATE DATABASE ${1:DatabaseName}"
+    ],
+    "description": "Create a new database"
+  },
 }

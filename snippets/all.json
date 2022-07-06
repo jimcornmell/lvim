@@ -1,13 +1,13 @@
 {
-  "uuid": {
-    "prefix": "UUID (v4)",
+  "UUID v4": {
+    "prefix": "uuid",
     "body": [
       "$UUID"
     ],
-    "description": "uuid"
+    "description": "UUID v4 random string"
   },
-  "snipvars": {
-    "prefix": "Snippet variables",
+  "List all snippet vars": {
+    "prefix": "snipvars",
     "body": [
       "$BLOCK_COMMENT_START",
       "See: https://macromates.com/manual/en/environment_variables",
@@ -69,6 +69,26 @@
       "$BLOCK_COMMENT_END"
     ],
     "description": "snipvars"
+  },
+  "New snippet": {
+    "prefix": "snippet",
+    "body": [
+      "\"Short title\": {",
+      "  \"prefix\": \"keysequence\",",
+      "  \"body\": [",
+      "    \"The bode of the snippet\"",
+      "  ],",
+      "  \"description\": \"Longer description\"",
+      "},"
+    ],
+    "description": "Snippet code chunk"
+  },
+  "Line 80 chars": {
+    "prefix": "line80chars",
+    "body": [
+      "$LINE_COMMENT --------------------------------------------------------------------------------"
+    ],
+    "description": "separated"
   },
   "fixjc": {
     "prefix": "FIXJC Comment",

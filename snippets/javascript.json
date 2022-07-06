@@ -1,16 +1,16 @@
 {
-  "Class": {
-    "prefix": ["class"],
+  "class": {
+    "prefix": "Class",
     "body": [
       "/**",
       " * @author ${VIM:\\$USER}",
       " */",
       "class $1 ${2:extends ${3:Parent} }{",
-      "\tconstructor() {",
-      "\t\t$0",
-      "\t}",
+      " constructor() {",
+      "  $0",
+      " }",
       "}"
     ],
-    "description": "Class definition template."
+    "description": "class"
   }
 }

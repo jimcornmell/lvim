@@ -1,45 +1,47 @@
 {
-    "gradle": {
-        "prefix": "new_gradle_file",
-        "body": [
-            "apply plugin: 'java'",
-            "",
-            "repositories {",
-            "\tmavenCentral()",
-            "}",
-            "",
-            "dependencies {",
-            "\ttestCompile 'junit:junit:+'",
-            "}",
-            ""
-        ]
-    },
-    "spock": {
-        "prefix": "new_spock_test",
-        "body": [
-            "    def \"Name #variable\"() {",
-            "        given:",
-            "            Map<String, Object> settings = [:]",
-            "",
-            "        expect:",
-            "            DataRequest dataRequest = new DataRequest([",
-            "                    title   : rank, firstname: fname, middlename: mname, surname: sname",
-            "            ])",
-            "            dataRequest.setIdScreenRequest(new IdScreenRequest(phone, ip))",
-            "",
-            "        when:",
-            "            validateUser(user)",
-            "",
-            "        then:",
-            "            def error = thrown(expectedException)",
-            "            error.message == expectedMessage",
-            "",
-            "        where:",
-            "            rank   | fname  | mname   | sname       || expectedErrorName | expectedErrorString",
-            "            // _______________________ Valid data ____________________",
-            "            \"Dr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
-            "            \"Mr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
-            "    }"
-        ]
-    }
+  "new_gradle_file": {
+    "prefix": "gradle",
+    "body": [
+      "apply plugin: 'java'",
+      "",
+      "repositories {",
+      " mavenCentral()",
+      "}",
+      "",
+      "dependencies {",
+      " testCompile 'junit:junit:+'",
+      "}",
+      ""
+    ],
+    "description": "new_gradle_file"
+  },
+  "new_spock_test": {
+    "prefix": "spock",
+    "body": [
+      "    def \"Name #variable\"() {",
+      "        given:",
+      "            Map<String, Object> settings = [:]",
+      "",
+      "        expect:",
+      "            DataRequest dataRequest = new DataRequest([",
+      "                    title   : rank, firstname: fname, middlename: mname, surname: sname",
+      "            ])",
+      "            dataRequest.setIdScreenRequest(new IdScreenRequest(phone, ip))",
+      "",
+      "        when:",
+      "            validateUser(user)",
+      "",
+      "        then:",
+      "            def error = thrown(expectedException)",
+      "            error.message == expectedMessage",
+      "",
+      "        where:",
+      "            rank   | fname  | mname   | sname       || expectedErrorName | expectedErrorString",
+      "            // _______________________ Valid data ____________________",
+      "            \"Dr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
+      "            \"Mr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
+      "    }"
+    ],
+    "description": "new_spock_test"
+  }
 }

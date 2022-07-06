@@ -1,50 +1,132 @@
 {
-  "lorem_ipsum": {
-    "prefix": [
-      "lorem"
+  "uuid": {
+    "prefix": "UUID (v4)",
+    "body": [
+      "$UUID"
     ],
+    "description": "uuid"
+  },
+  "snipvars": {
+    "prefix": "Snippet variables",
+    "body": [
+      "$BLOCK_COMMENT_START",
+      "See: https://macromates.com/manual/en/environment_variables",
+      "And: https://github.com/L3MON4D3/LuaSnip/blob/master/lua/luasnip/util/environ.lua",
+      "",
+      "Example: ",
+      "    const \\$0 = \\${1:cond} ? \\${2:true value} : \\${3:false value}",
+      "    Choice: \\${4|one,two,three|}",
+      "    $ENV{'HOME'}",
+      "",
+      "The tab size                                                                    TM_TAB_SIZE                 = $TM_TAB_SIZE",
+      "Points to the Support folder of the bundle that ran the item                    TM_BUNDLE_SUPPORT           = $TM_BUNDLE_SUPPORT",
+      "The top-level folder in the project drawer                                      TM_PROJECT_DIRECTORY        = $TM_PROJECT_DIRECTORY",
+      "The scope that the caret is inside                                              TM_SCOPE                    = $TM_SCOPE",
+      "Full path of the first selected file or folder                                  TM_SELECTED_FILE            = $TM_SELECTED_FILE",
+      "Space separated list of the files and folders selected in the project drawer    TM_SELECTED_FILES           = $TM_SELECTED_FILES",
+      "Will have the value YES if the user has enabled soft tabs, otherwise NO         TM_SOFT_TABS                = $TM_SOFT_TABS",
+      "Will have the value YES if the user has enabled soft tabs, otherwise NO         TM_SOFT_TAB                 = $TM_SOFT_TAB",
+      "This variable points to that support folder                                     TM_SUPPORT_PATH             = $TM_SUPPORT_PATH",
+      "The currently selected text or the empty string                                 TM_SELECTED_TEXT            = $TM_SELECTED_TEXT",
+      "The contents of the current line                                                TM_CURRENT_LINE             = $TM_CURRENT_LINE",
+      "The contents of the word under cursor or the empty string                       TM_CURRENT_WORD             = $TM_CURRENT_WORD",
+      "The zero-index based line number                                                TM_LINE_INDEX               = $TM_LINE_INDEX",
+      "The one-index based line number                                                 TM_LINE_NUMBER              = $TM_LINE_NUMBER",
+      "The full file path of the current document                                      TM_FILEPATH                 = $TM_FILEPATH",
+      "The directory of the current document                                           TM_DIRECTORY                = $TM_DIRECTORY",
+      "The filename of the current document without its extensions                     TM_FILENAME_BASE            = $TM_FILENAME_BASE",
+      "The filename of the current document                                            TM_FILENAME                 = $TM_FILENAME",
+      "User name                                                                       USER                        = $USER",
+      "The relative (to the opened workspace or folder) path of the current document   RELATIVE_FILEPATH           = $RELATIVE_FILEPATH",
+      "",
+      "The contents of your clipboard                                                  CLIPBOARD                   = $CLIPBOARD",
+      "The name of the opened workspace or folder                                      WORKSPACE_NAME              = $WORKSPACE_NAME",
+      "The path of the opened workspace or folder                                      WORKSPACE_FOLDER            = $WORKSPACE_FOLDER",
+      "",
+      "The current year                                                                CURRENT_YEAR                = $CURRENT_YEAR",
+      "The current year's last two digits                                              CURRENT_YEAR_SHORT          = $CURRENT_YEAR_SHORT",
+      "The month as two digits (example '02')                                          CURRENT_MONTH               = $CURRENT_MONTH",
+      "The full name of the month (example 'July')                                     CURRENT_MONTH_NAME          = $CURRENT_MONTH_NAME",
+      "The short name of the month (example 'Jul')                                     CURRENT_MONTH_NAME_SHORT    = $CURRENT_MONTH_NAME_SHORT",
+      "The day of the month                                                            CURRENT_DATE                = $CURRENT_DATE",
+      "The name of day (example 'Monday')                                              CURRENT_DAY_NAME            = $CURRENT_DAY_NAME",
+      "The short name of the day (example 'Mon')                                       CURRENT_DAY_NAME_SHORT      = $CURRENT_DAY_NAME_SHORT",
+      "The current hour in 24-hour clock format                                        CURRENT_HOUR                = $CURRENT_HOUR",
+      "The current minute                                                              CURRENT_MINUTE              = $CURRENT_MINUTE",
+      "The current second                                                              CURRENT_SECOND              = $CURRENT_SECOND",
+      "The number of seconds since the Unix epoch                                      CURRENT_SECONDS_UNIX        = $CURRENT_SECONDS_UNIX",
+      "",
+      "6 random Base-10 digits                                                         RANDOM                      = $RANDOM",
+      "Random Base-16 digits                                                           RANDOM_HEX                  = $RANDOM_HEX",
+      "A Version 4 UUID                                                                UUID                        = $UUID",
+      "",
+      "These were introduced because TM_SELECTED_TEXT is designed to be...             SELECT_RAW                  = $SELECT_RAW",
+      "...compatible with vscodes' behavior                                            SELECT_DEDENT               = $SELECT_DEDENT",
+      "",
+      "Varies according to the detected file type                                      LINE_COMMENT                = $LINE_COMMENT",
+      "Varies according to the detected file type                                      BLOCK_COMMENT_START         = $BLOCK_COMMENT_START",
+      "Varies according to the detected file type                                      BLOCK_COMMENT_END           = See next line!",
+      "$BLOCK_COMMENT_END"
+    ],
+    "description": "snipvars"
+  },
+  "fixjc": {
+    "prefix": "FIXJC Comment",
+    "body": [
+      "$LINE_COMMENT FIXJC: $CURRENT_YEAR $CURRENT_MONTH_NAME $CURRENT_DATE $0"
+    ],
+    "description": "fixjc"
+  },
+  "date": {
+    "prefix": "Current date",
+    "body": [
+      "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $0"
+    ],
+    "description": "date"
+  },
+  "time": {
+    "prefix": "Current Time",
+    "body": [
+      "$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND $0"
+    ],
+    "description": "time"
+  },
+  "lorem": {
+    "prefix": "lorem_ipsum",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit."
     ],
-    "description": "1 paragraph of lorem ipsum."
+    "description": "lorem"
   },
-  "lorem_ipsum2para": {
-    "prefix": [
-      "lorem2para"
-    ],
+  "lorem2para": {
+    "prefix": "lorem_ipsum2para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra."
     ],
-    "description": "2 paragraphs of lorem ipsum."
+    "description": "lorem2para"
   },
-  "lorem_ipsum3para": {
-    "prefix": [
-      "lorem3para"
-    ],
+  "lorem3para": {
+    "prefix": "lorem_ipsum3para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra.",
       "Aliquet bibendum enim facilisis gravida. Egestas maecenas pharetra convallis posuere morbi leo. Turpis egestas maecenas pharetra convallis posuere morbi leo urna. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Egestas sed sed risus pretium quam vulputate dignissim. Nulla aliquet porttitor lacus luctus. Aenean pharetra magna ac placerat vestibulum lectus mauris. Vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Lorem mollis aliquam ut porttitor leo a. Facilisi etiam dignissim diam quis enim. Sed id semper risus in. Rhoncus dolor purus non enim praesent elementum facilisis. Vel facilisis volutpat est velit egestas dui id ornare. Et tortor consequat id porta nibh venenatis cras sed. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Tellus mauris a diam maecenas sed. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Elit sed vulputate mi sit amet mauris. Ut sem viverra aliquet eget sit amet tellus cras. Malesuada fames ac turpis egestas."
     ],
-    "description": "3 paragraphs of lorem ipsum."
+    "description": "lorem3para"
   },
-  "lorem_ipsum4para": {
-    "prefix": [
-      "lorem4para"
-    ],
+  "lorem4para": {
+    "prefix": "lorem_ipsum4para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra.",
       "Aliquet bibendum enim facilisis gravida. Egestas maecenas pharetra convallis posuere morbi leo. Turpis egestas maecenas pharetra convallis posuere morbi leo urna. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Egestas sed sed risus pretium quam vulputate dignissim. Nulla aliquet porttitor lacus luctus. Aenean pharetra magna ac placerat vestibulum lectus mauris. Vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Lorem mollis aliquam ut porttitor leo a. Facilisi etiam dignissim diam quis enim. Sed id semper risus in. Rhoncus dolor purus non enim praesent elementum facilisis. Vel facilisis volutpat est velit egestas dui id ornare. Et tortor consequat id porta nibh venenatis cras sed. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Tellus mauris a diam maecenas sed. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Elit sed vulputate mi sit amet mauris. Ut sem viverra aliquet eget sit amet tellus cras. Malesuada fames ac turpis egestas.",
       "Ut morbi tincidunt augue interdum velit. Neque sodales ut etiam sit. Sit amet justo donec enim diam vulputate ut pharetra. Volutpat odio facilisis mauris sit amet massa vitae tortor. Ultricies integer quis auctor elit sed vulputate mi sit. Et egestas quis ipsum suspendisse ultrices gravida. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum. Blandit cursus risus at ultrices. Sodales ut eu sem integer vitae justo eget."
     ],
-    "description": "4 paragraphs of lorem ipsum."
+    "description": "lorem4para"
   },
-  "lorem_ipsum5para": {
-    "prefix": [
-      "lorem5para"
-    ],
+  "lorem5para": {
+    "prefix": "lorem_ipsum5para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra.",
@@ -52,12 +134,10 @@
       "Ut morbi tincidunt augue interdum velit. Neque sodales ut etiam sit. Sit amet justo donec enim diam vulputate ut pharetra. Volutpat odio facilisis mauris sit amet massa vitae tortor. Ultricies integer quis auctor elit sed vulputate mi sit. Et egestas quis ipsum suspendisse ultrices gravida. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum. Blandit cursus risus at ultrices. Sodales ut eu sem integer vitae justo eget.",
       "Malesuada bibendum arcu vitae elementum curabitur vitae. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Nulla aliquet enim tortor at auctor urna nunc id cursus. Cursus turpis massa tincidunt dui ut ornare lectus sit. Id leo in vitae turpis massa. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Enim nec dui nunc mattis enim ut. Varius quam quisque id diam. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Est ante in nibh mauris cursus mattis molestie. Vitae purus faucibus ornare suspendisse sed nisi lacus. Elementum nibh tellus molestie nunc non blandit massa enim nec. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Purus faucibus ornare suspendisse sed nisi. Iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Elementum tempus egestas sed sed risus pretium quam vulputate dignissim. Sit amet massa vitae tortor condimentum lacinia quis. Leo vel orci porta non pulvinar neque laoreet suspendisse interdum."
     ],
-    "description": "5 paragraphs of lorem ipsum."
+    "description": "lorem5para"
   },
   "new_bash_file": {
-    "prefix": [
-      "new_bash_file"
-    ],
+    "prefix": "new_bash_file",
     "body": [
       "#!/usr/bin/env bash",
       ". ~/bin/libs/globals.sh",
@@ -97,81 +177,35 @@
       "",
       "$0"
     ],
-    "description": "New bash file template."
+    "description": "new_bash_file"
   },
   "new_python_file": {
-    "prefix": [
-      "new_python_file"
-    ],
+    "prefix": "new_python_file",
     "body": [
-        "#!/usr/bin/env python3",
-        "# ~/bin/libs/globals.py",
-        "from globals import RichWrapper",
-        "",
-        "rw = RichWrapper()",
-        "",
-        "rw.outerror(\"A serious error!\")",
-        "rw.outwarning(\"A warning!\")",
-        "rw.outinfo(\"Some information!\")",
-        "rw.outnote(\"A note!\")",
-        "rw.outbox(\"Colour [red]box\")",
-        "rw.outnonl(\"hello [yellow]world from first outnonl\")",
-        "rw.outnl(\" [red on white] hello [yellow]world from outnl\")",
-        "rw.outline(\"Progress [red]text\")",
-        "rw.runcmd( \"Start message 1...\", \"Done [yellow]thing 1\", \"sleep 1\",)",
-        "",
-        "rw.outline(\"Progress\")",
-        "for step in track(range(100), description=\"Writing some long thing Story...\"):",
-        "    sleep(0.01)",
-        "",
-        "rw.outhr()",
-        "$0",
-        ""
+      "#!/usr/bin/env python3",
+      "# ~/bin/libs/globals.py",
+      "from globals import RichWrapper",
+      "",
+      "rw = RichWrapper()",
+      "",
+      "rw.outerror(\"A serious error!\")",
+      "rw.outwarning(\"A warning!\")",
+      "rw.outinfo(\"Some information!\")",
+      "rw.outnote(\"A note!\")",
+      "rw.outbox(\"Colour [red]box\")",
+      "rw.outnonl(\"hello [yellow]world from first outnonl\")",
+      "rw.outnl(\" [red on white] hello [yellow]world from outnl\")",
+      "rw.outline(\"Progress [red]text\")",
+      "rw.runcmd(\"Start message 1...\", \"Done [yellow]thing 1\", \"sleep 1\")",
+      "",
+      "rw.outline(\"Progress\")",
+      "for step in track(range(100), description=\"Writing some long thing Story...\"):",
+      "    sleep(0.01)",
+      "",
+      "rw.outhr()",
+      "$0",
+      ""
     ],
-    "description": "New python file template."
-  },
-  "variables": {
-    "prefix": "variables",
-    "body": [
-      "$TM_SELECTED_TEXT TM_SELECTED_TEXT The currently selected text or the empty string",
-      "$TM_CURRENT_LINE TM_CURRENT_LINE The contents of the current line",
-      "$TM_CURRENT_WORD TM_CURRENT_WORD The contents of the word under cursor or the empty string",
-      "$TM_LINE_INDEX TM_LINE_INDEX The zero-index based line number",
-      "$TM_LINE_NUMBER TM_LINE_NUMBER The one-index based line number",
-      "$TM_FILENAME TM_FILENAME The filename of the current document",
-      "$TM_FILENAME_BASE TM_FILENAME_BASE The filename of the current document without its extensions",
-      "$TM_DIRECTORY TM_DIRECTORY The directory of the current document",
-      "$TM_FILEPATH TM_FILEPATH The full file path of the current document",
-      "$RELATIVE_FILEPATH RELATIVE_FILEPATH The relative (to the opened workspace or folder) file path of the current document",
-      "",
-      "$CLIPBOARD CLIPBOARD The contents of your clipboard",
-      "$WORKSPACE_NAME WORKSPACE_NAME The name of the opened workspace or folder",
-      "$WORKSPACE_FOLDER WORKSPACE_FOLDER The path of the opened workspace or folder",
-      "",
-      "$CURRENT_YEAR CURRENT_YEAR The current year",
-      "$CURRENT_YEAR_SHORT CURRENT_YEAR_SHORT The current year's last two digits",
-      "$CURRENT_MONTH CURRENT_MONTH The month as two digits (example '02')",
-      "$CURRENT_MONTH_NAME CURRENT_MONTH_NAME The full name of the month (example 'July')",
-      "$CURRENT_MONTH_NAME_SHORT CURRENT_MONTH_NAME_SHORT The short name of the month (example 'Jul')",
-      "$CURRENT_DATE CURRENT_DATE The day of the month",
-      "$CURRENT_DAY_NAME CURRENT_DAY_NAME The name of day (example 'Monday')",
-      "$CURRENT_DAY_NAME_SHORT CURRENT_DAY_NAME_SHORT The short name of the day (example 'Mon')",
-      "$CURRENT_HOUR CURRENT_HOUR The current hour in 24-hour clock format",
-      "$CURRENT_MINUTE CURRENT_MINUTE The current minute",
-      "$CURRENT_SECOND CURRENT_SECOND The current second",
-      "$CURRENT_SECONDS_UNIX CURRENT_SECONDS_UNIX The number of seconds since the Unix epoch",
-      "",
-      "$RANDOM RANDOM 6 random Base-10 digits",
-      "$RANDOM_HEX RANDOM_HEX 7 random Base-16 digits",
-      "$UUID UUID A Version 4 UUID",
-      "",
-      "$BLOCK_COMMENT_START BLOCK_COMMENT_START Example output: in PHP /* or in HTML <!--",
-      "$BLOCK_COMMENT_END BLOCK_COMMENT_END Example output: in PHP */ or in HTML -->",
-      "$LINE_COMMENT LINE_COMMENT Example output: in PHP",
-      "",
-      "$SELECT_RAW SELECT_RAW",
-      "$SELECT_DEDENT SELECT_DEDENT"
-    ],
-    "description": "variables"
+    "description": "new_python_file"
   }
 }

@@ -1,12 +1,44 @@
 {
-    "python": {
-        "prefix": "new_python_file",
-        "body": [
-            "#!/usr/bin/env python3",
-            "import globals",
-            "",
-            "globals.runCommand( \"Start message 1...\", \"Done [yellow]thing 1\", f\"sleep 2\",)",
-            "globals.runCommand( \"Start message 2...\", \"Done [yellow]thing 2\", f\"sleep 3\",)"
-        ]
-    }
+  "basename": {
+    "prefix": "Path manipulation",
+    "body": [
+      "import os",
+      "import pathlib",
+      "",
+      "path = '/a/folder/filename.extension'",
+      "pathname, extension = os.path.splitext(path)",
+      "base = os.path.basename(path)",
+      "filename = pathlib.Path(path).stem",
+      "parts = pathlib.Path(path).parts",
+      "h = pathlib.Path(path).home()",
+      "n = pathlib.Path(path).name",
+      "print(path) # '/a/folder/filename.extension'",
+      "print(pathname) # /a/folder/filename",
+      "print(base) # filename.extension",
+      "print(extension) # .extension",
+      "print(filename) # filename",
+      "print(parts) # ('/', 'a', 'folder', 'filename.extension')",
+      "print(h) # /home/user",
+      "print(n) # filename.extension"
+    ],
+    "description": "basename"
+  },
+  "files_list": {
+    "prefix": "List files",
+    "body": [
+      "import os",
+      "",
+      "dir_list = os.listdir(\"/some/location/\")"
+    ],
+    "description": "files_list"
+  },
+  "environment_variables": {
+    "prefix": "Environment variables",
+    "body": [
+      "import os",
+      "",
+      "HOME=os.environ['HOME']"
+    ],
+    "description": "environment_variables"
+  }
 }

@@ -1,8 +1,6 @@
 {
   "case_statement": {
-    "prefix": [
-      "case_statement"
-    ],
+    "prefix": "case_statement",
     "body": [
       "case $0 in",
       "    PATTERN_1)",
@@ -18,18 +16,16 @@
       "      ;;",
       "esac"
     ],
-    "description": "New bash file template."
+    "description": "case_statement"
   },
   "while_text_file": {
-    "prefix": [
-      "while_text_file"
-    ],
+    "prefix": "while_text_file",
     "body": [
       "INPUT=\"data.cvs\"",
       "",
       "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
       "",
-      "while IFS=\\$'\\\\t' read -r flname dob ssn tel status",
+      "while IFS=\\$'\\t' read -r flname dob ssn tel status",
       "do",
       "    $0echo \"Name : \\$flname\"",
       "    echo \"DOB : \\$dob\"",
@@ -38,27 +34,23 @@
       "    echo \"Status : \\$status\"",
       "done <\"\\$INPUT\""
     ],
-    "description": "New while loop iterating over lines in tsv file."
+    "description": "while_text_file"
   },
   "if_statement": {
-    "prefix": [
-      "if_statement"
-    ],
+    "prefix": "if_statement",
     "body": [
       "if [[ \\$val -ne 0 ]]; then",
       "    $0",
       "elif [[ \\$val -ne 0 ]]",
       "    x=\\$((x-1))",
       "else",
-      "    x=\"\\$x\\n\\$line\"",
+      "    x=\"\\$x\n\\$line\"",
       "fi"
     ],
-    "description": "If statement and conditionals"
+    "description": "if_statement"
   },
   "if_statement_full": {
-    "prefix": [
-      "if_statement_full"
-    ],
+    "prefix": "if_statement_full",
     "body": [
       "# See: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/",
       "$0# ! EXPRESSION             The EXPRESSION is false.",
@@ -83,7 +75,7 @@
       "elif [[ \\$val -ne 0 ]]",
       "    x=((x-1))",
       "else",
-      "    x=\"\\$x\\n\\$line\"",
+      "    x=\"\\$x\n\\$line\"",
       "fi",
       "#",
       "pie=good",
@@ -96,12 +88,10 @@
       "# => 1, no match because there's no literal '[aeoiu]d' inside the word \"good\"",
       "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
     ],
-    "description": "If statement and conditionals"
+    "description": "if_statement_full"
   },
   "while_here_doc": {
-    "prefix": [
-      "while_here_doc"
-    ],
+    "prefix": "while_here_doc",
     "body": [
       "while read pass port user ip files directs; do",
       "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
@@ -110,12 +100,10 @@
       "PASS    PORT    USER    IP    FILES    DIRECTS2",
       "DATA"
     ],
-    "description": "Heredoc"
+    "description": "while_here_doc"
   },
   "func": {
-    "prefix": [
-      "func"
-    ],
+    "prefix": "func",
     "body": [
       "",
       "# $1 {{{",
@@ -125,6 +113,6 @@
       "# }}}",
       ""
     ],
-    "description": "Function with blocks"
+    "description": "func"
   }
 }

@@ -1,15 +1,14 @@
 {
   "property": {
-    "prefix": ["property"],
+    "prefix": "New example properties",
     "body": [
-        "db.billing.rw.driverclass=com.amazon.redshift.jdbc42.Driver",
-        "db.billing.rw.driverclass=com.microsoft.sqlserver.jdbc.SQLServerDriver",
-        "db.billing.rw.driverclass=com.mysql.jdbc.Driver",
-        "db.billing.rw.driverclass=oracle.jdbc.driver.OracleDriver",
-        "db.billing.rw.url=jdbc:mysql://localhost:3306/db?verifyServerCertificate=false&useSSL=false&requireSSL=false&logLevel=ERROR",
-        "db.billing.rw.username=user",
-        "db.billing.rw.password=pwd"
+      "db.default.rw.driverpath=/opt/dbdrivers/postgresql-42.3.2.jar",
+      "db.default.rw.driver=org.postgresql.Driver",
+      "db.default.rw.url=jdbc:postgresql://devdb.hooyu.com:5432/wai",
+      "db.default.rw.url=jdbc:postgresql://localhost:5432/wai",
+      "db.default.rw.username=user",
+      "db.default.rw.password=pwd"
     ],
-    "description": "New property section."
+    "description": "property"
   }
 }

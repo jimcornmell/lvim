@@ -1,31 +1,31 @@
 {
-    "Find constraint links": {
-        "prefix": "select_find_constraint_links",
-        "body": [
-            "SELECT",
-            "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
-            "FROM",
-            "  INFORMATION_SCHEMA.KEY_COLUMN_USAGE",
-            "WHERE",
-            "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
-        ],
-        "description": "Find constraint links"
-    },
-    "Show processes": {
-        "prefix": "showp",
-        "body": [
-            "SHOW processlist;",
-            "SHOW FULL processlist;"
-        ],
-        "description": "Show processes"
-    },
-    "mysql": {
-        "prefix": "mysql drop fk checks",
-        "body": [
-            "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
-            "DROP SCHEMA suppliers;",
-            "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
-        ],
-        "description": "mysql"
-    }
+  "select_find_constraint_links": {
+    "prefix": "Find constraint links",
+    "body": [
+      "SELECT",
+      "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
+      "FROM",
+      "  INFORMATION_SCHEMA.KEY_COLUMN_USAGE",
+      "WHERE",
+      "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
+    ],
+    "description": "select_find_constraint_links"
+  },
+  "showp": {
+    "prefix": "Show processes",
+    "body": [
+      "SHOW processlist;",
+      "SHOW FULL processlist;"
+    ],
+    "description": "showp"
+  },
+  "mysql drop fk checks": {
+    "prefix": "mysql",
+    "body": [
+      "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
+      "DROP SCHEMA suppliers;",
+      "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
+    ],
+    "description": "mysql drop fk checks"
+  }
 }

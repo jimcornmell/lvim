@@ -6,54 +6,18 @@
   },
   "contributes": {
     "snippets": [
-      {
-        "language": "all",
-        "path": "./all.json"
-      },
-      {
-        "language": "cpp",
-        "path": "./cpp.json"
-      },
-      {
-        "language": "groovy",
-        "path": "./groovy.json"
-      },
-      {
-        "language": "java",
-        "path": "./java.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./javascript.json"
-      },
-      {
-        "language": "jproperties",
-        "path": "./jproperties.json"
-      },
-      {
-        "language": "lua",
-        "path": "./lua.json"
-      },
-      {
-        "language": "python",
-        "path": "./python.json"
-      },
-      {
-        "language": "react-ts",
-        "path": "./react-ts.json"
-      },
-      {
-        "language": "sh",
-        "path": "./sh.json"
-      },
-      {
-        "language": "sql",
-        "path": "./sql.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./typescript.json"
-      }
+        { "language": "all",           "path": "./all.json" },
+        { "language": "cpp",           "path": "./cpp.json" },
+        { "language": "groovy",        "path": "./groovy.json" },
+        { "language": "java",          "path": "./java.json" },
+        { "language": "javascript",    "path": "./javascript.json" },
+        { "language": "jproperties",   "path": "./jproperties.json" },
+        { "language": "lua",           "path": "./lua.json" },
+        { "language": "python",        "path": "./python.json" },
+        { "language": "react-ts",      "path": "./react-ts.json" },
+        { "language": "sh",            "path": "./sh.json" },
+        { "language": "sql",           "path": "./sql.json" },
+        { "language": "typescript",    "path": "./typescript.json" }
     ]
   }
 }

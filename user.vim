@@ -82,6 +82,16 @@ function! ExecuteCurrentLine()
     endif
 endfunction
 
+function! PrettyPrintFile()
+    silent write
+    silent exec ':!prettyPrint "'.expand("%:p").'"'
+    echo "Code not formatted"
+endfunction
+
+function! SqlFlip()
+    silent exec ':!$HOME/bin/sak sqlflip'
+endfunction
+
 " Jump, looks under the cursor for a URL, Hex Code, GithubProject or Word!
 function! JumpToSelection()
   let url=matchstr(expand("<cWORD>"), 'http[s]*:\/\/[^ >,;)]*')

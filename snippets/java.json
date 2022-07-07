@@ -109,7 +109,7 @@
     "body": [
       "public class ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ]
@@ -119,7 +119,7 @@
     "body": [
       "public static class ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ]
@@ -129,7 +129,7 @@
     "body": [
       "public interface ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ],
@@ -141,7 +141,7 @@
       "@FunctionalInterface",
       "public interface ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ],
@@ -152,7 +152,7 @@
     "body": [
       "public enum ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ],
@@ -178,7 +178,7 @@
       "@Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE})",
       "public @interface ${1:$TM_FILENAME_BASE} {",
       "",
-      "\t$0",
+      "    $0",
       "",
       "}"
     ],
@@ -205,16 +205,16 @@
       "@Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE})",
       "public @interface $1 {",
       "",
-      "\t$0",
+      "    $0",
       "",
-      "\t@Documented",
-      "\t@Retention(RUNTIME)",
-      "\t@Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE})",
-      "\tpublic @interface List {",
+      "    @Documented",
+      "    @Retention(RUNTIME)",
+      "    @Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE})",
+      "    public @interface List {",
       "",
-      "\t\t$1[] value();",
+      "        $1[] value();",
       "",
-      "\t}",
+      "    }",
       "",
       "}"
     ],
@@ -231,7 +231,7 @@
     "prefix": "if",
     "body": [
       "if ($1) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if statement"
@@ -240,7 +240,7 @@
     "prefix": "if",
     "body": [
       "if (${1:varName} == null) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if null statement"
@@ -249,7 +249,7 @@
     "prefix": "if",
     "body": [
       "if (${1:varName} != null) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if not null statement"
@@ -258,7 +258,7 @@
     "prefix": "if",
     "body": [
       "if (${1:varName} instanceof ${2:$TM_FILENAME_BASE}) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if instanceof statement"
@@ -267,8 +267,8 @@
     "prefix": "if",
     "body": [
       "if (${1:varName} instanceof ${2:$TM_FILENAME_BASE}) {",
-      "\t$2 ${3:varName2} = ($2) $1;",
-      "\t$0",
+      "    $2 ${3:varName2} = ($2) $1;",
+      "    $0",
       "}"
     ],
     "description": "An if instanceof statement then cast"
@@ -277,7 +277,7 @@
     "prefix": "if",
     "body": [
       "if (!(${1:varName} instanceof ${2:$TM_FILENAME_BASE})) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if not instanceof statement"
@@ -286,7 +286,7 @@
     "prefix": "if",
     "body": [
       "if (${1:varName}.isEmpty()) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if empty statement"
@@ -295,7 +295,7 @@
     "prefix": "if",
     "body": [
       "if (!${1:varName}.isEmpty()) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if not empty statement"
@@ -304,7 +304,7 @@
     "prefix": "if",
     "body": [
       "if ((${1:varName} != null) && !${1:varName}.isEmpty()) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if not null and not empty statement"
@@ -313,7 +313,7 @@
     "prefix": "if",
     "body": [
       "if ((${1:varName} == null) || ${1:varName}.isEmpty()) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if null or empty statement"
@@ -322,7 +322,7 @@
     "prefix": "if",
     "body": [
       "if ((${1:varName} == null) || ($2)) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if null or condition statement"
@@ -331,7 +331,7 @@
     "prefix": "if",
     "body": [
       "if ((${1:varName} != null) && ($2)) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An if not null and condition statement"
@@ -361,7 +361,7 @@
     "prefix": "else",
     "body": [
       "else {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "An else statement"
@@ -370,11 +370,11 @@
     "prefix": "switch",
     "body": [
       "switch (${1:varName}) {",
-      "\tcase ${2:value}:",
-      "\t\t$0",
-      "\t\tbreak;",
-      "\tdefault:",
-      "\t\tbreak;",
+      "    case ${2:value}:",
+      "        $0",
+      "        break;",
+      "    default:",
+      "        break;",
       "}"
     ],
     "description": "A switch statement"
@@ -383,8 +383,8 @@
     "prefix": "case",
     "body": [
       "case ${1:value}:",
-      "\t$0",
-      "\tbreak;"
+      "    $0",
+      "    break;"
     ],
     "description": "A case break statement"
   },
@@ -392,7 +392,7 @@
     "prefix": "case",
     "body": [
       "case ${1:value}:",
-      "\treturn $0;"
+      "    return $0;"
     ],
     "description": "A case return statement"
   },
@@ -424,7 +424,7 @@
     "prefix": "try",
     "body": [
       "try {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A try block"
@@ -433,7 +433,7 @@
     "prefix": "tryresource",
     "body": [
       "try ($1) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A try with resources block"
@@ -442,7 +442,7 @@
     "prefix": "catch",
     "body": [
       "catch (${1:Exception} ex) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A catch block"
@@ -451,7 +451,7 @@
     "prefix": "finally",
     "body": [
       "finally {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A finally block"
@@ -460,9 +460,9 @@
     "prefix": "trycatch",
     "body": [
       "try {",
-      "\t$TM_SELECTED_TEXT",
+      "    $TM_SELECTED_TEXT",
       "} catch (${1:Exception} ex) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A try catch block around the selected text"
@@ -471,11 +471,11 @@
     "prefix": "trycatchfinally",
     "body": [
       "try {",
-      "\t$TM_SELECTED_TEXT",
+      "    $TM_SELECTED_TEXT",
       "} catch (${1:Exception} ex) {",
-      "\t$0",
+      "    $0",
       "} finally {",
-      "\t",
+      "    ",
       "}"
     ],
     "description": "A try catch finally block around the selected text"
@@ -604,7 +604,7 @@
     "prefix": "l0",
     "body": [
       "() -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block without arguments"
@@ -620,7 +620,7 @@
     "prefix": "l1",
     "body": [
       "${1:a} -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block with 1 argument"
@@ -636,7 +636,7 @@
     "prefix": "l2",
     "body": [
       "(${1:a}, ${2:b}) -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block with 2 arguments"
@@ -652,7 +652,7 @@
     "prefix": "l3",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}) -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block with 3 arguments"
@@ -668,7 +668,7 @@
     "prefix": "l4",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block with 4 arguments"
@@ -684,7 +684,7 @@
     "prefix": "l5",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A lambda block with 5 arguments"
@@ -693,7 +693,7 @@
     "prefix": "for",
     "body": [
       "for (int i = ${1:0}; i <= ${2:10}; i++) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A for loop over sequence"
@@ -702,7 +702,7 @@
     "prefix": "for",
     "body": [
       "for (int i = ${1:10}; i >= ${2:0}; i--) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A countdown for loop"
@@ -711,7 +711,7 @@
     "prefix": "for",
     "body": [
       "for (int i = 0; i < ${1:array}.length; i++) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A for loop over array"
@@ -720,7 +720,7 @@
     "prefix": "for",
     "body": [
       "for (int i = (${1:array}.length - 1); i >= 0; i--) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A for loop over reverse array"
@@ -729,7 +729,7 @@
     "prefix": "foreach",
     "body": [
       "for (${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} : ${3:values}) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A for loop over iterable"
@@ -738,7 +738,7 @@
     "prefix": "while",
     "body": [
       "while ($1) {",
-      "\t$0",
+      "    $0",
       "}"
     ],
     "description": "A while loop"
@@ -747,7 +747,7 @@
     "prefix": "while",
     "body": [
       "do {",
-      "\t$0",
+      "    $0",
       "} while ($1);"
     ],
     "description": "A do-while loop"
@@ -756,7 +756,7 @@
     "prefix": "main",
     "body": [
       "public static void main(String[] args) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -766,7 +766,7 @@
     "prefix": "method",
     "body": [
       "${1|private,public,protected, |}${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -776,7 +776,7 @@
     "prefix": "method",
     "body": [
       "${1|private,public,protected, |} static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -786,7 +786,7 @@
     "prefix": "method",
     "body": [
       "private${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -796,7 +796,7 @@
     "prefix": "method",
     "body": [
       "private static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -806,7 +806,7 @@
     "prefix": "method",
     "body": [
       "public${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -816,7 +816,7 @@
     "prefix": "method",
     "body": [
       "public static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "\t$0",
+      "    $0",
       "}",
       ""
     ],
@@ -856,15 +856,15 @@
     "body": [
       "@Override",
       "public boolean equals(Object obj) {",
-      "\tif (this == obj) {",
-      "\t\treturn true;",
-      "\t}",
-      "\tif (obj instanceof ${1:$TM_FILENAME_BASE}) {",
-      "\t\t$1 ${2:o} = ($1) obj;",
+      "    if (this == obj) {",
+      "        return true;",
+      "    }",
+      "    if (obj instanceof ${1:$TM_FILENAME_BASE}) {",
+      "        $1 ${2:o} = ($1) obj;",
       "",
-      "\t\treturn ${3:Objects.equals(this.getId(), $2.getId())}$0;",
-      "\t}",
-      "\treturn false;",
+      "        return ${3:Objects.equals(this.getId(), $2.getId())}$0;",
+      "    }",
+      "    return false;",
       "}",
       ""
     ],
@@ -875,7 +875,7 @@
     "body": [
       "@Override",
       "public int hashCode() {",
-      "\treturn Objects.hashCode(${1:getId()});",
+      "    return Objects.hashCode(${1:getId()});",
       "}",
       "$0"
     ],
@@ -985,8 +985,8 @@
     "prefix": "var",
     "body": [
       "String ${1:varName} = new StringBuilder()",
-      "\t$0",
-      "\t.toString();"
+      "    $0",
+      "    .toString();"
     ],
     "description": "A local string variable from StringBuilder"
   },
@@ -994,8 +994,8 @@
     "prefix": "stringb",
     "body": [
       "StringBuilder ${1:builder} = new StringBuilder()",
-      "\t$0",
-      "\t.toString();"
+      "    $0",
+      "    .toString();"
     ],
     "description": "A local StringBuilder variable"
   }

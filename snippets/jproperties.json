@@ -1,6 +1,6 @@
 {
-  "property": {
-    "prefix": "New example properties",
+  "New property entry": {
+    "prefix": "property",
     "body": [
       "db.default.rw.driverpath=/opt/dbdrivers/postgresql-42.3.2.jar",
       "db.default.rw.driver=org.postgresql.Driver",
@@ -9,6 +9,6 @@
       "db.default.rw.username=user",
       "db.default.rw.password=pwd"
     ],
-    "description": "property"
+    "description": "New property entry"
   }
 }

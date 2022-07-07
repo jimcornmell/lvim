@@ -1,6 +1,6 @@
 {
-  "class": {
-    "prefix": "Class",
+  "New JS class": {
+    "prefix": "class",
     "body": [
       "/**",
       " * @author ${VIM:\\$USER}",
@@ -11,6 +11,6 @@
       " }",
       "}"
     ],
-    "description": "class"
+    "description": "New JS class"
   }
 }

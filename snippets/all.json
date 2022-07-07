@@ -90,22 +90,22 @@
     ],
     "description": "separated"
   },
-  "fixjc": {
-    "prefix": "FIXJC Comment",
+  "FIXJC Comment": {
+    "prefix": "fixjc",
     "body": [
       "$LINE_COMMENT FIXJC: $CURRENT_YEAR $CURRENT_MONTH_NAME $CURRENT_DATE $0"
     ],
     "description": "fixjc"
   },
   "date": {
-    "prefix": "Current date",
+    "prefix": "date",
     "body": [
       "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $0"
     ],
     "description": "date"
   },
   "time": {
-    "prefix": "Current Time",
+    "prefix": "time",
     "body": [
       "$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND $0"
     ],
@@ -156,16 +156,31 @@
     ],
     "description": "lorem5para"
   },
-  "new_bash_file": {
+  "bash_new_file": {
     "prefix": "new_bash_file",
     "body": [
       "#!/usr/bin/env bash",
+      "# @version       1.0",
+      "# @script        # TODO: name",
+      "# @description   # TODO: desc",
+      "",
       ". ~/bin/libs/globals.sh",
       "",
-      "# $1",
-      "# E.g: $2",
-      "",
       "CMD=$(basename \\$0)",
+      "",
+      "#  __                  _   _",
+      "# / _|_   _ _ __   ___| |_(_) ___  _ __  ___",
+      "#| |_| | | | '_ \\ / __| __| |/ _ \\| '_ \\/ __|",
+      "#|  _| |_| | | | | (__| |_| | (_) | | | \\__ \\",
+      "#|_|  \\__,_|_| |_|\\___|\\__|_|\\___/|_| |_|___/",
+      "",
+      "# printUsage {{{",
+      "function_name() {",
+      "    local firstParam=\\$1; shift",
+      "    local secondParam=\\$1; shift",
+      "    # TODO: func",
+      "}",
+      "# }}}",
       "",
       "# printUsage {{{",
       "printUsage() {",
@@ -195,11 +210,66 @@
       "    printUsage \"Missing Arguments\" 1",
       "fi",
       "",
-      "$0"
+      "# _ __ ___   __ _(_)_ __",
+      "#| '_ ` _ \\ / _` | | '_ \\",
+      "#| | | | | | (_| | | | | |",
+      "#|_| |_| |_|\\__,_|_|_| |_|",
+      "",
+      "$0",
+      "main() {",
+      "    while getopts :${3:?}a-:fqvh arg",
+      "    do",
+      "        case \\$arg in",
+      "            -)",
+      "                if [[ \\${!OPTIND} == -* ]]; then",
+      "                    unset -v value",
+      "                else",
+      "                    value=\"\\${!OPTIND}\"",
+      "                    ((OPTIND++))",
+      "                fi",
+      "                case \\$OPTARG in",
+      "                    host)",
+      "                        HOST=\\$value",
+      "                        ;;",
+      "                    port)",
+      "                        if [[ ! \\$value =~ ^[0-9]+\\$ ]]; then",
+      "                            print_error \"L'option --\\$OPTARG a besoin d'un entier en parametre. \\\"\\$value\\\" n'est pas un entier.\"",
+      "                            usage",
+      "                            exit 2",
+      "                        fi",
+      "                        ;;",
+      "                    *)",
+      "                        print_error \"Le parametre '--\\$OPTARG' n'est pas reconnu !\"",
+      "                        usage",
+      "                        exit 2",
+      "                        ;;",
+      "                    esac",
+      "                ;;",
+      "            a)",
+      "                [[ \\$OPTARG == -* ]] && print_error \"L'option -\\$arg requiert un argument !\" && usage && exit 2",
+      "                ;;",
+      "            ${3})",
+      "                ${4:: #statements}",
+      "                ;;",
+      "            f) FORCE=1 ;;",
+      "            q) QUIET=1 ;;",
+      "            v) VERBOSE=1 ;;",
+      "            :|?|h)",
+      "                [[ \\$arg == \\? ]] && print_error \"L'option -\\$OPTARG n'est pas prise en charge !\"",
+      "                [[ \\$arg == : ]] && print_error \"L'option -\\$OPTARG requiert un argument !\"",
+      "                usage",
+      "                exit \\$([[ \\$arg == h ]] && echo 0 || echo 2)",
+      "                ;;",
+      "        esac",
+      "    done",
+      "}",
+      "",
+      "main \"\\$@\"",
+      ""
     ],
-    "description": "new_bash_file"
+    "description": "New script template"
   },
-  "new_python_file": {
+  "python_new_file": {
     "prefix": "new_python_file",
     "body": [
       "#!/usr/bin/env python3",
@@ -226,6 +296,6 @@
       "$0",
       ""
     ],
-    "description": "new_python_file"
+    "description": "python_new_file"
   }
 }

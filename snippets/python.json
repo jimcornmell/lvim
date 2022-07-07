@@ -1,6 +1,6 @@
 {
-  "basename": {
-    "prefix": "Path manipulation",
+  "Path manipulation": {
+    "prefix": "basename",
     "body": [
       "import os",
       "import pathlib",
@@ -20,11 +20,10 @@
       "print(parts) # ('/', 'a', 'folder', 'filename.extension')",
       "print(h) # /home/user",
       "print(n) # filename.extension"
-    ],
-    "description": "basename"
+    ]
   },
   "files_list": {
-    "prefix": "List files",
+    "prefix": "listfiles",
     "body": [
       "import os",
       "",
@@ -32,13 +31,1114 @@
     ],
     "description": "files_list"
   },
-  "environment_variables": {
-    "prefix": "Environment variables",
+  "Environment variables": {
+    "prefix": "environment_variables",
     "body": [
       "import os",
       "",
       "HOME=os.environ['HOME']"
+    ]
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if condition:",
+      "  pass"
     ],
-    "description": "environment_variables"
+    "description": "if Statements"
+  },
+  "ifelif": {
+    "prefix": "ifelif",
+    "body": [
+      "if condition:",
+      "  pass",
+      "elif condition:",
+      "  pass"
+    ],
+    "description": "if/else if Statements"
+  },
+  "ifelifelse": {
+    "prefix": "ifelifelse",
+    "body": [
+      "if condition:",
+      "  pass",
+      "elif condition:",
+      "  pass",
+      "else:",
+      "  pass"
+    ],
+    "description": "if/else if/else Statements"
+  },
+  "ifel": {
+    "prefix": "ifelse",
+    "body": [
+      "if condition:",
+      "  pass",
+      "else:",
+      "  pass"
+    ],
+    "description": "if/else Statements"
+  },
+  "elif": {
+    "prefix": "else",
+    "body": [
+      "else:",
+      "  pass"
+    ],
+    "description": "else Statements"
+  },
+  "ifshort": {
+    "prefix": "ifshort",
+    "body": [
+      "print('A') if a > b else print('A')"
+    ],
+    "description": "ifshort Statements"
+  },
+  "for=>": {
+    "prefix": "for",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "for x in fruits:",
+      "  print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>through_a_string": {
+    "prefix": "for=>through_a_string",
+    "body": [
+      "for x in 'banana':",
+      "  print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>break_statement": {
+    "prefix": "for=>break_statement",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "for x in fruits:",
+      " print(x)",
+      " if x == 'banana':",
+      "   break"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>continue_statement": {
+    "prefix": "for=>continue_statement",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "for x in fruits:",
+      " print(x)",
+      " if x == 'banana':",
+      "   continue",
+      " print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>range_function_1": {
+    "prefix": "for=>range_function_1",
+    "body": [
+      "for x in range(6):",
+      " print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>range_function_2": {
+    "prefix": "for=>range_function_2",
+    "body": [
+      "for x in range(2, 6):",
+      " print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>range_function_3": {
+    "prefix": "for=>range_function_3",
+    "body": [
+      "for x in range(2, 30, 3):",
+      " print(x)"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>for_else": {
+    "prefix": "for=>for_else",
+    "body": [
+      "for x in range(2, 6):",
+      " print(x)",
+      "else:",
+      " print('Finally finished!')"
+    ],
+    "description": "An example for using for"
+  },
+  "for=>nested_loops": {
+    "prefix": "for=>for_else",
+    "body": [
+      "adj = ['red', 'big', 'tasty']",
+      "fruits = ['apple', 'banana', 'cherry']",
+      "for x in adj:",
+      "  for y in fruits:",
+      "    print(x, y)"
+    ],
+    "description": "An example for using for"
+  },
+  "while_else": {
+    "prefix": "while_else",
+    "body": [
+      "while expression:",
+      "  pass",
+      "else:",
+      "  pass"
+    ],
+    "description": "while Statements"
+  },
+  "while=>": {
+    "prefix": "while",
+    "body": [
+      "i = 1",
+      "while i < 6:",
+      "  print(i)",
+      "  i += 1"
+    ],
+    "description": "while Statements"
+  },
+  "def=>with_default_value": {
+    "prefix": "def",
+    "body": [
+      "def name(name, lastName='john')",
+      " pass"
+    ],
+    "description": "Defining Function wqith default values"
+  },
+  "list.clear=>": {
+    "prefix": "list.clear=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "fruits.clear()",
+      "print(fruits)"
+    ],
+    "description": "An example for using clear"
+  },
+  "list.copy=>": {
+    "prefix": "list.copy=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "x = fruits.copy()",
+      "print(x)"
+    ],
+    "description": "An example for using copy"
+  },
+  "list.extend=>": {
+    "prefix": "list.extend=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "points = (1, 4, 5, 9)",
+      "fruits.extend(points)",
+      "print(fruits)"
+    ],
+    "description": "An example for using extend"
+  },
+  "list.index=>": {
+    "prefix": "list.index=>",
+    "body": [
+      "fruits = [4, 55, 64, 32, 16, 32]",
+      "x = fruits.index(32)",
+      "print(x)"
+    ],
+    "description": "An example for using index"
+  },
+  "list.insert=>": {
+    "prefix": "list.insert=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "x = fruits.insert(1, 'orange')",
+      "print(x)"
+    ],
+    "description": "An example for using insert"
+  },
+  "list.pop=>": {
+    "prefix": "list.pop=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "fruits.pop(1)",
+      "print(fruits)"
+    ],
+    "description": "An example for using pop"
+  },
+  "list.remove=>": {
+    "prefix": "list.remove=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "fruits.remove('banana')",
+      "print(fruits)"
+    ],
+    "description": "An example for using remove"
+  },
+  "list.reverse=>": {
+    "prefix": "list.reverse=>",
+    "body": [
+      "fruits = ['apple', 'banana', 'cherry']",
+      "fruits.reverse()",
+      "print(fruits)"
+    ],
+    "description": "An example for using reverse"
+  },
+  "list.sort=>": {
+    "prefix": "list.sort=>",
+    "body": [
+      "# A function that returns the length of the value:",
+      "def myFunc(e):",
+      "  return len(e)",
+      "cars = ['Ford', 'Mitsubishi', 'BMW', 'VW']",
+      "cars.sort(reverse=True, key=myFunc)",
+      "print(cars)"
+    ],
+    "description": "An example for using sort"
+  },
+  "comprehensions": {
+    "prefix": "comp=>",
+    "body": [
+      "[ expression for item in list if conditional ]"
+    ],
+    "description": "List Comprehensions"
+  },
+  "list.comp=>_1": {
+    "prefix": "list.comp=>_1",
+    "body": [
+      "x = [i for i in range(10)]",
+      "print(x)"
+    ],
+    "description": "An example for using list comprehension"
+  },
+  "list.comp=>_2": {
+    "prefix": "list.comp=>_2",
+    "body": [
+      "x = [x**2 for x in range(10)]",
+      "print(x)"
+    ],
+    "description": "An example for using list comprehension"
+  },
+  "list.comp=>_3": {
+    "prefix": "list.comp=>_3",
+    "body": [
+      "list1 = [3,4,5]",
+      "multiplied = [item*3 for item in list1]",
+      "print(multiplied)"
+    ],
+    "description": "An example for using list comprehension"
+  },
+  "list.comp=>_4": {
+    "prefix": "list.comp=>_4",
+    "body": [
+      "listOfWords = ['this','is','a','list','of','words']",
+      "items = [ word[0] for word in listOfWords ]",
+      "print(items)"
+    ],
+    "description": "An example for using list comprehension"
+  },
+  "list.comp=>_5": {
+    "prefix": "list.comp=>_5",
+    "body": [
+      "x = [double(x) for x in range(10) if x%2==0]",
+      "print(x)"
+    ],
+    "description": "An example for using list comprehension"
+  },
+  "dictionary.clear=>": {
+    "prefix": "dictionary.clear=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "car.clear()",
+      "print(car)"
+    ],
+    "description": "An example for using clear"
+  },
+  "dictionary.copy=>": {
+    "prefix": "dictionary.copy=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.copy()",
+      "print(x)"
+    ],
+    "description": "An example for using copy"
+  },
+  "dictionary.fromkeys=>": {
+    "prefix": "dictionary.fromkeys=>",
+    "body": [
+      "x = ('key1', 'key2', 'key3')",
+      "thisdict = dict.fromkeys(x)",
+      "print(thisdict)"
+    ],
+    "description": "An example for using fromkeys"
+  },
+  "dictionary.get=>": {
+    "prefix": "dictionary.get=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.get('price', 15000)",
+      "print(x)"
+    ],
+    "description": "An example for using get"
+  },
+  "dictionary.items=>": {
+    "prefix": "dictionary.items=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.items()",
+      "car['year'] = 2018",
+      "print(x)"
+    ],
+    "description": "An example for using items"
+  },
+  "dictionary.keys=>": {
+    "prefix": "dictionary.keys=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.keys()",
+      "car['color'] = 'white'",
+      "print(x)"
+    ],
+    "description": "An example for using keys"
+  },
+  "dictionary.pop=>": {
+    "prefix": "dictionary.pop=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "car.pop('model')",
+      "print(car)"
+    ],
+    "description": "An example for using pop"
+  },
+  "dictionary.popitem=>": {
+    "prefix": "dictionary.popitem=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "car.popitem()",
+      "print(car)"
+    ],
+    "description": "An example for using popitem"
+  },
+  "dictionary.setdefault=>": {
+    "prefix": "dictionary.setdefault=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.setdefault('color', 'white')",
+      "print(x)"
+    ],
+    "description": "An example for using setdefault"
+  },
+  "dictionary.update=>": {
+    "prefix": "dictionary.update=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "car.update({'color': 'White'})",
+      "print(car)"
+    ],
+    "description": "An example for using update"
+  },
+  "dictionary.values=>": {
+    "prefix": "dictionary.values=>",
+    "body": [
+      "car = {",
+      "  'brand': 'Ford',",
+      "  'model': 'Mustang',",
+      "  'year': 1964",
+      "}",
+      "x = car.values()",
+      "car['year'] = 2018",
+      "print(x)"
+    ],
+    "description": "An example for using values"
+  },
+  "tuple.count=>": {
+    "prefix": "tuple.count=>",
+    "body": [
+      "thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)",
+      "x = thistuple.count(5)",
+      "print(x)"
+    ],
+    "description": "An example for using count"
+  },
+  "tuple.index=>": {
+    "prefix": "tuple.index=>",
+    "body": [
+      "thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)",
+      "x = thistuple.index(8)",
+      "print(x)"
+    ],
+    "description": "An example for using index"
+  },
+  "sets.add=>": {
+    "prefix": "sets.add=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "fruits.add('orange') ",
+      "print(fruits)"
+    ],
+    "description": "An example for using add"
+  },
+  "sets.clear=>": {
+    "prefix": "sets.clear=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "fruits.clear()",
+      "print(fruits)"
+    ],
+    "description": "An example for using clear"
+  },
+  "sets.copy=>": {
+    "prefix": "sets.copy=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "x = fruits.copy()",
+      "print(x)"
+    ],
+    "description": "An example for using copy"
+  },
+  "sets.difference=>_1": {
+    "prefix": "sets.difference=>_1",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = x.difference(y)",
+      "print(z)"
+    ],
+    "description": "An example for using difference"
+  },
+  "sets.difference=>_2": {
+    "prefix": "sets.difference=>_2",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = y.difference(x) ",
+      "print(z)"
+    ],
+    "description": "An example for using difference"
+  },
+  "sets.difference_update=>": {
+    "prefix": "sets.difference_update=>",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "x.difference_update(y)",
+      "print(x)"
+    ],
+    "description": "An example for using difference_update"
+  },
+  "sets.discard=>": {
+    "prefix": "sets.discard=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "fruits.discard('banana') ",
+      "print(fruits)"
+    ],
+    "description": "An example for using discard"
+  },
+  "sets.intersection=>_1": {
+    "prefix": "sets.intersection=>_1",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = x.intersection(y)",
+      "print(z)"
+    ],
+    "description": "An example for using intersection"
+  },
+  "sets.intersection=>_2": {
+    "prefix": "sets.intersection=>_2",
+    "body": [
+      "x = {'a', 'b', 'c'}",
+      "y = {'c', 'd', 'e'}",
+      "z = {'f', 'g', 'c'}",
+      "result = x.intersection(y, z)",
+      "print(result)"
+    ],
+    "description": "An example for using intersection"
+  },
+  "sets.intersection_update=>_1": {
+    "prefix": "sets.intersection_update=>_1",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "x.intersection_update(y)",
+      "print(x)"
+    ],
+    "description": "An example for using intersection_update"
+  },
+  "sets.intersection_update=>_2": {
+    "prefix": "sets.intersection_update=>_2",
+    "body": [
+      "x = {'a', 'b', 'c'}",
+      "y = {'c', 'd', 'e'}",
+      "z = {'f', 'g', 'c'}",
+      "x.intersection_update(y, z)",
+      "print(x)"
+    ],
+    "description": "An example for using intersection_update"
+  },
+  "sets.isdisjoint=>_1": {
+    "prefix": "sets.isdisjoint=>_1",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'facebook'}",
+      "z = ",
+      "print(z)"
+    ],
+    "description": "An example for using isdisjoint"
+  },
+  "sets.isdisjoint=>_2": {
+    "prefix": "sets.isdisjoint=>_2",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = x.isdisjoint(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using isdisjoint"
+  },
+  "sets.issubset=>_1": {
+    "prefix": "sets.sets.issubset=>_1",
+    "body": [
+      "x = {'a', 'b', 'c'}",
+      "y = {'f', 'e', 'd', 'c', 'b', 'a'}",
+      "z = x.issubset(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using issubset"
+  },
+  "sets.issubset=>_2": {
+    "prefix": "sets.issubset=>_2",
+    "body": [
+      "x = {'a', 'b', 'c'}",
+      "y = {'f', 'e', 'd', 'c', 'b'}",
+      "z = x.issubset(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using issubset"
+  },
+  "sets.issuperset=>_1": {
+    "prefix": "sets.issuperset=>_1",
+    "body": [
+      "x = {'f', 'e', 'd', 'c', 'b', 'a'}",
+      "y = {'a', 'b', 'c'}",
+      "z = x.issuperset(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using issuperset"
+  },
+  "sets.issuperset=>_2": {
+    "prefix": "sets.issuperset=>_2",
+    "body": [
+      "x = {'f', 'e', 'd', 'c', 'b'}",
+      "y = {'a', 'b', 'c'}",
+      "z = x.issuperset(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using issuperset"
+  },
+  "sets.pop=>": {
+    "prefix": "sets.pop=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "fruits.pop() ",
+      "print(fruits)"
+    ],
+    "description": "An example for using pop"
+  },
+  "sets.remove=>": {
+    "prefix": "sets.remove=>",
+    "body": [
+      "fruits = {'apple', 'banana', 'cherry'}",
+      "fruits.remove('banana') ",
+      "print(fruits)"
+    ],
+    "description": "An example for using remove"
+  },
+  "symmetric_difference": {
+    "prefix": ".symmetric_difference",
+    "body": [
+      "x.symmetric_difference(y)"
+    ],
+    "description": "Returns a set with the symmetric differences of two sets"
+  },
+  "sets.symmetric_difference=>": {
+    "prefix": "sets.symmetric_difference=>",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = x.symmetric_difference(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using symmetric_difference"
+  },
+  "symmetric_difference_update": {
+    "prefix": ".symmetric_difference_update",
+    "body": [
+      "x.symmetric_difference_update(y)"
+    ],
+    "description": "inserts the symmetric differences from this set and another"
+  },
+  "sets.symmetric_difference_update=>": {
+    "prefix": "sets.symmetric_difference_update=>",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "x.symmetric_difference_update(y) ",
+      "print(x)"
+    ],
+    "description": "An example for using symmetric_difference_update"
+  },
+  "sets.union=>_1": {
+    "prefix": "sets.union=>_1",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "z = x.union(y) ",
+      "print(z)"
+    ],
+    "description": "An example for using union"
+  },
+  "sets.union=>_2": {
+    "prefix": "sets.union=>_2",
+    "body": [
+      "x = {'a', 'b', 'c'}",
+      "y = {'f', 'd', 'a'}",
+      "z = {'c', 'd', 'e'}",
+      "result = x.union(y, z) ",
+      "print(result)"
+    ],
+    "description": "An example for using union"
+  },
+  "sets.update=>": {
+    "prefix": "sets.update=>",
+    "body": [
+      "x = {'apple', 'banana', 'cherry'}",
+      "y = {'google', 'microsoft', 'apple'}",
+      "x.update(y) ",
+      "print(x)"
+    ],
+    "description": "An example for using update"
+  },
+  "class": {
+    "prefix": "class=>",
+    "body": [
+      "class MyClass:",
+      "  pass"
+    ],
+    "description": "python class"
+  },
+  "__init__": {
+    "prefix": "__init__=>",
+    "body": [
+      "def __init__(self, name, age):",
+      "  self.name = name",
+      "  self.age = age"
+    ],
+    "description": "__init__ method"
+  },
+  "__iter__": {
+    "prefix": "__iter__=>",
+    "body": [
+      "def __iter__(self):",
+      "  self.a = 1",
+      "  return self"
+    ],
+    "description": "__iter__ method"
+  },
+  "__next__": {
+    "prefix": "__next__=>",
+    "body": [
+      "def __next__(self):",
+      "  x = self.a",
+      "  self.a += 1",
+      "  return x"
+    ],
+    "description": "__next__ method"
+  },
+  "import": {
+    "prefix": "import=>",
+    "body": [
+      "import mymodule as mx"
+    ],
+    "description": "import module"
+  },
+  "tryexcept": {
+    "prefix": "trye=>",
+    "body": [
+      "try:",
+      "  print(x)",
+      "except:",
+      "  print('An exception occurred')"
+    ],
+    "description": "tryexcept method"
+  },
+  "tryexceptfinally": {
+    "prefix": "tryef=>",
+    "body": [
+      "try:",
+      "  print(x)",
+      "except:",
+      "  print('Something went wrong')",
+      "finally:",
+      "  print('The try except is finished')"
+    ],
+    "description": "tryexceptfinally method"
+  },
+  "openFile": {
+    "prefix": "file=>openFile",
+    "body": [
+      "f = open('demofile.txt', 'r')",
+      "print(f.read())"
+    ],
+    "description": "open a file"
+  },
+  "openFileReadLine": {
+    "prefix": "file=>openFileReadLine",
+    "body": [
+      "f = open('demofile.txt', 'r')",
+      "print(f.readline())"
+    ],
+    "description": "Read one line of the file"
+  },
+  "writeExistFile": {
+    "prefix": "file=>writeExistFile",
+    "body": [
+      "f = open('demofile.txt', 'a')",
+      "f.write('Now the file has one more line!')"
+    ],
+    "description": "Write to an Existing File"
+  },
+  "writeOwerWrite": {
+    "prefix": "file=>writeOwerWrite",
+    "body": [
+      "f = open('demofile.txt', 'w')",
+      "f.write('Woops! I have deleted the content!')"
+    ],
+    "description": "Open a file and overwrite the content"
+  },
+  "createFileIfDoesNotExist": {
+    "prefix": "file=>createFileIfDoesNotExist",
+    "body": [
+      "f = open('myfile.txt', 'w')"
+    ],
+    "description": "Create a new file if it does not exist"
+  },
+  "createFile": {
+    "prefix": "file=>createFile",
+    "body": [
+      "f = open('myfile.txt', 'x')"
+    ],
+    "description": "Create a new file"
+  },
+  "deleteFile": {
+    "prefix": "file=>deleteFile",
+    "body": [
+      "#import os",
+      "os.remove('demofile.txt')"
+    ],
+    "description": "delete a file"
+  },
+  "class=>_1": {
+    "prefix": "class=>_1",
+    "body": [
+      "class Person:",
+      "    pass  # An empty block",
+      "p = Person()",
+      "print(p)"
+    ],
+    "description": "oop inheritance example"
+  },
+  "class=>inheritance_1": {
+    "prefix": "class=>inheritance_1",
+    "body": [
+      "class Bird:",
+      "",
+      "   def __init__(self):",
+      "     print('Bird is ready')",
+      "",
+      "   def whoisThis(self):",
+      "     print('Bird')",
+      "",
+      "   def swim(self):",
+      "     print('Swim faster')",
+      "",
+      "# child class",
+      "class Penguin(Bird):",
+      "",
+      "   def __init__(self):",
+      "     # call super() function",
+      "     super().__init__()",
+      "     print('Penguin is ready')",
+      "",
+      "   def whoisThis(self):",
+      "     print('Penguin')",
+      "",
+      "   def run(self):",
+      "     print('Run faster')",
+      "",
+      "peggy = Penguin()",
+      "peggy.whoisThis()",
+      "peggy.swim()",
+      "peggy.run()"
+    ],
+    "description": "oop inheritance example"
+  },
+  "class=>inheritance_2": {
+    "prefix": "class=>inheritance_2",
+    "body": [
+      "class SchoolMember:",
+      "    '''Represents any school member.'''",
+      "    def __init__(self, name, age):",
+      "        self.name = name",
+      "        self.age = age",
+      "        print('(Initialized SchoolMember: {})'.format(self.name))",
+      "    def tell(self):",
+      "        '''Tell my details.'''",
+      "        print('Name:{} Age:{}'.format(self.name, self.age), end=' ')",
+      "class Teacher(SchoolMember):",
+      "    '''Represents a teacher.'''",
+      "    def __init__(self, name, age, salary):",
+      "        SchoolMember.__init__(self, name, age)",
+      "        self.salary = salary",
+      "        print('(Initialized Teacher: {})'.format(self.name))",
+      "    def tell(self):",
+      "        SchoolMember.tell(self)",
+      "        print('Salary: {:d}'.format(self.salary))",
+      "class Student(SchoolMember):",
+      "    '''Represents a student.'''",
+      "    def __init__(self, name, age, marks):",
+      "        SchoolMember.__init__(self, name, age)",
+      "        self.marks = marks",
+      "        print('(Initialized Student: {})'.format(self.name))",
+      "    def tell(self):",
+      "        SchoolMember.tell(self)",
+      "        print('Marks: {:d}'.format(self.marks))",
+      "t = Teacher('Mrs. Shrividya', 40, 30000)",
+      "s = Student('Swaroop', 25, 75)",
+      "# prints a blank line",
+      "print()",
+      "members = [t, s]",
+      "for member in members:",
+      "    # Works for both Teachers and Students",
+      "    member.tell()"
+    ],
+    "description": "oop inheritance example"
+  },
+  "class=>with_attribute_1": {
+    "prefix": "class=>with_attribute_1",
+    "body": [
+      "class Parrot:",
+      "",
+      "# class attribute",
+      " species = 'bird'",
+      "",
+      "# instance attribute",
+      " def __init__(self, name, age):",
+      "    self.name = name",
+      "    self.age = age",
+      "",
+      "# instantiate the Parrot class",
+      "blu = Parrot('Blu', 10)",
+      "woo = Parrot('woo', 15)",
+      "",
+      "# access the class attributes",
+      "print('Blu is a {}'.format(blu.__class__.species))",
+      "print('Woo is also a {}'.format(woo.__class__.species))",
+      "# access the instance attributes",
+      "print('{} is {} years old'.format( blu.name, blu.age))",
+      "print('{} is {} years old'.format( woo.name, woo.age))"
+    ],
+    "description": "class with attribute example"
+  },
+  "class=>with_attribute_2": {
+    "prefix": "class=>with_attribute_2",
+    "body": [
+      "class Person:",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "    def say_hi(self):",
+      "        print('Hello, my name is', self.name)",
+      "p = Person('Swaroop')",
+      "p.say_hi()",
+      "# The previous 2 lines can also be written as",
+      "# Person('Swaroop').say_hi()"
+    ],
+    "description": "class with attribute example"
+  },
+  "class=>with_attribute_3": {
+    "prefix": "class=>with_attribute_3",
+    "body": [
+      "class Robot:",
+      "    '''Represents a robot, with a name.'''",
+      "    # A class variable, counting the number of robots",
+      "    population = 0",
+      "    def __init__(self, name):",
+      "        '''Initializes the data.'''",
+      "        self.name = name",
+      "        print('(Initializing {})'.format(self.name))",
+      "        # When this person is created, the robot",
+      "        # adds to the population",
+      "        Robot.population += 1",
+      "    def die(self):",
+      "        '''I am dying.'''",
+      "        print('{} is being destroyed!'.format(self.name))",
+      "        Robot.population -= 1",
+      "        if Robot.population == 0:",
+      "            print('{} was the last one.'.format(self.name))",
+      "        else:",
+      "            print('There are still {:d} robots working.'.format(",
+      "                Robot.population))",
+      "    def say_hi(self):",
+      "        '''Greeting by the robot.",
+      "        Yeah, they can do that.'''",
+      "        print('Greetings, my masters call me {}.'.format(self.name))",
+      "    @classmethod",
+      "    def how_many(cls):",
+      "        '''Prints the current population.'''",
+      "        print('We have {:d} robots.'.format(cls.population))",
+      "droid1 = Robot('R2-D2')",
+      "droid1.say_hi()",
+      "Robot.how_many()",
+      "droid2 = Robot('C-3PO')",
+      "droid2.say_hi()",
+      "Robot.how_many()",
+      "print('Robots can do some work here.')",
+      "print('Robots have finished their work. So lets destroy them.')",
+      "droid1.die()",
+      "droid2.die()",
+      "Robot.how_many()"
+    ],
+    "description": "class with attribute example"
+  },
+  "class=>with_method_1": {
+    "prefix": "class=>with_method_1",
+    "body": [
+      "class Parrot:",
+      "",
+      "# instance attributes",
+      " def __init__(self, name, age):",
+      "   self.name = name",
+      "   self.age = age",
+      "",
+      "# instance method",
+      " def sing(self, song):",
+      "   return '{} sings {}'.format(self.name, song)",
+      "",
+      " def dance(self):",
+      "   return '{} is now dancing'.format(self.name)",
+      "",
+      "# instantiate the object",
+      "blu = Parrot('Blu', 10)",
+      "# call our instance methods",
+      "print(blu.sing('Happy'))",
+      "print(blu.dance())"
+    ],
+    "description": "class with method example"
+  },
+  "class=>with_method_2": {
+    "prefix": "class=>with_method_2",
+    "body": [
+      "class Person:",
+      "    def say_hi(self):",
+      "        print('Hello, how are you?')",
+      "p = Person()",
+      "p.say_hi()",
+      "# The previous 2 lines can also be written as",
+      "# Person().say_hi()"
+    ],
+    "description": "class with method example"
+  },
+  "class=>encapsulation": {
+    "prefix": "class=>encapsulation",
+    "body": [
+      "class Computer:",
+      "",
+      " def __init__(self):",
+      "   self.__maxprice = 900",
+      "",
+      " def sell(self):",
+      "   print('Selling Price: {}'.format(self.__maxprice))",
+      "",
+      " def setMaxPrice(self, price):",
+      "   self.__maxprice = price",
+      "",
+      "c = Computer()",
+      "c.sell()",
+      "",
+      "# change the price",
+      "c.__maxprice = 1000",
+      "c.sell()",
+      "",
+      "# using setter function",
+      "c.setMaxPrice(1000)",
+      "c.sell()"
+    ],
+    "description": "class encapsulation example"
+  },
+  "class=>polymorphism": {
+    "prefix": "class=>polymorphism",
+    "body": [
+      "class Parrot:",
+      "",
+      " def fly(self):",
+      "   print('Parrot can fly')",
+      "",
+      " def swim(self):",
+      "   print('Parrot can not swim')",
+      "",
+      "class Penguin:",
+      "",
+      " def fly(self):",
+      "   print('Penguin can not fly')",
+      "",
+      " def swim(self):",
+      "   print('Penguin can swim')",
+      "",
+      "# common interface",
+      "def flying_test(bird):",
+      "  bird.fly()",
+      "",
+      "#instantiate objects",
+      "blu = Parrot()",
+      "peggy = Penguin()",
+      "",
+      "# passing the object",
+      "flying_test(blu)",
+      "flying_test(peggy)"
+    ],
+    "description": "class polymorphism example"
   }
 }

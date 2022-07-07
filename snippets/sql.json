@@ -1,6 +1,6 @@
 {
-  "select_find_constraint_links": {
-    "prefix": "Find constraint links",
+  "Find constraint links": {
+    "prefix": "select_find_constraint_links",
     "body": [
       "SELECT",
       "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
@@ -9,18 +9,18 @@
       "WHERE",
       "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
     ],
-    "description": "select_find_constraint_links"
+    "description": "Find constraint links"
   },
-  "showp": {
-    "prefix": "Show processes",
+  "Show process": {
+    "prefix": "showprocesses",
     "body": [
       "SHOW processlist;",
       "SHOW FULL processlist;"
     ],
-    "description": "showp"
+    "description": "Show process"
   },
   "mysql drop fk checks": {
-    "prefix": "mysql",
+    "prefix": "mysqldropfkchecks",
     "body": [
       "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
       "DROP SCHEMA suppliers;",
@@ -31,7 +31,6 @@
   "Create DB": {
     "prefix": "createdb",
     "body": [
-      "-- Create a new database called '${1:DatabaseName}'",
       "CREATE DATABASE ${1:DatabaseName};"
     ],
     "description": "Create a new database"
@@ -39,14 +38,13 @@
   "List databases": {
     "prefix": "databaseslist",
     "body": [
-      "-- Get a list of databases",
       "SELECT datname FROM pg_database",
       "WHERE datistemplate = false;"
     ],
     "description": "List PostgreSQL databases"
   },
   "Create table": {
-    "prefix": "table",
+    "prefix": "createtable",
     "body": [
       "CREATE TABLE subject (",
       "    id INTEGER PRIMARY KEY,",
@@ -60,6 +58,31 @@
       "CREATE INDEX shortname_index ON subject (shortname);"
     ],
     "description": "Create a table"
+  },
+  "Insert": {
+    "prefix": "insert",
+    "body": [],
+    "description": ""
+  },
+  "drop": {
+    "prefix": "drop",
+    "body": [],
+    "description": ""
+  },
+  "select": {
+    "prefix": "select",
+    "body": [],
+    "description": ""
+  },
+  "update": {
+    "prefix": "update",
+    "body": [],
+    "description": ""
+  },
+  "delete": {
+    "prefix": "delete",
+    "body": [],
+    "description": ""
   },
   "Title": {
     "prefix": "table",

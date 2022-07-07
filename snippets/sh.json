@@ -16,7 +16,7 @@
       "      ;;",
       "esac"
     ],
-    "description": "case_statement"
+    "description": ""
   },
   "while_text_file": {
     "prefix": "while_text_file",
@@ -25,7 +25,7 @@
       "",
       "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
       "",
-      "while IFS=\\$'\    ' read -r flname dob ssn tel status",
+      "while IFS=\\$'\\    ' read -r flname dob ssn tel status",
       "do",
       "    $0echo \"Name : \\$flname\"",
       "    echo \"DOB : \\$dob\"",
@@ -115,7 +115,7 @@
     ],
     "description": "func"
   },
-  "Print to console": {
+  "log": {
     "prefix": "log",
     "body": [
       "console.log('$1');",
@@ -123,7 +123,7 @@
     ],
     "description": "Log output to console"
   },
-  "Cat to file": {
+  "cat": {
     "prefix": "cat",
     "body": [
       "cat <<-EOF ${1:>/path/to/file}",
@@ -132,42 +132,31 @@
     ],
     "description": "cat... EOF"
   },
-  "Function": {
+  "function": {
     "prefix": "function",
     "body": [
-      "#",
-      "# TODO function description",
-      "# @param    TODO The first parameter",
-      "# @return",
-      "#",
-      "${1:function_name}() {",
-      "    local ${2:param}=\\$1; shift",
-      "    ${3:echo \"TODO !\"}",
-      "}"
+      "",
+      "$1 () {",
+      "",
+      "    #---- Local Variables ----",
+      "",
+      "    ${2:# This section contains all of the variables you want to use within your function. Be careful not to inadvertently name any of your variables the same as any existing environment variables, as bash scripts do not have function or block scope.",
+      "    # If you need scoping, consider using a subshell.\n\n        # ← put your local variables here.}",
+      "",
+      "    #---- Function Logic ----",
+      "",
+      "    ${3:# This section contains all of the commands you want to run.\n\n        # ← put your commands here.}",
+      "",
+      "    #-------- Cleanup --------",
+      "",
+      "    ${0:# This section contains all of the code you need to unset your local variables.\n\n        # ← unset your local variables here.}",
+      "",
+      "}",
+      ""
     ],
-    "description": "New function"
+    "description": "Stub out a function"
   },
-  "Getopts simple": {
-    "prefix": "getopts",
-    "body": [
-      "while getopts :${1:?}h arg",
-      "do",
-      "    case \\$arg in",
-      "        ${1})",
-      "            ${0:: #statements}",
-      "            ;;",
-      "        :|?|h)",
-      "            [[ \\$arg == \\? ]] && print_error \"L'option -\\$OPTARG n'est pas prise en charge !\"",
-      "            [[ \\$arg == : ]] && print_error \"L'option -\\$OPTARG requiert un argument !\"",
-      "            usage",
-      "            exit \\$([[ \\$arg == h ]] && echo 0 || echo 2)",
-      "            ;;",
-      "    esac",
-      "done"
-    ],
-    "description": "while getopts … done (simple)"
-  },
-  "Getopts full": {
+  "getopts": {
     "prefix": "getopts",
     "body": [
       "while getopts :${1:?}a-:fqvh arg",
@@ -219,19 +208,18 @@
     "description": "while getopts … done"
   },
   "header": {
-    "prefix": "#!",
+    "prefix": "header",
     "body": [
-      "#!/bin/bash",
+      "#!/usr/bin/env bash",
       "#",
-      "# @version         18.6.0-SNAPSHOT",
-      "# @script        t_${1:TODO}.sh",
-      "# @description    ${2:TODO : Script detailed description}",
-      "#",
-      "##"
+      "# @version      1.0",
+      "# @script       # TODO: name",
+      "# @description  # TODO: desc",
+      "#"
     ],
     "description": "header"
   },
-  "heredoc2var": {
+  "read": {
     "prefix": "read",
     "body": [
       "read -r -d '' ${1:variableName} <<-EOF",
@@ -251,36 +239,35 @@
     ],
     "description": "Create temp file into $TMPDIR"
   },
-
-  "Shorthand if..then..else": {
+  "ite": {
     "prefix": "ite",
     "body": [
       "[[ ${1:condition} ]] && ${2:echo \"true\"} || ${3:echo \"false\"}"
     ],
     "description": "[[ ]] && true || false"
   },
-  "stderr to /dev/null": {
+  "2": {
     "prefix": "2",
     "body": [
       "2>/dev/null"
     ],
     "description": "2>/dev/null"
   },
-  "stdout to /dev/null": {
+  "1": {
     "prefix": "1",
     "body": [
       ">/dev/null"
     ],
     "description": ">/dev/null"
   },
-  "stdout & stderr to /dev/null": {
+  "12": {
     "prefix": "12",
     "body": [
       ">/dev/null 2>&1"
     ],
     "description": ">/dev/null 2>&1"
   },
-  "Usage function": {
+  "usage": {
     "prefix": "usage",
     "body": [
       "usage() {",
@@ -300,7 +287,7 @@
     ],
     "description": "Usage fonction template"
   },
-  "while read < file": {
+  "while": {
     "prefix": "while",
     "body": [
       "while read -r line; do",
@@ -309,7 +296,7 @@
     ],
     "description": "While loop to read file"
   },
-  "script template": {
+  "script": {
     "prefix": "script",
     "body": [
       "#!/bin/${1|bash,zsh,sh|}",
@@ -439,8 +426,8 @@
     ],
     "description": "Make a Bash Script with sections for cleanup, environment variables, helper functions, and main script"
   },
-  "minimal script template": {
-    "prefix": "script minimal",
+  "scriptminimal": {
+    "prefix": "scriptminimal",
     "body": [
       "#!/bin/${1|bash,zsh,sh|}",
       "",
@@ -484,14 +471,14 @@
     ],
     "description": "Make a Bash Script with sections for arguments, environment variables, helper functions, and main script"
   },
-  "Escape Special Characters": {
+  "escape": {
     "prefix": "escape",
     "body": [
       "| sed 's/[^a-zA-Z0-9]/\\\\\\&/g'"
     ],
     "description": "put a backslash in front of all special characters."
   },
-  "if_then_else_fi_[": {
+  "if": {
     "prefix": "if",
     "body": [
       "",
@@ -505,8 +492,8 @@
     ],
     "description": "Stub out a simple conditional statement that uses the test command \"[\""
   },
-  "if_then_else_fi_[[": {
-    "prefix": "if regex",
+  "ifregex": {
+    "prefix": "ifregex",
     "body": [
       "",
       "if [[ $1 =~ $2 ]]    # ← see 'man bash' for valid conditional statements.",
@@ -531,8 +518,8 @@
     ],
     "description": "Stub out a for loop"
   },
-  "if-then-else-fi ((": {
-    "prefix": "if arithmetic",
+  "ifarithmetic": {
+    "prefix": "ifarithmetic",
     "body": [
       "",
       "if (( $1 ))    # ← see 'man bash' for valid conditional statements.",
@@ -545,8 +532,8 @@
     ],
     "description": "Stub out a simple conditional statement that uses bash's built in arithmetic operators."
   },
-  "if-command-then-else-fi": {
-    "prefix": "if command",
+  "ifcommand": {
+    "prefix": "ifcommand",
     "body": [
       "${1:    # ← put the command whos exit code you want to check here} &>/dev/null",
       "if [ \\$? -eq 0 ]; then",
@@ -557,8 +544,8 @@
     ],
     "description": "Stub out a conditional statment that checks the exit code of a command"
   },
-  "for i in quantity": {
-    "prefix": "for i",
+  "fori": {
+    "prefix": "fori",
     "body": [
       "",
       "for (( i=$1; i<$2; i++ ))",
@@ -569,8 +556,8 @@
     ],
     "description": "Stub out a for loop that iterates over a number, such as the length of a string, which can be accessed with snippet \"length of string\""
   },
-  "read while": {
-    "prefix": "read while",
+  "readwhile": {
+    "prefix": "readwhile",
     "body": [
       "",
       "while read line",
@@ -580,52 +567,28 @@
     ],
     "description": "For each line of output, run a command."
   },
-  "read user input": {
-    "prefix": "read input",
+  "readinput": {
+    "prefix": "readinput",
     "body": [
       "read -p \"${1:Enter Input}\" ${2:INPUT}",
       "${3:echo \\$INPUT}"
     ],
     "description": "prompt user for input."
   },
-  "string length": {
-    "prefix": "length of variable string",
+  "lengthofvariablestring": {
+    "prefix": "lengthofvariablestring",
     "body": [
       "\\${#${0:variable-name-here}\\}"
     ],
     "description": "get length of a variable that is a string."
   },
-  "character in string": {
-    "prefix": "character in variable string",
+  "characterinvariablestring": {
+    "prefix": "characterinvariablestring",
     "body": [
       "\\${${1:variable-name-here}:${2:index-of-character}:${0:number-of-characters-from-index-onwards-to-return}\\}"
     ]
   },
-  "function": {
-    "prefix": "function",
-    "body": [
-      "",
-      "$1 () {",
-      "",
-      "    #---- Local Variables ----",
-      "",
-      "    ${2:# This section contains all of the variables you want to use within your function. Be careful not to inadvertently name any of your variables the same as any existing environment variables, as bash scripts do not have function or block scope.",
-      "    # If you need scoping, consider using a subshell.\n\n        # ← put your local variables here.}",
-      "",
-      "    #---- Function Logic ----",
-      "",
-      "    ${3:# This section contains all of the commands you want to run.\n\n        # ← put your commands here.}",
-      "",
-      "    #-------- Cleanup --------",
-      "",
-      "    ${0:# This section contains all of the code you need to unset your local variables.\n\n        # ← unset your local variables here.}",
-      "",
-      "}",
-      ""
-    ],
-    "description": "Stub out a function"
-  },
-  "select statement": {
+  "select": {
     "prefix": "select",
     "body": [
       "",
@@ -642,21 +605,7 @@
     ],
     "description": "select from a menu of items"
   },
-  "printf statement": {
-    "prefix": "printf",
-    "body": [
-      "${1|printf,print-if-verbose|} ${4|\",\"\\n,\"\\n\\n,\"\\n\\n\\n,\"\\n\\n\\n\\n,\"\\n\\n\\n\\n\\n|}$0${5|\",\\n\",\\n\\n\",\\n\\n\\n\",\\n\\n\\n\\n\",\\n\\n\\n\\n\\n\"|} | ${2|fold -w $(tput cols),fold -w $(( $(tput cols) - 1 * $(tput it) )) \\| awk '{print \"\    \"$0}',fold -w $(( $(tput cols) - 2 * $(tput it) )) \\| awk '{print \"\    \    \"$0}',fold -w $(( $(tput cols) - 3 * $(tput it) )) \\| awk '{print \"\    \    \    \"$0}',fold -w $(( $(tput cols) - 4 * $(tput it) )) \\| awk '{print \"\    \    \    \    \"$0}',fold -w $(( $(tput cols) - 5 * $(tput it) )) \\| awk '{print \"\    \    \    \    \    \"$0}'|} ${3:1>&2}"
-    ],
-    "description": "printf with newlines and text wrapping. Default options send to standard error, not standard output."
-  },
-  "newline and tab": {
-    "prefix": "new tab",
-    "body": [
-      "\\n${1|\    ,\    \    ,\    \    \    ,\    \    \    \    ,\\n\    ,\\n\    \    ,\\n\    \    \    ,\\n\    \    \    \    |}$0"
-    ],
-    "description": "newline with one to four tabs."
-  },
-  "case statement": {
+  "case": {
     "prefix": "case",
     "body": [
       "",
@@ -670,7 +619,7 @@
     ],
     "description": "case statement. Use the switch statement snippet \"switch\" to add one or more switches to the case statement."
   },
-  "switch statement": {
+  "switch": {
     "prefix": "switch",
     "body": [
       "$1 )",
@@ -679,8 +628,8 @@
     ],
     "description": "switch for case statement. Use one or more of these inside a case statement."
   },
-  "multi-switch statement": {
-    "prefix": "switch multi",
+  "switchmulti": {
+    "prefix": "switchmulti",
     "body": [
       "$1 | $2 )",
       "    ${0:    # ← put your command here}",
@@ -688,81 +637,81 @@
     ],
     "description": "switch for case statement that accepts either one condition OR another. Use one or more of these inside a case statement."
   },
-  "grep for string that ends with pattern": {
-    "prefix": "grep ends with",
+  "grependswith": {
+    "prefix": "grependswith",
     "body": [
       "grep \"$0\"\\$"
     ],
     "description": "Search a string for a pattern that occurs at the end of the string. Especially useful for finding file extensions."
   },
-  "grep for string that starts with pattern": {
-    "prefix": "grep starts with",
+  "grepstartswith": {
+    "prefix": "grepstartswith",
     "body": [
       "grep ^\"$0\""
     ],
     "description": "Search a string for a pattern that occurs at the start of the string. Especially useful for finding comments in scripts"
   },
-  "strip pattern from end of string": {
-    "prefix": "strip from end",
+  "stripfromend": {
+    "prefix": "stripfromend",
     "body": [
       "sed \"s/$0\\$//g\""
     ],
     "description": "Use sed to remove a pattern from the end of a string. Super useful for removing extensions from file names."
   },
-  "strip pattern from beginning of string": {
-    "prefix": "strip from start",
+  "stripfromstart": {
+    "prefix": "stripfromstart",
     "body": [
       "sed \"s/^$0//g\""
     ],
     "description": "Use sed to remove a pattern from the start of a string. Super useful for uncommenting text."
   },
-  "replace part of a string": {
+  "replace": {
     "prefix": "replace",
     "body": [
       "sed \"s/$1/$0/g\""
     ],
     "description": "use sed to replace part of a string. Super useful for updating key value pairs in configuration files."
   },
-  "extract nth-from-last field from string": {
-    "prefix": "extract nth-from-last field",
+  "extractnth-from-lastfield": {
+    "prefix": "extractnth-from-lastfield",
     "body": [
       "awk 'BEGIN { FS=\"$1\" }{ print $(NF-$2)}'",
       "${0:#field separator↑               ↑ nth-from-last}"
     ],
     "description": "Use awk to extract the nth-from-last field in a string, where the field is defined by the field separator \"FS=\" and the nth-from-last field is defined by $(NF-n)"
   },
-  "extract nth field from string": {
-    "prefix": "extract nth field",
+  "extractnthfield": {
+    "prefix": "extractnthfield",
     "body": [
       "awk 'BEGIN { FS=\"$1\" }{ print $($2)}'",
       "${0:#field separator↑        nth ↑}"
     ],
     "description": "Use awk to extract the first field in a string, where the field is defined by the field separator \"FS=\" and the nth field is defined by $(n)"
   },
-  "create a tarball": {
-    "prefix": "tar -cpvf",
+  "tar-cpvf": {
+    "prefix": "tar-cpvf",
     "body": [
       "${1|tar,sudo tar|} -cpvf $2.tar $2",
       "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
     ],
     "description": "Bundle one or more files or directories into a tarball with \"-c\". Preserve permissions with \"-p\". Show progress with \"-v\". Output to a .tar with \"-f\"."
   },
-  "append to a tarball": {
-    "prefix": "tar -rpvf",
+  "tar-rpvf": {
+    "prefix": "tar-rpvf",
     "body": [
       "${1|tar,sudo tar|} -rpvf $2.tar $2",
       "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
     ],
     "description": "Add one or more files or directories into a tarball with \"-r\". Preserve permissions with \"-p\". Show progress with \"-v\".  Append to a .tar with \"-f\"."
   },
-  "list contents of a tape archive": {
-    "prefix": "tar -tvf $0.tar",
+  "tar-tvf$0.tar": {
+    "prefix": "tar-tvf$0.tar",
     "body": [
       "${1|tar,sudo tar|} -tvf $2.tar $0"
     ],
     "description": "List table of contents with \"-t\". Preserve permissions with \"-p\". Show permissions \"-v\".  Select the tar you want to list with \"-f\"."
   },
-  "compress a tape archive": {
+  "gzip": {
     "prefix": "gzip",
     "body": [
       "${1|gzip,sudo gzip|} --verbose $2.tar",
@@ -770,39 +719,15 @@
     ],
     "description": "Compress a tape archive (tar) with \"gzip\"."
   },
-  "extract contents from a compressed tape archive": {
-    "prefix": "tar -xpvzf",
+  "tar-xpvzf": {
+    "prefix": "tar-xpvzf",
     "body": [
       "tar -xpvzf $1.tar.gz",
       "${0:# ↑ Pay attention to the user who made the tarfile you want to extract. If you had to \"sudo\" to make it, then it is owned by \"root\", and you need to \"sudo\" to extract it - otherwise \"tar\" will inadvertently make your current user the owner of all of the files, ruining the permissions in the process!}"
     ],
     "description": "Extract all files and directories from a tarball with \"-x\". Preserve permissions with \"-p\". Show progress with \"-v\". Decompress the contents of the tarball with \"-z\" Select the tar.gz file to extract from with \"-f\"."
   },
-  "usage": {
-    "prefix": "usage",
-    "body": [
-      "",
-      "usage () {",
-      "    printf \"\\n\\n\\e[1mNAME\\e[0m\\n\" 1>&2",
-      "    printf \"\    \\e[1m${1:command-name-here}\\e[0m -- ${2:one-sentence description of what the command does.}\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\\e[1mSYNOPSIS\\e[0m\\n\" 1>&2",
-      "\n    ${3:# ↑ The synopsis describes the syntax of the command.\n    # Think of it as a command's 'method signature'\n    #\n    #    Here are the rules for writing a synopsis:\n    #\n    #    The synopsis should contain the name of\n    #    the command, the flags that can be supplied\n    #    to the command, and the arguments that\n    #    can be supplied with each flag.\n    #\n    #        A flag is a letter preceded by a single\n    #        dash '-', or a word preceded by two dashes\n    #        '--'. Flags are like switches. They modify\n    #        how the script runs. They should be \n    #        typed exactly as defined in the command's\n    #        usage statement or man page.\n    #\n    #        An argument is a string that is user-defined.\n    #        Arguments typically describe file paths\n    #        or filenames.\n    #\n    #    The name of the command, and all flags should\n    #    be bold. Any time you see text that is bold, it\n    #    should be typed as is.\n    #\n    #    All arguments should be italicized. Any time you\n    #    see text that is italicized, you should replace\n    #    it with your own string. \n    #\n    #    Some flags and arguments are optional. That means\n    #    that you don't have to supply them to the command\n    #    in order to run it. Surround these flags and\n    #    arguments with square brackets '[' ']'.\n    #\n    #    Some flags and some arguments are mutually exclusive.\n    #    That means that given a set of flags or arguments,\n    #    you can only choose one. Separate each flag in a\n    #    set of mutually exclusive flags with a pipe character\n    #    '|'.\n    #\n    #    Some commands accept an unlimited list of\n    #    arguments. Use an ellipsis '...' to indicate that\n    #    an argument can be followed by an unlimited list.}\n",
-      "    printf \"\    $4\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\\e[1mDESCRIPTION\\e[0m\\n\" 1>&2",
-      "    printf \"\    $5\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\\e[1mOPTIONS\\e[0m\\n\" 1>&2",
-      "    printf \"\    $6\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\\e[1mEXAMPLES\\e[0m\\n\" 1>&2",
-      "    printf \"\    $7\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\\e[1mFILES\\e[0m\\n\" 1>&2",
-      "    printf \"\    $0\" | fold -w $(( $(tput cols) - 1 * $(tput it) )) 1>&2",
-      "    printf \"\\n\\n\" 1>&2",
-      "}",
-      ""
-    ],
-    "description": "make a usage function. This function describes how to use the shell script you're writing. It is printed to standard error whenever a user inputs the incorrect arguments. It is printed to standard output whenever the user asks for help."
-  },
-  "timestamp": {
+  "datesinceepoch": {
     "prefix": "datesinceepoch",
     "body": [
       "datesinceepoch=$(date +%s)"
@@ -816,8 +741,8 @@
     ],
     "description": "Exit and throw correct error code. For list of all codes, see: http://www.tldp.org/LDP/abs/html/exitcodes.html"
   },
-  "heredoc to file": {
-    "prefix": "heredoc to file",
+  "heredoctofile": {
+    "prefix": "heredoctofile",
     "body": [
       "${1:sudo} ${2|tee,tee -a|} ${3:filename} <<- ${4|EOF,\"EOF\"|} > /dev/null ${5:# (1) use `sudo` to send text to a file that the current user can't write to. (2) use `tee` to overwrite it; use `tee -a` to append to it. (3) put EOF (aka the delimeter) into quotes if you do NOT want the shell to expand parameters or substitute commands }",
       "$0",
@@ -825,7 +750,7 @@
     ],
     "description": "Append multi-line text to a file, or feed it into the standard input of a command, with a heredoc"
   },
-  "resolve relative path": {
+  "relpath": {
     "prefix": "relpath",
     "body": [
       "# NOTE: this function only works in a BASH script. Do not use it in a ZSH script.",
@@ -1105,8 +1030,8 @@
     ],
     "description": "combine the relative path TO a script with the relative path FROM a script to another file in order to get the relative path from the current working directory to that file."
   },
-  "stdout stderr to null": {
-    "prefix": "null stdout stderr",
+  "nullstdoutstderr": {
+    "prefix": "nullstdoutstderr",
     "body": [
       "&>/dev/null"
     ],

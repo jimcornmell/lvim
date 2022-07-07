@@ -1,6 +1,6 @@
 {
-  "ctor": {
-    "prefix": "Constructor",
+  "constructor": {
+"prefix":"constructor",
     "body": [
       "/**",
       " *",
@@ -12,8 +12,8 @@
     ],
     "description": "ctor"
   },
-  "class": {
-    "prefix": "Class Definition",
+  "classdefinition": {
+"prefix":"classdefinition",
     "body": [
       "class ${1:name} {",
       " constructor(${2:parameters}) {",
@@ -23,8 +23,8 @@
     ],
     "description": "class"
   },
-  "public method": {
-    "prefix": "Public Method Definition",
+  "publicmethoddefinitionmethod": {
+"prefix":"publicmethoddefinition",
     "body": [
       "/**",
       " * ${1:name}",
@@ -35,8 +35,8 @@
     ],
     "description": "public method"
   },
-  "private method": {
-    "prefix": "Private Method Definition",
+  "privatemethoddefinitionmethod": {
+"prefix":"privatemethoddefinition",
     "body": [
       "private ${1:name}() {",
       " $0",
@@ -44,15 +44,15 @@
     ],
     "description": "private method"
   },
-  "import statement": {
-    "prefix": "Import external module.",
+  "importexternalmodulestatement": {
+"prefix":"importexternalmodule.",
     "body": [
       "import { $0 } from \"${1:module}\";"
     ],
     "description": "import statement"
   },
-  "get": {
-    "prefix": "Property getter",
+  "propertygetter": {
+"prefix":"propertygetter",
     "body": [
       "",
       "public get ${1:value}() : ${2:string} {",
@@ -62,32 +62,32 @@
     ],
     "description": "get"
   },
-  "log": {
-    "prefix": "Log to the console",
+  "logtotheconsole": {
+"prefix":"logtotheconsole",
     "body": [
       "console.log($1);",
       "$0"
     ],
     "description": "log"
   },
-  "warn": {
-    "prefix": "Log warning to console",
+  "logwarningtoconsole": {
+"prefix":"logwarningtoconsole",
     "body": [
       "console.warn($1);",
       "$0"
     ],
     "description": "warn"
   },
-  "error": {
-    "prefix": "Log error to console",
+  "logerrortoconsole": {
+"prefix":"logerrortoconsole",
     "body": [
       "console.error($1);",
       "$0"
     ],
     "description": "error"
   },
-  "prop": {
-    "prefix": "Define a full property",
+  "defineafullproperty": {
+"prefix":"defineafullproperty",
     "body": [
       "",
       "private _${1:value} : ${2:string};",
@@ -101,16 +101,16 @@
     ],
     "description": "prop"
   },
-  "ref": {
-    "prefix": "Triple-slash reference",
+  "triple-slashreference": {
+"prefix":"triple-slashreference",
     "body": [
       "/// <reference path=\"$1\" />",
       "$0"
     ],
     "description": "ref"
   },
-  "set": {
-    "prefix": "Property setter",
+  "propertysetter": {
+"prefix":"propertysetter",
     "body": [
       "",
       "public set ${1:value}(v : ${2:string}) {",
@@ -120,16 +120,16 @@
     ],
     "description": "set"
   },
-  "throw": {
-    "prefix": "Throw Exception",
+  "throwexception": {
+"prefix":"throwexception",
     "body": [
       "throw \"$1\";",
       "$0"
     ],
     "description": "throw"
   },
-  "for": {
-    "prefix": "For Loop",
+  "forloop": {
+"prefix":"forloop",
     "body": [
       "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
       " const ${3:element} = ${2:array}[${1:index}];",
@@ -138,8 +138,8 @@
     ],
     "description": "for"
   },
-  "foreach": {
-    "prefix": "For-Each Loop using =>",
+  "for-eachloopusing": {
+"prefix":"for-eachloopusing=>",
     "body": [
       "${1:array}.forEach(${2:element} => {",
       " $0",
@@ -147,8 +147,8 @@
     ],
     "description": "foreach"
   },
-  "forin": {
-    "prefix": "For-In Loop",
+  "for-inloop": {
+"prefix":"for-inloop",
     "body": [
       "for (const ${1:key} in ${2:object}) {",
       " if (${2:object}.hasOwnProperty(${1:key})) {",
@@ -159,8 +159,8 @@
     ],
     "description": "forin"
   },
-  "forof": {
-    "prefix": "For-Of Loop",
+  "for-ofloop": {
+"prefix":"for-ofloop",
     "body": [
       "for (const ${1:iterator} of ${2:object}) {",
       " $0",
@@ -168,8 +168,8 @@
     ],
     "description": "forof"
   },
-  "function": {
-    "prefix": "Function Statement",
+  "functionstatement": {
+"prefix":"functionstatement",
     "body": [
       "function ${1:name}(${2:params}:${3:type}) {",
       " $0",
@@ -177,8 +177,8 @@
     ],
     "description": "function"
   },
-  "if": {
-    "prefix": "If Statement",
+  "ifstatement": {
+"prefix":"ifstatement",
     "body": [
       "if (${1:condition}) {",
       " $0",
@@ -186,8 +186,8 @@
     ],
     "description": "if"
   },
-  "ifelse": {
-    "prefix": "If-Else Statement",
+  "if-elsestatement": {
+"prefix":"if-elsestatement",
     "body": [
       "if (${1:condition}) {",
       " $0",
@@ -197,15 +197,15 @@
     ],
     "description": "ifelse"
   },
-  "new": {
-    "prefix": "New Statement",
+  "newstatement": {
+"prefix":"newstatement",
     "body": [
       "const ${1:name} = new ${2:type}(${3:arguments});$0"
     ],
     "description": "new"
   },
-  "switch": {
-    "prefix": "Switch Statement",
+  "switchstatement": {
+"prefix":"switchstatement",
     "body": [
       "switch (${1:key}) {",
       " case ${2:value}:",
@@ -218,8 +218,8 @@
     ],
     "description": "switch"
   },
-  "while": {
-    "prefix": "While Statement",
+  "whilestatement": {
+"prefix":"whilestatement",
     "body": [
       "while (${1:condition}) {",
       " $0",
@@ -227,8 +227,8 @@
     ],
     "description": "while"
   },
-  "dowhile": {
-    "prefix": "Do-While Statement",
+  "do-whilestatement": {
+"prefix":"do-whilestatement",
     "body": [
       "do {",
       " $0",
@@ -236,8 +236,8 @@
     ],
     "description": "dowhile"
   },
-  "trycatch": {
-    "prefix": "Try-Catch Statement",
+  "try-catchstatement": {
+"prefix":"try-catchstatement",
     "body": [
       "try {",
       " $0",
@@ -247,8 +247,8 @@
     ],
     "description": "trycatch"
   },
-  "settimeout": {
-    "prefix": "Set Timeout Function",
+  "settimeoutfunction": {
+"prefix":"settimeoutfunction",
     "body": [
       "setTimeout(() => {",
       " $0",
@@ -256,15 +256,15 @@
     ],
     "description": "settimeout"
   },
-  "#region": {
-    "prefix": "Region Start",
+  "#regionstart": {
+"prefix":"regionstart",
     "body": [
       "//#region $0"
     ],
     "description": "#region"
   },
-  "#endregion": {
-    "prefix": "Region End",
+  "#regionend": {
+"prefix":"regionend",
     "body": [
       "//#endregion"
     ],

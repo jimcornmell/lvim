@@ -1,12 +1,12 @@
 {
-  "UUID v4": {
+  "uuid": {
     "prefix": "uuid",
     "body": [
       "$UUID"
     ],
     "description": "UUID v4 random string"
   },
-  "List all snippet vars": {
+  "snipvars": {
     "prefix": "snipvars",
     "body": [
       "$BLOCK_COMMENT_START",
@@ -70,7 +70,7 @@
     ],
     "description": "snipvars"
   },
-  "New snippet": {
+  "snippet": {
     "prefix": "snippet",
     "body": [
       "\"Short title\": {",
@@ -83,14 +83,14 @@
     ],
     "description": "Snippet code chunk"
   },
-  "Line 80 chars": {
+  "line80chars": {
     "prefix": "line80chars",
     "body": [
       "$LINE_COMMENT --------------------------------------------------------------------------------"
     ],
     "description": "separated"
   },
-  "FIXJC Comment": {
+  "fixjc": {
     "prefix": "fixjc",
     "body": [
       "$LINE_COMMENT FIXJC: $CURRENT_YEAR $CURRENT_MONTH_NAME $CURRENT_DATE $0"
@@ -111,14 +111,14 @@
     ],
     "description": "time"
   },
-  "lorem": {
+  "lorem_ipsum": {
     "prefix": "lorem_ipsum",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit."
     ],
     "description": "lorem"
   },
-  "lorem2para": {
+  "lorem_ipsum2para": {
     "prefix": "lorem_ipsum2para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
@@ -126,7 +126,7 @@
     ],
     "description": "lorem2para"
   },
-  "lorem3para": {
+  "lorem_ipsum3para": {
     "prefix": "lorem_ipsum3para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
@@ -135,7 +135,7 @@
     ],
     "description": "lorem3para"
   },
-  "lorem4para": {
+  "lorem_ipsum4para": {
     "prefix": "lorem_ipsum4para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
@@ -145,7 +145,7 @@
     ],
     "description": "lorem4para"
   },
-  "lorem5para": {
+  "lorem_ipsum5para": {
     "prefix": "lorem_ipsum5para",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
@@ -156,7 +156,7 @@
     ],
     "description": "lorem5para"
   },
-  "bash_new_file": {
+  "new_bash_file": {
     "prefix": "new_bash_file",
     "body": [
       "#!/usr/bin/env bash",
@@ -269,7 +269,7 @@
     ],
     "description": "New script template"
   },
-  "python_new_file": {
+  "new_python_file": {
     "prefix": "new_python_file",
     "body": [
       "#!/usr/bin/env python3",

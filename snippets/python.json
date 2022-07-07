@@ -1,5 +1,5 @@
 {
-  "Path manipulation": {
+  "basename": {
     "prefix": "basename",
     "body": [
       "import os",
@@ -22,7 +22,7 @@
       "print(n) # filename.extension"
     ]
   },
-  "files_list": {
+  "listfiles": {
     "prefix": "listfiles",
     "body": [
       "import os",
@@ -31,7 +31,7 @@
     ],
     "description": "files_list"
   },
-  "Environment variables": {
+  "environment_variables": {
     "prefix": "environment_variables",
     "body": [
       "import os",
@@ -69,7 +69,7 @@
     ],
     "description": "if/else if/else Statements"
   },
-  "ifel": {
+  "ifelse": {
     "prefix": "ifelse",
     "body": [
       "if condition:",
@@ -79,7 +79,7 @@
     ],
     "description": "if/else Statements"
   },
-  "elif": {
+  "else": {
     "prefix": "else",
     "body": [
       "else:",
@@ -94,7 +94,7 @@
     ],
     "description": "ifshort Statements"
   },
-  "for=>": {
+  "for": {
     "prefix": "for",
     "body": [
       "fruits = ['apple', 'banana', 'cherry']",
@@ -161,16 +161,6 @@
   "for=>for_else": {
     "prefix": "for=>for_else",
     "body": [
-      "for x in range(2, 6):",
-      " print(x)",
-      "else:",
-      " print('Finally finished!')"
-    ],
-    "description": "An example for using for"
-  },
-  "for=>nested_loops": {
-    "prefix": "for=>for_else",
-    "body": [
       "adj = ['red', 'big', 'tasty']",
       "fruits = ['apple', 'banana', 'cherry']",
       "for x in adj:",
@@ -189,7 +179,7 @@
     ],
     "description": "while Statements"
   },
-  "while=>": {
+  "while": {
     "prefix": "while",
     "body": [
       "i = 1",
@@ -199,7 +189,7 @@
     ],
     "description": "while Statements"
   },
-  "def=>with_default_value": {
+  "def": {
     "prefix": "def",
     "body": [
       "def name(name, lastName='john')",
@@ -292,7 +282,7 @@
     ],
     "description": "An example for using sort"
   },
-  "comprehensions": {
+  "comp=>": {
     "prefix": "comp=>",
     "body": [
       "[ expression for item in list if conditional ]"
@@ -492,15 +482,6 @@
     ],
     "description": "An example for using count"
   },
-  "tuple.index=>": {
-    "prefix": "tuple.index=>",
-    "body": [
-      "thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)",
-      "x = thistuple.index(8)",
-      "print(x)"
-    ],
-    "description": "An example for using index"
-  },
   "sets.add=>": {
     "prefix": "sets.add=>",
     "body": [
@@ -629,7 +610,7 @@
     ],
     "description": "An example for using isdisjoint"
   },
-  "sets.issubset=>_1": {
+  "sets.sets.issubset=>_1": {
     "prefix": "sets.sets.issubset=>_1",
     "body": [
       "x = {'a', 'b', 'c'}",
@@ -688,7 +669,7 @@
     "description": "An example for using remove"
   },
   "symmetric_difference": {
-    "prefix": ".symmetric_difference",
+    "prefix": "symmetric_difference",
     "body": [
       "x.symmetric_difference(y)"
     ],
@@ -705,7 +686,7 @@
     "description": "An example for using symmetric_difference"
   },
   "symmetric_difference_update": {
-    "prefix": ".symmetric_difference_update",
+    "prefix": "symmetric_difference_update",
     "body": [
       "x.symmetric_difference_update(y)"
     ],
@@ -752,7 +733,7 @@
     ],
     "description": "An example for using update"
   },
-  "class": {
+  "class=>": {
     "prefix": "class=>",
     "body": [
       "class MyClass:",
@@ -760,7 +741,7 @@
     ],
     "description": "python class"
   },
-  "__init__": {
+  "__init__=>": {
     "prefix": "__init__=>",
     "body": [
       "def __init__(self, name, age):",
@@ -769,7 +750,7 @@
     ],
     "description": "__init__ method"
   },
-  "__iter__": {
+  "__iter__=>": {
     "prefix": "__iter__=>",
     "body": [
       "def __iter__(self):",
@@ -778,7 +759,7 @@
     ],
     "description": "__iter__ method"
   },
-  "__next__": {
+  "__next__=>": {
     "prefix": "__next__=>",
     "body": [
       "def __next__(self):",
@@ -788,14 +769,14 @@
     ],
     "description": "__next__ method"
   },
-  "import": {
+  "import=>": {
     "prefix": "import=>",
     "body": [
       "import mymodule as mx"
     ],
     "description": "import module"
   },
-  "tryexcept": {
+  "trye=>": {
     "prefix": "trye=>",
     "body": [
       "try:",
@@ -805,7 +786,7 @@
     ],
     "description": "tryexcept method"
   },
-  "tryexceptfinally": {
+  "tryef=>": {
     "prefix": "tryef=>",
     "body": [
       "try:",
@@ -817,54 +798,54 @@
     ],
     "description": "tryexceptfinally method"
   },
-  "openFile": {
-    "prefix": "file=>openFile",
+  "file=>openfile": {
+    "prefix": "file=>openfile",
     "body": [
       "f = open('demofile.txt', 'r')",
       "print(f.read())"
     ],
     "description": "open a file"
   },
-  "openFileReadLine": {
-    "prefix": "file=>openFileReadLine",
+  "file=>openfilereadline": {
+    "prefix": "file=>openfilereadline",
     "body": [
       "f = open('demofile.txt', 'r')",
       "print(f.readline())"
     ],
     "description": "Read one line of the file"
   },
-  "writeExistFile": {
-    "prefix": "file=>writeExistFile",
+  "file=>writeexistfile": {
+    "prefix": "file=>writeexistfile",
     "body": [
       "f = open('demofile.txt', 'a')",
       "f.write('Now the file has one more line!')"
     ],
     "description": "Write to an Existing File"
   },
-  "writeOwerWrite": {
-    "prefix": "file=>writeOwerWrite",
+  "file=>writeowerwrite": {
+    "prefix": "file=>writeowerwrite",
     "body": [
       "f = open('demofile.txt', 'w')",
       "f.write('Woops! I have deleted the content!')"
     ],
     "description": "Open a file and overwrite the content"
   },
-  "createFileIfDoesNotExist": {
-    "prefix": "file=>createFileIfDoesNotExist",
+  "file=>createfileifdoesnotexist": {
+    "prefix": "file=>createfileifdoesnotexist",
     "body": [
       "f = open('myfile.txt', 'w')"
     ],
     "description": "Create a new file if it does not exist"
   },
-  "createFile": {
-    "prefix": "file=>createFile",
+  "file=>createfile": {
+    "prefix": "file=>createfile",
     "body": [
       "f = open('myfile.txt', 'x')"
     ],
     "description": "Create a new file"
   },
-  "deleteFile": {
-    "prefix": "file=>deleteFile",
+  "file=>deletefile": {
+    "prefix": "file=>deletefile",
     "body": [
       "#import os",
       "os.remove('demofile.txt')"

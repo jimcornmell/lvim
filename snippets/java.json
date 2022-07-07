@@ -38,7 +38,7 @@
     ],
     "description": "log"
   },
-  "Create a logger with imports": {
+  "logi": {
     "prefix": "logi",
     "body": [
       "import org.slf4j.Logger;",
@@ -48,19 +48,19 @@
       " $0"
     ]
   },
-  "Convert int to string": {
+  "int_to_string": {
     "prefix": "int_to_string",
     "body": [
       "String str = String.valueOf(2);"
     ]
   },
-  "Convert string to int": {
+  "string_to_int": {
     "prefix": "string_to_int",
     "body": [
       "int i = Integer.parseInt(str);"
     ]
   },
-  "Append text to a file": {
+  "file_append_text": {
     "prefix": "file_append_text",
     "body": [
       "BufferedWriter out = null;",
@@ -76,8 +76,8 @@
       "}"
     ]
   },
-  "@Value": {
-    "prefix": "@Value",
+  "@value": {
+    "prefix": "@value",
     "body": [
       "// https://www.baeldung.com/spring-value-annotation",
       "@Value(\"\\${${1:propertyName}:${2:someDefault}}\")",
@@ -107,16 +107,6 @@
   "class": {
     "prefix": "class",
     "body": [
-      "public class ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ]
-  },
-  "Static class": {
-    "prefix": "class",
-    "body": [
       "public static class ${1:$TM_FILENAME_BASE} {",
       "",
       "    $0",
@@ -124,18 +114,7 @@
       "}"
     ]
   },
-  "Interface": {
-    "prefix": "interface",
-    "body": [
-      "public interface ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ],
-    "description": "An interface"
-  },
-  "Functional interface": {
+  "interface": {
     "prefix": "interface",
     "body": [
       "@FunctionalInterface",
@@ -147,7 +126,7 @@
     ],
     "description": "An interface"
   },
-  "Enum": {
+  "enum": {
     "prefix": "enum",
     "body": [
       "public enum ${1:$TM_FILENAME_BASE} {",
@@ -158,33 +137,7 @@
     ],
     "description": "An enum"
   },
-  "Annotation": {
-    "prefix": "annotation",
-    "body": [
-      "import static java.lang.annotation.ElementType.ANNOTATION_TYPE;",
-      "import static java.lang.annotation.ElementType.FIELD;",
-      "import static java.lang.annotation.ElementType.METHOD;",
-      "import static java.lang.annotation.ElementType.PARAMETER;",
-      "import static java.lang.annotation.ElementType.TYPE;",
-      "import static java.lang.annotation.RetentionPolicy.RUNTIME;",
-      "",
-      "import java.lang.annotation.Documented;",
-      "import java.lang.annotation.Repeatable;",
-      "import java.lang.annotation.Retention;",
-      "import java.lang.annotation.Target;",
-      "",
-      "@Documented",
-      "@Retention(RUNTIME)",
-      "@Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE})",
-      "public @interface ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ],
-    "description": "An annotation"
-  },
-  "Repetable annotation": {
+  "annotation": {
     "prefix": "annotation",
     "body": [
       "import static java.lang.annotation.ElementType.ANNOTATION_TYPE;",
@@ -220,144 +173,21 @@
     ],
     "description": "A repetable annotation"
   },
-  "Type": {
+  "type": {
     "prefix": "type",
     "body": [
       "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|}"
     ],
     "description": "A type"
   },
-  "If statement": {
-    "prefix": "if",
-    "body": [
-      "if ($1) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if statement"
-  },
-  "If null statement": {
-    "prefix": "if",
-    "body": [
-      "if (${1:varName} == null) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if null statement"
-  },
-  "If not null statement": {
-    "prefix": "if",
-    "body": [
-      "if (${1:varName} != null) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if not null statement"
-  },
-  "If instanceof statement": {
-    "prefix": "if",
-    "body": [
-      "if (${1:varName} instanceof ${2:$TM_FILENAME_BASE}) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if instanceof statement"
-  },
-  "If instanceof statement then cast": {
-    "prefix": "if",
-    "body": [
-      "if (${1:varName} instanceof ${2:$TM_FILENAME_BASE}) {",
-      "    $2 ${3:varName2} = ($2) $1;",
-      "    $0",
-      "}"
-    ],
-    "description": "An if instanceof statement then cast"
-  },
-  "If not instanceof statement": {
-    "prefix": "if",
-    "body": [
-      "if (!(${1:varName} instanceof ${2:$TM_FILENAME_BASE})) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if not instanceof statement"
-  },
-  "If empty statement": {
-    "prefix": "if",
-    "body": [
-      "if (${1:varName}.isEmpty()) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if empty statement"
-  },
-  "If not empty statement": {
-    "prefix": "if",
-    "body": [
-      "if (!${1:varName}.isEmpty()) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if not empty statement"
-  },
-  "If not null and not empty statement": {
-    "prefix": "if",
-    "body": [
-      "if ((${1:varName} != null) && !${1:varName}.isEmpty()) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if not null and not empty statement"
-  },
-  "If null or empty statement": {
-    "prefix": "if",
-    "body": [
-      "if ((${1:varName} == null) || ${1:varName}.isEmpty()) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if null or empty statement"
-  },
-  "If null or condition statement": {
-    "prefix": "if",
-    "body": [
-      "if ((${1:varName} == null) || ($2)) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if null or condition statement"
-  },
-  "If not null and condition statement": {
-    "prefix": "if",
-    "body": [
-      "if ((${1:varName} != null) && ($2)) {",
-      "    $0",
-      "}"
-    ],
-    "description": "An if not null and condition statement"
-  },
-  "If ternary statement": {
-    "prefix": "if",
-    "body": [
-      "(($1) ? $2 : $3)$0"
-    ],
-    "description": "An if ternary statement"
-  },
-  "If null ternary statement": {
-    "prefix": "if",
-    "body": [
-      "((${1:varName} == null) ? $2 : $3)$0"
-    ],
-    "description": "An if null ternary statement"
-  },
-  "If not null ternary statement": {
+  "if": {
     "prefix": "if",
     "body": [
       "((${1:varName} != null) ? $2 : $3)$0"
     ],
     "description": "An if not null ternary statement"
   },
-  "Else statement": {
+  "else": {
     "prefix": "else",
     "body": [
       "else {",
@@ -366,7 +196,7 @@
     ],
     "description": "An else statement"
   },
-  "Switch statement": {
+  "switch": {
     "prefix": "switch",
     "body": [
       "switch (${1:varName}) {",
@@ -379,16 +209,7 @@
     ],
     "description": "A switch statement"
   },
-  "Case break statement": {
-    "prefix": "case",
-    "body": [
-      "case ${1:value}:",
-      "    $0",
-      "    break;"
-    ],
-    "description": "A case break statement"
-  },
-  "Case return statement": {
+  "case": {
     "prefix": "case",
     "body": [
       "case ${1:value}:",
@@ -396,23 +217,7 @@
     ],
     "description": "A case return statement"
   },
-  "Constant": {
-    "prefix": "const",
-    "body": [
-      "${1|private ,public ,protected , |}static final${2| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:CONST_NAME} = ${4:VALUE};",
-      "$0"
-    ],
-    "description": "A constant"
-  },
-  "Public constant": {
-    "prefix": "const",
-    "body": [
-      "public static final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:CONST_NAME} = ${3:VALUE};",
-      "$0"
-    ],
-    "description": "A public constant"
-  },
-  "Private constant": {
+  "const": {
     "prefix": "const",
     "body": [
       "private static final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:CONST_NAME} = ${3:VALUE};",
@@ -420,7 +225,7 @@
     ],
     "description": "A private constant"
   },
-  "Try block": {
+  "try": {
     "prefix": "try",
     "body": [
       "try {",
@@ -429,7 +234,7 @@
     ],
     "description": "A try block"
   },
-  "Try with resources block": {
+  "tryresource": {
     "prefix": "tryresource",
     "body": [
       "try ($1) {",
@@ -438,7 +243,7 @@
     ],
     "description": "A try with resources block"
   },
-  "Catch block": {
+  "catch": {
     "prefix": "catch",
     "body": [
       "catch (${1:Exception} ex) {",
@@ -447,7 +252,7 @@
     ],
     "description": "A catch block"
   },
-  "Finally block": {
+  "finally": {
     "prefix": "finally",
     "body": [
       "finally {",
@@ -456,7 +261,7 @@
     ],
     "description": "A finally block"
   },
-  "Try catch": {
+  "trycatch": {
     "prefix": "trycatch",
     "body": [
       "try {",
@@ -467,7 +272,7 @@
     ],
     "description": "A try catch block around the selected text"
   },
-  "Try catch finally": {
+  "trycatchfinally": {
     "prefix": "trycatchfinally",
     "body": [
       "try {",
@@ -480,105 +285,14 @@
     ],
     "description": "A try catch finally block around the selected text"
   },
-  "Throw exception": {
-    "prefix": "throw",
-    "body": [
-      "throw $0;"
-    ],
-    "description": "Throw a exception"
-  },
-  "Throw new exception": {
-    "prefix": "throw",
-    "body": [
-      "throw new ${1:Exception}($0);"
-    ],
-    "description": "Throw a new exception"
-  },
-  "Throw RuntimeException": {
-    "prefix": "throw",
-    "body": [
-      "throw new RuntimeException($0);"
-    ],
-    "description": "Throw a new RuntimeException"
-  },
-  "Throw UnsupportedOperationException": {
-    "prefix": "throw",
-    "body": [
-      "throw new UnsupportedOperationException($0);"
-    ],
-    "description": "Throw a new UnsupportedOperationException"
-  },
-  "Throw IllegalArgumentException": {
-    "prefix": "throw",
-    "body": [
-      "throw new IllegalArgumentException($0);"
-    ],
-    "description": "Throw a new IllegalArgumentException"
-  },
-  "Throw IllegalStateException": {
+  "throw": {
     "prefix": "throw",
     "body": [
       "throw new IllegalStateException($0);"
     ],
     "description": "Throw a new IllegalStateException"
   },
-  "Field": {
-    "prefix": "field",
-    "body": [
-      "${1|private,public,protected, |}${2| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:fieldName};",
-      "$0"
-    ],
-    "description": "A field"
-  },
-  "Final field": {
-    "prefix": "field",
-    "body": [
-      "${1|private,public,protected, |} final${2| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:fieldName};",
-      "$0"
-    ],
-    "description": "A final field"
-  },
-  "Field = value": {
-    "prefix": "field",
-    "body": [
-      "${1|private,public,protected, |}${2| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:fieldName} = ${4:defaultValue};",
-      "$0"
-    ],
-    "description": "A field with default value"
-  },
-  "Final field = value": {
-    "prefix": "field",
-    "body": [
-      "${1|private,public,protected, |}${2| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:fieldName} = ${4:defaultValue};",
-      "$0"
-    ],
-    "description": "A final field with value"
-  },
-  "Private field": {
-    "prefix": "field",
-    "body": [
-      "private${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName};",
-      "$0"
-    ],
-    "description": "A private field"
-  },
-  "Private final field": {
-    "prefix": "field",
-    "body": [
-      "private final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName};",
-      "$0"
-    ],
-    "description": "A private final field"
-  },
-  "Private field = value": {
-    "prefix": "field",
-    "body": [
-      "private${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName} = ${3:defaultValue};",
-      "$0"
-    ],
-    "description": "A private field with default value"
-  },
-  "Private final field = value": {
+  "field": {
     "prefix": "field",
     "body": [
       "private final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName} = ${3:defaultValue};",
@@ -586,21 +300,21 @@
     ],
     "description": "A private final field with value"
   },
-  "Parameter": {
+  "param": {
     "prefix": "param",
     "body": [
       "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:paramName}$0"
     ],
     "description": "A parameter"
   },
-  "Lambda 0 arg": {
+  "l0s": {
     "prefix": "l0s",
     "body": [
       "() -> $0"
     ],
     "description": "A simple lambda without arguments"
   },
-  "Lambda block 0 arg": {
+  "l0": {
     "prefix": "l0",
     "body": [
       "() -> {",
@@ -609,14 +323,14 @@
     ],
     "description": "A lambda block without arguments"
   },
-  "Lambda 1 arg": {
+  "l1s": {
     "prefix": "l1s",
     "body": [
       "${1:a} -> $0"
     ],
     "description": "A simple lambda with 1 argument"
   },
-  "Lambda block 1 arg": {
+  "l1": {
     "prefix": "l1",
     "body": [
       "${1:a} -> {",
@@ -625,14 +339,14 @@
     ],
     "description": "A lambda block with 1 argument"
   },
-  "Lambda 2 args": {
+  "l2s": {
     "prefix": "l2s",
     "body": [
       "(${1:a}, ${2:b}) -> $0"
     ],
     "description": "A simple lambda with 2 arguments"
   },
-  "Lambda block 2 args": {
+  "l2": {
     "prefix": "l2",
     "body": [
       "(${1:a}, ${2:b}) -> {",
@@ -641,14 +355,14 @@
     ],
     "description": "A lambda block with 2 arguments"
   },
-  "Lambda 3 args": {
+  "l3s": {
     "prefix": "l3s",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}) -> $0"
     ],
     "description": "A simple lambda with 3 arguments"
   },
-  "Lambda block 3 args": {
+  "l3": {
     "prefix": "l3",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}) -> {",
@@ -657,14 +371,14 @@
     ],
     "description": "A lambda block with 3 arguments"
   },
-  "Lambda 4 args": {
+  "l4s": {
     "prefix": "l4s",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> $0"
     ],
     "description": "A simple lambda with 4 arguments"
   },
-  "Lambda block 4 args": {
+  "l4": {
     "prefix": "l4",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> {",
@@ -673,14 +387,14 @@
     ],
     "description": "A lambda block with 4 arguments"
   },
-  "Lambda 5 args": {
+  "l5s": {
     "prefix": "l5s",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> $0"
     ],
     "description": "A simple lambda with 5 arguments"
   },
-  "Lambda block 5 args": {
+  "l5": {
     "prefix": "l5",
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> {",
@@ -689,34 +403,7 @@
     ],
     "description": "A lambda block with 5 arguments"
   },
-  "For loop over sequence": {
-    "prefix": "for",
-    "body": [
-      "for (int i = ${1:0}; i <= ${2:10}; i++) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A for loop over sequence"
-  },
-  "Countdown for loop": {
-    "prefix": "for",
-    "body": [
-      "for (int i = ${1:10}; i >= ${2:0}; i--) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A countdown for loop"
-  },
-  "For loop over array": {
-    "prefix": "for",
-    "body": [
-      "for (int i = 0; i < ${1:array}.length; i++) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A for loop over array"
-  },
-  "For loop over reverse array": {
+  "for": {
     "prefix": "for",
     "body": [
       "for (int i = (${1:array}.length - 1); i >= 0; i--) {",
@@ -725,7 +412,7 @@
     ],
     "description": "A for loop over reverse array"
   },
-  "For loop over iterable": {
+  "foreach": {
     "prefix": "foreach",
     "body": [
       "for (${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} : ${3:values}) {",
@@ -734,16 +421,7 @@
     ],
     "description": "A for loop over iterable"
   },
-  "While loop": {
-    "prefix": "while",
-    "body": [
-      "while ($1) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A while loop"
-  },
-  "Do-while loop": {
+  "while": {
     "prefix": "while",
     "body": [
       "do {",
@@ -752,7 +430,7 @@
     ],
     "description": "A do-while loop"
   },
-  "Main method": {
+  "main": {
     "prefix": "main",
     "body": [
       "public static void main(String[] args) {",
@@ -762,57 +440,7 @@
     ],
     "description": "A main method"
   },
-  "Method": {
-    "prefix": "method",
-    "body": [
-      "${1|private,public,protected, |}${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A method"
-  },
-  "Static method": {
-    "prefix": "method",
-    "body": [
-      "${1|private,public,protected, |} static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A static method"
-  },
-  "Private method": {
-    "prefix": "method",
-    "body": [
-      "private${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A private method"
-  },
-  "Private static method": {
-    "prefix": "method",
-    "body": [
-      "private static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A private static method"
-  },
-  "Public method": {
-    "prefix": "method",
-    "body": [
-      "public${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A public method"
-  },
-  "Public static method": {
+  "method": {
     "prefix": "method",
     "body": [
       "public static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
@@ -822,14 +450,14 @@
     ],
     "description": "A public static method"
   },
-  "New": {
+  "new": {
     "prefix": "new",
     "body": [
       "new ${1:Object}($0)"
     ],
     "description": "A new instance"
   },
-  "Cast": {
+  "cast": {
     "prefix": "cast",
     "body": [
       "${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} = ($1) ${3:obj};",
@@ -837,21 +465,21 @@
     ],
     "description": "Cast a object"
   },
-  "Equals than": {
+  "eq": {
     "prefix": "eq",
     "body": [
       "Objects.equals(${2:value1}, ${1:value2})$0"
     ],
     "description": "null-safe equals than"
   },
-  "Equals than member": {
+  "eqm": {
     "prefix": "eqm",
     "body": [
       "Objects.equals(${1:this}.${2:fieldOrMethod}, ${3:o}.$2)$0"
     ],
     "description": "null-safe equals than member"
   },
-  "Equals method": {
+  "equals": {
     "prefix": "equals",
     "body": [
       "@Override",
@@ -870,7 +498,7 @@
     ],
     "description": "An equals method"
   },
-  "Hashcode method": {
+  "hashcode": {
     "prefix": "hashcode",
     "body": [
       "@Override",
@@ -881,14 +509,14 @@
     ],
     "description": "A hashcode method"
   },
-  "@Override": {
+  "@o": {
     "prefix": "@o",
     "body": [
       "@Override"
     ],
     "description": "A @Override annotation"
   },
-  "printl": {
+  "print": {
     "prefix": "print",
     "body": [
       "System.out.print(\"$1\");$0"
@@ -930,58 +558,14 @@
     ],
     "description": "Prints the formatted variable value"
   },
-  "Return": {
-    "prefix": "return",
-    "body": [
-      "return $0;"
-    ],
-    "description": "A return"
-  },
-  "Return null": {
-    "prefix": "return",
-    "body": [
-      "return null;"
-    ],
-    "description": "A return null"
-  },
-  "Return true": {
-    "prefix": "return",
-    "body": [
-      "return true;"
-    ],
-    "description": "A return true"
-  },
-  "Return false": {
-    "prefix": "return",
-    "body": [
-      "return false;"
-    ],
-    "description": "A return false"
-  },
-  "Return this": {
+  "return": {
     "prefix": "return",
     "body": [
       "return this;"
     ],
     "description": "A return this"
   },
-  "Variable": {
-    "prefix": "var",
-    "body": [
-      "${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName};",
-      "$0"
-    ],
-    "description": "A local variable"
-  },
-  "Variable = value": {
-    "prefix": "var",
-    "body": [
-      "${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} = ${3:defaultValue};",
-      "$0"
-    ],
-    "description": "A local variable"
-  },
-  "Variable = StringBuilder": {
+  "var": {
     "prefix": "var",
     "body": [
       "String ${1:varName} = new StringBuilder()",
@@ -990,7 +574,7 @@
     ],
     "description": "A local string variable from StringBuilder"
   },
-  "String builder": {
+  "stringb": {
     "prefix": "stringb",
     "body": [
       "StringBuilder ${1:builder} = new StringBuilder()",

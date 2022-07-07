@@ -1,5 +1,5 @@
 {
-  "New Gradle File": {
+  "gradle_new_file": {
     "prefix": "gradle_new_file",
     "body": [
       "apply plugin: 'java'",
@@ -15,7 +15,7 @@
     ],
     "description": "New Gradle File"
   },
-  "New Spock test": {
+  "spocktest": {
     "prefix": "spocktest",
     "body": [
       "    def \"Name #variable\"() {",

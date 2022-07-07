@@ -1,5 +1,5 @@
 {
-  "New property entry": {
+  "property": {
     "prefix": "property",
     "body": [
       "db.default.rw.driverpath=/opt/dbdrivers/postgresql-42.3.2.jar",

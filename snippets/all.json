@@ -68,7 +68,7 @@
       "Varies according to the detected file type                                      BLOCK_COMMENT_END           = See next line!",
       "$BLOCK_COMMENT_END"
     ],
-    "description": "snipvars"
+    "description": "Dump/test use of all known variable names"
   },
   "snippet": {
     "prefix": "snippet",
@@ -81,42 +81,42 @@
       "  \"description\": \"Longer description\"",
       "},"
     ],
-    "description": "Snippet code chunk"
+    "description": "Snippet template"
   },
   "line80chars": {
     "prefix": "line80chars",
     "body": [
       "$LINE_COMMENT --------------------------------------------------------------------------------"
     ],
-    "description": "separated"
+    "description": "Line separator"
   },
   "fixjc": {
     "prefix": "fixjc",
     "body": [
       "$LINE_COMMENT FIXJC: $CURRENT_YEAR $CURRENT_MONTH_NAME $CURRENT_DATE $0"
     ],
-    "description": "fixjc"
+    "description": "FIXJC command block with date"
   },
   "date": {
     "prefix": "date",
     "body": [
       "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $0"
     ],
-    "description": "date"
+    "description": "Date YYYY/MM/DD"
   },
   "time": {
     "prefix": "time",
     "body": [
       "$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND $0"
     ],
-    "description": "time"
+    "description": "Time HH:MM:SS"
   },
   "lorem_ipsum": {
     "prefix": "lorem_ipsum",
     "body": [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit."
     ],
-    "description": "lorem"
+    "description": "1 Para of Lorem Ipsum"
   },
   "lorem_ipsum2para": {
     "prefix": "lorem_ipsum2para",
@@ -124,7 +124,7 @@
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et magnis dis parturient montes nascetur ridiculus mus. Magna ac placerat vestibulum lectus. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec. Vivamus at augue eget arcu dictum varius duis at. Diam maecenas sed enim ut sem viverra aliquet eget sit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Nisl tincidunt eget nullam non nisi est sit amet. Sem integer vitae justo eget magna. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Eu nisl nunc mi ipsum. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Sed viverra tellus in hac habitasse platea dictumst vestibulum. Aliquet nibh praesent tristique magna sit. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. A lacus vestibulum sed arcu non. Fringilla phasellus faucibus scelerisque eleifend. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Malesuada proin libero nunc consequat interdum varius sit.",
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra."
     ],
-    "description": "lorem2para"
+    "description": "2 Paras of Lorem Ipsum"
   },
   "lorem_ipsum3para": {
     "prefix": "lorem_ipsum3para",
@@ -133,7 +133,7 @@
       "Massa placerat duis ultricies lacus sed turpis tincidunt. Est sit amet facilisis magna etiam tempor orci. At elementum eu facilisis sed odio morbi quis commodo. Nunc congue nisi vitae suscipit. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Tincidunt vitae semper quis lectus nulla. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sagittis vitae et leo duis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Cursus turpis massa tincidunt dui ut. Viverra nibh cras pulvinar mattis. Aenean et tortor at risus viverra.",
       "Aliquet bibendum enim facilisis gravida. Egestas maecenas pharetra convallis posuere morbi leo. Turpis egestas maecenas pharetra convallis posuere morbi leo urna. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Egestas sed sed risus pretium quam vulputate dignissim. Nulla aliquet porttitor lacus luctus. Aenean pharetra magna ac placerat vestibulum lectus mauris. Vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Lorem mollis aliquam ut porttitor leo a. Facilisi etiam dignissim diam quis enim. Sed id semper risus in. Rhoncus dolor purus non enim praesent elementum facilisis. Vel facilisis volutpat est velit egestas dui id ornare. Et tortor consequat id porta nibh venenatis cras sed. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Tellus mauris a diam maecenas sed. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Elit sed vulputate mi sit amet mauris. Ut sem viverra aliquet eget sit amet tellus cras. Malesuada fames ac turpis egestas."
     ],
-    "description": "lorem3para"
+    "description": "3 Paras of Lorem Ipsum"
   },
   "lorem_ipsum4para": {
     "prefix": "lorem_ipsum4para",
@@ -143,7 +143,7 @@
       "Aliquet bibendum enim facilisis gravida. Egestas maecenas pharetra convallis posuere morbi leo. Turpis egestas maecenas pharetra convallis posuere morbi leo urna. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Egestas sed sed risus pretium quam vulputate dignissim. Nulla aliquet porttitor lacus luctus. Aenean pharetra magna ac placerat vestibulum lectus mauris. Vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Lorem mollis aliquam ut porttitor leo a. Facilisi etiam dignissim diam quis enim. Sed id semper risus in. Rhoncus dolor purus non enim praesent elementum facilisis. Vel facilisis volutpat est velit egestas dui id ornare. Et tortor consequat id porta nibh venenatis cras sed. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Tellus mauris a diam maecenas sed. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Elit sed vulputate mi sit amet mauris. Ut sem viverra aliquet eget sit amet tellus cras. Malesuada fames ac turpis egestas.",
       "Ut morbi tincidunt augue interdum velit. Neque sodales ut etiam sit. Sit amet justo donec enim diam vulputate ut pharetra. Volutpat odio facilisis mauris sit amet massa vitae tortor. Ultricies integer quis auctor elit sed vulputate mi sit. Et egestas quis ipsum suspendisse ultrices gravida. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum. Blandit cursus risus at ultrices. Sodales ut eu sem integer vitae justo eget."
     ],
-    "description": "lorem4para"
+    "description": "4 Paras of Lorem Ipsum"
   },
   "lorem_ipsum5para": {
     "prefix": "lorem_ipsum5para",
@@ -154,7 +154,7 @@
       "Ut morbi tincidunt augue interdum velit. Neque sodales ut etiam sit. Sit amet justo donec enim diam vulputate ut pharetra. Volutpat odio facilisis mauris sit amet massa vitae tortor. Ultricies integer quis auctor elit sed vulputate mi sit. Et egestas quis ipsum suspendisse ultrices gravida. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum. Blandit cursus risus at ultrices. Sodales ut eu sem integer vitae justo eget.",
       "Malesuada bibendum arcu vitae elementum curabitur vitae. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Nulla aliquet enim tortor at auctor urna nunc id cursus. Cursus turpis massa tincidunt dui ut ornare lectus sit. Id leo in vitae turpis massa. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Enim nec dui nunc mattis enim ut. Varius quam quisque id diam. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Est ante in nibh mauris cursus mattis molestie. Vitae purus faucibus ornare suspendisse sed nisi lacus. Elementum nibh tellus molestie nunc non blandit massa enim nec. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Purus faucibus ornare suspendisse sed nisi. Iaculis at erat pellentesque adipiscing commodo elit at imperdiet. Elementum tempus egestas sed sed risus pretium quam vulputate dignissim. Sit amet massa vitae tortor condimentum lacinia quis. Leo vel orci porta non pulvinar neque laoreet suspendisse interdum."
     ],
-    "description": "lorem5para"
+    "description": "5 Paras of Lorem Ipsum"
   },
   "new_bash_file": {
     "prefix": "new_bash_file",
@@ -267,7 +267,7 @@
       "main \"\\$@\"",
       ""
     ],
-    "description": "New script template"
+    "description": "New BASH script template"
   },
   "new_python_file": {
     "prefix": "new_python_file",
@@ -296,6 +296,6 @@
       "$0",
       ""
     ],
-    "description": "python_new_file"
+    "description": "New Python3 script template"
   }
 }

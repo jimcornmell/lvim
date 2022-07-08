@@ -1,4 +1,43 @@
 {
+  "richinspect": {
+    "prefix": "richinspect",
+    "body": [
+      "from rich import inspect",
+      "inspect(color, methods=True)"
+    ],
+    "description": "Rich inspect"
+  },
+  "richstatus": {
+    "prefix": "richstatus",
+    "body": [
+      "from rich.console import Console",
+      "console = Console()",
+      "",
+      "with console.status(f\"[bold green]Searching...\") as status:",
+      "    ... Some work...",
+      "    console.log(f\"[bold green]Some event {id}\")",
+      "    ... Some work..."
+    ],
+    "description": "Rich status"
+  },
+  "fileexists": {
+    "prefix": "fileexists",
+    "body": [
+      "from pathlib import Path",
+      "if Path(path_to_file).is_file():",
+      "    print(f'The file {path_to_file} exists')",
+      "else:",
+      "    print(f'The file {path_to_file} does not exist')",
+      "",
+      "import os.path",
+      "if os.path.exists('readme.txt'):",
+      "    print(f'The file {path_to_file} exists')",
+      "else:",
+      "    print(f'The file {path_to_file} does not exist')",
+      ""
+    ],
+    "description": "Check if file exists"
+  },
   "basename": {
     "prefix": "basename",
     "body": [
@@ -798,56 +837,27 @@
     ],
     "description": "tryexceptfinally method"
   },
-  "file=>openfile": {
-    "prefix": "file=>openfile",
+  "fileopen": {
+    "prefix": "fileopen",
     "body": [
-      "f = open('demofile.txt', 'r')",
-      "print(f.read())"
-    ],
-    "description": "open a file"
-  },
-  "file=>openfilereadline": {
-    "prefix": "file=>openfilereadline",
-    "body": [
-      "f = open('demofile.txt', 'r')",
-      "print(f.readline())"
-    ],
-    "description": "Read one line of the file"
-  },
-  "file=>writeexistfile": {
-    "prefix": "file=>writeexistfile",
-    "body": [
-      "f = open('demofile.txt', 'a')",
-      "f.write('Now the file has one more line!')"
+      "f = open('demofile.txt', 'r') # Read",
+      "print(f.read())",
+      "",
+      "f = open('demofile.txt', 'x') # Create (if exists will errror)",
+      "f = open('demofile.txt', 'a') # Append",
+      "f = open('demofile.txt', 'w') # Overwrite existing file",
+      "f.write('Some text')",
+      "f.close()",
+      "",
+      "with open(line, 'w') as f:",
+      "    f.write(str)"
     ],
     "description": "Write to an Existing File"
-  },
-  "file=>writeowerwrite": {
-    "prefix": "file=>writeowerwrite",
-    "body": [
-      "f = open('demofile.txt', 'w')",
-      "f.write('Woops! I have deleted the content!')"
-    ],
-    "description": "Open a file and overwrite the content"
-  },
-  "file=>createfileifdoesnotexist": {
-    "prefix": "file=>createfileifdoesnotexist",
-    "body": [
-      "f = open('myfile.txt', 'w')"
-    ],
-    "description": "Create a new file if it does not exist"
-  },
-  "file=>createfile": {
-    "prefix": "file=>createfile",
-    "body": [
-      "f = open('myfile.txt', 'x')"
-    ],
-    "description": "Create a new file"
   },
   "file=>deletefile": {
     "prefix": "file=>deletefile",
     "body": [
-      "#import os",
+      "import os",
       "os.remove('demofile.txt')"
     ],
     "description": "delete a file"

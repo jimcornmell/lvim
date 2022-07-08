@@ -1,12 +1,432 @@
 {
-  "insertfrom": {
-    "prefix": "insertfrom",
+  "-dec-s": {
     "body": [
-      "INSERT INTO table SELECT cols FROM othertab;"
-    ]
+      "DECLARE `${1:var_name}` VARCHAR(${2:255}) DEFAULT '${3:value}';"
+    ],
+    "description": "(declare .. varchar .. default)",
+    "prefix": "-dec-s"
+  },
+  "alias": {
+    "body": [
+      "`$1`.`$2` AS `$3`"
+    ],
+    "prefix": "alias"
+  },
+  "alter--fk": {
+    "body": [
+      "ALTER TABLE `$1`",
+      "ADD INDEX `fk_$1_$3_idx` (`$2` ASC),",
+      "ADD CONSTRAINT `fk_${1:the_table}_$3`",
+      "  FOREIGN KEY (`${2:foreign_key}`)",
+      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
+      "  ON DELETE NO ACTION",
+      "  ON UPDATE CASCADE"
+    ],
+    "prefix": "alter--fk"
+  },
+  "alter-add": {
+    "body": [
+      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL};"
+    ],
+    "prefix": "alter-add"
+  },
+  "alter-add-after": {
+    "body": [
+      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL} AFTER `${5:col_name}`;"
+    ],
+    "prefix": "alter-add-after"
+  },
+  "alter-add-first": {
+    "body": [
+      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL} FIRST;"
+    ],
+    "prefix": "alter-add-first"
+  },
+  "alter-auto-increment": {
+    "body": [
+      "ALTER TABLE `${1:table}` AUTO_INCREMENT = ${2:1};"
+    ],
+    "prefix": "alter-auto-increment"
+  },
+  "alter-change": {
+    "body": [
+      "ALTER TABLE `${1:table}` CHANGE `${2:old_name}` `${3:new_name}` ${4:new_type}${5: NOT NULL};"
+    ],
+    "prefix": "alter-change"
+  },
+  "alter-db-charset": {
+    "body": [
+      "ALTER DATABASE `${1:table}` CHARACTER SET ${2:utf8} COLLATE ${3:utf8_unicode_ci};"
+    ],
+    "prefix": "alter-db-charset"
+  },
+  "alter-fk": {
+    "body": [
+      "ALTER TABLE `$1`",
+      "ADD CONSTRAINT `fk_${1:the_table}_$3`",
+      "  FOREIGN KEY (`${2:foreign_key}`)",
+      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
+      "  ON DELETE NO ACTION",
+      "  ON UPDATE CASCADE"
+    ],
+    "prefix": "alter-fk"
+  },
+  "alter-idx": {
+    "body": [
+      "ALTER TABLE `${1:table}` ADD ${2:INDEX} `${3:index_name}`(`${4:field}` ASC$5);"
+    ],
+    "prefix": "alter-idx"
+  },
+  "alter-modify": {
+    "body": [
+      "ALTER TABLE `${1:table}` MODIFY `${2:field}` ${3:NEW-FIELD-TYPE}${4: NOT NULL} ${5:AFTER `${6:field}`};"
+    ],
+    "prefix": "alter-modify"
+  },
+  "alter-sort": {
+    "body": [
+      "ALTER TABLE `${1:table}` ORDER BY `${2:field}`;"
+    ],
+    "prefix": "alter-sort"
+  },
+  "alter-table-charset": {
+    "body": [
+      "ALTER TABLE `${1:table}` CHARACTER SET ${2:utf8} COLLATE ${3:utf8_unicode_ci};"
+    ],
+    "prefix": "alter-table-charset"
+  },
+  "alter-table-rename": {
+    "body": [
+      "ALTER TABLE `${1:table}` RENAME TO `${2:new_name}`;"
+    ],
+    "prefix": "alter-table-rename"
+  },
+  "alter-uk": {
+    "body": [
+      "ALTER TABLE `${1:table_name}` ADD UNIQUE `unique_${5:index_name}` (`${11:column_1}`${15:, `${18:column_2}`});"
+    ],
+    "description": "(add unique key)",
+    "prefix": "alter-uk"
+  },
+  "case": {
+    "body": [
+      "CASE",
+      "    ${1:-- Example:",
+      "    -- --------------------------------------------------------------------------",
+      "    -- WHEN `my_var` = 5 THEN SELECT 'case equals 5';",
+      "    --",
+      "    -- WHEN `my_var` > 5 THEN BEGIN",
+      "    --   SELECT 'case bigger than 5';",
+      "    -- END;",
+      "    --",
+      "    -- ELSE SELECT 'case default';",
+      "    -- --------------------------------------------------------------------------",
+      "    -- you can use snippets for create a case",
+      "    --   s-case-w  - When",
+      "    --   s-case-wb - When Block",
+      "    }${2:ELSE $0;}",
+      "END CASE;"
+    ],
+    "description": "(case ... end case;)",
+    "prefix": "case"
+  },
+  "casew": {
+    "body": [
+      "WHEN '${1:value}' THEN ${0:-- SELECT 'case $1'};"
+    ],
+    "description": "(when '...' then ...)",
+    "prefix": "casew"
+  },
+  "casewb": {
+    "body": [
+      "WHEN '${1:value}' THEN BEGIN",
+      "  ${0:-- SELECT 'case $1'};",
+      "END;"
+    ],
+    "description": "(when '...' begin ...)",
+    "prefix": "casewb"
+  },
+  "count": {
+    "body": [
+      "SELECT COUNT(${1:*}) FROM `$2` AS `${2/(.).*/$1/}`"
+    ],
+    "prefix": "count"
+  },
+  "createdb": {
+    "body": [
+      "CREATE DATABASE `${1:db_name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+    ],
+    "prefix": "createdb"
+  },
+  "createfunction": {
+    "body": [
+      "DROP FUNCTION IF EXISTS `${1:function_name}`;",
+      "CREATE FUNCTION `${1}`(`${2:arg_name}` ${3:INT}) RETURNS ${4:INT}",
+      "BEGIN",
+      "  $5",
+      "END;"
+    ],
+    "prefix": "createfunction"
+  },
+  "createprocedure": {
+    "body": [
+      "DROP PROCEDURE IF EXISTS `${1:procedure_name}`;",
+      "CREATE PROCEDURE `${1}`(",
+      "`${2:arg_name}` ${3:INT}${4:,}",
+      ") BEGIN",
+      "  $5",
+      "END;"
+    ],
+    "prefix": "createprocedure"
+  },
+  "createtable": {
+    "body": [
+      "DROP TABLE IF EXISTS `${1:table_name}`;",
+      "CREATE TABLE `$1` (",
+      "  `${2:id}` INT UNSIGNED NOT NULL AUTO_INCREMENT,",
+      "  `${3:name}` ${4:VARCHAR(255)},",
+      "  PRIMARY KEY `pk_$2`(`$2`)",
+      ") ENGINE = InnoDB;"
+    ],
+    "prefix": "createtable"
+  },
+  "createtabletemp": {
+    "body": [
+      "DROP TABLE IF EXISTS `${1:table_name}`;",
+      "CREATE TEMPORARY TABLE IF NOT EXISTS `${1:table_name}` (",
+      "  `${2:id}` INT UNSIGNED NOT NULL AUTO_INCREMENT,",
+      "  `${3:name}` ${4:VARCHAR(255)},",
+      "  PRIMARY KEY `pk_$2`(`$2`)",
+      ") ENGINE = MEMORY;"
+    ],
+    "prefix": "createtabletemp"
+  },
+  "createuser": {
+    "body": [
+      "CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';",
+      "CREATE USER 'username'@'localhost';"
+    ],
+    "description": "(new user, password)",
+    "prefix": "createuser"
+  },
+  "cursor": {
+    "body": [
+      "DECLARE `${1:cursor_name}` FOR ${0:-- SELECT ...};"
+    ],
+    "description": "(declare cursor)",
+    "prefix": "cursor"
+  },
+  "databaseslist": {
+    "body": [
+      "SELECT datname FROM pg_database",
+      "WHERE datistemplate = false;"
+    ],
+    "description": "List PostgreSQL databases",
+    "prefix": "databaseslist"
+  },
+  "dec": {
+    "body": [
+      "DECLARE `${1:var_name}` ${2:INT};"
+    ],
+    "description": "(declare ...)",
+    "prefix": "dec"
+  },
+  "dec-s": {
+    "body": [
+      "DECLARE `${1:var_name}` VARCHAR(${2:255});"
+    ],
+    "description": "(declare ... varchar)",
+    "prefix": "dec-s"
+  },
+  "declarehandler": {
+    "body": [
+      "DECLARE CONTINUE HANDLER FOR SQLSTATE '${1:02000}' ${2:SET `done` = 1};"
+    ],
+    "description": "(declare handler)",
+    "prefix": "declarehandler"
+  },
+  "delete": {
+    "body": [
+      "DELETE FROM subject;",
+      "DELETE FROM subject WHERE id = 4;"
+    ],
+    "prefix": "delete"
+  },
+  "delim": {
+    "body": [
+      "DELIMITER ${1:$$}",
+      "",
+      "$2",
+      "",
+      "$1",
+      "DELIMITER ;"
+    ],
+    "prefix": "delim"
+  },
+  "dropcolumn": {
+    "body": [
+      "ALTER TABLE `${1:table}` DROP COLUMN `${2:col_name}`;"
+    ],
+    "prefix": "dropcolumn"
+  },
+  "dropdatabase": {
+    "body": [
+      "DROP DATABASE `${1:db_name}`;"
+    ],
+    "prefix": "dropdatabase"
+  },
+  "dropfunction": {
+    "body": [
+      "DROP FUNCTION IF EXISTS `${1:function_name}`;"
+    ],
+    "prefix": "dropfunction"
+  },
+  "dropindex": {
+    "body": [
+      "ALTER TABLE `${1:table}` DROP INDEX `${3:index_name}`;",
+      "DROP INDEX index_name;"
+    ],
+    "prefix": "dropindex"
+  },
+  "dropother": {
+    "body": [
+      "ALTER TABLE user ALTER COLUMN login DROP NOT NULL;",
+      "ALTER TABLE student DROP CONSTRAINT student_pkey;",
+      "ALTER TABLE student DROP PRIMARY KEY; # no PostgreSQL",
+      "ALTER TABLE user DROP CONSTRAINT user_credentials_uniq;",
+      "ALTER TABLE user ALTER COLUMN email DROP DEFAULT;"
+    ],
+    "prefix": "dropother"
+  },
+  "dropproc": {
+    "body": [
+      "DROP PROCEDURE IF EXISTS `${1:name}`;"
+    ],
+    "prefix": "dropproc"
+  },
+  "droptable": {
+    "body": [
+      "DROP TABLE IF EXISTS `${1:name}`;"
+    ],
+    "prefix": "droptable"
+  },
+  "droptrigger": {
+    "body": [
+      "DROP TRIGGER IF EXISTS `${1:name}`;"
+    ],
+    "prefix": "droptrigger"
+  },
+  "dropuser": {
+    "body": [
+      "DROP USER 'username'@'localhost';"
+    ],
+    "description": "(drop user)",
+    "prefix": "dropuser"
+  },
+  "fk": {
+    "body": [
+      "CONSTRAINT `fk_${1:the_table}_$3`",
+      "  FOREIGN KEY (`${2:foreign_key}`)",
+      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
+      "  ON DELETE NO ACTION",
+      "  ON UPDATE CASCADE"
+    ],
+    "prefix": "fk"
+  },
+  "from": {
+    "body": [
+      "FROM `$1` AS `$2`"
+    ],
+    "prefix": "from"
+  },
+  "funclist": {
+    "body": [
+      "${1:SELECT `name`, `param_list`, `comment` FROM `mysql`.`proc` WHERE `db`=DATABASE() AND `type` = 'FUNCTION';}"
+    ],
+    "prefix": "funclist"
+  },
+  "grantallprivs": {
+    "body": [
+      "GRANT ${1:ALL} PRIVILEGES ON `${2:db_name}`.`${3:table_name}` TO '${4:user_name}'@'${5:localhost}';"
+    ],
+    "description": "(add all privileges)",
+    "prefix": "grantallprivs"
+  },
+  "group": {
+    "body": [
+      "GROUP BY `$1`"
+    ],
+    "prefix": "group"
+  },
+  "having": {
+    "body": [
+      "HAVING ( `$1` ${2:=} '$3' ) "
+    ],
+    "prefix": "having"
+  },
+  "hcols": {
+    "body": [
+      "${2:SHOW FULL COLUMNS FROM `${1:table}`;}"
+    ],
+    "description": "(show columns)",
+    "prefix": "hcols"
+  },
+  "hcreate": {
+    "body": [
+      "${2:SHOW CREATE TABLE `${1:table}`;}"
+    ],
+    "description": "(show create signature)",
+    "prefix": "hcreate"
+  },
+  "hidx": {
+    "body": [
+      "${2:SHOW INDEX FROM `${1:table}`;}"
+    ],
+    "description": "(show indexes)",
+    "prefix": "hidx"
+  },
+  "hrel": {
+    "body": [
+      "${0:SELECT CONCAT(",
+      "    `constraint_name`, ' : ',",
+      "    `table_name`, '.', `column_name`, ' -> ', ",
+      "  `referenced_table_name`, '.', `referenced_column_name`",
+      ") AS `relations_list`",
+      "FROM `information_schema`.`key_column_usage`",
+      "WHERE `table_schema` = ${1:DATABASE()}",
+      "    AND `table_name` = '${2:table_name}'",
+      "  AND `referenced_table_name` IS NOT NULL;",
+      "}"
+    ],
+    "description": "(show relations table)",
+    "prefix": "hrel"
+  },
+  "idx": {
+    "body": [
+      "INDEX `$1_idx` (`${1:email}` ASC$2)${3:,",
+      "}"
+    ],
+    "prefix": "idx"
+  },
+  "idx-txt": {
+    "body": [
+      "FULLTEXT INDEX `$1_idx` (`${1:column}` ASC$2)${3:,",
+      "}"
+    ],
+    "prefix": "idx-txt"
+  },
+  "if": {
+    "body": [
+      "IF `${1:var}` ${2:=} ${3:value} THEN",
+      "    ${4:-- body}",
+      "ELSE",
+      "",
+      "END IF;"
+    ],
+    "description": "(if ... else)",
+    "prefix": "if"
   },
   "insert": {
-    "prefix": "insert",
     "body": [
       "INSERT INTO subject ",
       "    (shortname, fullname)",
@@ -27,328 +447,47 @@
       "(4, 'Geography', 'Geography', 'Geography is a field of science dedicated to the study of the lands, the features, the inhabitants, and the phenomena of Earth.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),",
       "(5, 'History', 'History', 'History is the study of the past, particularly how it relates to humans. It is an umbrella term that relates to past events as well as the memory, discovery, collection, organization, presentation, and interpretation of information about these events. Scholars who write about history are called historians. Events occurring prior to written record are considered prehistory.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),",
       "(6, 'Physics', 'Physics', 'Physics is the natural science that involves the study of matter and its motion through space and time, along with related concepts such as energy and force. More broadly, it is the general analysis of nature, conducted in order to understand how the universe behaves.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
-    ]
-  },
-  "delete": {
-    "prefix": "delete",
-    "body": [
-      "DELETE FROM subject;",
-      "DELETE FROM subject WHERE id = 4;"
-    ]
-  },
-  "dropuser": {
-    "prefix": "dropuser",
-    "body": [
-      "DROP USER 'username'@'localhost';"
     ],
-    "description": "(drop user)"
+    "prefix": "insert"
   },
-  "droptrigger": {
-    "prefix": "droptrigger",
+  "insertfrom": {
     "body": [
-      "DROP TRIGGER IF EXISTS `${1:name}`;"
-    ]
-  },
-  "droptable": {
-    "prefix": "droptable",
-    "body": [
-      "DROP TABLE IF EXISTS `${1:name}`;"
-    ]
-  },
-  "dropproc": {
-    "prefix": "dropproc",
-    "body": [
-      "DROP PROCEDURE IF EXISTS `${1:name}`;"
-    ]
-  },
-  "dropfunction": {
-    "prefix": "dropfunction",
-    "body": [
-      "DROP FUNCTION IF EXISTS `${1:function_name}`;"
-    ]
-  },
-  "dropindex": {
-    "prefix": "dropindex",
-    "body": [
-      "ALTER TABLE `${1:table}` DROP INDEX `${3:index_name}`;",
-      "DROP INDEX index_name;"
-    ]
-  },
-  "dropdatabase": {
-    "prefix": "dropdatabase",
-    "body": [
-      "DROP DATABASE `${1:db_name}`;"
-    ]
-  },
-  "dropcolumn": {
-    "prefix": "dropcolumn",
-    "body": [
-      "ALTER TABLE `${1:table}` DROP COLUMN `${2:col_name}`;"
-    ]
-  },
-  "dropother": {
-    "prefix": "dropother",
-    "body": [
-      "ALTER TABLE user ALTER COLUMN login DROP NOT NULL;",
-      "ALTER TABLE student DROP CONSTRAINT student_pkey;",
-      "ALTER TABLE student DROP PRIMARY KEY; # no PostgreSQL",
-      "ALTER TABLE user DROP CONSTRAINT user_credentials_uniq;",
-      "ALTER TABLE user ALTER COLUMN email DROP DEFAULT;"
-    ]
-  },
-  "select_find_constraint_links": {
-    "prefix": "select_find_constraint_links",
-    "body": [
-      "SELECT",
-      "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
-      "FROM",
-      "  INFORMATION_SCHEMA.KEY_COLUMN_USAGE",
-      "WHERE",
-      "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
+      "INSERT INTO table SELECT cols FROM othertab;"
     ],
-    "description": "Find constraint links"
+    "prefix": "insertfrom"
   },
-  "showprocesses": {
-    "prefix": "showprocesses",
+  "j": {
     "body": [
-      "SHOW processlist;",
-      "SHOW FULL processlist;"
+      "INNER JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
     ],
-    "description": "Show process"
+    "prefix": "j"
   },
-  "mysqldropfkchecks": {
-    "prefix": "mysqldropfkchecks",
+  "jleft": {
     "body": [
-      "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
-      "DROP SCHEMA suppliers;",
-      "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
+      "LEFT JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
     ],
-    "description": "mysql drop fk checks"
+    "prefix": "jleft"
   },
-  "createdb": {
-    "prefix": "createdb",
+  "jright": {
     "body": [
-      "CREATE DATABASE `${1:db_name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
-    ]
-  },
-  "databaseslist": {
-    "prefix": "databaseslist",
-    "body": [
-      "SELECT datname FROM pg_database",
-      "WHERE datistemplate = false;"
+      "RIGHT JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
     ],
-    "description": "List PostgreSQL databases"
+    "prefix": "jright"
   },
-  "createtable": {
-    "prefix": "createtable",
+  "lim": {
     "body": [
-      "DROP TABLE IF EXISTS `${1:table_name}`;",
-      "CREATE TABLE `$1` (",
-      "  `${2:id}` INT UNSIGNED NOT NULL AUTO_INCREMENT,",
-      "  `${3:name}` ${4:VARCHAR(255)},",
-      "  PRIMARY KEY `pk_$2`(`$2`)",
-      ") ENGINE = InnoDB;"
-    ]
-  },
-  "table": {
-    "prefix": "table",
-    "body": [
-      "CREATE TABLE IF NOT EXISTS `${1:table_name}` (",
-      "  `${2:id}` INT UNSIGNED NOT NULL AUTO_INCREMENT,",
-      "  `${3:name}` ${4:VARCHAR(255)},",
-      "  PRIMARY KEY `pk_$2`(`$2`)",
-      ") ENGINE = InnoDB;"
-    ]
-  },
-  "alter-add-after": {
-    "prefix": "alter-add-after",
-    "body": [
-      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL} AFTER `${5:col_name}`;"
-    ]
-  },
-  "alter-add-first": {
-    "prefix": "alter-add-first",
-    "body": [
-      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL} FIRST;"
-    ]
-  },
-  "alter-add": {
-    "prefix": "alter-add",
-    "body": [
-      "ALTER TABLE `${1:table}` ADD COLUMN `${2:col_name}` ${3:INT}${4: NOT NULL};"
-    ]
-  },
-  "alter-auto-increment": {
-    "prefix": "alter-auto-increment",
-    "body": [
-      "ALTER TABLE `${1:table}` AUTO_INCREMENT = ${2:1};"
-    ]
-  },
-  "alter-change": {
-    "prefix": "alter-change",
-    "body": [
-      "ALTER TABLE `${1:table}` CHANGE `${2:old_name}` `${3:new_name}` ${4:new_type}${5: NOT NULL};"
-    ]
-  },
-  "alter-db-charset": {
-    "prefix": "alter-db-charset",
-    "body": [
-      "ALTER DATABASE `${1:table}` CHARACTER SET ${2:utf8} COLLATE ${3:utf8_unicode_ci};"
-    ]
-  },
-  "alter--fk": {
-    "prefix": "alter--fk",
-    "body": [
-      "ALTER TABLE `$1`",
-      "ADD INDEX `fk_$1_$3_idx` (`$2` ASC),",
-      "ADD CONSTRAINT `fk_${1:the_table}_$3`",
-      "  FOREIGN KEY (`${2:foreign_key}`)",
-      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
-      "  ON DELETE NO ACTION",
-      "  ON UPDATE CASCADE"
-    ]
-  },
-  "alter-fk": {
-    "prefix": "alter-fk",
-    "body": [
-      "ALTER TABLE `$1`",
-      "ADD CONSTRAINT `fk_${1:the_table}_$3`",
-      "  FOREIGN KEY (`${2:foreign_key}`)",
-      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
-      "  ON DELETE NO ACTION",
-      "  ON UPDATE CASCADE"
-    ]
-  },
-  "alter-idx": {
-    "prefix": "alter-idx",
-    "body": [
-      "ALTER TABLE `${1:table}` ADD ${2:INDEX} `${3:index_name}`(`${4:field}` ASC$5);"
-    ]
-  },
-  "alter-modify": {
-    "prefix": "alter-modify",
-    "body": [
-      "ALTER TABLE `${1:table}` MODIFY `${2:field}` ${3:NEW-FIELD-TYPE}${4: NOT NULL} ${5:AFTER `${6:field}`};"
-    ]
-  },
-  "alter-sort": {
-    "prefix": "alter-sort",
-    "body": [
-      "ALTER TABLE `${1:table}` ORDER BY `${2:field}`;"
-    ]
-  },
-  "alter-table-charset": {
-    "prefix": "alter-table-charset",
-    "body": [
-      "ALTER TABLE `${1:table}` CHARACTER SET ${2:utf8} COLLATE ${3:utf8_unicode_ci};"
-    ]
-  },
-  "alter-table-rename": {
-    "prefix": "alter-table-rename",
-    "body": [
-      "ALTER TABLE `${1:table}` RENAME TO `${2:new_name}`;"
-    ]
-  },
-  "alter-uk": {
-    "prefix": "alter-uk",
-    "body": [
-      "ALTER TABLE `${1:table_name}` ADD UNIQUE `unique_${5:index_name}` (`${11:column_1}`${15:, `${18:column_2}`});"
+      "LIMIT ${1:0}, ${3:count}"
     ],
-    "description": "(add unique key)"
+    "prefix": "lim"
   },
-  "case": {
-    "prefix": "case",
+  "listtriggers": {
     "body": [
-      "CASE",
-      "    ${1:-- Example:",
-      "    -- --------------------------------------------------------------------------",
-      "    -- WHEN `my_var` = 5 THEN SELECT 'case equals 5';",
-      "    --",
-      "    -- WHEN `my_var` > 5 THEN BEGIN",
-      "    --   SELECT 'case bigger than 5';",
-      "    -- END;",
-      "    --",
-      "    -- ELSE SELECT 'case default';",
-      "    -- --------------------------------------------------------------------------",
-      "    -- you can use snippets for create a case",
-      "    --   s-case-w  - When",
-      "    --   s-case-wb - When Block",
-      "    }${2:ELSE $0;}",
-      "END CASE;"
+      "SHOW TRIGGERS FROM full_db_name LIKE 'table_name%';",
+      "SHOW TRIGGERS LIKE 'table_name%';"
     ],
-    "description": "(case ... end case;)"
-  },
-  "casewb": {
-    "prefix": "casewb",
-    "body": [
-      "WHEN '${1:value}' THEN BEGIN",
-      "  ${0:-- SELECT 'case $1'};",
-      "END;"
-    ],
-    "description": "(when '...' begin ...)"
-  },
-  "casew": {
-    "prefix": "casew",
-    "body": [
-      "WHEN '${1:value}' THEN ${0:-- SELECT 'case $1'};"
-    ],
-    "description": "(when '...' then ...)"
-  },
-  "cursor": {
-    "prefix": "cursor",
-    "body": [
-      "DECLARE `${1:cursor_name}` FOR ${0:-- SELECT ...};"
-    ],
-    "description": "(declare cursor)"
-  },
-  "vardefault": {
-    "prefix": "vardefault",
-    "body": [
-      "DECLARE `${1:var_name}` ${2:INT} DEFAULT '${3:value}';"
-    ],
-    "description": "(var with default)"
-  },
-  "declarehandler": {
-    "prefix": "declarehandler",
-    "body": [
-      "DECLARE CONTINUE HANDLER FOR SQLSTATE '${1:02000}' ${2:SET `done` = 1};"
-    ],
-    "description": "(declare handler)"
-  },
-  "-dec-s": {
-    "prefix": "-dec-s",
-    "body": [
-      "DECLARE `${1:var_name}` VARCHAR(${2:255}) DEFAULT '${3:value}';"
-    ],
-    "description": "(declare .. varchar .. default)"
-  },
-  "dec-s": {
-    "prefix": "dec-s",
-    "body": [
-      "DECLARE `${1:var_name}` VARCHAR(${2:255});"
-    ],
-    "description": "(declare ... varchar)"
-  },
-  "dec": {
-    "prefix": "dec",
-    "body": [
-      "DECLARE `${1:var_name}` ${2:INT};"
-    ],
-    "description": "(declare ...)"
-  },
-  "if": {
-    "prefix": "if",
-    "body": [
-      "IF `${1:var}` ${2:=} ${3:value} THEN",
-      "    ${4:-- body}",
-      "ELSE",
-      "",
-      "END IF;"
-    ],
-    "description": "(if ... else)"
+    "prefix": "listtriggers"
   },
   "loop": {
-    "prefix": "loop",
     "body": [
       "`${1:label_name}`: LOOP",
       "    SET `${10:var_name}` = `${10}` ${11:+} ${12:1};",
@@ -360,305 +499,10 @@
       "    END IF;",
       "END LOOP `${1:label_name}`;"
     ],
-    "description": "(loop ... end loop)"
-  },
-  "repeat": {
-    "prefix": "repeat",
-    "body": [
-      "REPEAT ${0:/* Your code ... */}; UNTIL `${1:var_name}` ${2:>} ${3:10} END REPEAT;"
-    ],
-    "description": "(loop ... until ...)"
-  },
-  "funclist": {
-    "prefix": "funclist",
-    "body": [
-      "${1:SELECT `name`, `param_list`, `comment` FROM `mysql`.`proc` WHERE `db`=DATABASE() AND `type` = 'FUNCTION';}"
-    ]
-  },
-  "createfunction": {
-    "prefix": "createfunction",
-    "body": [
-      "DROP FUNCTION IF EXISTS `${1:function_name}`;",
-      "CREATE FUNCTION `${1}`(`${2:arg_name}` ${3:INT}) RETURNS ${4:INT}",
-      "BEGIN",
-      "  $5",
-      "END;"
-    ]
-  },
-  "delim": {
-    "prefix": "delim",
-    "body": [
-      "DELIMITER ${1:$$}",
-      "",
-      "$2",
-      "",
-      "$1",
-      "DELIMITER ;"
-    ]
-  },
-  "utc": {
-    "prefix": "utc",
-    "body": [
-      "SELECT UNIX_TIMESTAMP(NOW());"
-    ]
-  },
-  "grantallprivs": {
-    "prefix": "grantallprivs",
-    "body": [
-      "GRANT ${1:ALL} PRIVILEGES ON `${2:db_name}`.`${3:table_name}` TO '${4:user_name}'@'${5:localhost}';"
-    ],
-    "description": "(add all privileges)"
-  },
-  "priv-drop-all": {
-    "prefix": "priv-drop-all",
-    "body": [
-      "REVOKE ALL ON *.* FROM '${4:user_name}'@'${5:localhost}';"
-    ],
-    "description": "(remove all privileges)"
-  },
-  "priv-drop": {
-    "prefix": "priv-drop",
-    "body": [
-      "REVOKE ${1:ALL} ON `${2:db_name}`.`${3:table_name}` FROM '${4:user_name}'@'${5:localhost}';"
-    ],
-    "description": "(remove privileges)"
-  },
-  "priv-list": {
-    "prefix": "priv-list",
-    "body": [
-      "SHOW GRANTS FOR '${1:user_name}'@'${2:localhost}';"
-    ],
-    "description": "(list privileges)"
-  },
-  "priv-refresh": {
-    "prefix": "priv-refresh",
-    "body": [
-      "${0:FLUSH PRIVILEGES;}"
-    ],
-    "description": "(flush privileges)"
-  },
-  "proc-list": {
-    "prefix": "proc-list",
-    "body": [
-      "${1:SELECT `name`, `param_list`, `comment` FROM `mysql`.`proc` WHERE `db`=DATABASE() AND `type` = 'PROCEDURE';}"
-    ]
-  },
-  "createprocedure": {
-    "prefix": "createprocedure",
-    "body": [
-      "DROP PROCEDURE IF EXISTS `${1:procedure_name}`;",
-      "CREATE PROCEDURE `${1}`(",
-      "`${2:arg_name}` ${3:INT}${4:,}",
-      ") BEGIN",
-      "  $5",
-      "END;"
-    ]
-  },
-  "proc": {
-    "prefix": "proc",
-    "body": [
-      "CREATE PROCEDURE `${1:procedure_name}`(",
-      "`${2:arg_name}` ${3:INT}${4:,}",
-      ") BEGIN",
-      "  $5",
-      "END;"
-    ]
-  },
-  "alias": {
-    "prefix": "alias",
-    "body": [
-      "`$1`.`$2` AS `$3`"
-    ]
-  },
-  "from": {
-    "prefix": "from",
-    "body": [
-      "FROM `$1` AS `$2`"
-    ]
-  },
-  "group": {
-    "prefix": "group",
-    "body": [
-      "GROUP BY `$1`"
-    ]
-  },
-  "having": {
-    "prefix": "having",
-    "body": [
-      "HAVING ( `$1` ${2:=} '$3' ) "
-    ]
-  },
-  "j": {
-    "prefix": "j",
-    "body": [
-      "INNER JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
-    ]
-  },
-  "jleft": {
-    "prefix": "jleft",
-    "body": [
-      "LEFT JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
-    ]
-  },
-  "jright": {
-    "prefix": "jright",
-    "body": [
-      "RIGHT JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"
-    ]
-  },
-  "lim": {
-    "prefix": "lim",
-    "body": [
-      "LIMIT ${1:0}, ${3:count}"
-    ]
-  },
-  "or": {
-    "prefix": "or",
-    "body": [
-      "OR ( $1 ) "
-    ]
-  },
-  "order": {
-    "prefix": "order",
-    "body": [
-      "ORDER BY `$1`${2: DESC}"
-    ]
-  },
-  "union": {
-    "prefix": "union",
-    "body": [
-      "(",
-      "  $1",
-      ") UNION (",
-      "  $2",
-      ")"
-    ]
-  },
-  "where": {
-    "prefix": "where",
-    "body": [
-      "WHERE ( `$1` ${2:=} '$3' ) "
-    ]
-  },
-  "count": {
-    "prefix": "count",
-    "body": [
-      "SELECT COUNT(${1:*}) FROM `$2` AS `${2/(.).*/$1/}`"
-    ]
-  },
-  "sinline": {
-    "prefix": "sinline",
-    "body": [
-      "SELECT `${3/(.).*/$1/}`.$1 FROM `$3` AS `${3/(.).*/$1/}`"
-    ]
-  },
-  "smax": {
-    "prefix": "smax",
-    "body": [
-      "SELECT MAX(${1:id}) FROM `$2` AS `${2/(.).*/$1/}`"
-    ]
-  },
-  "smin": {
-    "prefix": "smin",
-    "body": [
-      "SELECT MIN(${1:id}) FROM `$2` AS `${2/(.).*/$1/}`"
-    ]
-  },
-  "sone": {
-    "prefix": "sone",
-    "body": [
-      "${5:SELECT",
-      "  *",
-      "FROM `$1`",
-      "WHERE `${2:id}` ${3:=} '$4';",
-      "}"
-    ]
-  },
-  "ss": {
-    "prefix": "ss",
-    "body": [
-      "SELECT '${1:My String}';"
-    ],
-    "description": "(select '...';)"
-  },
-  "sv": {
-    "prefix": "sv",
-    "body": [
-      "SELECT `${1:var_name}`;"
-    ],
-    "description": "(select `...`;)"
-  },
-  "s": {
-    "prefix": "s",
-    "body": [
-      "SELECT",
-      "    `${4:${3/(.).*/$1/}}`.${1:*}",
-      "  FROM `$3` AS `${4:${3/(.).*/$1/}}`"
-    ]
-  },
-  "hcols": {
-    "prefix": "hcols",
-    "body": [
-      "${2:SHOW FULL COLUMNS FROM `${1:table}`;}"
-    ],
-    "description": "(show columns)"
-  },
-  "hcreate": {
-    "prefix": "hcreate",
-    "body": [
-      "${2:SHOW CREATE TABLE `${1:table}`;}"
-    ],
-    "description": "(show create signature)"
-  },
-  "hidx": {
-    "prefix": "hidx",
-    "body": [
-      "${2:SHOW INDEX FROM `${1:table}`;}"
-    ],
-    "description": "(show indexes)"
-  },
-  "hrel": {
-    "prefix": "hrel",
-    "body": [
-      "${0:SELECT CONCAT(",
-      "    `constraint_name`, ' : ',",
-      "    `table_name`, '.', `column_name`, ' -> ', ",
-      "  `referenced_table_name`, '.', `referenced_column_name`",
-      ") AS `relations_list`",
-      "FROM `information_schema`.`key_column_usage`",
-      "WHERE `table_schema` = ${1:DATABASE()}",
-      "    AND `table_name` = '${2:table_name}'",
-      "  AND `referenced_table_name` IS NOT NULL;",
-      "}"
-    ],
-    "description": "(show relations table)"
-  },
-  "fk": {
-    "prefix": "fk",
-    "body": [
-      "CONSTRAINT `fk_${1:the_table}_$3`",
-      "  FOREIGN KEY (`${2:foreign_key}`)",
-      "  REFERENCES `${3:far_table}` (`${4:far_key}`)",
-      "  ON DELETE NO ACTION",
-      "  ON UPDATE CASCADE"
-    ]
-  },
-  "idx-txt": {
-    "prefix": "idx-txt",
-    "body": [
-      "FULLTEXT INDEX `$1_idx` (`${1:column}` ASC$2)${3:,",
-      "}"
-    ]
-  },
-  "idx": {
-    "prefix": "idx",
-    "body": [
-      "INDEX `$1_idx` (`${1:email}` ASC$2)${3:,",
-      "}"
-    ]
+    "description": "(loop ... end loop)",
+    "prefix": "loop"
   },
   "many-many": {
-    "prefix": "many-many",
     "body": [
       "CREATE INDEX `$4_idx` ON `$1` (`$4` ASC);",
       "CREATE INDEX `$5_idx` ON `$2` (`$5` ASC);",
@@ -683,41 +527,176 @@
       "    ON DELETE $6",
       "    ON UPDATE CASCADE",
       ") ENGINE = InnoDB;"
-    ]
+    ],
+    "prefix": "many-many"
+  },
+  "mysqldropfkchecks": {
+    "body": [
+      "SET FOREIGN_KEY_CHECKS=0; -- to disable them",
+      "DROP SCHEMA suppliers;",
+      "SET FOREIGN_KEY_CHECKS=1; -- to re-enable them"
+    ],
+    "description": "mysql drop fk checks",
+    "prefix": "mysqldropfkchecks"
+  },
+  "or": {
+    "body": [
+      "OR ( $1 ) "
+    ],
+    "prefix": "or"
+  },
+  "order": {
+    "body": [
+      "ORDER BY `$1`${2: DESC}"
+    ],
+    "prefix": "order"
   },
   "pk": {
-    "prefix": "pk",
     "body": [
       "PRIMARY KEY `pk_${1:id}`(`$1`)${2:,",
       "}"
-    ]
+    ],
+    "prefix": "pk"
   },
-  "createtabletemp": {
-    "prefix": "createtabletemp",
+  "priv-drop": {
     "body": [
-      "DROP TABLE IF EXISTS `${1:table_name}`;",
-      "CREATE TEMPORARY TABLE IF NOT EXISTS `${1:table_name}` (",
+      "REVOKE ${1:ALL} ON `${2:db_name}`.`${3:table_name}` FROM '${4:user_name}'@'${5:localhost}';"
+    ],
+    "description": "(remove privileges)",
+    "prefix": "priv-drop"
+  },
+  "priv-drop-all": {
+    "body": [
+      "REVOKE ALL ON *.* FROM '${4:user_name}'@'${5:localhost}';"
+    ],
+    "description": "(remove all privileges)",
+    "prefix": "priv-drop-all"
+  },
+  "priv-list": {
+    "body": [
+      "SHOW GRANTS FOR '${1:user_name}'@'${2:localhost}';"
+    ],
+    "description": "(list privileges)",
+    "prefix": "priv-list"
+  },
+  "priv-refresh": {
+    "body": [
+      "${0:FLUSH PRIVILEGES;}"
+    ],
+    "description": "(flush privileges)",
+    "prefix": "priv-refresh"
+  },
+  "proc": {
+    "body": [
+      "CREATE PROCEDURE `${1:procedure_name}`(",
+      "`${2:arg_name}` ${3:INT}${4:,}",
+      ") BEGIN",
+      "  $5",
+      "END;"
+    ],
+    "prefix": "proc"
+  },
+  "proc-list": {
+    "body": [
+      "${1:SELECT `name`, `param_list`, `comment` FROM `mysql`.`proc` WHERE `db`=DATABASE() AND `type` = 'PROCEDURE';}"
+    ],
+    "prefix": "proc-list"
+  },
+  "repeat": {
+    "body": [
+      "REPEAT ${0:/* Your code ... */}; UNTIL `${1:var_name}` ${2:>} ${3:10} END REPEAT;"
+    ],
+    "description": "(loop ... until ...)",
+    "prefix": "repeat"
+  },
+  "s": {
+    "body": [
+      "SELECT",
+      "    `${4:${3/(.).*/$1/}}`.${1:*}",
+      "  FROM `$3` AS `${4:${3/(.).*/$1/}}`"
+    ],
+    "prefix": "s"
+  },
+  "select_find_constraint_links": {
+    "body": [
+      "SELECT",
+      "  TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME",
+      "FROM",
+      "  INFORMATION_SCHEMA.KEY_COLUMN_USAGE",
+      "WHERE",
+      "  REFERENCED_TABLE_NAME LIKE '%name_of_table%';"
+    ],
+    "description": "Find constraint links",
+    "prefix": "select_find_constraint_links"
+  },
+  "setuserpassword": {
+    "body": [
+      "SET PASSWORD FOR 'username'@'localhost'} = PASSWORD('password');"
+    ],
+    "description": "(change user password)",
+    "prefix": "setuserpassword"
+  },
+  "showprocesses": {
+    "body": [
+      "SHOW processlist;",
+      "SHOW FULL processlist;"
+    ],
+    "description": "Show process",
+    "prefix": "showprocesses"
+  },
+  "sinline": {
+    "body": [
+      "SELECT `${3/(.).*/$1/}`.$1 FROM `$3` AS `${3/(.).*/$1/}`"
+    ],
+    "prefix": "sinline"
+  },
+  "smax": {
+    "body": [
+      "SELECT MAX(${1:id}) FROM `$2` AS `${2/(.).*/$1/}`"
+    ],
+    "prefix": "smax"
+  },
+  "smin": {
+    "body": [
+      "SELECT MIN(${1:id}) FROM `$2` AS `${2/(.).*/$1/}`"
+    ],
+    "prefix": "smin"
+  },
+  "sone": {
+    "body": [
+      "${5:SELECT",
+      "  *",
+      "FROM `$1`",
+      "WHERE `${2:id}` ${3:=} '$4';",
+      "}"
+    ],
+    "prefix": "sone"
+  },
+  "ss": {
+    "body": [
+      "SELECT '${1:My String}';"
+    ],
+    "description": "(select '...';)",
+    "prefix": "ss"
+  },
+  "sv": {
+    "body": [
+      "SELECT `${1:var_name}`;"
+    ],
+    "description": "(select `...`;)",
+    "prefix": "sv"
+  },
+  "table": {
+    "body": [
+      "CREATE TABLE IF NOT EXISTS `${1:table_name}` (",
       "  `${2:id}` INT UNSIGNED NOT NULL AUTO_INCREMENT,",
       "  `${3:name}` ${4:VARCHAR(255)},",
       "  PRIMARY KEY `pk_$2`(`$2`)",
-      ") ENGINE = MEMORY;"
-    ]
-  },
-  "uk": {
-    "prefix": "uk",
-    "body": [
-      "UNIQUE KEY `unique_id`(`$1`$2)$3"
-    ]
-  },
-  "listtriggers": {
-    "prefix": "listtriggers",
-    "body": [
-      "SHOW TRIGGERS FROM full_db_name LIKE 'table_name%';",
-      "SHOW TRIGGERS LIKE 'table_name%';"
-    ]
+      ") ENGINE = InnoDB;"
+    ],
+    "prefix": "table"
   },
   "trigger": {
-    "prefix": "trigger",
     "body": [
       "DROP TRIGGER IF EXISTS `${1:trigger_name}`;",
       "CREATE TRIGGER `${1}` ${2:AFTER} ${3:INSERT} ON `${4:table_name}` FOR EACH ROW",
@@ -729,42 +708,63 @@
       "BEGIN",
       "    ${5: -- Use NEW and OLD constants for access to row}",
       "END;"
-    ]
+    ],
+    "prefix": "trigger"
+  },
+  "uk": {
+    "body": [
+      "UNIQUE KEY `unique_id`(`$1`$2)$3"
+    ],
+    "prefix": "uk"
+  },
+  "union": {
+    "body": [
+      "(",
+      "  $1",
+      ") UNION (",
+      "  $2",
+      ")"
+    ],
+    "prefix": "union"
   },
   "update": {
-    "prefix": "update",
     "body": [
       "UPDATE `${1:table}` SET `$2` = '$3'${4:,}",
       "WHERE `$5` = '$6';"
-    ]
+    ],
+    "prefix": "update"
   },
   "user-add-hash": {
-    "prefix": "user-add-hash",
     "body": [
       "CREATE USER '${1:username}'@'${2:localhost}' IDENTIFIED BY PASSWORD '*832EB84CB764129D05D498ED9CA7E5CE9B8F83EB';"
     ],
-    "description": "(new user, hashed password)"
-  },
-  "createuser": {
-    "prefix": "createuser",
-    "body": [
-      "CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';",
-      "CREATE USER 'username'@'localhost';"
-    ],
-    "description": "(new user, password)"
+    "description": "(new user, hashed password)",
+    "prefix": "user-add-hash"
   },
   "user-list": {
-    "prefix": "user-list",
     "body": [
       "SELECT `user`, `host`, `password` FROM `mysql`.`user`;"
     ],
-    "description": "(list users)"
+    "description": "(list users)",
+    "prefix": "user-list"
   },
-  "setuserpassword": {
-    "prefix": "setuserpassword",
+  "utc": {
     "body": [
-      "SET PASSWORD FOR 'username'@'localhost'} = PASSWORD('password');"
+      "SELECT UNIX_TIMESTAMP(NOW());"
     ],
-    "description": "(change user password)"
+    "prefix": "utc"
+  },
+  "vardefault": {
+    "body": [
+      "DECLARE `${1:var_name}` ${2:INT} DEFAULT '${3:value}';"
+    ],
+    "description": "(var with default)",
+    "prefix": "vardefault"
+  },
+  "where": {
+    "body": [
+      "WHERE ( `$1` ${2:=} '$3' ) "
+    ],
+    "prefix": "where"
   }
 }

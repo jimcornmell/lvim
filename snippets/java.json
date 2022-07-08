@@ -1,144 +1,14 @@
 {
-  "new_java_class": {
-    "prefix": "new_java_class",
-    "body": [
-      "/* Copyright ${VIM:\\$USER_FULL_NAME$} - $CURRENT_YEAR */",
-      "package ${TM_DIRECTORY/(.*)/${1:/upcase}/};",
-      "",
-      "import org.slf4j.Logger;",
-      "import org.slf4j.LoggerFactory;",
-      "",
-      "/**",
-      " * Main class for $1",
-      " *",
-      " * @author ${VIM:\\$USER_FULL_NAME$} [${VIM:\\$USER_EMAIL$}]",
-      " * @since $CURRENT_DATE $CURRENT_MONTH_NAME $CURRENT_YEAR",
-      " */",
-      "public final class $TM_FILENAME_BASE {",
-      " /** Logger! */",
-      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
-      "",
-      " /**",
-      "  * Main.",
-      "  *",
-      "  * @param args Command line arguments.",
-      "  */",
-      " public static void main(final String[] args) throws CmdLineException {",
-      "  $0",
-      " }",
-      "}"
-    ],
-    "description": "New java class"
-  },
-  "log": {
-    "prefix": "log",
-    "body": [
-      " private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
-      " $0"
-    ],
-    "description": "log"
-  },
-  "logi": {
-    "prefix": "logi",
-    "body": [
-      "import org.slf4j.Logger;",
-      "import org.slf4j.LoggerFactory;",
-      "",
-      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
-      " $0"
-    ]
-  },
-  "int_to_string": {
-    "prefix": "int_to_string",
-    "body": [
-      "String str = String.valueOf(2);"
-    ]
-  },
-  "string_to_int": {
-    "prefix": "string_to_int",
-    "body": [
-      "int i = Integer.parseInt(str);"
-    ]
-  },
-  "file_append_text": {
-    "prefix": "file_append_text",
-    "body": [
-      "BufferedWriter out = null;",
-      "try {",
-      " out = new BufferedWriter(new FileWriter(”filename”, true));",
-      " out.write(”aString”);",
-      "} catch (IOException e) {",
-      " // error processing code",
-      "} finally {",
-      " if (out != null) {",
-      "  out.close();",
-      " }",
-      "}"
-    ]
-  },
   "@value": {
-    "prefix": "@value",
     "body": [
       "// https://www.baeldung.com/spring-value-annotation",
       "@Value(\"\\${${1:propertyName}:${2:someDefault}}\")",
       "private String ${3:variableName};"
     ],
-    "description": "@Value"
-  },
-  "init_map": {
-    "prefix": "init_map",
-    "body": [
-      "public class VatTotalAccumulator {",
-      "    private static final float ZERO_VAT = 0.0f;",
-      "    private static final float STANDARD_VAT = 0.20f;",
-      "    private static final float LOW_VAT = 0.05f;",
-      "    private static Map<VatCategory, Percentage> vatRates = new EnumMap<VatCategory, Percentage>(VatCategory.class);",
-      "",
-      "    static {",
-      "        vatRates.put(VatCategory.Zero, new Percentage(ZERO_VAT));",
-      "        vatRates.put(VatCategory.Exempt, new Percentage(ZERO_VAT));",
-      "        vatRates.put(VatCategory.Std, new Percentage(STANDARD_VAT));",
-      "        vatRates.put(VatCategory.Low, new Percentage(LOW_VAT));",
-      "    }",
-      ""
-    ],
-    "description": "init_map"
-  },
-  "class": {
-    "prefix": "class",
-    "body": [
-      "public static class ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ]
-  },
-  "interface": {
-    "prefix": "interface",
-    "body": [
-      "@FunctionalInterface",
-      "public interface ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ],
-    "description": "An interface"
-  },
-  "enum": {
-    "prefix": "enum",
-    "body": [
-      "public enum ${1:$TM_FILENAME_BASE} {",
-      "",
-      "    $0",
-      "",
-      "}"
-    ],
-    "description": "An enum"
+    "description": "@Value",
+    "prefix": "@value"
   },
   "annotation": {
-    "prefix": "annotation",
     "body": [
       "import static java.lang.annotation.ElementType.ANNOTATION_TYPE;",
       "import static java.lang.annotation.ElementType.FIELD;",
@@ -171,33 +41,477 @@
       "",
       "}"
     ],
-    "description": "A repetable annotation"
+    "description": "A repeatable annotation",
+    "prefix": "annotation"
   },
-  "type": {
-    "prefix": "type",
+  "case": {
     "body": [
-      "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|}"
+      "case ${1:value}:",
+      "    return $0;"
     ],
-    "description": "A type"
+    "description": "A case return statement",
+    "prefix": "case"
   },
-  "if": {
-    "prefix": "if",
+  "cast": {
     "body": [
-      "((${1:varName} != null) ? $2 : $3)$0"
+      "${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} = ($1) ${3:obj};",
+      "$0"
     ],
-    "description": "An if not null ternary statement"
+    "description": "Cast an object",
+    "prefix": "cast"
+  },
+  "catch": {
+    "body": [
+      "catch (${1:Exception} ex) {",
+      "    $0",
+      "    log.warn(\"Problem: {}\", ex);",
+      "    throw ex;",
+      "}"
+    ],
+    "description": "A catch block",
+    "prefix": "catch"
+  },
+  "class": {
+    "body": [
+      "public static class ${1:$TM_FILENAME_BASE} {",
+      "    $0",
+      "}"
+    ],
+    "description": "A new class",
+    "prefix": "class"
+  },
+  "const": {
+    "body": [
+      "private static final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:CONST_NAME} = ${3:VALUE};",
+      "$0"
+    ],
+    "description": "A private constant",
+    "prefix": "const"
+  },
+  "dowhile": {
+    "body": [
+      "do {",
+      "    $0",
+      "} while ($1);"
+    ],
+    "description": "A do-while loop",
+    "prefix": "dowhile"
   },
   "else": {
-    "prefix": "else",
     "body": [
       "else {",
       "    $0",
       "}"
     ],
-    "description": "An else statement"
+    "description": "An else block",
+    "prefix": "else"
+  },
+  "enum": {
+    "body": [
+      "public enum ${1:$TM_FILENAME_BASE} {",
+      "    $0",
+      "}"
+    ],
+    "description": "A new enum class",
+    "prefix": "enum"
+  },
+  "eq": {
+    "body": [
+      "Objects.equals(${2:value1}, ${1:value2})$0"
+    ],
+    "description": "null-safe equals than",
+    "prefix": "eq"
+  },
+  "eqm": {
+    "body": [
+      "Objects.equals(${1:this}.${2:fieldOrMethod}, ${3:o}.$2)$0"
+    ],
+    "description": "null-safe equals than member",
+    "prefix": "eqm"
+  },
+  "equals": {
+    "body": [
+      "@Override",
+      "public boolean equals(Object obj) {",
+      "    if (this == obj) {",
+      "        return true;",
+      "    }",
+      "",
+      "    if (obj instanceof ${1:$TM_FILENAME_BASE}) {",
+      "        $1 ${2:o} = ($1) obj;",
+      "",
+      "        return ${3:Objects.equals(this.getId(), $2.getId())}$0;",
+      "    }",
+      "",
+      "    return false;",
+      "}",
+      ""
+    ],
+    "description": "An equals method",
+    "prefix": "equals"
+  },
+  "field": {
+    "body": [
+      "private final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName} = ${3:defaultValue};",
+      "$0"
+    ],
+    "description": "A private final field with value",
+    "prefix": "field"
+  },
+  "file_append_text": {
+    "body": [
+      "BufferedWriter out = null;",
+      "",
+      "try {",
+      "    out = new BufferedWriter(new FileWriter(”filename”, true));",
+      "    out.write(”aString”);",
+      "} catch (IOException e) {",
+      "    // error processing code",
+      "} finally {",
+      "    if (out != null) {",
+      "        out.close();",
+      "    }",
+      "}"
+    ],
+    "description": "Append text to a file",
+    "prefix": "file_append_text"
+  },
+  "finally": {
+    "body": [
+      "finally {",
+      "    $0",
+      "}"
+    ],
+    "description": "A finally block",
+    "prefix": "finally"
+  },
+  "for": {
+    "body": [
+      "for (int i = (${1:array}.length - 1); i >= 0; i--) {",
+      "    $0",
+      "}"
+    ],
+    "description": "A for loop over reverse array",
+    "prefix": "for"
+  },
+  "foreach": {
+    "body": [
+      "for (${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} : ${3:values}) {",
+      "    $0",
+      "}"
+    ],
+    "description": "A for loop over iterable",
+    "prefix": "foreach"
+  },
+  "hashcode": {
+    "body": [
+      "@Override",
+      "public int hashCode() {",
+      "    return Objects.hashCode(${1:getId()});",
+      "}",
+      "$0"
+    ],
+    "description": "A hashcode method",
+    "prefix": "hashcode"
+  },
+  "if": {
+    "body": [
+      "((${1:varName} != null) ? $2 : $3)$0"
+    ],
+    "description": "An if not null ternary statement",
+    "prefix": "if"
+  },
+  "init_map": {
+    "body": [
+      "public class VatTotalAccumulator {",
+      "    private static final float ZERO_VAT = 0.0f;",
+      "    private static final float STANDARD_VAT = 0.20f;",
+      "    private static final float LOW_VAT = 0.05f;",
+      "    private static Map<VatCategory, Percentage> vatRates = new EnumMap<VatCategory, Percentage>(VatCategory.class);",
+      "",
+      "    static {",
+      "        vatRates.put(VatCategory.Zero, new Percentage(ZERO_VAT));",
+      "        vatRates.put(VatCategory.Exempt, new Percentage(ZERO_VAT));",
+      "        vatRates.put(VatCategory.Std, new Percentage(STANDARD_VAT));",
+      "        vatRates.put(VatCategory.Low, new Percentage(LOW_VAT));",
+      "    }",
+      ""
+    ],
+    "description": "Initialise a map",
+    "prefix": "init_map"
+  },
+  "int_to_string": {
+    "body": [
+      "String str = String.valueOf(2);"
+    ],
+    "description": "Convert integer to a string",
+    "prefix": "int_to_string"
+  },
+  "interface": {
+    "body": [
+      "@FunctionalInterface",
+      "public interface ${1:$TM_FILENAME_BASE} {",
+      "    $0",
+      "}"
+    ],
+    "description": "A functional interface",
+    "prefix": "interface"
+  },
+  "lambda0": {
+    "body": [
+      "() -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block without arguments",
+    "prefix": "lambda0"
+  },
+  "lambda0s": {
+    "body": [
+      "() -> $0"
+    ],
+    "description": "A simple lambda without arguments",
+    "prefix": "lambda0s"
+  },
+  "lambda1": {
+    "body": [
+      "${1:a} -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block with 1 argument",
+    "prefix": "lambda1"
+  },
+  "lambda1s": {
+    "body": [
+      "${1:a} -> $0"
+    ],
+    "description": "A simple lambda with 1 argument",
+    "prefix": "lambda1s"
+  },
+  "lambda2": {
+    "body": [
+      "(${1:a}, ${2:b}) -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block with 2 arguments",
+    "prefix": "lambda2"
+  },
+  "lambda2s": {
+    "body": [
+      "(${1:a}, ${2:b}) -> $0"
+    ],
+    "description": "A simple lambda with 2 arguments",
+    "prefix": "lambda2s"
+  },
+  "lambda3": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}) -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block with 3 arguments",
+    "prefix": "lambda3"
+  },
+  "lambda3s": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}) -> $0"
+    ],
+    "description": "A simple lambda with 3 arguments",
+    "prefix": "lambda3s"
+  },
+  "lambda4": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block with 4 arguments",
+    "prefix": "lambda4"
+  },
+  "lambda4s": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> $0"
+    ],
+    "description": "A simple lambda with 4 arguments",
+    "prefix": "lambda4s"
+  },
+  "lambda5": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> {",
+      "    $0",
+      "}"
+    ],
+    "description": "A lambda block with 5 arguments",
+    "prefix": "lambda5"
+  },
+  "lambda5s": {
+    "body": [
+      "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> $0"
+    ],
+    "description": "A simple lambda with 5 arguments",
+    "prefix": "lambda5s"
+  },
+  "log": {
+    "body": [
+      " private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      " $0"
+    ],
+    "description": "New static log var for a class",
+    "prefix": "log"
+  },
+  "logi": {
+    "body": [
+      "import org.slf4j.Logger;",
+      "import org.slf4j.LoggerFactory;",
+      "",
+      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      " $0"
+    ],
+    "description": "New static log var (with imports)",
+    "prefix": "logi"
+  },
+  "main": {
+    "body": [
+      "public static void main(String[] args) {",
+      "    $0",
+      "}",
+      ""
+    ],
+    "description": "A main method",
+    "prefix": "main"
+  },
+  "method": {
+    "body": [
+      "public static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
+      "    $0",
+      "}",
+      ""
+    ],
+    "description": "A public static method",
+    "prefix": "method"
+  },
+  "new": {
+    "body": [
+      "new ${1:Object}($0)"
+    ],
+    "description": "A new instance",
+    "prefix": "new"
+  },
+  "new_java_class": {
+    "body": [
+      "/* Copyright ${VIM:\\$USER_FULL_NAME$} - $CURRENT_YEAR */",
+      "package ${TM_DIRECTORY/(.*)/${1:/upcase}/};",
+      "",
+      "import org.slf4j.Logger;",
+      "import org.slf4j.LoggerFactory;",
+      "",
+      "/**",
+      " * Main class for $1",
+      " *",
+      " * @author ${VIM:\\$USER_FULL_NAME$} [${VIM:\\$USER_EMAIL$}]",
+      " * @since $CURRENT_DATE $CURRENT_MONTH_NAME $CURRENT_YEAR",
+      " */",
+      "public final class $TM_FILENAME_BASE {",
+      " /** Logger! */",
+      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      "",
+      " /**",
+      "  * Main.",
+      "  *",
+      "  * @param args Command line arguments.",
+      "  */",
+      " public static void main(final String[] args) throws CmdLineException {",
+      "  $0",
+      " }",
+      "}"
+    ],
+    "description": "New Java class",
+    "prefix": "new_java_class"
+  },
+  "param": {
+    "body": [
+      "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:paramName}$0"
+    ],
+    "description": "A parameter",
+    "prefix": "param"
+  },
+  "print": {
+    "body": [
+      "System.out.print(\"$1\");$0"
+    ],
+    "description": "Prints a String",
+    "prefix": "print"
+  },
+  "printf": {
+    "body": [
+      "System.out.printf(\"${1:%s}\", ${2:value});$0"
+    ],
+    "description": "Prints a formatted String",
+    "prefix": "printf"
+  },
+  "printfn": {
+    "body": [
+      "System.out.printf(\"${1:%s}\\n\", ${2:value});$0"
+    ],
+    "description": "Prints a formatted String and then terminate the line",
+    "prefix": "printfn"
+  },
+  "printfv": {
+    "body": [
+      "System.out.printf(\"${1:varName} = ${2:%s\\n}\", $1);$0"
+    ],
+    "description": "Prints the formatted variable value",
+    "prefix": "printfv"
+  },
+  "println": {
+    "body": [
+      "System.out.println(\"$1\");$0"
+    ],
+    "description": "Prints a String and then terminate the line",
+    "prefix": "println"
+  },
+  "printv": {
+    "body": [
+      "System.out.println(\"${1:varName} = \" + $1);$0"
+    ],
+    "description": "Prints the variable value",
+    "prefix": "printv"
+  },
+  "return": {
+    "body": [
+      "return this;"
+    ],
+    "description": "A return this",
+    "prefix": "return"
+  },
+  "string_to_int": {
+    "body": [
+      "int i = Integer.parseInt(str);"
+    ],
+    "description": "Convert string to an integer",
+    "prefix": "string_to_int"
+  },
+  "stringb": {
+    "body": [
+      "StringBuilder ${1:builder} = new StringBuilder()",
+      "    $0",
+      "    .toString();"
+    ],
+    "description": "A local StringBuilder variable",
+    "prefix": "stringb"
+  },
+  "stringvariable": {
+    "body": [
+      "String ${1:varName} = new StringBuilder()",
+      "    $0",
+      "    .toString();"
+    ],
+    "description": "A local string variable from StringBuilder",
+    "prefix": "stringvariable"
   },
   "switch": {
-    "prefix": "switch",
     "body": [
       "switch (${1:varName}) {",
       "    case ${2:value}:",
@@ -207,62 +521,26 @@
       "        break;",
       "}"
     ],
-    "description": "A switch statement"
+    "description": "A switch statement",
+    "prefix": "switch"
   },
-  "case": {
-    "prefix": "case",
+  "throw": {
     "body": [
-      "case ${1:value}:",
-      "    return $0;"
+      "throw new IllegalStateException($0);"
     ],
-    "description": "A case return statement"
-  },
-  "const": {
-    "prefix": "const",
-    "body": [
-      "private static final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:CONST_NAME} = ${3:VALUE};",
-      "$0"
-    ],
-    "description": "A private constant"
+    "description": "Throw a new IllegalStateException",
+    "prefix": "throw"
   },
   "try": {
-    "prefix": "try",
     "body": [
       "try {",
       "    $0",
       "}"
     ],
-    "description": "A try block"
-  },
-  "tryresource": {
-    "prefix": "tryresource",
-    "body": [
-      "try ($1) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A try with resources block"
-  },
-  "catch": {
-    "prefix": "catch",
-    "body": [
-      "catch (${1:Exception} ex) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A catch block"
-  },
-  "finally": {
-    "prefix": "finally",
-    "body": [
-      "finally {",
-      "    $0",
-      "}"
-    ],
-    "description": "A finally block"
+    "description": "A try block",
+    "prefix": "try"
   },
   "trycatch": {
-    "prefix": "trycatch",
     "body": [
       "try {",
       "    $TM_SELECTED_TEXT",
@@ -270,10 +548,10 @@
       "    $0",
       "}"
     ],
-    "description": "A try catch block around the selected text"
+    "description": "A try catch block around the selected text",
+    "prefix": "trycatch"
   },
   "trycatchfinally": {
-    "prefix": "trycatchfinally",
     "body": [
       "try {",
       "    $TM_SELECTED_TEXT",
@@ -283,304 +561,23 @@
       "    ",
       "}"
     ],
-    "description": "A try catch finally block around the selected text"
+    "description": "A try catch finally block around the selected text",
+    "prefix": "trycatchfinally"
   },
-  "throw": {
-    "prefix": "throw",
+  "tryresource": {
     "body": [
-      "throw new IllegalStateException($0);"
-    ],
-    "description": "Throw a new IllegalStateException"
-  },
-  "field": {
-    "prefix": "field",
-    "body": [
-      "private final${1| , String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${2:fieldName} = ${3:defaultValue};",
-      "$0"
-    ],
-    "description": "A private final field with value"
-  },
-  "param": {
-    "prefix": "param",
-    "body": [
-      "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:paramName}$0"
-    ],
-    "description": "A parameter"
-  },
-  "l0s": {
-    "prefix": "l0s",
-    "body": [
-      "() -> $0"
-    ],
-    "description": "A simple lambda without arguments"
-  },
-  "l0": {
-    "prefix": "l0",
-    "body": [
-      "() -> {",
+      "try ($1) {",
       "    $0",
       "}"
     ],
-    "description": "A lambda block without arguments"
+    "description": "A try with resources block",
+    "prefix": "tryresource"
   },
-  "l1s": {
-    "prefix": "l1s",
+  "type": {
     "body": [
-      "${1:a} -> $0"
+      "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|}"
     ],
-    "description": "A simple lambda with 1 argument"
-  },
-  "l1": {
-    "prefix": "l1",
-    "body": [
-      "${1:a} -> {",
-      "    $0",
-      "}"
-    ],
-    "description": "A lambda block with 1 argument"
-  },
-  "l2s": {
-    "prefix": "l2s",
-    "body": [
-      "(${1:a}, ${2:b}) -> $0"
-    ],
-    "description": "A simple lambda with 2 arguments"
-  },
-  "l2": {
-    "prefix": "l2",
-    "body": [
-      "(${1:a}, ${2:b}) -> {",
-      "    $0",
-      "}"
-    ],
-    "description": "A lambda block with 2 arguments"
-  },
-  "l3s": {
-    "prefix": "l3s",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}) -> $0"
-    ],
-    "description": "A simple lambda with 3 arguments"
-  },
-  "l3": {
-    "prefix": "l3",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}) -> {",
-      "    $0",
-      "}"
-    ],
-    "description": "A lambda block with 3 arguments"
-  },
-  "l4s": {
-    "prefix": "l4s",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> $0"
-    ],
-    "description": "A simple lambda with 4 arguments"
-  },
-  "l4": {
-    "prefix": "l4",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> {",
-      "    $0",
-      "}"
-    ],
-    "description": "A lambda block with 4 arguments"
-  },
-  "l5s": {
-    "prefix": "l5s",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> $0"
-    ],
-    "description": "A simple lambda with 5 arguments"
-  },
-  "l5": {
-    "prefix": "l5",
-    "body": [
-      "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> {",
-      "    $0",
-      "}"
-    ],
-    "description": "A lambda block with 5 arguments"
-  },
-  "for": {
-    "prefix": "for",
-    "body": [
-      "for (int i = (${1:array}.length - 1); i >= 0; i--) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A for loop over reverse array"
-  },
-  "foreach": {
-    "prefix": "foreach",
-    "body": [
-      "for (${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} : ${3:values}) {",
-      "    $0",
-      "}"
-    ],
-    "description": "A for loop over iterable"
-  },
-  "while": {
-    "prefix": "while",
-    "body": [
-      "do {",
-      "    $0",
-      "} while ($1);"
-    ],
-    "description": "A do-while loop"
-  },
-  "main": {
-    "prefix": "main",
-    "body": [
-      "public static void main(String[] args) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A main method"
-  },
-  "method": {
-    "prefix": "method",
-    "body": [
-      "public static${2| , void, String, int, Integer, long, Long, float, Float, double, Double, boolean, Boolean, short, Short, byte, Byte, char, Character, BigDecimal, StringBuilder, LocalDate, LocalDateTime, ZonedDateTime, LocalTime, Instant, YearMonth, Month, Year, MonthDay, DayOfWeek, Period, Duration, Date, Class<?>, Object, Object[], Consumer<>, BiConsumer<>, Predicate<>, BiPredicate<>, Function<>, BiFunction<>, Supplier<>, Optional<>, List<>, Set<>, Map<>, Collection<>, Stream<>|} ${3:methodName}($4) {",
-      "    $0",
-      "}",
-      ""
-    ],
-    "description": "A public static method"
-  },
-  "new": {
-    "prefix": "new",
-    "body": [
-      "new ${1:Object}($0)"
-    ],
-    "description": "A new instance"
-  },
-  "cast": {
-    "prefix": "cast",
-    "body": [
-      "${1| ,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:varName} = ($1) ${3:obj};",
-      "$0"
-    ],
-    "description": "Cast a object"
-  },
-  "eq": {
-    "prefix": "eq",
-    "body": [
-      "Objects.equals(${2:value1}, ${1:value2})$0"
-    ],
-    "description": "null-safe equals than"
-  },
-  "eqm": {
-    "prefix": "eqm",
-    "body": [
-      "Objects.equals(${1:this}.${2:fieldOrMethod}, ${3:o}.$2)$0"
-    ],
-    "description": "null-safe equals than member"
-  },
-  "equals": {
-    "prefix": "equals",
-    "body": [
-      "@Override",
-      "public boolean equals(Object obj) {",
-      "    if (this == obj) {",
-      "        return true;",
-      "    }",
-      "    if (obj instanceof ${1:$TM_FILENAME_BASE}) {",
-      "        $1 ${2:o} = ($1) obj;",
-      "",
-      "        return ${3:Objects.equals(this.getId(), $2.getId())}$0;",
-      "    }",
-      "    return false;",
-      "}",
-      ""
-    ],
-    "description": "An equals method"
-  },
-  "hashcode": {
-    "prefix": "hashcode",
-    "body": [
-      "@Override",
-      "public int hashCode() {",
-      "    return Objects.hashCode(${1:getId()});",
-      "}",
-      "$0"
-    ],
-    "description": "A hashcode method"
-  },
-  "@o": {
-    "prefix": "@o",
-    "body": [
-      "@Override"
-    ],
-    "description": "A @Override annotation"
-  },
-  "print": {
-    "prefix": "print",
-    "body": [
-      "System.out.print(\"$1\");$0"
-    ],
-    "description": "Prints a String"
-  },
-  "println": {
-    "prefix": "println",
-    "body": [
-      "System.out.println(\"$1\");$0"
-    ],
-    "description": "Prints a String and then terminate the line"
-  },
-  "printf": {
-    "prefix": "printf",
-    "body": [
-      "System.out.printf(\"${1:%s}\", ${2:value});$0"
-    ],
-    "description": "Prints a formatted String"
-  },
-  "printfn": {
-    "prefix": "printfn",
-    "body": [
-      "System.out.printf(\"${1:%s}\\n\", ${2:value});$0"
-    ],
-    "description": "Prints a formatted String and then terminate the line"
-  },
-  "printv": {
-    "prefix": "printv",
-    "body": [
-      "System.out.println(\"${1:varName} = \" + $1);$0"
-    ],
-    "description": "Prints the variable value"
-  },
-  "printfv": {
-    "prefix": "printfv",
-    "body": [
-      "System.out.printf(\"${1:varName} = ${2:%s\\n}\", $1);$0"
-    ],
-    "description": "Prints the formatted variable value"
-  },
-  "return": {
-    "prefix": "return",
-    "body": [
-      "return this;"
-    ],
-    "description": "A return this"
-  },
-  "var": {
-    "prefix": "var",
-    "body": [
-      "String ${1:varName} = new StringBuilder()",
-      "    $0",
-      "    .toString();"
-    ],
-    "description": "A local string variable from StringBuilder"
-  },
-  "stringb": {
-    "prefix": "stringb",
-    "body": [
-      "StringBuilder ${1:builder} = new StringBuilder()",
-      "    $0",
-      "    .toString();"
-    ],
-    "description": "A local StringBuilder variable"
+    "description": "A type",
+    "prefix": "type"
   }
 }

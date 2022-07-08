@@ -1,6 +1,40 @@
 {
+  "1": {
+    "body": [
+      ">/dev/null"
+    ],
+    "description": ">/dev/null",
+    "prefix": "1"
+  },
+  "12": {
+    "body": [
+      ">/dev/null 2>&1"
+    ],
+    "description": ">/dev/null 2>&1",
+    "prefix": "12"
+  },
+  "2": {
+    "body": [
+      "2>/dev/null"
+    ],
+    "description": "2>/dev/null",
+    "prefix": "2"
+  },
+  "case": {
+    "body": [
+      "",
+      "case $1 in",
+      "    $2    # ← put one or more switches here. Use snippet \"switch\" or snippet \"switch multi\"",
+      "    *) # This catches all cases that weren't previously listed. That's why it has the wildcard \"*\" operator.",
+      "    ${0:    # ← put your command here}",
+      "    ;;",
+      "esac",
+      ""
+    ],
+    "description": "case statement. Use the switch statement snippet \"switch\" to add one or more switches to the case statement.",
+    "prefix": "case"
+  },
   "case_statement": {
-    "prefix": "case_statement",
     "body": [
       "case $0 in",
       "    PATTERN_1)",
@@ -16,94 +50,86 @@
       "      ;;",
       "esac"
     ],
-    "description": ""
+    "description": "",
+    "prefix": "case_statement"
   },
-  "while_text_file": {
-    "prefix": "while_text_file",
+  "cat": {
     "body": [
-      "INPUT=\"data.cvs\"",
+      "cat <<-EOF ${1:>/path/to/file}",
+      "    $2",
+      "EOF"
+    ],
+    "description": "cat... EOF",
+    "prefix": "cat"
+  },
+  "characterinvariablestring": {
+    "body": [
+      "\\${${1:variable-name-here}:${2:index-of-character}:${0:number-of-characters-from-index-onwards-to-return}\\}"
+    ],
+    "prefix": "characterinvariablestring"
+  },
+  "datesinceepoch": {
+    "body": [
+      "datesinceepoch=$(date +%s)"
+    ],
+    "description": "insert a date and time stamp into a string.",
+    "prefix": "datesinceepoch"
+  },
+  "escape": {
+    "body": [
+      "| sed 's/[^a-zA-Z0-9]/\\\\\\&/g'"
+    ],
+    "description": "put a backslash in front of all special characters.",
+    "prefix": "escape"
+  },
+  "exit": {
+    "body": [
+      "${1|exit 0 #success,exit 1 #catchall,exit 2 #misuse of shell builtin,exit 126 #command invoked cannot execute e.g. permission issue or command is not an executable,exit 127 #command not found e.g. file or script does not exist|}"
+    ],
+    "description": "Exit and throw correct error code. For list of all codes, see: http://www.tldp.org/LDP/abs/html/exitcodes.html",
+    "prefix": "exit"
+  },
+  "extractnth-from-lastfield": {
+    "body": [
+      "awk 'BEGIN { FS=\"$1\" }{ print $(NF-$2)}'",
+      "${0:#field separator↑               ↑ nth-from-last}"
+    ],
+    "description": "Use awk to extract the nth-from-last field in a string, where the field is defined by the field separator \"FS=\" and the nth-from-last field is defined by $(NF-n)",
+    "prefix": "extractnth-from-lastfield"
+  },
+  "extractnthfield": {
+    "body": [
+      "awk 'BEGIN { FS=\"$1\" }{ print $($2)}'",
+      "${0:#field separator↑        nth ↑}"
+    ],
+    "description": "Use awk to extract the first field in a string, where the field is defined by the field separator \"FS=\" and the nth field is defined by $(n)",
+    "prefix": "extractnthfield"
+  },
+  "for": {
+    "body": [
       "",
-      "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
-      "",
-      "while IFS=\\$'\\    ' read -r flname dob ssn tel status",
+      "for $1 in $2",
       "do",
-      "    $0echo \"Name : \\$flname\"",
-      "    echo \"DOB : \\$dob\"",
-      "    echo \"SSN : \\$ssn\"",
-      "    echo \"Telephone : \\$tel\"",
-      "    echo \"Status : \\$status\"",
-      "done <\"\\$INPUT\""
-    ],
-    "description": "while_text_file"
-  },
-  "if_statement": {
-    "prefix": "if_statement",
-    "body": [
-      "if [[ \\$val -ne 0 ]]; then",
       "    $0",
-      "elif [[ \\$val -ne 0 ]]",
-      "    x=\\$((x-1))",
-      "else",
-      "    x=\"\\$x\n\\$line\"",
-      "fi"
+      "done",
+      ""
     ],
-    "description": "if_statement"
+    "description": "Stub out a for loop",
+    "prefix": "for"
   },
-  "if_statement_full": {
-    "prefix": "if_statement_full",
+  "fori": {
     "body": [
-      "# See: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/",
-      "$0# ! EXPRESSION             The EXPRESSION is false.",
-      "# -n STRING                The length of STRING is greater than zero.",
-      "# -z STRING                The lengh of STRING is zero (ie it is empty).",
-      "# STRING1 = STRING2        STRING1 is equal to STRING2",
-      "# STRING1 != STRING2       STRING1 is not equal to STRING2",
-      "# INTEGER1 -eq INTEGER2    INTEGER1 is numerically equal to INTEGER2",
-      "# INTEGER1 -gt INTEGER2    INTEGER1 is numerically greater than INTEGER2",
-      "# INTEGER1 -lt INTEGER2    INTEGER1 is numerically less than INTEGER2",
-      "# -d FILE                  FILE exists and is a directory.",
-      "# -e FILE                  FILE exists.",
-      "# -r FILE                  FILE exists and the read permission is granted.",
-      "# -s FILE                  FILE exists and it's size is greater than zero (ie. it is not empty).",
-      "# -w FILE                  FILE exists and the write permission is granted.",
-      "# -x FILE                  FILE exists and the execute permission is granted.",
-      "if [[ \"\\$line\" = *\"--\"* ]] || [ \"\\$line\" = \"#\"* ]",
-      "if [[ \"\\$line\" != *\"--\"* ]] && [ \"\\$line\" != \"#\"* ]",
-      "if [[ \"\\$line\" != *\"#\"* ]]",
-      "if [[ \\$val -ne 0 ]]; then",
-      "    x=\\$((x+1))",
-      "elif [[ \\$val -ne 0 ]]",
-      "    x=((x-1))",
-      "else",
-      "    x=\"\\$x\n\\$line\"",
-      "fi",
-      "#",
-      "pie=good",
-      "# => 0, it matches the regex!",
-      "[[ \\$pie =~ d ]]; echo \\$?",
-      "# => 0, still matches",
-      "[[ \\$pie =~ [aeiou]d ]]; echo \\$?",
-      "# => 1, no match",
-      "[[ \\$pie =~ [aei]d ]]; echo \\$?",
-      "# => 1, no match because there's no literal '[aeoiu]d' inside the word \"good\"",
-      "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
+      "",
+      "for (( i=$1; i<$2; i++ ))",
+      "do",
+      "    $0",
+      "done",
+      ""
     ],
-    "description": "if_statement_full"
-  },
-  "while_here_doc": {
-    "prefix": "while_here_doc",
-    "body": [
-      "while read pass port user ip files directs; do",
-      "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
-      "done <<DATA",
-      "PASS    PORT    USER    IP    FILES    DIRECTS1",
-      "PASS    PORT    USER    IP    FILES    DIRECTS2",
-      "DATA"
-    ],
-    "description": "while_here_doc"
+    "description": "Stub out a for loop that iterates over a number, such as the length of a string, which can be accessed with snippet \"length of string\"",
+    "prefix": "fori"
   },
   "func": {
-    "prefix": "func",
     "body": [
       "",
       "# $1 {{{",
@@ -113,27 +139,10 @@
       "# }}}",
       ""
     ],
-    "description": "func"
-  },
-  "log": {
-    "prefix": "log",
-    "body": [
-      "console.log('$1');",
-      "$2"
-    ],
-    "description": "Log output to console"
-  },
-  "cat": {
-    "prefix": "cat",
-    "body": [
-      "cat <<-EOF ${1:>/path/to/file}",
-      "    $2",
-      "EOF"
-    ],
-    "description": "cat... EOF"
+    "description": "func",
+    "prefix": "func"
   },
   "function": {
-    "prefix": "function",
     "body": [
       "",
       "$1 () {",
@@ -154,10 +163,10 @@
       "}",
       ""
     ],
-    "description": "Stub out a function"
+    "description": "Stub out a function",
+    "prefix": "function"
   },
   "getopts": {
-    "prefix": "getopts",
     "body": [
       "while getopts :${1:?}a-:fqvh arg",
       "do",
@@ -205,10 +214,32 @@
       "    esac",
       "done"
     ],
-    "description": "while getopts … done"
+    "description": "while getopts … done",
+    "prefix": "getopts"
+  },
+  "grependswith": {
+    "body": [
+      "grep \"$0\"\\$"
+    ],
+    "description": "Search a string for a pattern that occurs at the end of the string. Especially useful for finding file extensions.",
+    "prefix": "grependswith"
+  },
+  "grepstartswith": {
+    "body": [
+      "grep ^\"$0\""
+    ],
+    "description": "Search a string for a pattern that occurs at the start of the string. Especially useful for finding comments in scripts",
+    "prefix": "grepstartswith"
+  },
+  "gzip": {
+    "body": [
+      "${1|gzip,sudo gzip|} --verbose $2.tar",
+      "${0:# ↑ Pay attention to the user who owns the tarfile you want to zip. If you had to \"sudo\" to make it, then it is owned by \"root\". If you do not \"sudo gzip\", then the resulting \".tar.gz\" will be owned by you - not by root! This means that the permissions of the files that were zipped up will also change, and they will ultimately be owned by whoever unzips the file! You probably don't want the permissions to change. Therefore, you should \"gzip\" as the same user (most likely \"root\") that made the tarfile.}"
+    ],
+    "description": "Compress a tape archive (tar) with \"gzip\".",
+    "prefix": "gzip"
   },
   "header": {
-    "prefix": "header",
     "body": [
       "#!/usr/bin/env bash",
       "#",
@@ -217,269 +248,19 @@
       "# @description  # TODO: desc",
       "#"
     ],
-    "description": "header"
+    "description": "header",
+    "prefix": "header"
   },
-  "read": {
-    "prefix": "read",
+  "heredoctofile": {
     "body": [
-      "read -r -d '' ${1:variableName} <<-EOF",
-      "${2:Content to assign to ${1}}",
-      "EOF",
-      "echo \"\\$${1}\"",
-      "$3"
+      "${1:sudo} ${2|tee,tee -a|} ${3:filename} <<- ${4|EOF,\"EOF\"|} > /dev/null ${5:# (1) use `sudo` to send text to a file that the current user can't write to. (2) use `tee` to overwrite it; use `tee -a` to append to it. (3) put EOF (aka the delimeter) into quotes if you do NOT want the shell to expand parameters or substitute commands }",
+      "$0",
+      "EOF"
     ],
-    "description": "Assign heredoc to variable"
-  },
-  "mktemp": {
-    "prefix": "mktemp",
-    "body": [
-      "${1:tmpFile}=\\$(mktemp --tmpdir tmpPGIH${2:-pgihadmin}.XXXXXXXXXX) || \\",
-      "    print_error_and_exit \"Impossible de creer un fichier temporaire dans \\$TMPDIR !\"",
-      "trap \"rm -f \\${${1}:-/tmp/dummy}\" 0 1 2 3 15"
-    ],
-    "description": "Create temp file into $TMPDIR"
-  },
-  "ite": {
-    "prefix": "ite",
-    "body": [
-      "[[ ${1:condition} ]] && ${2:echo \"true\"} || ${3:echo \"false\"}"
-    ],
-    "description": "[[ ]] && true || false"
-  },
-  "2": {
-    "prefix": "2",
-    "body": [
-      "2>/dev/null"
-    ],
-    "description": "2>/dev/null"
-  },
-  "1": {
-    "prefix": "1",
-    "body": [
-      ">/dev/null"
-    ],
-    "description": ">/dev/null"
-  },
-  "12": {
-    "prefix": "12",
-    "body": [
-      ">/dev/null 2>&1"
-    ],
-    "description": ">/dev/null 2>&1"
-  },
-  "usage": {
-    "prefix": "usage",
-    "body": [
-      "usage() {",
-      "    cat <<-EOF",
-      "    Usage: pgihadmin ${1:tache} <CIBLE> [-f] [-q] [-h]",
-      "    Cette tache permet de ${2:bla bla}",
-      "    PARAMETRES:",
-      "    ===========",
-      "        CIBLE    Serveur cible : <vide> ou all, aps, ts, lb, ord, apsN, tsN, lbN, ordN (avec N un nombre)",
-      "    OPTIONS:",
-      "    ========",
-      "        -f    Mode force",
-      "        -q    Mode silencieux",
-      "        -h    Affiche ce message",
-      "    EOF",
-      "}"
-    ],
-    "description": "Usage fonction template"
-  },
-  "while": {
-    "prefix": "while",
-    "body": [
-      "while read -r line; do",
-      "    echo \"\\$line\"",
-      "done < ${1:/path/to/file}"
-    ],
-    "description": "While loop to read file"
-  },
-  "script": {
-    "prefix": "script",
-    "body": [
-      "#!/bin/${1|bash,zsh,sh|}",
-      "",
-      "#-------------- Usage --------------",
-      "",
-      "${2:    # ← Put your usage function here, with \"usage\" snippet. Then, print the usage function to standard error whenever a user supplies the wrong arguments}",
-      "",
-      "#------------- Cleanup -------------",
-      "",
-      "# This section contains all of the logic needed to return the environment to its previous state upon exiting. The reason the cleanup function is first in this script is because it needs to run, even if the script is killed before the shell has a chance to execute each line.",
-      "",
-      "clean-up () {",
-      "    print-if-verbose \"\\n\\nCleaning up ...\\n\\n\" 1>&2",
-      "",
-      "    if [ \"\\$SCRIPT_IS_DONE\" -eq 0 ] # If unclean exit, run all commands in SCRIPT_UNDO ↓ in the reverse order that they were added to the array in.",
-      "    then",
-      "        for (( i=\\${#SCRIPT_UNDO[@]} ; i>0 ; i-- ))",
-      "        do",
-      "            INDEX=$(( \\$i-1 ))",
-      "            ${SCRIPT_UNDO[\\$INDEX]}",
-      "        done",
-      "    fi\n",
-      "    #Unset all variables that you made while the script was running ↓",
-      "    unset VERBOSE",
-      "    ${3:    # ← unset your variables here.}",
-      "",
-      "    print-if-verbose \"\\n\\n... done \\n\\n\" && sleep 0.3 && printf \"  🧹  \" && sleep 0.3 && printf \"  🗑  \" && sleep 0.3 && printf \"  👋 Bye Bye!\\n\\n\" 1>&2",
-      "}",
-      "",
-      "trap clean-up EXIT${4: #this runs the \"clean-up\" function ↑ before exiting this script}",
-      "",
-      "#------------ Variables -------------",
-      "",
-      "${5:# This section contains all of the environment variables that you will need to reference in your script. Put ALL of your variables here - even if you only use them once! That makes it easier for you to keep track of them, and unset them. For bonus points, don't reference or modify any existing shell variables in your script (e.g. \\$PWD, \\$0, \\$?, etc.). Instead, make your own variables here, and give them the same values as the environment builtins.",
-      "\n# E.g.:",
-      "# CURRENT_WORKING_DIRECTORY = \\$PWD\n# MY_VARIABLE=    # ← this is an example of initializing a variable to null}\n${6:    # ← put your variables here.}",
-      "VERBOSE=0    #use 0 for false and 1 for true. This is because it's faster to compare numbers than strings.",
-      "SCRIPT_IS_DONE=0",
-      "SCRIPT_UNDO=()${7:    # Every time your script modifies the host, place the command that will undo those modifications in this array.}",
-      "",
-      "#--------- Helper Functions ---------",
-      "",
-      "# This section contains all of repeated pieces of logic needed to run the \"Main Script\" ↓. Helper functions abstract away repeated subroutines and frequently-used branches of execution. If you find yourself copying-and-pasting one or more instructions, put them in a function so that your code doesn't turn into copypasta.",
-      "print-if-verbose () {",
-      "    if [ \"\\$VERBOSE\" -eq 1 ]",
-      "    then",
-      "        printf \"\\$*\"",
-      "    fi",
-      "}",
-      "",
-      "${8:    # ← put your helper functions here.}",
-      "",
-      "#------------- Options -------------",
-      "",
-      "${9:# This section handles all of the options passed to your script. Options include flags and arguments. Use it to set your script's variables ↑ according to the flags and arguments passed to your script.}",
-      "RECOGNIZED=()    # ← this array will hold all of the options that your script recognizes.",
-      "${11:RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS=()}${10:    # ← this array will hold all of the options that exclude other options.}",
-      "UNRECOGNIZED=()    # ← this array will hold all of the options that your script does not recognize.\nGRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\"    # ← if an option needs to grab one or more words that follow it, then it needs to set this to a handler function that will take care of processing those words. The parsing loop ↓ will call this handler function when it encounters words that don't look like flags (i.e. begin with \"-\" or \"--\") and pass those words into it. When the handler function is done processing those words, it must clear this variable so that it doesn't keep getting called by the parsing loop.\n",
-      "${12:    # ← place your handler functions here}\n",
-      "handle-unrecognized-argument () {",
-      "\n    UNRECOGNIZED_ARGUMENT=\"\\$*\"",
-      "\n    UNRECOGNIZED+=(\\$UNRECOGNIZED_ARGUMENT)",
-      "\n    unset UNRECOGNIZED_ARGUMENT",
-      "}\n",
-      "try-to-recognize-argument () {",
-      "\n    ARGUMENT_TO_RECOGNIZE=\"\\$*\"",
-      "\n    case \\$ARGUMENT_TO_RECOGNIZE in",
-      "        ${13:\"YOUR-ARGUMENT-HERE\"})     # ← if an option is not mutually exclusive to any other option, and it does not grab the words that follow it, then place it here.",
-      "            RECOGNIZED+=(\"\\$ARGUMENT_TO_RECOGNIZE\")",
-      "        ;;",
-      "        ${14:\"YOUR-MUTUALLY-EXCLUSIVE-ARGUMENTS-HERE\"})   # ← if an option is mutually exclusive to any other option, and does not grab the words that follow it, then place it here.",
-      "            RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS+=(\"\\$ARGUMENT_TO_RECOGNIZE\")",
-      "        ;;",
-      "        ${15:    # ← place one switch statement here for each option that grabs the words that follow it.}",
-      "        *)",
-      "            handle-unrecognized-argument \\$ARGUMENT_TO_RECOGNIZE",
-      "        ;;",
-      "    esac",
-      "\n    unset ARGUMENT_TO_RECOGNIZE",
-      "\n}\n\n",
-      "#This is the parser loop. It grabs all of the unsanitized arguments from the command line and tries to make sense of them",
-      "for argument in \\$@ # we assume that arguments are separated by spaces",
-      "do",
-      "\n    if [[ \"\\$argument\" =~ ^\"--\"[:alnum:]* ]] # if the next argument is a single multi-character option...",
-      "    then",
-      "        GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\" # Make sure that the callback variable is cleared upon encountering a new option in the list of arguments. Otherwise, it's possible that a previous callback will try to parse words that follow this option.",
-      "        try-to-recognize-argument \\$argument",
-      "    else",
-      "\n        if [[ \"\\$argument\" =~ ^\"-\"[:alnum:]* ]]",
-      "        then",
-      "            GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\" # Make sure that the callback variable is cleared upon encountering a new option in the list of arguments. Otherwise, it's possible that a previous callback will try to parse words that follow this option.",
-      "\n            # Handle each option:",
-      "            for (( i=1; i<\\${#argument}; i++ ))",
-      "            do",
-      "                # Loop over each character in the argument:",
-      "                try-to-recognize-argument \"-\\${argument:\\$i:1}\"",
-      "\n            done",
-      "\n        else",
-      "            if [ \"\\$GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK\" != \"\" ]",
-      "            then",
-      "                \\$GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK \"\\$argument\"    # ← The current argument becomes an argument of the callback. This avoids the need to \"eval it\". It is up to you to write the correct handler function for the callback, and to make sure the callback removes itself from the callback variable when it's done processing words.",
-      "\n                # Note that we don't clear the callback here, because an option may accept an indefinite number of words. It is up to the option's callback to clear itself from the callback variable when it has accepted all of the words it is looking for. That being said, we DO clear the callback variable as soon as we encounter more options, because options cannot themselves accept other options.",
-      "            else",
-      "                handle-unrecognized-argument \\$argument",
-      "            fi",
-      "        fi",
-      "    fi\ndone",
-      "\n\nif [ \"\\${#UNRECOGNIZED[@]}\" -ne 0 ]    # If any arguments are unrecognized, then don't execute. Instead, print usage statement and quit the script.",
-      "then",
-      "    printf \"\\n\\n🤷‍♀️ I don't understand what you mean by \\\"\\e[1m\\${UNRECOGNIZED[*]}\\e[0m\\\". Here are all of the available options I understand:\\n\\n\" | fold -w\\$(tput cols) 1>&2\n    usage\n    exit 1\nfi\n",
-      "# Make sure that only one option in each set of mutually exclusive options is used.\n",
-      "if [ ${#RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]} -ne 0 ]",
-      "then",
-      "    ${19:printf \"\\n\\n🤨It looks like you've given me \"${#RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]\\}\" conflicting options. I accept the following options:\"}",
-      "    usage",
-      "    exit 1",
-      "fi\n",
-      "#If no set of mutually exclusive options was passed, then append all options from RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS to RECOGNIZED\n\nfor option in \"\\${RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]}\"\ndo\n    RECOGNIZED+=(\"\\$option\")\ndone\n",
-      "# Finally, iterate over all recognized options, and set variables accordingly.\nfor option in \\${RECOGNIZED[@]}\ndo\n    case \\$option in\n        \"-h\" | \"--help\")\n            usage || \"You haven't set a usage statement! Please add it to your script.\"\n            break 2 # If help is called, don't even process any further options.\n        ;;\n        \"-v\" | \"--verbose\")\n            VERBOSE=1\n        ;;\n        ${20:    # ← put the rest of your switch statement here.}\n    \n        *)\n            printf \"I don't know what \\$option means, and I don't know how it got past my parser. I will exit now\" && exit 1\n        ;;\n    esac\ndone\n",
-      "#----------- Main Script -----------",
-      "",
-      "# This section contains the script that will actually run. The reason this section is last in this file is because this script references all of the above variables and helper functions. Shells execute scripts one line at a time, and they don't hoist variables and function definitions prior to execution.",
-      "",
-      "${0:    # ← put your script's logic here.}",
-      "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
-    ],
-    "description": "Make a Bash Script with sections for cleanup, environment variables, helper functions, and main script"
-  },
-  "scriptminimal": {
-    "prefix": "scriptminimal",
-    "body": [
-      "#!/bin/${1|bash,zsh,sh|}",
-      "",
-      "#------------- Cleanup -------------",
-      "",
-      "# This section contains all of the logic needed to return the environment to its previous state upon exiting. The reason the cleanup function is first in this script is because it needs to run, even if the script is killed before the shell has a chance to execute each line.",
-      "",
-      "clean-up () {",
-      "",
-      "    if [ \"\\$SCRIPT_IS_DONE\" -eq 0 ] # If unclean exit, run all commands in SCRIPT_UNDO ↓ in the reverse order that they were added to the array in.",
-      "    then",
-      "        for (( i=\\${#SCRIPT_UNDO[@]} ; i>0 ; i-- ))",
-      "        do",
-      "            INDEX=$(( \\$i-1 ))",
-      "            ${SCRIPT_UNDO[\\$INDEX]}",
-      "        done",
-      "    fi\n",
-      "    ${3:    # ← unset your variables here.}",
-      "",
-      "}",
-      "",
-      "trap clean-up EXIT${4: #this runs the \"clean-up\" function ↑ before exiting this script}",
-      "",
-      "#------------ Variables -------------",
-      "",
-      "SCRIPT_IS_DONE=0",
-      "SCRIPT_UNDO=()${7:    # Every time your script modifies the host, place the command that will undo those modifications in this array.}",
-      "",
-      "#--------- Helper Functions ---------",
-      "",
-      "# This section contains all of repeated pieces of logic needed to run the \"Main Script\" ↓. Helper functions abstract away repeated subroutines and frequently-used branches of execution. If you find yourself copying-and-pasting one or more instructions, put them in a function so that your code doesn't turn into copypasta.",
-      "",
-      "${8:    # ← put your helper functions here.}",
-      "",
-      "#----------- Main Script -----------",
-      "",
-      "# This section contains the script that will actually run. The reason this section is last in this file is because this script references all of the above variables and helper functions. Shells execute scripts one line at a time, and they don't hoist variables and function definitions prior to execution.",
-      "",
-      "${0:    # ← put your script's logic here.}",
-      "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
-    ],
-    "description": "Make a Bash Script with sections for arguments, environment variables, helper functions, and main script"
-  },
-  "escape": {
-    "prefix": "escape",
-    "body": [
-      "| sed 's/[^a-zA-Z0-9]/\\\\\\&/g'"
-    ],
-    "description": "put a backslash in front of all special characters."
+    "description": "Append multi-line text to a file, or feed it into the standard input of a command, with a heredoc",
+    "prefix": "heredoctofile"
   },
   "if": {
-    "prefix": "if",
     "body": [
       "",
       "if [ $2 ]${1:    # ← see 'man test' for available unary and binary operators.}",
@@ -490,36 +271,64 @@
       "fi",
       ""
     ],
-    "description": "Stub out a simple conditional statement that uses the test command \"[\""
+    "description": "Stub out a simple conditional statement that uses the test command \"[\"",
+    "prefix": "if"
   },
-  "ifregex": {
-    "prefix": "ifregex",
+  "if_statement": {
     "body": [
-      "",
-      "if [[ $1 =~ $2 ]]    # ← see 'man bash' for valid conditional statements.",
-      "then",
-      "    $3",
+      "if [[ \\$val -ne 0 ]]; then",
+      "    $0",
+      "elif [[ \\$val -ne 0 ]]",
+      "    x=\\$((x-1))",
       "else",
-      "    $0",
-      "fi",
-      ""
+      "    x=\"\\$x\n\\$line\"",
+      "fi"
     ],
-    "description": "Stub out a simple conditional statement that uses bash's built in conditional expression syntax to compare a string on the left hand side to a regex on the right hand side."
+    "description": "if_statement",
+    "prefix": "if_statement"
   },
-  "for": {
-    "prefix": "for",
+  "if_statement_full": {
     "body": [
-      "",
-      "for $1 in $2",
-      "do",
-      "    $0",
-      "done",
-      ""
+      "# See: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/",
+      "$0# ! EXPRESSION             The EXPRESSION is false.",
+      "# -n STRING                The length of STRING is greater than zero.",
+      "# -z STRING                The lengh of STRING is zero (ie it is empty).",
+      "# STRING1 = STRING2        STRING1 is equal to STRING2",
+      "# STRING1 != STRING2       STRING1 is not equal to STRING2",
+      "# INTEGER1 -eq INTEGER2    INTEGER1 is numerically equal to INTEGER2",
+      "# INTEGER1 -gt INTEGER2    INTEGER1 is numerically greater than INTEGER2",
+      "# INTEGER1 -lt INTEGER2    INTEGER1 is numerically less than INTEGER2",
+      "# -d FILE                  FILE exists and is a directory.",
+      "# -e FILE                  FILE exists.",
+      "# -r FILE                  FILE exists and the read permission is granted.",
+      "# -s FILE                  FILE exists and it's size is greater than zero (ie. it is not empty).",
+      "# -w FILE                  FILE exists and the write permission is granted.",
+      "# -x FILE                  FILE exists and the execute permission is granted.",
+      "if [[ \"\\$line\" = *\"--\"* ]] || [ \"\\$line\" = \"#\"* ]",
+      "if [[ \"\\$line\" != *\"--\"* ]] && [ \"\\$line\" != \"#\"* ]",
+      "if [[ \"\\$line\" != *\"#\"* ]]",
+      "if [[ \\$val -ne 0 ]]; then",
+      "    x=\\$((x+1))",
+      "elif [[ \\$val -ne 0 ]]",
+      "    x=((x-1))",
+      "else",
+      "    x=\"\\$x\n\\$line\"",
+      "fi",
+      "#",
+      "pie=good",
+      "# => 0, it matches the regex!",
+      "[[ \\$pie =~ d ]]; echo \\$?",
+      "# => 0, still matches",
+      "[[ \\$pie =~ [aeiou]d ]]; echo \\$?",
+      "# => 1, no match",
+      "[[ \\$pie =~ [aei]d ]]; echo \\$?",
+      "# => 1, no match because there's no literal '[aeoiu]d' inside the word \"good\"",
+      "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
     ],
-    "description": "Stub out a for loop"
+    "description": "if_statement_full",
+    "prefix": "if_statement_full"
   },
   "ifarithmetic": {
-    "prefix": "ifarithmetic",
     "body": [
       "",
       "if (( $1 ))    # ← see 'man bash' for valid conditional statements.",
@@ -530,10 +339,10 @@
       "fi",
       ""
     ],
-    "description": "Stub out a simple conditional statement that uses bash's built in arithmetic operators."
+    "description": "Stub out a simple conditional statement that uses bash's built in arithmetic operators.",
+    "prefix": "ifarithmetic"
   },
   "ifcommand": {
-    "prefix": "ifcommand",
     "body": [
       "${1:    # ← put the command whos exit code you want to check here} &>/dev/null",
       "if [ \\$? -eq 0 ]; then",
@@ -542,22 +351,81 @@
       "    $0",
       "fi"
     ],
-    "description": "Stub out a conditional statment that checks the exit code of a command"
+    "description": "Stub out a conditional statment that checks the exit code of a command",
+    "prefix": "ifcommand"
   },
-  "fori": {
-    "prefix": "fori",
+  "ifregex": {
     "body": [
       "",
-      "for (( i=$1; i<$2; i++ ))",
-      "do",
+      "if [[ $1 =~ $2 ]]    # ← see 'man bash' for valid conditional statements.",
+      "then",
+      "    $3",
+      "else",
       "    $0",
-      "done",
+      "fi",
       ""
     ],
-    "description": "Stub out a for loop that iterates over a number, such as the length of a string, which can be accessed with snippet \"length of string\""
+    "description": "Stub out a simple conditional statement that uses bash's built in conditional expression syntax to compare a string on the left hand side to a regex on the right hand side.",
+    "prefix": "ifregex"
+  },
+  "ite": {
+    "body": [
+      "[[ ${1:condition} ]] && ${2:echo \"true\"} || ${3:echo \"false\"}"
+    ],
+    "description": "[[ ]] && true || false",
+    "prefix": "ite"
+  },
+  "lengthofvariablestring": {
+    "body": [
+      "\\${#${0:variable-name-here}\\}"
+    ],
+    "description": "get length of a variable that is a string.",
+    "prefix": "lengthofvariablestring"
+  },
+  "log": {
+    "body": [
+      "console.log('$1');",
+      "$2"
+    ],
+    "description": "Log output to console",
+    "prefix": "log"
+  },
+  "mktemp": {
+    "body": [
+      "${1:tmpFile}=\\$(mktemp --tmpdir tmpPGIH${2:-pgihadmin}.XXXXXXXXXX) || \\",
+      "    print_error_and_exit \"Impossible de creer un fichier temporaire dans \\$TMPDIR !\"",
+      "trap \"rm -f \\${${1}:-/tmp/dummy}\" 0 1 2 3 15"
+    ],
+    "description": "Create temp file into $TMPDIR",
+    "prefix": "mktemp"
+  },
+  "nullstdoutstderr": {
+    "body": [
+      "&>/dev/null"
+    ],
+    "description": "send all output of a command to /dev/null",
+    "prefix": "nullstdoutstderr"
+  },
+  "read": {
+    "body": [
+      "read -r -d '' ${1:variableName} <<-EOF",
+      "${2:Content to assign to ${1}}",
+      "EOF",
+      "echo \"\\$${1}\"",
+      "$3"
+    ],
+    "description": "Assign heredoc to variable",
+    "prefix": "read"
+  },
+  "readinput": {
+    "body": [
+      "read -p \"${1:Enter Input}\" ${2:INPUT}",
+      "${3:echo \\$INPUT}"
+    ],
+    "description": "prompt user for input.",
+    "prefix": "readinput"
   },
   "readwhile": {
-    "prefix": "readwhile",
     "body": [
       "",
       "while read line",
@@ -565,193 +433,10 @@
       "    ${1:    # ← put the command that you want to run on each $line here}",
       "done < <($0)${2:    # ← put the command that generates the lines you want to process inside the parentheses}"
     ],
-    "description": "For each line of output, run a command."
-  },
-  "readinput": {
-    "prefix": "readinput",
-    "body": [
-      "read -p \"${1:Enter Input}\" ${2:INPUT}",
-      "${3:echo \\$INPUT}"
-    ],
-    "description": "prompt user for input."
-  },
-  "lengthofvariablestring": {
-    "prefix": "lengthofvariablestring",
-    "body": [
-      "\\${#${0:variable-name-here}\\}"
-    ],
-    "description": "get length of a variable that is a string."
-  },
-  "characterinvariablestring": {
-    "prefix": "characterinvariablestring",
-    "body": [
-      "\\${${1:variable-name-here}:${2:index-of-character}:${0:number-of-characters-from-index-onwards-to-return}\\}"
-    ]
-  },
-  "select": {
-    "prefix": "select",
-    "body": [
-      "",
-      "PS3_OLD=\\$PS3 # This preserves whatever the value of the bash builtin environment variable PS3 was.",
-      "PS3=$'\\n'\"$1: \"${2:    # ← enter a prompt that asks the user to select from a list of items. If you're feeling helpful, explain what will happen with the item that the user selects.}",
-      "",
-      "select $3 in $4;${5:    # ← the first argument should be a variable name for an item, and the second argument should be an array of items}",
-      "do",
-      "${0:    # ← do something with the selected item.}",
-      "    #break    # ← uncomment this line if the select statement keeps looping. If this is a nested select statement, you might need to use \"break 2\", \"break 3\", or \"break n\" to get out of it.",
-      "done",
-      "PS3=\\$PS3_OLD",
-      "unset PS3_OLD"
-    ],
-    "description": "select from a menu of items"
-  },
-  "case": {
-    "prefix": "case",
-    "body": [
-      "",
-      "case $1 in",
-      "    $2    # ← put one or more switches here. Use snippet \"switch\" or snippet \"switch multi\"",
-      "    *) # This catches all cases that weren't previously listed. That's why it has the wildcard \"*\" operator.",
-      "    ${0:    # ← put your command here}",
-      "    ;;",
-      "esac",
-      ""
-    ],
-    "description": "case statement. Use the switch statement snippet \"switch\" to add one or more switches to the case statement."
-  },
-  "switch": {
-    "prefix": "switch",
-    "body": [
-      "$1 )",
-      "    ${0:    # ← put your command here}",
-      ";;"
-    ],
-    "description": "switch for case statement. Use one or more of these inside a case statement."
-  },
-  "switchmulti": {
-    "prefix": "switchmulti",
-    "body": [
-      "$1 | $2 )",
-      "    ${0:    # ← put your command here}",
-      ";;"
-    ],
-    "description": "switch for case statement that accepts either one condition OR another. Use one or more of these inside a case statement."
-  },
-  "grependswith": {
-    "prefix": "grependswith",
-    "body": [
-      "grep \"$0\"\\$"
-    ],
-    "description": "Search a string for a pattern that occurs at the end of the string. Especially useful for finding file extensions."
-  },
-  "grepstartswith": {
-    "prefix": "grepstartswith",
-    "body": [
-      "grep ^\"$0\""
-    ],
-    "description": "Search a string for a pattern that occurs at the start of the string. Especially useful for finding comments in scripts"
-  },
-  "stripfromend": {
-    "prefix": "stripfromend",
-    "body": [
-      "sed \"s/$0\\$//g\""
-    ],
-    "description": "Use sed to remove a pattern from the end of a string. Super useful for removing extensions from file names."
-  },
-  "stripfromstart": {
-    "prefix": "stripfromstart",
-    "body": [
-      "sed \"s/^$0//g\""
-    ],
-    "description": "Use sed to remove a pattern from the start of a string. Super useful for uncommenting text."
-  },
-  "replace": {
-    "prefix": "replace",
-    "body": [
-      "sed \"s/$1/$0/g\""
-    ],
-    "description": "use sed to replace part of a string. Super useful for updating key value pairs in configuration files."
-  },
-  "extractnth-from-lastfield": {
-    "prefix": "extractnth-from-lastfield",
-    "body": [
-      "awk 'BEGIN { FS=\"$1\" }{ print $(NF-$2)}'",
-      "${0:#field separator↑               ↑ nth-from-last}"
-    ],
-    "description": "Use awk to extract the nth-from-last field in a string, where the field is defined by the field separator \"FS=\" and the nth-from-last field is defined by $(NF-n)"
-  },
-  "extractnthfield": {
-    "prefix": "extractnthfield",
-    "body": [
-      "awk 'BEGIN { FS=\"$1\" }{ print $($2)}'",
-      "${0:#field separator↑        nth ↑}"
-    ],
-    "description": "Use awk to extract the first field in a string, where the field is defined by the field separator \"FS=\" and the nth field is defined by $(n)"
-  },
-  "tar-cpvf": {
-    "prefix": "tar-cpvf",
-    "body": [
-      "${1|tar,sudo tar|} -cpvf $2.tar $2",
-      "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
-    ],
-    "description": "Bundle one or more files or directories into a tarball with \"-c\". Preserve permissions with \"-p\". Show progress with \"-v\". Output to a .tar with \"-f\"."
-  },
-  "tar-rpvf": {
-    "prefix": "tar-rpvf",
-    "body": [
-      "${1|tar,sudo tar|} -rpvf $2.tar $2",
-      "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
-    ],
-    "description": "Add one or more files or directories into a tarball with \"-r\". Preserve permissions with \"-p\". Show progress with \"-v\".  Append to a .tar with \"-f\"."
-  },
-  "tar-tvf$0.tar": {
-    "prefix": "tar-tvf$0.tar",
-    "body": [
-      "${1|tar,sudo tar|} -tvf $2.tar $0"
-    ],
-    "description": "List table of contents with \"-t\". Preserve permissions with \"-p\". Show permissions \"-v\".  Select the tar you want to list with \"-f\"."
-  },
-  "gzip": {
-    "prefix": "gzip",
-    "body": [
-      "${1|gzip,sudo gzip|} --verbose $2.tar",
-      "${0:# ↑ Pay attention to the user who owns the tarfile you want to zip. If you had to \"sudo\" to make it, then it is owned by \"root\". If you do not \"sudo gzip\", then the resulting \".tar.gz\" will be owned by you - not by root! This means that the permissions of the files that were zipped up will also change, and they will ultimately be owned by whoever unzips the file! You probably don't want the permissions to change. Therefore, you should \"gzip\" as the same user (most likely \"root\") that made the tarfile.}"
-    ],
-    "description": "Compress a tape archive (tar) with \"gzip\"."
-  },
-  "tar-xpvzf": {
-    "prefix": "tar-xpvzf",
-    "body": [
-      "tar -xpvzf $1.tar.gz",
-      "${0:# ↑ Pay attention to the user who made the tarfile you want to extract. If you had to \"sudo\" to make it, then it is owned by \"root\", and you need to \"sudo\" to extract it - otherwise \"tar\" will inadvertently make your current user the owner of all of the files, ruining the permissions in the process!}"
-    ],
-    "description": "Extract all files and directories from a tarball with \"-x\". Preserve permissions with \"-p\". Show progress with \"-v\". Decompress the contents of the tarball with \"-z\" Select the tar.gz file to extract from with \"-f\"."
-  },
-  "datesinceepoch": {
-    "prefix": "datesinceepoch",
-    "body": [
-      "datesinceepoch=$(date +%s)"
-    ],
-    "description": "insert a date and time stamp into a string."
-  },
-  "exit": {
-    "prefix": "exit",
-    "body": [
-      "${1|exit 0 #success,exit 1 #catchall,exit 2 #misuse of shell builtin,exit 126 #command invoked cannot execute e.g. permission issue or command is not an executable,exit 127 #command not found e.g. file or script does not exist|}"
-    ],
-    "description": "Exit and throw correct error code. For list of all codes, see: http://www.tldp.org/LDP/abs/html/exitcodes.html"
-  },
-  "heredoctofile": {
-    "prefix": "heredoctofile",
-    "body": [
-      "${1:sudo} ${2|tee,tee -a|} ${3:filename} <<- ${4|EOF,\"EOF\"|} > /dev/null ${5:# (1) use `sudo` to send text to a file that the current user can't write to. (2) use `tee` to overwrite it; use `tee -a` to append to it. (3) put EOF (aka the delimeter) into quotes if you do NOT want the shell to expand parameters or substitute commands }",
-      "$0",
-      "EOF"
-    ],
-    "description": "Append multi-line text to a file, or feed it into the standard input of a command, with a heredoc"
+    "description": "For each line of output, run a command.",
+    "prefix": "readwhile"
   },
   "relpath": {
-    "prefix": "relpath",
     "body": [
       "# NOTE: this function only works in a BASH script. Do not use it in a ZSH script.",
       "resolve-relative-path-to () {",
@@ -1028,17 +713,272 @@
       "",
       "}"
     ],
-    "description": "combine the relative path TO a script with the relative path FROM a script to another file in order to get the relative path from the current working directory to that file."
+    "description": "combine the relative path TO a script with the relative path FROM a script to another file in order to get the relative path from the current working directory to that file.",
+    "prefix": "relpath"
   },
-  "nullstdoutstderr": {
-    "prefix": "nullstdoutstderr",
+  "replace": {
     "body": [
-      "&>/dev/null"
+      "sed \"s/$1/$0/g\""
     ],
-    "description": "send all output of a command to /dev/null"
+    "description": "use sed to replace part of a string. Super useful for updating key value pairs in configuration files.",
+    "prefix": "replace"
+  },
+  "script": {
+    "body": [
+      "#!/bin/${1|bash,zsh,sh|}",
+      "",
+      "#-------------- Usage --------------",
+      "",
+      "${2:    # ← Put your usage function here, with \"usage\" snippet. Then, print the usage function to standard error whenever a user supplies the wrong arguments}",
+      "",
+      "#------------- Cleanup -------------",
+      "",
+      "# This section contains all of the logic needed to return the environment to its previous state upon exiting. The reason the cleanup function is first in this script is because it needs to run, even if the script is killed before the shell has a chance to execute each line.",
+      "",
+      "clean-up () {",
+      "    print-if-verbose \"\\n\\nCleaning up ...\\n\\n\" 1>&2",
+      "",
+      "    if [ \"\\$SCRIPT_IS_DONE\" -eq 0 ] # If unclean exit, run all commands in SCRIPT_UNDO ↓ in the reverse order that they were added to the array in.",
+      "    then",
+      "        for (( i=\\${#SCRIPT_UNDO[@]} ; i>0 ; i-- ))",
+      "        do",
+      "            INDEX=$(( \\$i-1 ))",
+      "            ${SCRIPT_UNDO[\\$INDEX]}",
+      "        done",
+      "    fi\n",
+      "    #Unset all variables that you made while the script was running ↓",
+      "    unset VERBOSE",
+      "    ${3:    # ← unset your variables here.}",
+      "",
+      "    print-if-verbose \"\\n\\n... done \\n\\n\" && sleep 0.3 && printf \"  🧹  \" && sleep 0.3 && printf \"  🗑  \" && sleep 0.3 && printf \"  👋 Bye Bye!\\n\\n\" 1>&2",
+      "}",
+      "",
+      "trap clean-up EXIT${4: #this runs the \"clean-up\" function ↑ before exiting this script}",
+      "",
+      "#------------ Variables -------------",
+      "",
+      "${5:# This section contains all of the environment variables that you will need to reference in your script. Put ALL of your variables here - even if you only use them once! That makes it easier for you to keep track of them, and unset them. For bonus points, don't reference or modify any existing shell variables in your script (e.g. \\$PWD, \\$0, \\$?, etc.). Instead, make your own variables here, and give them the same values as the environment builtins.",
+      "\n# E.g.:",
+      "# CURRENT_WORKING_DIRECTORY = \\$PWD\n# MY_VARIABLE=    # ← this is an example of initializing a variable to null}\n${6:    # ← put your variables here.}",
+      "VERBOSE=0    #use 0 for false and 1 for true. This is because it's faster to compare numbers than strings.",
+      "SCRIPT_IS_DONE=0",
+      "SCRIPT_UNDO=()${7:    # Every time your script modifies the host, place the command that will undo those modifications in this array.}",
+      "",
+      "#--------- Helper Functions ---------",
+      "",
+      "# This section contains all of repeated pieces of logic needed to run the \"Main Script\" ↓. Helper functions abstract away repeated subroutines and frequently-used branches of execution. If you find yourself copying-and-pasting one or more instructions, put them in a function so that your code doesn't turn into copypasta.",
+      "print-if-verbose () {",
+      "    if [ \"\\$VERBOSE\" -eq 1 ]",
+      "    then",
+      "        printf \"\\$*\"",
+      "    fi",
+      "}",
+      "",
+      "${8:    # ← put your helper functions here.}",
+      "",
+      "#------------- Options -------------",
+      "",
+      "${9:# This section handles all of the options passed to your script. Options include flags and arguments. Use it to set your script's variables ↑ according to the flags and arguments passed to your script.}",
+      "RECOGNIZED=()    # ← this array will hold all of the options that your script recognizes.",
+      "${11:RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS=()}${10:    # ← this array will hold all of the options that exclude other options.}",
+      "UNRECOGNIZED=()    # ← this array will hold all of the options that your script does not recognize.\nGRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\"    # ← if an option needs to grab one or more words that follow it, then it needs to set this to a handler function that will take care of processing those words. The parsing loop ↓ will call this handler function when it encounters words that don't look like flags (i.e. begin with \"-\" or \"--\") and pass those words into it. When the handler function is done processing those words, it must clear this variable so that it doesn't keep getting called by the parsing loop.\n",
+      "${12:    # ← place your handler functions here}\n",
+      "handle-unrecognized-argument () {",
+      "\n    UNRECOGNIZED_ARGUMENT=\"\\$*\"",
+      "\n    UNRECOGNIZED+=(\\$UNRECOGNIZED_ARGUMENT)",
+      "\n    unset UNRECOGNIZED_ARGUMENT",
+      "}\n",
+      "try-to-recognize-argument () {",
+      "\n    ARGUMENT_TO_RECOGNIZE=\"\\$*\"",
+      "\n    case \\$ARGUMENT_TO_RECOGNIZE in",
+      "        ${13:\"YOUR-ARGUMENT-HERE\"})     # ← if an option is not mutually exclusive to any other option, and it does not grab the words that follow it, then place it here.",
+      "            RECOGNIZED+=(\"\\$ARGUMENT_TO_RECOGNIZE\")",
+      "        ;;",
+      "        ${14:\"YOUR-MUTUALLY-EXCLUSIVE-ARGUMENTS-HERE\"})   # ← if an option is mutually exclusive to any other option, and does not grab the words that follow it, then place it here.",
+      "            RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS+=(\"\\$ARGUMENT_TO_RECOGNIZE\")",
+      "        ;;",
+      "        ${15:    # ← place one switch statement here for each option that grabs the words that follow it.}",
+      "        *)",
+      "            handle-unrecognized-argument \\$ARGUMENT_TO_RECOGNIZE",
+      "        ;;",
+      "    esac",
+      "\n    unset ARGUMENT_TO_RECOGNIZE",
+      "\n}\n\n",
+      "#This is the parser loop. It grabs all of the unsanitized arguments from the command line and tries to make sense of them",
+      "for argument in \\$@ # we assume that arguments are separated by spaces",
+      "do",
+      "\n    if [[ \"\\$argument\" =~ ^\"--\"[:alnum:]* ]] # if the next argument is a single multi-character option...",
+      "    then",
+      "        GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\" # Make sure that the callback variable is cleared upon encountering a new option in the list of arguments. Otherwise, it's possible that a previous callback will try to parse words that follow this option.",
+      "        try-to-recognize-argument \\$argument",
+      "    else",
+      "\n        if [[ \"\\$argument\" =~ ^\"-\"[:alnum:]* ]]",
+      "        then",
+      "            GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK=\"\" # Make sure that the callback variable is cleared upon encountering a new option in the list of arguments. Otherwise, it's possible that a previous callback will try to parse words that follow this option.",
+      "\n            # Handle each option:",
+      "            for (( i=1; i<\\${#argument}; i++ ))",
+      "            do",
+      "                # Loop over each character in the argument:",
+      "                try-to-recognize-argument \"-\\${argument:\\$i:1}\"",
+      "\n            done",
+      "\n        else",
+      "            if [ \"\\$GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK\" != \"\" ]",
+      "            then",
+      "                \\$GRAB_AND_PROCESS_NEXT_ARGUMENT_CALLBACK \"\\$argument\"    # ← The current argument becomes an argument of the callback. This avoids the need to \"eval it\". It is up to you to write the correct handler function for the callback, and to make sure the callback removes itself from the callback variable when it's done processing words.",
+      "\n                # Note that we don't clear the callback here, because an option may accept an indefinite number of words. It is up to the option's callback to clear itself from the callback variable when it has accepted all of the words it is looking for. That being said, we DO clear the callback variable as soon as we encounter more options, because options cannot themselves accept other options.",
+      "            else",
+      "                handle-unrecognized-argument \\$argument",
+      "            fi",
+      "        fi",
+      "    fi\ndone",
+      "\n\nif [ \"\\${#UNRECOGNIZED[@]}\" -ne 0 ]    # If any arguments are unrecognized, then don't execute. Instead, print usage statement and quit the script.",
+      "then",
+      "    printf \"\\n\\n🤷‍♀️ I don't understand what you mean by \\\"\\e[1m\\${UNRECOGNIZED[*]}\\e[0m\\\". Here are all of the available options I understand:\\n\\n\" | fold -w\\$(tput cols) 1>&2\n    usage\n    exit 1\nfi\n",
+      "# Make sure that only one option in each set of mutually exclusive options is used.\n",
+      "if [ ${#RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]} -ne 0 ]",
+      "then",
+      "    ${19:printf \"\\n\\n🤨It looks like you've given me \"${#RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]\\}\" conflicting options. I accept the following options:\"}",
+      "    usage",
+      "    exit 1",
+      "fi\n",
+      "#If no set of mutually exclusive options was passed, then append all options from RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS to RECOGNIZED\n\nfor option in \"\\${RECOGNIZED_MUTUALLY_EXCLUSIVE_OPTIONS[@]}\"\ndo\n    RECOGNIZED+=(\"\\$option\")\ndone\n",
+      "# Finally, iterate over all recognized options, and set variables accordingly.\nfor option in \\${RECOGNIZED[@]}\ndo\n    case \\$option in\n        \"-h\" | \"--help\")\n            usage || \"You haven't set a usage statement! Please add it to your script.\"\n            break 2 # If help is called, don't even process any further options.\n        ;;\n        \"-v\" | \"--verbose\")\n            VERBOSE=1\n        ;;\n        ${20:    # ← put the rest of your switch statement here.}\n    \n        *)\n            printf \"I don't know what \\$option means, and I don't know how it got past my parser. I will exit now\" && exit 1\n        ;;\n    esac\ndone\n",
+      "#----------- Main Script -----------",
+      "",
+      "# This section contains the script that will actually run. The reason this section is last in this file is because this script references all of the above variables and helper functions. Shells execute scripts one line at a time, and they don't hoist variables and function definitions prior to execution.",
+      "",
+      "${0:    # ← put your script's logic here.}",
+      "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
+    ],
+    "description": "Make a Bash Script with sections for cleanup, environment variables, helper functions, and main script",
+    "prefix": "script"
+  },
+  "scriptminimal": {
+    "body": [
+      "#!/bin/${1|bash,zsh,sh|}",
+      "",
+      "#------------- Cleanup -------------",
+      "",
+      "# This section contains all of the logic needed to return the environment to its previous state upon exiting. The reason the cleanup function is first in this script is because it needs to run, even if the script is killed before the shell has a chance to execute each line.",
+      "",
+      "clean-up () {",
+      "",
+      "    if [ \"\\$SCRIPT_IS_DONE\" -eq 0 ] # If unclean exit, run all commands in SCRIPT_UNDO ↓ in the reverse order that they were added to the array in.",
+      "    then",
+      "        for (( i=\\${#SCRIPT_UNDO[@]} ; i>0 ; i-- ))",
+      "        do",
+      "            INDEX=$(( \\$i-1 ))",
+      "            ${SCRIPT_UNDO[\\$INDEX]}",
+      "        done",
+      "    fi\n",
+      "    ${3:    # ← unset your variables here.}",
+      "",
+      "}",
+      "",
+      "trap clean-up EXIT${4: #this runs the \"clean-up\" function ↑ before exiting this script}",
+      "",
+      "#------------ Variables -------------",
+      "",
+      "SCRIPT_IS_DONE=0",
+      "SCRIPT_UNDO=()${7:    # Every time your script modifies the host, place the command that will undo those modifications in this array.}",
+      "",
+      "#--------- Helper Functions ---------",
+      "",
+      "# This section contains all of repeated pieces of logic needed to run the \"Main Script\" ↓. Helper functions abstract away repeated subroutines and frequently-used branches of execution. If you find yourself copying-and-pasting one or more instructions, put them in a function so that your code doesn't turn into copypasta.",
+      "",
+      "${8:    # ← put your helper functions here.}",
+      "",
+      "#----------- Main Script -----------",
+      "",
+      "# This section contains the script that will actually run. The reason this section is last in this file is because this script references all of the above variables and helper functions. Shells execute scripts one line at a time, and they don't hoist variables and function definitions prior to execution.",
+      "",
+      "${0:    # ← put your script's logic here.}",
+      "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
+    ],
+    "description": "Make a Bash Script with sections for arguments, environment variables, helper functions, and main script",
+    "prefix": "scriptminimal"
+  },
+  "select": {
+    "body": [
+      "",
+      "PS3_OLD=\\$PS3 # This preserves whatever the value of the bash builtin environment variable PS3 was.",
+      "PS3=$'\\n'\"$1: \"${2:    # ← enter a prompt that asks the user to select from a list of items. If you're feeling helpful, explain what will happen with the item that the user selects.}",
+      "",
+      "select $3 in $4;${5:    # ← the first argument should be a variable name for an item, and the second argument should be an array of items}",
+      "do",
+      "${0:    # ← do something with the selected item.}",
+      "    #break    # ← uncomment this line if the select statement keeps looping. If this is a nested select statement, you might need to use \"break 2\", \"break 3\", or \"break n\" to get out of it.",
+      "done",
+      "PS3=\\$PS3_OLD",
+      "unset PS3_OLD"
+    ],
+    "description": "select from a menu of items",
+    "prefix": "select"
+  },
+  "stripfromend": {
+    "body": [
+      "sed \"s/$0\\$//g\""
+    ],
+    "description": "Use sed to remove a pattern from the end of a string. Super useful for removing extensions from file names.",
+    "prefix": "stripfromend"
+  },
+  "stripfromstart": {
+    "body": [
+      "sed \"s/^$0//g\""
+    ],
+    "description": "Use sed to remove a pattern from the start of a string. Super useful for uncommenting text.",
+    "prefix": "stripfromstart"
+  },
+  "switch": {
+    "body": [
+      "$1 )",
+      "    ${0:    # ← put your command here}",
+      ";;"
+    ],
+    "description": "switch for case statement. Use one or more of these inside a case statement.",
+    "prefix": "switch"
+  },
+  "switchmulti": {
+    "body": [
+      "$1 | $2 )",
+      "    ${0:    # ← put your command here}",
+      ";;"
+    ],
+    "description": "switch for case statement that accepts either one condition OR another. Use one or more of these inside a case statement.",
+    "prefix": "switchmulti"
+  },
+  "tar-cpvf": {
+    "body": [
+      "${1|tar,sudo tar|} -cpvf $2.tar $2",
+      "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
+    ],
+    "description": "Bundle one or more files or directories into a tarball with \"-c\". Preserve permissions with \"-p\". Show progress with \"-v\". Output to a .tar with \"-f\".",
+    "prefix": "tar-cpvf"
+  },
+  "tar-rpvf": {
+    "body": [
+      "${1|tar,sudo tar|} -rpvf $2.tar $2",
+      "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
+    ],
+    "description": "Add one or more files or directories into a tarball with \"-r\". Preserve permissions with \"-p\". Show progress with \"-v\".  Append to a .tar with \"-f\".",
+    "prefix": "tar-rpvf"
+  },
+  "tar-tvf$0.tar": {
+    "body": [
+      "${1|tar,sudo tar|} -tvf $2.tar $0"
+    ],
+    "description": "List table of contents with \"-t\". Preserve permissions with \"-p\". Show permissions \"-v\".  Select the tar you want to list with \"-f\".",
+    "prefix": "tar-tvf$0.tar"
+  },
+  "tar-xpvzf": {
+    "body": [
+      "tar -xpvzf $1.tar.gz",
+      "${0:# ↑ Pay attention to the user who made the tarfile you want to extract. If you had to \"sudo\" to make it, then it is owned by \"root\", and you need to \"sudo\" to extract it - otherwise \"tar\" will inadvertently make your current user the owner of all of the files, ruining the permissions in the process!}"
+    ],
+    "description": "Extract all files and directories from a tarball with \"-x\". Preserve permissions with \"-p\". Show progress with \"-v\". Decompress the contents of the tarball with \"-z\" Select the tar.gz file to extract from with \"-f\".",
+    "prefix": "tar-xpvzf"
   },
   "until": {
-    "prefix": "until",
     "body": [
       "EXIT_CODE_PREVIOUS=\"\\$EXIT_CODE\"",
       "EXIT_CODE=1",
@@ -1049,6 +989,66 @@
       "EXIT_CODE=\"\\$EXIT_CODE_PREVIOUS\"",
       "unset EXIT_CODE_PREVIOUS"
     ],
-    "description": "re-run a command until it returns a zero exit code"
+    "description": "re-run a command until it returns a zero exit code",
+    "prefix": "until"
+  },
+  "usage": {
+    "body": [
+      "usage() {",
+      "    cat <<-EOF",
+      "    Usage: pgihadmin ${1:tache} <CIBLE> [-f] [-q] [-h]",
+      "    Cette tache permet de ${2:bla bla}",
+      "    PARAMETRES:",
+      "    ===========",
+      "        CIBLE    Serveur cible : <vide> ou all, aps, ts, lb, ord, apsN, tsN, lbN, ordN (avec N un nombre)",
+      "    OPTIONS:",
+      "    ========",
+      "        -f    Mode force",
+      "        -q    Mode silencieux",
+      "        -h    Affiche ce message",
+      "    EOF",
+      "}"
+    ],
+    "description": "Usage fonction template",
+    "prefix": "usage"
+  },
+  "while": {
+    "body": [
+      "while read -r line; do",
+      "    echo \"\\$line\"",
+      "done < ${1:/path/to/file}"
+    ],
+    "description": "While loop to read file",
+    "prefix": "while"
+  },
+  "while_here_doc": {
+    "body": [
+      "while read pass port user ip files directs; do",
+      "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
+      "done <<DATA",
+      "PASS    PORT    USER    IP    FILES    DIRECTS1",
+      "PASS    PORT    USER    IP    FILES    DIRECTS2",
+      "DATA"
+    ],
+    "description": "while_here_doc",
+    "prefix": "while_here_doc"
+  },
+  "while_text_file": {
+    "body": [
+      "INPUT=\"data.cvs\"",
+      "",
+      "[ ! -f \\$INPUT ] && { echo \"\\$INPUT file not found\"; exit 99; }",
+      "",
+      "while IFS=\\$'\\    ' read -r flname dob ssn tel status",
+      "do",
+      "    $0echo \"Name : \\$flname\"",
+      "    echo \"DOB : \\$dob\"",
+      "    echo \"SSN : \\$ssn\"",
+      "    echo \"Telephone : \\$tel\"",
+      "    echo \"Status : \\$status\"",
+      "done <\"\\$INPUT\""
+    ],
+    "description": "while_text_file",
+    "prefix": "while_text_file"
   }
 }

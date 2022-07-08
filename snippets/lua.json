@@ -1,56 +1,49 @@
 {
+  "api": {
+    "body": [
+      "local api = vim.api"
+    ],
+    "description": "",
+    "prefix": "lapi"
+  },
+  "apifun": {
+    "body": [
+      "vim.api.nvim_${1:buf}_${2:get}_${3:name}"
+    ],
+    "description": "",
+    "prefix": "api."
+  },
   "describe": {
-    "prefix": "describe",
     "body": [
       "describe('${1:Title}', function()",
       "    ${2}",
       "end)"
     ],
-    "description": ""
+    "description": "",
+    "prefix": "describe"
   },
   "doc": {
-    "prefix": "doc",
     "body": [
       "-----------------------------------------------------------------------------//",
       "-- ${0:document}",
       "-----------------------------------------------------------------------------//"
     ],
-    "description": ""
-  },
-  "apifun": {
-    "prefix": "api.",
-    "body": [
-      "vim.api.nvim_${1:buf}_${2:get}_${3:name}"
-    ],
-    "description": ""
-  },
-  "fn": {
-    "prefix": "lfn",
-    "body": [
-      "local fn = vim.fn"
-    ],
-    "description": ""
-  },
-  "api": {
-    "prefix": "lapi",
-    "body": [
-      "local api = vim.api"
-    ],
-    "description": ""
+    "description": "",
+    "prefix": "doc"
   },
   "fmt": {
-    "prefix": "lfmt",
     "body": [
       "local fmt = string.format"
     ],
-    "description": ""
+    "description": "",
+    "prefix": "lfmt"
   },
-  "inspect": {
-    "prefix": "vi",
+  "fn": {
     "body": [
-      "print(\"${1}: \" .. vim.inspect(${1}))"
+      "local fn = vim.fn"
     ],
-    "description": ""
+    "description": "",
+    "prefix": "lfn"
   },
   "for": {
     "body": [
@@ -132,6 +125,13 @@
     "prefix": "ifel",
     "scope": "source.lua"
   },
+  "inspect": {
+    "body": [
+      "print(\"${1}: \" .. vim.inspect(${1}))"
+    ],
+    "description": "",
+    "prefix": "vi"
+  },
   "ipairs": {
     "body": [
       "ipairs(${0:...})"
@@ -147,6 +147,55 @@
     "description": "load (func [, chunkname])",
     "prefix": "load",
     "scope": "source.lua"
+  },
+  "lua_log_object": {
+    "body": [
+      "local function tprint (tbl, indent)",
+      "  if not indent then indent = 0 end",
+      "  local toprint = string.rep(\" \", indent) .. \"{\\r\"",
+      "\"",
+      "  indent = indent + 2",
+      "  for k, v in pairs(tbl) do",
+      "    toprint = toprint .. string.rep(\" \", indent)",
+      "    if (type(k) == \"number\") then",
+      "      toprint = toprint .. \"[\" .. k .. \"] = \"",
+      "    elseif (type(k) == \"string\") then",
+      "      toprint = toprint  .. k ..  \"= \"",
+      "    end",
+      "    if (type(v) == \"number\") then",
+      "      toprint = toprint .. v .. \",\\r\"",
+      "\"",
+      "    elseif (type(v) == \"string\") then",
+      "      toprint = toprint .. \"\\\"\" .. v .. \"\\\",\\r\"",
+      "\"",
+      "    elseif (type(v) == \"table\") then",
+      "      toprint = toprint .. tprint(v, indent + 2) .. \",\\r\"",
+      "\"",
+      "    else",
+      "      toprint = toprint .. \"\\\"\" .. tostring(v) .. \"\\\",\\r\"",
+      "\"",
+      "    end",
+      "  end",
+      "  toprint = toprint .. string.rep(\" \", indent-2) .. \"}\"",
+      "  return toprint",
+      "end",
+      "",
+      "local fw = io.open(\"~/l.log\", \"w\")",
+      "fw:write(\"--------------------\")",
+      "fw:write(tprint(lvim.builtin.lualine))",
+      "fw:write(tprint(lvim.builtin))",
+      "fw:write(tprint(lvim))",
+      "fw:close()"
+    ],
+    "description": "Chunk of code to log object to text file",
+    "prefix": "lua_log_object"
+  },
+  "param": {
+    "body": [
+      "--- @param ${1:name} ${2:type}"
+    ],
+    "description": "Add annotation",
+    "prefix": "param"
   },
   "table.concat": {
     "body": [
@@ -235,54 +284,5 @@
     "description": "unpack (list [, i [, j]])",
     "prefix": "unpack",
     "scope": "source.lua"
-  },
-  "param": {
-    "prefix": "param",
-    "body": [
-      "--- @param ${1:name} ${2:type}"
-    ],
-    "description": "Add annotation"
-  },
-  "lua_log_object": {
-    "prefix": "lua_log_object",
-    "body": [
-      "local function tprint (tbl, indent)",
-      "  if not indent then indent = 0 end",
-      "  local toprint = string.rep(\" \", indent) .. \"{\\r\"",
-      "\"",
-      "  indent = indent + 2",
-      "  for k, v in pairs(tbl) do",
-      "    toprint = toprint .. string.rep(\" \", indent)",
-      "    if (type(k) == \"number\") then",
-      "      toprint = toprint .. \"[\" .. k .. \"] = \"",
-      "    elseif (type(k) == \"string\") then",
-      "      toprint = toprint  .. k ..  \"= \"",
-      "    end",
-      "    if (type(v) == \"number\") then",
-      "      toprint = toprint .. v .. \",\\r\"",
-      "\"",
-      "    elseif (type(v) == \"string\") then",
-      "      toprint = toprint .. \"\\\"\" .. v .. \"\\\",\\r\"",
-      "\"",
-      "    elseif (type(v) == \"table\") then",
-      "      toprint = toprint .. tprint(v, indent + 2) .. \",\\r\"",
-      "\"",
-      "    else",
-      "      toprint = toprint .. \"\\\"\" .. tostring(v) .. \"\\\",\\r\"",
-      "\"",
-      "    end",
-      "  end",
-      "  toprint = toprint .. string.rep(\" \", indent-2) .. \"}\"",
-      "  return toprint",
-      "end",
-      "",
-      "local fw = io.open(\"~/l.log\", \"w\")",
-      "fw:write(\"--------------------\")",
-      "fw:write(tprint(lvim.builtin.lualine))",
-      "fw:write(tprint(lvim.builtin))",
-      "fw:write(tprint(lvim))",
-      "fw:close()"
-    ],
-    "description": "Chunk of code to log object to text file"
   }
 }

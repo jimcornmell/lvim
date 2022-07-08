@@ -1,6 +1,5 @@
 {
   "gradle_new_file": {
-    "prefix": "gradle_new_file",
     "body": [
       "apply plugin: 'java'",
       "",
@@ -13,10 +12,10 @@
       "}",
       ""
     ],
-    "description": "New Gradle File"
+    "description": "New Gradle File",
+    "prefix": "gradle_new_file"
   },
   "spocktest": {
-    "prefix": "spocktest",
     "body": [
       "def \"Name #variable\"() {",
       "    given:",
@@ -42,6 +41,7 @@
       "        \"Mr\"   | \"Neil\" | \"Alden\" | \"Armstrong\" || null              | null",
       "}"
     ],
-    "description": "New Spock test"
+    "description": "New Spock test",
+    "prefix": "spocktest"
   }
 }

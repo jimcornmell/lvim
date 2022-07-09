@@ -1,11 +1,46 @@
 " Functions {{{1
 
+function! SnippetEdit()
+    let fname = $HOME . "/.config/lvim/snippets/" . &ft . ".json"
+    silent exec ":e " . fname
+endfunction
+
 function! SnippetSave()
-    echo "Saving snippet"
+    let fname = $HOME . "/.config/lvim/snippets/" . &ft . ".json"
+    let keyName = input("Snippet keys: ")
+    let desc = input("Snippet description: ")
+    echo "."
+    echo "Saving snippet: " . keyName . "\"" . desc . "\" to " . fname
+    let alist = []
+
+    for line in readfile(fname)
+        call add(alist, line)
+	endfor
+
+    let newlist = alist[0:len(alist)-3]
+
+    call add(newlist, "  },")
+    call add(newlist, "  \"" . keyName  ."\": {")
+    call add(newlist, "    \"body\": [")
+    let txt = split(getreg('"'), '\n')
+
+    for line in txt
+        call add(newlist, "      \"" . substitute(line, '"','\\\"', "g") . "\",")
+    endfor
+
+    call add(newlist, "      \"$0\"")
+    call add(newlist, "    ],")
+    call add(newlist, "    \"description\": \"" . desc . "\",")
+    call add(newlist, "    \"prefix\": \"" . keyName . "\"")
+    call add(newlist, "  }")
+    call add(newlist, "}")
+
+    call writefile(newlist, fname)
+    silent exec ":e " . fname
 endfunction
 
 function! OpenHelpAndCheatSheets()
-    let folder="/home/jim.cornmell/Documents/CheatSheets/"
+    let folder = "/home/jim.cornmell/Documents/CheatSheets/"
     let number = 2 " The number to display to the user.
     let cheattext = [] " The text to display to the user.
     let cheaturis = [] " The files/URL's to open.

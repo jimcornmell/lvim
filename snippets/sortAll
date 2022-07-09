@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for file in *.json
+do
+    if [[ $file == package.json ]]; then
+        echo Skipping $file
+        continue
+    fi
+    echo $file
+    jq --sort-keys < $file > $file.s && mv $file.s $file
+done

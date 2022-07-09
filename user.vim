@@ -1,5 +1,9 @@
 " Functions {{{1
 
+function! SnippetSave()
+    echo "Saving snippet"
+endfunction
+
 function! OpenHelpAndCheatSheets()
     let folder="/home/jim.cornmell/Documents/CheatSheets/"
     let number = 2 " The number to display to the user.
@@ -597,7 +601,7 @@ au BufRead,BufNewFile ALLKewill*.txt set filetype=runlog
 
 " }}}
 
-" Abbreviations and Snippets {{{1
+" Abbreviations {{{1
 
 " Misc
 iab waht what

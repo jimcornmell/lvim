@@ -41,6 +41,7 @@ map gw gqip
 nmap <silent> <leader>n :set norelativenumber<cr>
 nmap <silent> <leader>r :set relativenumber<cr>
 
+map <silent> ss :call SnippetSave()<CR>
 map <silent> ge :call DeleteEndingWhiteSpace()<CR>
 map <silent> gh :call OpenHelpAndCheatSheets()<CR>
 

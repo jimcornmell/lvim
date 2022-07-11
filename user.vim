@@ -1,5 +1,9 @@
 " Functions {{{1
 
+function! SnippetList()
+    exec ":!snippetsList " . &ft
+endfunction
+
 function! SnippetEdit()
     let fname = $HOME . "/.config/lvim/snippets/" . &ft . ".json"
     silent exec ":e " . fname
@@ -94,10 +98,13 @@ function! OpenHelpAndCheatSheets()
             call add(cheaturis, url)
             let number += 1
         endfor
+
+        " Add a blank line.
+        call add(cheattext, "")
     endfor
 
     " Add a blank line.
-    call add(cheattext, "")
+    " call add(cheattext, "")
 
     " Ask user:
     let answer = inputlist(cheattext)

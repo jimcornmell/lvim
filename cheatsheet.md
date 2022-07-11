@@ -95,12 +95,17 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:history`|                                                                   Show command history|
 |`:jumps`|                                                                     Show jump list|
 |`:Man`|                                                                       Man page for word under cursor|
-|`:VsnipOpenEdit`|                                                             Edit the snippet configuration for the current language or global|
 |`/foo`|                                                                       Search `foo` forward|
 |`?foo`|                                                                       Search `foo` backward|
 |<kbd>n</kbd>, <kbd>N</kbd>|                                                   Next, previous search result|
 |`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
 |`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
+|__Snippets__||
+|<kbd>s</kbd><kbd>s</kbd>|                                                     Snippet save (last yanked text, in reg ")|
+|<kbd>s</kbd><kbd>e</kbd>|                                                     Snippet Edit|
+|<kbd>s</kbd><kbd>l</kbd>|                                                     Snippet List Available|
+||                                                                             Snippet location|
+||                                                                             `~/.config/lvim/snippets/`|
 |__Ranges__|[`:h ranges`](https://neovim.io/doc/user/cmdline.html#%5Brange%5D)|
 |&nbsp;|                                                                       Any of the following can be used when you see `[range]` in the rest of this table|
 |`.`|                                                                          __Current line__, can be omitted as in `1,.d` and `1,d` are equivalent|

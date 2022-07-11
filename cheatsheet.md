@@ -100,12 +100,15 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>n</kbd>, <kbd>N</kbd>|                                                   Next, previous search result|
 |`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
 |`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
-|__Snippets__||
+|__Snippets, Colours, Chars__||
 |<kbd>s</kbd><kbd>s</kbd>|                                                     Snippet save (last yanked text, in reg ")|
 |<kbd>s</kbd><kbd>e</kbd>|                                                     Snippet Edit|
 |<kbd>s</kbd><kbd>l</kbd>|                                                     Snippet List Available|
+|<kbd>s</kbd><kbd>L</kbd>|                                                     Snippet List Available Long|
 ||                                                                             Snippet location|
 ||                                                                             `~/.config/lvim/snippets/`|
+|<kbd>s</kbd><kbd>c</kbd>|                                                     Show colours|
+|<kbd>s</kbd><kbd>C</kbd>|                                                     Show chars|
 |__Ranges__|[`:h ranges`](https://neovim.io/doc/user/cmdline.html#%5Brange%5D)|
 |&nbsp;|                                                                       Any of the following can be used when you see `[range]` in the rest of this table|
 |`.`|                                                                          __Current line__, can be omitted as in `1,.d` and `1,d` are equivalent|

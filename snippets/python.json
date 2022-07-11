@@ -2,8 +2,8 @@
   "__init__": {
     "body": [
       "def __init__(self, name, age):",
-      "  self.name = name",
-      "  self.age = age"
+      "    self.name = name",
+      "    self.age = age"
     ],
     "description": "__init__ method",
     "prefix": "__init__"
@@ -11,8 +11,8 @@
   "__iter__": {
     "body": [
       "def __iter__(self):",
-      "  self.a = 1",
-      "  return self"
+      "    self.a = 1",
+      "    return self"
     ],
     "description": "__iter__ method",
     "prefix": "__iter__"
@@ -20,9 +20,9 @@
   "__next__": {
     "body": [
       "def __next__(self):",
-      "  x = self.a",
-      "  self.a += 1",
-      "  return x"
+      "    x = self.a",
+      "    self.a += 1",
+      "    return x"
     ],
     "description": "__next__ method",
     "prefix": "__next__"
@@ -54,7 +54,7 @@
   "class=>": {
     "body": [
       "class MyClass:",
-      "  pass"
+      "    pass"
     ],
     "description": "python class",
     "prefix": "class=>"
@@ -62,7 +62,7 @@
   "class=>_1": {
     "body": [
       "class Person:",
-      "    pass  # An empty block",
+      "      pass  # An empty block",
       "p = Person()",
       "print(p)"
     ],
@@ -73,14 +73,14 @@
     "body": [
       "class Computer:",
       "",
-      " def __init__(self):",
-      "   self.__maxprice = 900",
+      "    def __init__(self):",
+      "        self.__maxprice = 900",
       "",
-      " def sell(self):",
-      "   print('Selling Price: {}'.format(self.__maxprice))",
+      "    def sell(self):",
+      "        print('Selling Price: {}'.format(self.__maxprice))",
       "",
-      " def setMaxPrice(self, price):",
-      "   self.__maxprice = price",
+      "    def setMaxPrice(self, price):",
+      "        self.__maxprice = price",
       "",
       "c = Computer()",
       "c.sell()",
@@ -100,28 +100,28 @@
     "body": [
       "class Bird:",
       "",
-      "   def __init__(self):",
-      "     print('Bird is ready')",
+      "    def __init__(self):",
+      "        print('Bird is ready')",
       "",
-      "   def whoisThis(self):",
-      "     print('Bird')",
+      "    def whoisThis(self):",
+      "        print('Bird')",
       "",
-      "   def swim(self):",
-      "     print('Swim faster')",
+      "    def swim(self):",
+      "        print('Swim faster')",
       "",
       "# child class",
       "class Penguin(Bird):",
       "",
-      "   def __init__(self):",
-      "     # call super() function",
-      "     super().__init__()",
-      "     print('Penguin is ready')",
+      "    def __init__(self):",
+      "        # call super() function",
+      "        super().__init__()",
+      "        print('Penguin is ready')",
       "",
-      "   def whoisThis(self):",
-      "     print('Penguin')",
+      "    def whoisThis(self):",
+      "        print('Penguin')",
       "",
-      "   def run(self):",
-      "     print('Run faster')",
+      "    def run(self):",
+      "        print('Run faster')",
       "",
       "peggy = Penguin()",
       "peggy.whoisThis()",
@@ -134,40 +134,40 @@
   "class=>inheritance_2": {
     "body": [
       "class SchoolMember:",
-      "    '''Represents any school member.'''",
-      "    def __init__(self, name, age):",
-      "        self.name = name",
-      "        self.age = age",
-      "        print('(Initialized SchoolMember: {})'.format(self.name))",
-      "    def tell(self):",
-      "        '''Tell my details.'''",
-      "        print('Name:{} Age:{}'.format(self.name, self.age), end=' ')",
+      "      '''Represents any school member.'''",
+      "      def __init__(self, name, age):",
+      "          self.name = name",
+      "          self.age = age",
+      "          print('(Initialized SchoolMember: {})'.format(self.name))",
+      "      def tell(self):",
+      "          '''Tell my details.'''",
+      "          print('Name:{} Age:{}'.format(self.name, self.age), end=' ')",
       "class Teacher(SchoolMember):",
-      "    '''Represents a teacher.'''",
-      "    def __init__(self, name, age, salary):",
-      "        SchoolMember.__init__(self, name, age)",
-      "        self.salary = salary",
-      "        print('(Initialized Teacher: {})'.format(self.name))",
-      "    def tell(self):",
-      "        SchoolMember.tell(self)",
-      "        print('Salary: {:d}'.format(self.salary))",
+      "      '''Represents a teacher.'''",
+      "      def __init__(self, name, age, salary):",
+      "          SchoolMember.__init__(self, name, age)",
+      "          self.salary = salary",
+      "          print('(Initialized Teacher: {})'.format(self.name))",
+      "      def tell(self):",
+      "          SchoolMember.tell(self)",
+      "          print('Salary: {:d}'.format(self.salary))",
       "class Student(SchoolMember):",
-      "    '''Represents a student.'''",
-      "    def __init__(self, name, age, marks):",
-      "        SchoolMember.__init__(self, name, age)",
-      "        self.marks = marks",
-      "        print('(Initialized Student: {})'.format(self.name))",
-      "    def tell(self):",
-      "        SchoolMember.tell(self)",
-      "        print('Marks: {:d}'.format(self.marks))",
+      "      '''Represents a student.'''",
+      "      def __init__(self, name, age, marks):",
+      "          SchoolMember.__init__(self, name, age)",
+      "          self.marks = marks",
+      "          print('(Initialized Student: {})'.format(self.name))",
+      "      def tell(self):",
+      "          SchoolMember.tell(self)",
+      "          print('Marks: {:d}'.format(self.marks))",
       "t = Teacher('Mrs. Shrividya', 40, 30000)",
       "s = Student('Swaroop', 25, 75)",
       "# prints a blank line",
       "print()",
       "members = [t, s]",
       "for member in members:",
-      "    # Works for both Teachers and Students",
-      "    member.tell()"
+      "      # Works for both Teachers and Students",
+      "      member.tell()"
     ],
     "description": "oop inheritance example",
     "prefix": "class=>inheritance_2"
@@ -177,22 +177,22 @@
       "class Parrot:",
       "",
       " def fly(self):",
-      "   print('Parrot can fly')",
+      "     print('Parrot can fly')",
       "",
       " def swim(self):",
-      "   print('Parrot can not swim')",
+      "     print('Parrot can not swim')",
       "",
       "class Penguin:",
       "",
       " def fly(self):",
-      "   print('Penguin can not fly')",
+      "     print('Penguin can not fly')",
       "",
       " def swim(self):",
-      "   print('Penguin can swim')",
+      "     print('Penguin can swim')",
       "",
       "# common interface",
       "def flying_test(bird):",
-      "  bird.fly()",
+      "    bird.fly()",
       "",
       "#instantiate objects",
       "blu = Parrot()",
@@ -214,8 +214,8 @@
       "",
       "# instance attribute",
       " def __init__(self, name, age):",
-      "    self.name = name",
-      "    self.age = age",
+      "      self.name = name",
+      "      self.age = age",
       "",
       "# instantiate the Parrot class",
       "blu = Parrot('Blu', 10)",
@@ -234,10 +234,10 @@
   "class=>with_attribute_2": {
     "body": [
       "class Person:",
-      "    def __init__(self, name):",
-      "        self.name = name",
-      "    def say_hi(self):",
-      "        print('Hello, my name is', self.name)",
+      "      def __init__(self, name):",
+      "          self.name = name",
+      "      def say_hi(self):",
+      "          print('Hello, my name is', self.name)",
       "p = Person('Swaroop')",
       "p.say_hi()",
       "# The previous 2 lines can also be written as",
@@ -249,33 +249,33 @@
   "class=>with_attribute_3": {
     "body": [
       "class Robot:",
-      "    '''Represents a robot, with a name.'''",
-      "    # A class variable, counting the number of robots",
-      "    population = 0",
-      "    def __init__(self, name):",
-      "        '''Initializes the data.'''",
-      "        self.name = name",
-      "        print('(Initializing {})'.format(self.name))",
-      "        # When this person is created, the robot",
-      "        # adds to the population",
-      "        Robot.population += 1",
-      "    def die(self):",
-      "        '''I am dying.'''",
-      "        print('{} is being destroyed!'.format(self.name))",
-      "        Robot.population -= 1",
-      "        if Robot.population == 0:",
-      "            print('{} was the last one.'.format(self.name))",
-      "        else:",
-      "            print('There are still {:d} robots working.'.format(",
-      "                Robot.population))",
-      "    def say_hi(self):",
-      "        '''Greeting by the robot.",
-      "        Yeah, they can do that.'''",
-      "        print('Greetings, my masters call me {}.'.format(self.name))",
-      "    @classmethod",
-      "    def how_many(cls):",
-      "        '''Prints the current population.'''",
-      "        print('We have {:d} robots.'.format(cls.population))",
+      "      '''Represents a robot, with a name.'''",
+      "      # A class variable, counting the number of robots",
+      "      population = 0",
+      "      def __init__(self, name):",
+      "          '''Initializes the data.'''",
+      "          self.name = name",
+      "          print('(Initializing {})'.format(self.name))",
+      "          # When this person is created, the robot",
+      "          # adds to the population",
+      "          Robot.population += 1",
+      "      def die(self):",
+      "          '''I am dying.'''",
+      "          print('{} is being destroyed!'.format(self.name))",
+      "          Robot.population -= 1",
+      "          if Robot.population == 0:",
+      "              print('{} was the last one.'.format(self.name))",
+      "          else:",
+      "              print('There are still {:d} robots working.'.format(",
+      "                  Robot.population))",
+      "      def say_hi(self):",
+      "          '''Greeting by the robot.",
+      "          Yeah, they can do that.'''",
+      "          print('Greetings, my masters call me {}.'.format(self.name))",
+      "      @classmethod",
+      "      def how_many(cls):",
+      "          '''Prints the current population.'''",
+      "          print('We have {:d} robots.'.format(cls.population))",
       "droid1 = Robot('R2-D2')",
       "droid1.say_hi()",
       "Robot.how_many()",
@@ -297,15 +297,15 @@
       "",
       "# instance attributes",
       " def __init__(self, name, age):",
-      "   self.name = name",
-      "   self.age = age",
+      "     self.name = name",
+      "     self.age = age",
       "",
       "# instance method",
       " def sing(self, song):",
-      "   return '{} sings {}'.format(self.name, song)",
+      "     return '{} sings {}'.format(self.name, song)",
       "",
       " def dance(self):",
-      "   return '{} is now dancing'.format(self.name)",
+      "     return '{} is now dancing'.format(self.name)",
       "",
       "# instantiate the object",
       "blu = Parrot('Blu', 10)",
@@ -319,8 +319,8 @@
   "class=>with_method_2": {
     "body": [
       "class Person:",
-      "    def say_hi(self):",
-      "        print('Hello, how are you?')",
+      "      def say_hi(self):",
+      "          print('Hello, how are you?')",
       "p = Person()",
       "p.say_hi()",
       "# The previous 2 lines can also be written as",
@@ -347,9 +347,9 @@
   "dictionary.clear=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "car.clear()",
       "print(car)"
@@ -360,9 +360,9 @@
   "dictionary.copy=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.copy()",
       "print(x)"
@@ -382,9 +382,9 @@
   "dictionary.get=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.get('price', 15000)",
       "print(x)"
@@ -395,9 +395,9 @@
   "dictionary.items=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.items()",
       "car['year'] = 2018",
@@ -409,9 +409,9 @@
   "dictionary.keys=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.keys()",
       "car['color'] = 'white'",
@@ -423,9 +423,9 @@
   "dictionary.pop=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "car.pop('model')",
       "print(car)"
@@ -436,9 +436,9 @@
   "dictionary.popitem=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "car.popitem()",
       "print(car)"
@@ -449,9 +449,9 @@
   "dictionary.setdefault=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.setdefault('color', 'white')",
       "print(x)"
@@ -462,9 +462,9 @@
   "dictionary.update=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "car.update({'color': 'White'})",
       "print(car)"
@@ -475,9 +475,9 @@
   "dictionary.values=>": {
     "body": [
       "car = {",
-      "  'brand': 'Ford',",
-      "  'model': 'Mustang',",
-      "  'year': 1964",
+      "    'brand': 'Ford',",
+      "    'model': 'Mustang',",
+      "    'year': 1964",
       "}",
       "x = car.values()",
       "car['year'] = 2018",
@@ -489,18 +489,10 @@
   "else": {
     "body": [
       "else:",
-      "  pass"
+      "    pass"
     ],
     "description": "else Statements",
     "prefix": "else"
-  },
-  "environment_variables": {
-    "body": [
-      "import os",
-      "",
-      "HOME=os.environ['HOME']"
-    ],
-    "prefix": "environment_variables"
   },
   "file=>deletefile": {
     "body": [
@@ -514,15 +506,15 @@
     "body": [
       "from pathlib import Path",
       "if Path(path_to_file).is_file():",
-      "    print(f'The file {path_to_file} exists')",
+      "      print(f'The file {path_to_file} exists')",
       "else:",
-      "    print(f'The file {path_to_file} does not exist')",
+      "      print(f'The file {path_to_file} does not exist')",
       "",
       "import os.path",
       "if os.path.exists('readme.txt'):",
-      "    print(f'The file {path_to_file} exists')",
+      "      print(f'The file {path_to_file} exists')",
       "else:",
-      "    print(f'The file {path_to_file} does not exist')",
+      "      print(f'The file {path_to_file} does not exist')",
       ""
     ],
     "description": "Check if file exists",
@@ -540,7 +532,7 @@
       "f.close()",
       "",
       "with open(line, 'w') as f:",
-      "    f.write(str)"
+      "      f.write(str)"
     ],
     "description": "Write to an Existing File",
     "prefix": "fileopen"
@@ -549,7 +541,7 @@
     "body": [
       "fruits = ['apple', 'banana', 'cherry']",
       "for x in fruits:",
-      "  print(x)"
+      "    print(x)"
     ],
     "description": "An example for using for",
     "prefix": "for"
@@ -560,7 +552,7 @@
       "for x in fruits:",
       " print(x)",
       " if x == 'banana':",
-      "   break"
+      "     break"
     ],
     "description": "An example for using for",
     "prefix": "for=>break_statement"
@@ -571,7 +563,7 @@
       "for x in fruits:",
       " print(x)",
       " if x == 'banana':",
-      "   continue",
+      "     continue",
       " print(x)"
     ],
     "description": "An example for using for",
@@ -582,8 +574,8 @@
       "adj = ['red', 'big', 'tasty']",
       "fruits = ['apple', 'banana', 'cherry']",
       "for x in adj:",
-      "  for y in fruits:",
-      "    print(x, y)"
+      "    for y in fruits:",
+      "      print(x, y)"
     ],
     "description": "An example for using for",
     "prefix": "for=>for_else"
@@ -615,7 +607,7 @@
   "for=>through_a_string": {
     "body": [
       "for x in 'banana':",
-      "  print(x)"
+      "    print(x)"
     ],
     "description": "An example for using for",
     "prefix": "for=>through_a_string"
@@ -623,7 +615,7 @@
   "if": {
     "body": [
       "if condition:",
-      "  pass"
+      "    pass"
     ],
     "description": "if Statements",
     "prefix": "if"
@@ -631,9 +623,9 @@
   "ifelif": {
     "body": [
       "if condition:",
-      "  pass",
+      "    pass",
       "elif condition:",
-      "  pass"
+      "    pass"
     ],
     "description": "if/else if Statements",
     "prefix": "ifelif"
@@ -641,11 +633,11 @@
   "ifelifelse": {
     "body": [
       "if condition:",
-      "  pass",
+      "    pass",
       "elif condition:",
-      "  pass",
+      "    pass",
       "else:",
-      "  pass"
+      "    pass"
     ],
     "description": "if/else if/else Statements",
     "prefix": "ifelifelse"
@@ -653,9 +645,9 @@
   "ifelse": {
     "body": [
       "if condition:",
-      "  pass",
+      "    pass",
       "else:",
-      "  pass"
+      "    pass"
     ],
     "description": "if/else Statements",
     "prefix": "ifelse"
@@ -793,7 +785,7 @@
     "body": [
       "# A function that returns the length of the value:",
       "def myFunc(e):",
-      "  return len(e)",
+      "    return len(e)",
       "cars = ['Ford', 'Mitsubishi', 'BMW', 'VW']",
       "cars.sort(reverse=True, key=myFunc)",
       "print(cars)"
@@ -824,9 +816,9 @@
       "console = Console()",
       "",
       "with console.status(f\"[bold green]Searching...\") as status:",
-      "    ... Some work...",
-      "    console.log(f\"[bold green]Some event {id}\")",
-      "    ... Some work..."
+      "      ... Some work...",
+      "      console.log(f\"[bold green]Some event {id}\")",
+      "      ... Some work..."
     ],
     "description": "Rich status",
     "prefix": "richstatus"
@@ -1085,9 +1077,9 @@
   "trye=>": {
     "body": [
       "try:",
-      "  print(x)",
+      "    print(x)",
       "except:",
-      "  print('An exception occurred')"
+      "    print('An exception occurred')"
     ],
     "description": "tryexcept method",
     "prefix": "trye=>"
@@ -1095,11 +1087,11 @@
   "tryef=>": {
     "body": [
       "try:",
-      "  print(x)",
+      "    print(x)",
       "except:",
-      "  print('Something went wrong')",
+      "    print('Something went wrong')",
       "finally:",
-      "  print('The try except is finished')"
+      "    print('The try except is finished')"
     ],
     "description": "tryexceptfinally method",
     "prefix": "tryef=>"
@@ -1117,8 +1109,8 @@
     "body": [
       "i = 1",
       "while i < 6:",
-      "  print(i)",
-      "  i += 1"
+      "    print(i)",
+      "    i += 1"
     ],
     "description": "while Statements",
     "prefix": "while"
@@ -1126,28 +1118,22 @@
   "while_else": {
     "body": [
       "while expression:",
-      "  pass",
+      "    pass",
       "else:",
-      "  pass"
+      "    pass"
     ],
     "description": "while Statements",
     "prefix": "while_else"
   },
-  "": {
+  "environment_variables": {
     "body": [
-      "import json",
-      "import sys",
-      "from sys import argv",
-      "from rich.console import Console",
-      "from rich.table import Table",
-      "import glob",
+      "import os",
+      "HOME=os.environ['HOME']",
       "",
-      "HOME = os.environ['HOME']",
-      "",
-      "if len(sys.argv) > 1:",
-      "$0"
+      "from pathlib import Path",
+      "HOME = str(Path.home())"
     ],
-    "description": "",
-    "prefix": ""
+    "description": "Another way to get home env variable",
+    "prefix": "environment_variables"
   }
 }

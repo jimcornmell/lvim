@@ -1,7 +1,21 @@
 " Functions {{{1
+function! ShowColours()
+    :e new.txt
+    set spell!
+    call termopen("showcolors")
+endfunction
+
+function! ShowChars()
+    :e new.txt
+    set spell!
+    call termopen("showchars")
+endfunction
 
 function! SnippetList()
-    exec ":!snippetsList " . &ft
+    let cmd="snippetsList " . &ft
+    :e new.txt
+    set spell!
+    call termopen(cmd)
 endfunction
 
 function! SnippetEdit()
@@ -32,7 +46,7 @@ function! SnippetSave()
         call add(newlist, "      \"" . substitute(line, '"','\\\"', "g") . "\",")
     endfor
 
-    call add(newlist, "      \"$0\"")
+    call add(newlist, "      \"$0\",")
     call add(newlist, "    ],")
     call add(newlist, "    \"description\": \"" . desc . "\",")
     call add(newlist, "    \"prefix\": \"" . keyName . "\"")
@@ -605,9 +619,17 @@ set fillchars=stl:\ ,foldclose:,foldopen:,foldsep:┃,fold:\ ,eob:~,msgsep
 " Syntax files {{{1
 
 "  Auddis!
-au! Syntax auddis source ~/.config/lvim/syntax/auddis.vim
-au BufRead,BufNewFile *.aud set filetype=auddis
-au BufRead,BufNewFile AUDDIS*.ASC set filetype=auddis
+" au! Syntax auddis source ~/.config/lvim/syntax/auddis.vim
+" au BufRead,BufNewFile *.aud set filetype=auddis
+" au BufRead,BufNewFile AUDDIS*.ASC set filetype=auddis
+
+" Franchise DAT files.
+" au! Syntax franchisefile source ~/.config/lvim/syntax/franchisefile.vim
+" au BufRead,BufNewFile *.dat set filetype=franchisefile
+
+" TTT text files.
+" au! Syntax cooptttfile source ~/.config/lvim/syntax/cooptttfile.vim
+" au BufRead,BufNewFile tau.cc.* set filetype=cooptttfile
 
 "  Celestia!
 au! Syntax cel source ~/.config/lvim/syntax/cel.vim
@@ -623,14 +645,6 @@ au! Syntax edifile source $HOME/.config/lvim/syntax/edifile.vim
 au BufRead,BufNewFile *.edi set filetype=edifile
 au BufRead,BufNewFile *.mdf set filetype=edifile
 au BufRead,BufNewFile *.hse set filetype=edifile
-
-" Franchise DAT files.
-au! Syntax franchisefile source ~/.config/lvim/syntax/franchisefile.vim
-au BufRead,BufNewFile *.dat set filetype=franchisefile
-
-" TTT text files.
-au! Syntax cooptttfile source ~/.config/lvim/syntax/cooptttfile.vim
-au BufRead,BufNewFile tau.cc.* set filetype=cooptttfile
 
 " Log4j files.
 au! Syntax log4j source ~/.config/lvim/syntax/log4j.vim

@@ -42,8 +42,10 @@ nmap <silent> <leader>n :set norelativenumber<cr>
 nmap <silent> <leader>r :set relativenumber<cr>
 
 " Snippets.
-map <silent> sL :LuaSnipListAvailable<CR>
+map <silent> sc :call ShowColours()<CR>
+map <silent> sC :call ShowChars()<CR>
 map <silent> sl :call SnippetList()<CR>
+map <silent> sL :LuaSnipListAvailable<CR>
 map <silent> ss :call SnippetSave()<CR>
 map <silent> se :call SnippetEdit()<CR>
 

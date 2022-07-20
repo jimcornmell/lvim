@@ -24,6 +24,7 @@ map <silent> <A-e> :Chmod a+x<CR>:set filetype=sh<CR>:echo "File is now executab
 map <silent> <A-r> :w<CR>:!%:p<CR>
 nmap gr :call ExecuteCurrentLine()<CR>
 nmap gt :exe getline('.')<CR>
+nmap <silent> <A-p> :call PushLine()<CR>
 
 " Lookup documentation for current word on DevDocs
 nmap gm <Plug>(devdocs-under-cursor)

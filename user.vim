@@ -1,4 +1,27 @@
 " Functions {{{1
+" Add (push) spaces to make next word align with line above.
+function! PushLine()
+    let s:h=virtcol('.')
+    normal w
+    let s:clp=virtcol('.')
+    execute "normal! " . s:h . "|"
+    normal khw
+    let s:plp=virtcol('.')
+
+    if (s:plp - s:clp) > 0
+        execute "normal! " . s:clp . "|"
+        normal j
+        execute "normal! " . (s:plp - s:clp) . "i "
+    else
+        execute "normal! " . s:plp . "|"
+        normal j
+        execute "normal! dw"
+    endif
+
+    execute "normal! " . s:h . "|"
+    normal j
+endfunction
+
 function! ShowColours()
     :e new.txt
     set spell!

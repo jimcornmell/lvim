@@ -678,6 +678,9 @@ au! Syntax runlog source ~/.config/lvim/syntax/runlog.vim
 au BufRead,BufNewFile ALLREAD*.txt set filetype=runlog
 au BufRead,BufNewFile ALLKewill*.txt set filetype=runlog
 
+" Freemarker
+au! Syntax runlog source ~/.config/lvim/syntax/ftl.vim
+au BufRead,BufNewFile *.ftl set filetype=ftl
 " }}}
 
 " Abbreviations {{{1

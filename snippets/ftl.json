@@ -1,0 +1,54 @@
+{
+  "listarray": {
+    "body": [
+      "<#list ['a', 'b', 'c'] as i>",
+      "    \\${i?counter}: \\${i}",
+      "</#list>"
+    ],
+    "description": "List though array",
+    "prefix": "listarray"
+  },
+  "listvars": {
+    "body": [
+      "<#if vars??>",
+      "    <#assign m = vars>",
+      "    <#assign keys = m?keys>",
+      "    <table style=\"border: 1px solid black;\">",
+      "        <#list keys as key>",
+      "            <tr><th style=\"border: 1px solid black;\">${key}</th><td style=\"border: 1px solid black;\">",
+      "        </#list>",
+      "    </table>",
+      "<#else>",
+      "    Vars is missing",
+      "</#if>"
+    ],
+    "description": "List though vars",
+    "prefix": "listvars"
+  },
+  "showvarsafe": {
+    "body": [
+      "<#if vars??>",
+      "    <#if vars['title']??>",
+      "        <p>Page Title = \\${vars['title'].value}</p>",
+      "    <#else>",
+      "        vars['title'] is missing",
+      "    </#if>",
+      "<#else>",
+      "    vars is missing",
+      "</#if>"
+    ],
+    "description": "Show safe var",
+    "prefix": "showvarsafe"
+  },
+  "showvarsafeshort": {
+    "body": [
+      "<#if vars?? && vars['title']??>",
+      "    <p>Page Title = \\${vars['title'].value}</p>",
+      "<#else>",
+      "    vars['title'] is missing",
+      "</#if>"
+    ],
+    "description": "Show safe var",
+    "prefix": "showvarsafeshort"
+  }
+}

@@ -44,6 +44,28 @@
     "description": "A repeatable annotation",
     "prefix": "annotation"
   },
+  "badge": {
+    "body": [
+      "    // addIdScreenBadges(profile, results);",
+      "    private void addIdScreenBadges(IdScreenIdentityProfiles profile, Results results) {",
+      "        switch (profile.getConfidence()) {",
+      "            case \"medium\" -> {",
+      "                results.addBadge(\"dbs-basic\");",
+      "                results.addBadge(\"right-to-work\");",
+      "                results.addBadge(\"right-to-rent\");",
+      "            }",
+      "            case \"high\", \"very-high\" -> {",
+      "                results.addBadge(\"dbs-high\");",
+      "                results.addBadge(\"right-to-work\");",
+      "                results.addBadge(\"right-to-rent\");",
+      "            }",
+      "        }",
+      "    }",
+      "$0"
+    ],
+    "description": "Add a badge",
+    "prefix": "badge"
+  },
   "case": {
     "body": [
       "case ${1:value}:",
@@ -579,27 +601,5 @@
     ],
     "description": "A type",
     "prefix": "type"
-  },
-  "badge": {
-    "body": [
-      "    // addIdScreenBadges(profile, results);",
-      "    private void addIdScreenBadges(IdScreenIdentityProfiles profile, Results results) {",
-      "        switch (profile.getConfidence()) {",
-      "            case \"medium\" -> {",
-      "                results.addBadge(\"dbs-basic\");",
-      "                results.addBadge(\"right-to-work\");",
-      "                results.addBadge(\"right-to-rent\");",
-      "            }",
-      "            case \"high\", \"very-high\" -> {",
-      "                results.addBadge(\"dbs-high\");",
-      "                results.addBadge(\"right-to-work\");",
-      "                results.addBadge(\"right-to-rent\");",
-      "            }",
-      "        }",
-      "    }",
-      "$0",
-    ],
-    "description": "Add a badge",
-    "prefix": "badge"
   }
 }

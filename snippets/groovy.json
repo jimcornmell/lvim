@@ -13,7 +13,7 @@
       ""
     ],
     "description": "New Gradle File",
-    "prefix": "gradle_new_file"
+    "prefix": "__gradle_new_file"
   },
   "spocktest": {
     "body": [
@@ -42,6 +42,6 @@
       "}"
     ],
     "description": "New Spock test",
-    "prefix": "spocktest"
+    "prefix": "__spocktest"
   }
 }

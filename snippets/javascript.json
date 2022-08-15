@@ -11,6 +11,6 @@
       "}"
     ],
     "description": "New JS class",
-    "prefix": "class"
+    "prefix": "__class"
   }
 }

@@ -4,14 +4,14 @@
       "//#endregion"
     ],
     "description": "#endregion",
-    "prefix": "regionend"
+    "prefix": "__regionend"
   },
   "#regionstart": {
     "body": [
       "//#region $0"
     ],
     "description": "#region",
-    "prefix": "regionstart"
+    "prefix": "__regionstart"
   },
   "classdefinition": {
     "body": [
@@ -22,7 +22,7 @@
       "}"
     ],
     "description": "class",
-    "prefix": "classdefinition"
+    "prefix": "__classdefinition"
   },
   "constructor": {
     "body": [
@@ -35,7 +35,7 @@
       "}"
     ],
     "description": "ctor",
-    "prefix": "constructor"
+    "prefix": "__constructor"
   },
   "defineafullproperty": {
     "body": [
@@ -50,7 +50,7 @@
       ""
     ],
     "description": "prop",
-    "prefix": "defineafullproperty"
+    "prefix": "__defineafullproperty"
   },
   "do-whilestatement": {
     "body": [
@@ -59,7 +59,7 @@
       "} while (${1:condition});"
     ],
     "description": "dowhile",
-    "prefix": "do-whilestatement"
+    "prefix": "__do-whilestatement"
   },
   "for-eachloopusing": {
     "body": [
@@ -68,7 +68,7 @@
       "});"
     ],
     "description": "foreach",
-    "prefix": "for-eachloopusing=>"
+    "prefix": "__for-eachloopusing=>"
   },
   "for-inloop": {
     "body": [
@@ -80,7 +80,7 @@
       "}"
     ],
     "description": "forin",
-    "prefix": "for-inloop"
+    "prefix": "__for-inloop"
   },
   "for-ofloop": {
     "body": [
@@ -89,7 +89,7 @@
       "}"
     ],
     "description": "forof",
-    "prefix": "for-ofloop"
+    "prefix": "__for-ofloop"
   },
   "forloop": {
     "body": [
@@ -99,7 +99,7 @@
       "}"
     ],
     "description": "for",
-    "prefix": "forloop"
+    "prefix": "__forloop"
   },
   "functionstatement": {
     "body": [
@@ -108,7 +108,7 @@
       "}"
     ],
     "description": "function",
-    "prefix": "functionstatement"
+    "prefix": "__functionstatement"
   },
   "if-elsestatement": {
     "body": [
@@ -119,7 +119,7 @@
       "}"
     ],
     "description": "ifelse",
-    "prefix": "if-elsestatement"
+    "prefix": "__if-elsestatement"
   },
   "ifstatement": {
     "body": [
@@ -128,14 +128,14 @@
       "}"
     ],
     "description": "if",
-    "prefix": "ifstatement"
+    "prefix": "__ifstatement"
   },
   "importexternalmodulestatement": {
     "body": [
       "import { $0 } from \"${1:module}\";"
     ],
     "description": "import statement",
-    "prefix": "importexternalmodule."
+    "prefix": "__importexternalmodule."
   },
   "logerrortoconsole": {
     "body": [
@@ -143,7 +143,7 @@
       "$0"
     ],
     "description": "error",
-    "prefix": "logerrortoconsole"
+    "prefix": "__logerrortoconsole"
   },
   "logtotheconsole": {
     "body": [
@@ -151,7 +151,7 @@
       "$0"
     ],
     "description": "log",
-    "prefix": "logtotheconsole"
+    "prefix": "__logtotheconsole"
   },
   "logwarningtoconsole": {
     "body": [
@@ -159,14 +159,14 @@
       "$0"
     ],
     "description": "warn",
-    "prefix": "logwarningtoconsole"
+    "prefix": "__logwarningtoconsole"
   },
   "newstatement": {
     "body": [
       "const ${1:name} = new ${2:type}(${3:arguments});$0"
     ],
     "description": "new",
-    "prefix": "newstatement"
+    "prefix": "__newstatement"
   },
   "privatemethoddefinitionmethod": {
     "body": [
@@ -175,7 +175,7 @@
       "}"
     ],
     "description": "private method",
-    "prefix": "privatemethoddefinition"
+    "prefix": "__privatemethoddefinition"
   },
   "propertygetter": {
     "body": [
@@ -186,7 +186,7 @@
       ""
     ],
     "description": "get",
-    "prefix": "propertygetter"
+    "prefix": "__propertygetter"
   },
   "propertysetter": {
     "body": [
@@ -197,7 +197,7 @@
       ""
     ],
     "description": "set",
-    "prefix": "propertysetter"
+    "prefix": "__propertysetter"
   },
   "publicmethoddefinitionmethod": {
     "body": [
@@ -209,7 +209,7 @@
       "}"
     ],
     "description": "public method",
-    "prefix": "publicmethoddefinition"
+    "prefix": "__publicmethoddefinition"
   },
   "settimeoutfunction": {
     "body": [
@@ -218,7 +218,7 @@
       "}, ${1:timeout});"
     ],
     "description": "settimeout",
-    "prefix": "settimeoutfunction"
+    "prefix": "__settimeoutfunction"
   },
   "switchstatement": {
     "body": [
@@ -232,7 +232,7 @@
       "}"
     ],
     "description": "switch",
-    "prefix": "switchstatement"
+    "prefix": "__switchstatement"
   },
   "throwexception": {
     "body": [
@@ -240,7 +240,7 @@
       "$0"
     ],
     "description": "throw",
-    "prefix": "throwexception"
+    "prefix": "__throwexception"
   },
   "triple-slashreference": {
     "body": [
@@ -248,7 +248,7 @@
       "$0"
     ],
     "description": "ref",
-    "prefix": "triple-slashreference"
+    "prefix": "__triple-slashreference"
   },
   "try-catchstatement": {
     "body": [
@@ -259,7 +259,7 @@
       "}"
     ],
     "description": "trycatch",
-    "prefix": "try-catchstatement"
+    "prefix": "__try-catchstatement"
   },
   "whilestatement": {
     "body": [
@@ -268,6 +268,6 @@
       "}"
     ],
     "description": "while",
-    "prefix": "whilestatement"
+    "prefix": "__whilestatement"
   }
 }

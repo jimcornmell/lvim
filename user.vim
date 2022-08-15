@@ -81,7 +81,7 @@ function! SnippetSave()
 endfunction
 
 function! OpenHelpAndCheatSheets()
-    let folder = "/home/jim.cornmell/Documents/CheatSheets/"
+    let folder = "/home/jim/NextCloud/CheatSheets/"
     let number = 2 " The number to display to the user.
     let cheattext = [] " The text to display to the user.
     let cheaturis = [] " The files/URL's to open.

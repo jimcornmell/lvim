@@ -1,5 +1,8 @@
 set termguicolors
 
+" To capture colours to a new buffer.
+":enew|pu=execute('hi')
+
 " Use zenburn colour scheme, but make some minor tweaks.
 let g:zenburn_italic_Comment=1
 " colorscheme zenburn

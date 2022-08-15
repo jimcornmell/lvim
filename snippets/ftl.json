@@ -6,7 +6,7 @@
       "</#list>"
     ],
     "description": "List though array",
-    "prefix": "listarray"
+    "prefix": "__listarray"
   },
   "listvars": {
     "body": [
@@ -23,7 +23,7 @@
       "</#if>"
     ],
     "description": "List though vars",
-    "prefix": "listvars"
+    "prefix": "__listvars"
   },
   "showvarsafe": {
     "body": [
@@ -38,7 +38,7 @@
       "</#if>"
     ],
     "description": "Show safe var",
-    "prefix": "showvarsafe"
+    "prefix": "__showvarsafe"
   },
   "showvarsafeshort": {
     "body": [
@@ -49,6 +49,6 @@
       "</#if>"
     ],
     "description": "Show safe var",
-    "prefix": "showvarsafeshort"
+    "prefix": "__showvarsafeshort"
   }
 }

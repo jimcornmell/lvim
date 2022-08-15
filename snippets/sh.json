@@ -4,21 +4,21 @@
       ">/dev/null"
     ],
     "description": ">/dev/null",
-    "prefix": "1"
+    "prefix": "__1"
   },
   "12": {
     "body": [
       ">/dev/null 2>&1"
     ],
     "description": ">/dev/null 2>&1",
-    "prefix": "12"
+    "prefix": "__12"
   },
   "2": {
     "body": [
       "2>/dev/null"
     ],
     "description": "2>/dev/null",
-    "prefix": "2"
+    "prefix": "__2"
   },
   "case": {
     "body": [
@@ -32,7 +32,7 @@
       ""
     ],
     "description": "case statement. Use the switch statement snippet \"switch\" to add one or more switches to the case statement.",
-    "prefix": "case"
+    "prefix": "__case"
   },
   "case_statement": {
     "body": [
@@ -51,7 +51,7 @@
       "esac"
     ],
     "description": "",
-    "prefix": "case_statement"
+    "prefix": "__case_statement"
   },
   "cat": {
     "body": [
@@ -60,34 +60,34 @@
       "EOF"
     ],
     "description": "cat... EOF",
-    "prefix": "cat"
+    "prefix": "__cat"
   },
   "characterinvariablestring": {
     "body": [
       "\\${${1:variable-name-here}:${2:index-of-character}:${0:number-of-characters-from-index-onwards-to-return}\\}"
     ],
-    "prefix": "characterinvariablestring"
+    "prefix": "__characterinvariablestring"
   },
   "datesinceepoch": {
     "body": [
       "datesinceepoch=$(date +%s)"
     ],
     "description": "insert a date and time stamp into a string.",
-    "prefix": "datesinceepoch"
+    "prefix": "__datesinceepoch"
   },
   "escape": {
     "body": [
       "| sed 's/[^a-zA-Z0-9]/\\\\\\&/g'"
     ],
     "description": "put a backslash in front of all special characters.",
-    "prefix": "escape"
+    "prefix": "__escape"
   },
   "exit": {
     "body": [
       "${1|exit 0 #success,exit 1 #catchall,exit 2 #misuse of shell builtin,exit 126 #command invoked cannot execute e.g. permission issue or command is not an executable,exit 127 #command not found e.g. file or script does not exist|}"
     ],
     "description": "Exit and throw correct error code. For list of all codes, see: http://www.tldp.org/LDP/abs/html/exitcodes.html",
-    "prefix": "exit"
+    "prefix": "__exit"
   },
   "extractnth-from-lastfield": {
     "body": [
@@ -95,7 +95,7 @@
       "${0:#field separator↑               ↑ nth-from-last}"
     ],
     "description": "Use awk to extract the nth-from-last field in a string, where the field is defined by the field separator \"FS=\" and the nth-from-last field is defined by $(NF-n)",
-    "prefix": "extractnth-from-lastfield"
+    "prefix": "__extractnth-from-lastfield"
   },
   "extractnthfield": {
     "body": [
@@ -103,7 +103,7 @@
       "${0:#field separator↑        nth ↑}"
     ],
     "description": "Use awk to extract the first field in a string, where the field is defined by the field separator \"FS=\" and the nth field is defined by $(n)",
-    "prefix": "extractnthfield"
+    "prefix": "__extractnthfield"
   },
   "for": {
     "body": [
@@ -115,7 +115,7 @@
       ""
     ],
     "description": "Stub out a for loop",
-    "prefix": "for"
+    "prefix": "__for"
   },
   "fori": {
     "body": [
@@ -127,7 +127,7 @@
       ""
     ],
     "description": "Stub out a for loop that iterates over a number, such as the length of a string, which can be accessed with snippet \"length of string\"",
-    "prefix": "fori"
+    "prefix": "__fori"
   },
   "func": {
     "body": [
@@ -140,7 +140,7 @@
       ""
     ],
     "description": "func",
-    "prefix": "func"
+    "prefix": "__func"
   },
   "function": {
     "body": [
@@ -164,7 +164,7 @@
       ""
     ],
     "description": "Stub out a function",
-    "prefix": "function"
+    "prefix": "__function"
   },
   "getopts": {
     "body": [
@@ -215,21 +215,21 @@
       "done"
     ],
     "description": "while getopts … done",
-    "prefix": "getopts"
+    "prefix": "__getopts"
   },
   "grependswith": {
     "body": [
       "grep \"$0\"\\$"
     ],
     "description": "Search a string for a pattern that occurs at the end of the string. Especially useful for finding file extensions.",
-    "prefix": "grependswith"
+    "prefix": "__grependswith"
   },
   "grepstartswith": {
     "body": [
       "grep ^\"$0\""
     ],
     "description": "Search a string for a pattern that occurs at the start of the string. Especially useful for finding comments in scripts",
-    "prefix": "grepstartswith"
+    "prefix": "__grepstartswith"
   },
   "gzip": {
     "body": [
@@ -237,7 +237,7 @@
       "${0:# ↑ Pay attention to the user who owns the tarfile you want to zip. If you had to \"sudo\" to make it, then it is owned by \"root\". If you do not \"sudo gzip\", then the resulting \".tar.gz\" will be owned by you - not by root! This means that the permissions of the files that were zipped up will also change, and they will ultimately be owned by whoever unzips the file! You probably don't want the permissions to change. Therefore, you should \"gzip\" as the same user (most likely \"root\") that made the tarfile.}"
     ],
     "description": "Compress a tape archive (tar) with \"gzip\".",
-    "prefix": "gzip"
+    "prefix": "__gzip"
   },
   "header": {
     "body": [
@@ -249,7 +249,7 @@
       "#"
     ],
     "description": "header",
-    "prefix": "header"
+    "prefix": "__header"
   },
   "heredoctofile": {
     "body": [
@@ -258,7 +258,7 @@
       "EOF"
     ],
     "description": "Append multi-line text to a file, or feed it into the standard input of a command, with a heredoc",
-    "prefix": "heredoctofile"
+    "prefix": "__heredoctofile"
   },
   "if": {
     "body": [
@@ -272,7 +272,7 @@
       ""
     ],
     "description": "Stub out a simple conditional statement that uses the test command \"[\"",
-    "prefix": "if"
+    "prefix": "__if"
   },
   "if_statement": {
     "body": [
@@ -285,7 +285,7 @@
       "fi"
     ],
     "description": "if_statement",
-    "prefix": "if_statement"
+    "prefix": "__if_statement"
   },
   "if_statement_full": {
     "body": [
@@ -326,7 +326,7 @@
       "[[ \\$pie =~ \"[aeiou]d\" ]]; echo \\$?"
     ],
     "description": "if_statement_full",
-    "prefix": "if_statement_full"
+    "prefix": "__if_statement_full"
   },
   "ifarithmetic": {
     "body": [
@@ -340,7 +340,7 @@
       ""
     ],
     "description": "Stub out a simple conditional statement that uses bash's built in arithmetic operators.",
-    "prefix": "ifarithmetic"
+    "prefix": "__ifarithmetic"
   },
   "ifcommand": {
     "body": [
@@ -352,7 +352,7 @@
       "fi"
     ],
     "description": "Stub out a conditional statment that checks the exit code of a command",
-    "prefix": "ifcommand"
+    "prefix": "__ifcommand"
   },
   "ifregex": {
     "body": [
@@ -366,21 +366,21 @@
       ""
     ],
     "description": "Stub out a simple conditional statement that uses bash's built in conditional expression syntax to compare a string on the left hand side to a regex on the right hand side.",
-    "prefix": "ifregex"
+    "prefix": "__ifregex"
   },
   "ite": {
     "body": [
       "[[ ${1:condition} ]] && ${2:echo \"true\"} || ${3:echo \"false\"}"
     ],
     "description": "[[ ]] && true || false",
-    "prefix": "ite"
+    "prefix": "__ite"
   },
   "lengthofvariablestring": {
     "body": [
       "\\${#${0:variable-name-here}\\}"
     ],
     "description": "get length of a variable that is a string.",
-    "prefix": "lengthofvariablestring"
+    "prefix": "__lengthofvariablestring"
   },
   "log": {
     "body": [
@@ -388,7 +388,7 @@
       "$2"
     ],
     "description": "Log output to console",
-    "prefix": "log"
+    "prefix": "__log"
   },
   "mktemp": {
     "body": [
@@ -397,14 +397,14 @@
       "trap \"rm -f \\${${1}:-/tmp/dummy}\" 0 1 2 3 15"
     ],
     "description": "Create temp file into $TMPDIR",
-    "prefix": "mktemp"
+    "prefix": "__mktemp"
   },
   "nullstdoutstderr": {
     "body": [
       "&>/dev/null"
     ],
     "description": "send all output of a command to /dev/null",
-    "prefix": "nullstdoutstderr"
+    "prefix": "__nullstdoutstderr"
   },
   "read": {
     "body": [
@@ -415,7 +415,7 @@
       "$3"
     ],
     "description": "Assign heredoc to variable",
-    "prefix": "read"
+    "prefix": "__read"
   },
   "readinput": {
     "body": [
@@ -423,7 +423,7 @@
       "${3:echo \\$INPUT}"
     ],
     "description": "prompt user for input.",
-    "prefix": "readinput"
+    "prefix": "__readinput"
   },
   "readwhile": {
     "body": [
@@ -434,7 +434,7 @@
       "done < <($0)${2:    # ← put the command that generates the lines you want to process inside the parentheses}"
     ],
     "description": "For each line of output, run a command.",
-    "prefix": "readwhile"
+    "prefix": "__readwhile"
   },
   "relpath": {
     "body": [
@@ -714,14 +714,14 @@
       "}"
     ],
     "description": "combine the relative path TO a script with the relative path FROM a script to another file in order to get the relative path from the current working directory to that file.",
-    "prefix": "relpath"
+    "prefix": "__relpath"
   },
   "replace": {
     "body": [
       "sed \"s/$1/$0/g\""
     ],
     "description": "use sed to replace part of a string. Super useful for updating key value pairs in configuration files.",
-    "prefix": "replace"
+    "prefix": "__replace"
   },
   "script": {
     "body": [
@@ -851,7 +851,7 @@
       "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
     ],
     "description": "Make a Bash Script with sections for cleanup, environment variables, helper functions, and main script",
-    "prefix": "script"
+    "prefix": "__script"
   },
   "scriptminimal": {
     "body": [
@@ -896,7 +896,7 @@
       "SCRIPT_IS_DONE=1 # DO NOT DELETE THIS LINE ... the \"clean-up\" function ↑ needs it in order to know whether or not it should undo changes made by this script."
     ],
     "description": "Make a Bash Script with sections for arguments, environment variables, helper functions, and main script",
-    "prefix": "scriptminimal"
+    "prefix": "__scriptminimal"
   },
   "select": {
     "body": [
@@ -913,21 +913,21 @@
       "unset PS3_OLD"
     ],
     "description": "select from a menu of items",
-    "prefix": "select"
+    "prefix": "__select"
   },
   "stripfromend": {
     "body": [
       "sed \"s/$0\\$//g\""
     ],
     "description": "Use sed to remove a pattern from the end of a string. Super useful for removing extensions from file names.",
-    "prefix": "stripfromend"
+    "prefix": "__stripfromend"
   },
   "stripfromstart": {
     "body": [
       "sed \"s/^$0//g\""
     ],
     "description": "Use sed to remove a pattern from the start of a string. Super useful for uncommenting text.",
-    "prefix": "stripfromstart"
+    "prefix": "__stripfromstart"
   },
   "switch": {
     "body": [
@@ -936,7 +936,7 @@
       ";;"
     ],
     "description": "switch for case statement. Use one or more of these inside a case statement.",
-    "prefix": "switch"
+    "prefix": "__switch"
   },
   "switchmulti": {
     "body": [
@@ -945,7 +945,7 @@
       ";;"
     ],
     "description": "switch for case statement that accepts either one condition OR another. Use one or more of these inside a case statement.",
-    "prefix": "switchmulti"
+    "prefix": "__switchmulti"
   },
   "tar-cpvf": {
     "body": [
@@ -953,7 +953,7 @@
       "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
     ],
     "description": "Bundle one or more files or directories into a tarball with \"-c\". Preserve permissions with \"-p\". Show progress with \"-v\". Output to a .tar with \"-f\".",
-    "prefix": "tar-cpvf"
+    "prefix": "__tar-cpvf"
   },
   "tar-rpvf": {
     "body": [
@@ -961,14 +961,14 @@
       "${0:# ↑ You might need to \"sudo\" in order to read some of the files you want to compress. But if you do, keep in mind that the resulting tar will be owned by \"root\".}"
     ],
     "description": "Add one or more files or directories into a tarball with \"-r\". Preserve permissions with \"-p\". Show progress with \"-v\".  Append to a .tar with \"-f\".",
-    "prefix": "tar-rpvf"
+    "prefix": "__tar-rpvf"
   },
   "tar-tvf$0.tar": {
     "body": [
       "${1|tar,sudo tar|} -tvf $2.tar $0"
     ],
     "description": "List table of contents with \"-t\". Preserve permissions with \"-p\". Show permissions \"-v\".  Select the tar you want to list with \"-f\".",
-    "prefix": "tar-tvf$0.tar"
+    "prefix": "__tar-tvf$0.tar"
   },
   "tar-xpvzf": {
     "body": [
@@ -976,7 +976,7 @@
       "${0:# ↑ Pay attention to the user who made the tarfile you want to extract. If you had to \"sudo\" to make it, then it is owned by \"root\", and you need to \"sudo\" to extract it - otherwise \"tar\" will inadvertently make your current user the owner of all of the files, ruining the permissions in the process!}"
     ],
     "description": "Extract all files and directories from a tarball with \"-x\". Preserve permissions with \"-p\". Show progress with \"-v\". Decompress the contents of the tarball with \"-z\" Select the tar.gz file to extract from with \"-f\".",
-    "prefix": "tar-xpvzf"
+    "prefix": "__tar-xpvzf"
   },
   "until": {
     "body": [
@@ -990,7 +990,7 @@
       "unset EXIT_CODE_PREVIOUS"
     ],
     "description": "re-run a command until it returns a zero exit code",
-    "prefix": "until"
+    "prefix": "__until"
   },
   "usage": {
     "body": [
@@ -1010,7 +1010,7 @@
       "}"
     ],
     "description": "Usage fonction template",
-    "prefix": "usage"
+    "prefix": "__usage"
   },
   "while": {
     "body": [
@@ -1019,7 +1019,7 @@
       "done < ${1:/path/to/file}"
     ],
     "description": "While loop to read file",
-    "prefix": "while"
+    "prefix": "__while"
   },
   "while_here_doc": {
     "body": [
@@ -1031,7 +1031,7 @@
       "DATA"
     ],
     "description": "while_here_doc",
-    "prefix": "while_here_doc"
+    "prefix": "__while_here_doc"
   },
   "while_text_file": {
     "body": [
@@ -1049,6 +1049,6 @@
       "done <\"\\$INPUT\""
     ],
     "description": "while_text_file",
-    "prefix": "while_text_file"
+    "prefix": "__while_text_file"
   }
 }

@@ -4,14 +4,14 @@
       "local api = vim.api"
     ],
     "description": "",
-    "prefix": "lapi"
+    "prefix": "__lapi"
   },
   "apifun": {
     "body": [
       "vim.api.nvim_${1:buf}_${2:get}_${3:name}"
     ],
     "description": "",
-    "prefix": "api."
+    "prefix": "__api."
   },
   "describe": {
     "body": [
@@ -20,7 +20,7 @@
       "end)"
     ],
     "description": "",
-    "prefix": "describe"
+    "prefix": "__describe"
   },
   "doc": {
     "body": [
@@ -29,21 +29,21 @@
       "-----------------------------------------------------------------------------//"
     ],
     "description": "",
-    "prefix": "doc"
+    "prefix": "__doc"
   },
   "fmt": {
     "body": [
       "local fmt = string.format"
     ],
     "description": "",
-    "prefix": "lfmt"
+    "prefix": "__lfmt"
   },
   "fn": {
     "body": [
       "local fn = vim.fn"
     ],
     "description": "",
-    "prefix": "lfn"
+    "prefix": "__lfn"
   },
   "for": {
     "body": [
@@ -52,7 +52,7 @@
       "end"
     ],
     "description": "for i=1,10",
-    "prefix": "for",
+    "prefix": "__for",
     "scope": "source.lua"
   },
   "fori": {
@@ -62,7 +62,7 @@
       "end"
     ],
     "description": "for i,v in ipairs()",
-    "prefix": "fori",
+    "prefix": "__fori",
     "scope": "source.lua"
   },
   "forp": {
@@ -72,7 +72,7 @@
       "end"
     ],
     "description": "for k,v in pairs()",
-    "prefix": "forp",
+    "prefix": "__forp",
     "scope": "source.lua"
   },
   "fun": {
@@ -82,7 +82,7 @@
       "end"
     ],
     "description": "function",
-    "prefix": "fun",
+    "prefix": "__fun",
     "scope": "source.lua"
   },
   "function": {
@@ -92,7 +92,7 @@
       "end"
     ],
     "description": "function",
-    "prefix": "function",
+    "prefix": "__function",
     "scope": "source.lua"
   },
   "getmetatable": {
@@ -100,7 +100,7 @@
       "getmetatable(${1:object})"
     ],
     "description": "getmetatable (object)",
-    "prefix": "getmetatable",
+    "prefix": "__getmetatable",
     "scope": "source.lua"
   },
   "if": {
@@ -110,7 +110,7 @@
       "end"
     ],
     "description": "if",
-    "prefix": "if",
+    "prefix": "__if",
     "scope": "source.lua"
   },
   "ifel": {
@@ -122,7 +122,7 @@
       "end"
     ],
     "description": "ifel",
-    "prefix": "ifel",
+    "prefix": "__ifel",
     "scope": "source.lua"
   },
   "inspect": {
@@ -130,14 +130,14 @@
       "print(\"${1}: \" .. vim.inspect(${1}))"
     ],
     "description": "",
-    "prefix": "vi"
+    "prefix": "__vi"
   },
   "ipairs": {
     "body": [
       "ipairs(${0:...})"
     ],
     "description": "ipairs (t)",
-    "prefix": "ipairs",
+    "prefix": "__ipairs",
     "scope": "source.lua"
   },
   "load": {
@@ -145,7 +145,7 @@
       "load(${0:...})"
     ],
     "description": "load (func [, chunkname])",
-    "prefix": "load",
+    "prefix": "__load",
     "scope": "source.lua"
   },
   "lua_log_object": {
@@ -188,21 +188,21 @@
       "fw:close()"
     ],
     "description": "Chunk of code to log object to text file",
-    "prefix": "lua_log_object"
+    "prefix": "__lua_log_object"
   },
   "param": {
     "body": [
       "--- @param ${1:name} ${2:type}"
     ],
     "description": "Add annotation",
-    "prefix": "param"
+    "prefix": "__param"
   },
   "table.concat": {
     "body": [
       "table.concat(${1:tablename}${2:, \", \"}${3:, start_index}${4:, end_index})"
     ],
     "description": "table.concat",
-    "prefix": "table.concat",
+    "prefix": "__table.concat",
     "scope": "source.lua"
   },
   "table.insert": {
@@ -210,7 +210,7 @@
       "table.insert(${1:list},${2: [pos,]}${3: value})"
     ],
     "description": "table.insert",
-    "prefix": "table.insert",
+    "prefix": "__table.insert",
     "scope": "source.lua"
   },
   "table.move": {
@@ -218,7 +218,7 @@
       "table.move(${0:...})"
     ],
     "description": "table.move (a1, f, e, t [,a2])",
-    "prefix": "table.move",
+    "prefix": "__table.move",
     "scope": "source.lua"
   },
   "table.pack": {
@@ -226,7 +226,7 @@
       "table.pack(${0:...})"
     ],
     "description": "table.pack (...)",
-    "prefix": "table.pack",
+    "prefix": "__table.pack",
     "scope": "source.lua"
   },
   "table.remove": {
@@ -234,7 +234,7 @@
       "table.remove(${1:list},${2: [pos,]})"
     ],
     "description": "table.remove",
-    "prefix": "table.remove",
+    "prefix": "__table.remove",
     "scope": "source.lua"
   },
   "table.sort": {
@@ -242,7 +242,7 @@
       "table.sort(${1:tablename}${2:, sortfunction})"
     ],
     "description": "table.sort",
-    "prefix": "table.sort",
+    "prefix": "__table.sort",
     "scope": "source.lua"
   },
   "table.unpack": {
@@ -250,7 +250,7 @@
       "table.unpack(${0:...})"
     ],
     "description": "table.unpack (list [, i [, j]])",
-    "prefix": "table.unpack",
+    "prefix": "__table.unpack",
     "scope": "source.lua"
   },
   "tonumber": {
@@ -258,7 +258,7 @@
       "tonumber(${1:e}${2:[, base]})"
     ],
     "description": "tonumber (e [, base])",
-    "prefix": "tonumber",
+    "prefix": "__tonumber",
     "scope": "source.lua"
   },
   "tostring": {
@@ -266,7 +266,7 @@
       "tostring(${1:v})"
     ],
     "description": "tostring (v)",
-    "prefix": "tostring",
+    "prefix": "__tostring",
     "scope": "source.lua"
   },
   "type": {
@@ -274,7 +274,7 @@
       "type(${1:v})"
     ],
     "description": "type (v)",
-    "prefix": "type",
+    "prefix": "__type",
     "scope": "source.lua"
   },
   "unpack": {
@@ -282,7 +282,7 @@
       "unpack(${0:...})"
     ],
     "description": "unpack (list [, i [, j]])",
-    "prefix": "unpack",
+    "prefix": "__unpack",
     "scope": "source.lua"
   }
 }

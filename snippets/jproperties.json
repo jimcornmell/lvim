@@ -9,6 +9,6 @@
       "db.default.rw.password=pwd"
     ],
     "description": "New property entry",
-    "prefix": "property"
+    "prefix": "__property"
   }
 }

@@ -6,7 +6,7 @@
       "private String ${3:variableName};"
     ],
     "description": "@Value",
-    "prefix": "@value"
+    "prefix": "__@value"
   },
   "annotation": {
     "body": [
@@ -42,7 +42,7 @@
       "}"
     ],
     "description": "A repeatable annotation",
-    "prefix": "annotation"
+    "prefix": "__annotation"
   },
   "badge": {
     "body": [
@@ -64,7 +64,7 @@
       "$0"
     ],
     "description": "Add a badge",
-    "prefix": "badge"
+    "prefix": "__badge"
   },
   "case": {
     "body": [
@@ -72,7 +72,7 @@
       "    return $0;"
     ],
     "description": "A case return statement",
-    "prefix": "case"
+    "prefix": "__case"
   },
   "cast": {
     "body": [
@@ -80,7 +80,7 @@
       "$0"
     ],
     "description": "Cast an object",
-    "prefix": "cast"
+    "prefix": "__cast"
   },
   "catch": {
     "body": [
@@ -91,7 +91,7 @@
       "}"
     ],
     "description": "A catch block",
-    "prefix": "catch"
+    "prefix": "__catch"
   },
   "class": {
     "body": [
@@ -100,7 +100,7 @@
       "}"
     ],
     "description": "A new class",
-    "prefix": "class"
+    "prefix": "__class"
   },
   "const": {
     "body": [
@@ -108,7 +108,7 @@
       "$0"
     ],
     "description": "A private constant",
-    "prefix": "const"
+    "prefix": "__const"
   },
   "dowhile": {
     "body": [
@@ -117,7 +117,7 @@
       "} while ($1);"
     ],
     "description": "A do-while loop",
-    "prefix": "dowhile"
+    "prefix": "__dowhile"
   },
   "else": {
     "body": [
@@ -126,7 +126,7 @@
       "}"
     ],
     "description": "An else block",
-    "prefix": "else"
+    "prefix": "__else"
   },
   "enum": {
     "body": [
@@ -135,21 +135,21 @@
       "}"
     ],
     "description": "A new enum class",
-    "prefix": "enum"
+    "prefix": "__enum"
   },
   "eq": {
     "body": [
       "Objects.equals(${2:value1}, ${1:value2})$0"
     ],
     "description": "null-safe equals than",
-    "prefix": "eq"
+    "prefix": "__eq"
   },
   "eqm": {
     "body": [
       "Objects.equals(${1:this}.${2:fieldOrMethod}, ${3:o}.$2)$0"
     ],
     "description": "null-safe equals than member",
-    "prefix": "eqm"
+    "prefix": "__eqm"
   },
   "equals": {
     "body": [
@@ -170,7 +170,7 @@
       ""
     ],
     "description": "An equals method",
-    "prefix": "equals"
+    "prefix": "__equals"
   },
   "field": {
     "body": [
@@ -178,7 +178,7 @@
       "$0"
     ],
     "description": "A private final field with value",
-    "prefix": "field"
+    "prefix": "__field"
   },
   "file_append_text": {
     "body": [
@@ -196,7 +196,7 @@
       "}"
     ],
     "description": "Append text to a file",
-    "prefix": "file_append_text"
+    "prefix": "__file_append_text"
   },
   "finally": {
     "body": [
@@ -205,7 +205,7 @@
       "}"
     ],
     "description": "A finally block",
-    "prefix": "finally"
+    "prefix": "__finally"
   },
   "for": {
     "body": [
@@ -214,7 +214,7 @@
       "}"
     ],
     "description": "A for loop over reverse array",
-    "prefix": "for"
+    "prefix": "__for"
   },
   "foreach": {
     "body": [
@@ -223,7 +223,7 @@
       "}"
     ],
     "description": "A for loop over iterable",
-    "prefix": "foreach"
+    "prefix": "__foreach"
   },
   "hashcode": {
     "body": [
@@ -234,14 +234,14 @@
       "$0"
     ],
     "description": "A hashcode method",
-    "prefix": "hashcode"
+    "prefix": "__hashcode"
   },
   "if": {
     "body": [
       "((${1:varName} != null) ? $2 : $3)$0"
     ],
     "description": "An if not null ternary statement",
-    "prefix": "if"
+    "prefix": "__if"
   },
   "init_map": {
     "body": [
@@ -260,14 +260,14 @@
       ""
     ],
     "description": "Initialise a map",
-    "prefix": "init_map"
+    "prefix": "__init_map"
   },
   "int_to_string": {
     "body": [
       "String str = String.valueOf(2);"
     ],
     "description": "Convert integer to a string",
-    "prefix": "int_to_string"
+    "prefix": "__int_to_string"
   },
   "interface": {
     "body": [
@@ -277,7 +277,7 @@
       "}"
     ],
     "description": "A functional interface",
-    "prefix": "interface"
+    "prefix": "__interface"
   },
   "lambda0": {
     "body": [
@@ -286,14 +286,14 @@
       "}"
     ],
     "description": "A lambda block without arguments",
-    "prefix": "lambda0"
+    "prefix": "__lambda0"
   },
   "lambda0s": {
     "body": [
       "() -> $0"
     ],
     "description": "A simple lambda without arguments",
-    "prefix": "lambda0s"
+    "prefix": "__lambda0s"
   },
   "lambda1": {
     "body": [
@@ -302,14 +302,14 @@
       "}"
     ],
     "description": "A lambda block with 1 argument",
-    "prefix": "lambda1"
+    "prefix": "__lambda1"
   },
   "lambda1s": {
     "body": [
       "${1:a} -> $0"
     ],
     "description": "A simple lambda with 1 argument",
-    "prefix": "lambda1s"
+    "prefix": "__lambda1s"
   },
   "lambda2": {
     "body": [
@@ -318,14 +318,14 @@
       "}"
     ],
     "description": "A lambda block with 2 arguments",
-    "prefix": "lambda2"
+    "prefix": "__lambda2"
   },
   "lambda2s": {
     "body": [
       "(${1:a}, ${2:b}) -> $0"
     ],
     "description": "A simple lambda with 2 arguments",
-    "prefix": "lambda2s"
+    "prefix": "__lambda2s"
   },
   "lambda3": {
     "body": [
@@ -334,14 +334,14 @@
       "}"
     ],
     "description": "A lambda block with 3 arguments",
-    "prefix": "lambda3"
+    "prefix": "__lambda3"
   },
   "lambda3s": {
     "body": [
       "(${1:a}, ${2:b}, ${3:c}) -> $0"
     ],
     "description": "A simple lambda with 3 arguments",
-    "prefix": "lambda3s"
+    "prefix": "__lambda3s"
   },
   "lambda4": {
     "body": [
@@ -350,14 +350,14 @@
       "}"
     ],
     "description": "A lambda block with 4 arguments",
-    "prefix": "lambda4"
+    "prefix": "__lambda4"
   },
   "lambda4s": {
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}) -> $0"
     ],
     "description": "A simple lambda with 4 arguments",
-    "prefix": "lambda4s"
+    "prefix": "__lambda4s"
   },
   "lambda5": {
     "body": [
@@ -366,14 +366,14 @@
       "}"
     ],
     "description": "A lambda block with 5 arguments",
-    "prefix": "lambda5"
+    "prefix": "__lambda5"
   },
   "lambda5s": {
     "body": [
       "(${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e}) -> $0"
     ],
     "description": "A simple lambda with 5 arguments",
-    "prefix": "lambda5s"
+    "prefix": "__lambda5s"
   },
   "log": {
     "body": [
@@ -381,7 +381,7 @@
       " $0"
     ],
     "description": "New static log var for a class",
-    "prefix": "log"
+    "prefix": "__log"
   },
   "logi": {
     "body": [
@@ -392,7 +392,7 @@
       " $0"
     ],
     "description": "New static log var (with imports)",
-    "prefix": "logi"
+    "prefix": "__logi"
   },
   "main": {
     "body": [
@@ -402,7 +402,7 @@
       ""
     ],
     "description": "A main method",
-    "prefix": "main"
+    "prefix": "__main"
   },
   "method": {
     "body": [
@@ -412,14 +412,14 @@
       ""
     ],
     "description": "A public static method",
-    "prefix": "method"
+    "prefix": "__method"
   },
   "new": {
     "body": [
       "new ${1:Object}($0)"
     ],
     "description": "A new instance",
-    "prefix": "new"
+    "prefix": "__new"
   },
   "new_java_class": {
     "body": [
@@ -450,70 +450,70 @@
       "}"
     ],
     "description": "New Java class",
-    "prefix": "new_java_class"
+    "prefix": "__new_java_class"
   },
   "param": {
     "body": [
       "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:paramName}$0"
     ],
     "description": "A parameter",
-    "prefix": "param"
+    "prefix": "__param"
   },
   "print": {
     "body": [
       "System.out.print(\"$1\");$0"
     ],
     "description": "Prints a String",
-    "prefix": "print"
+    "prefix": "__print"
   },
   "printf": {
     "body": [
       "System.out.printf(\"${1:%s}\", ${2:value});$0"
     ],
     "description": "Prints a formatted String",
-    "prefix": "printf"
+    "prefix": "__printf"
   },
   "printfn": {
     "body": [
       "System.out.printf(\"${1:%s}\\n\", ${2:value});$0"
     ],
     "description": "Prints a formatted String and then terminate the line",
-    "prefix": "printfn"
+    "prefix": "__printfn"
   },
   "printfv": {
     "body": [
       "System.out.printf(\"${1:varName} = ${2:%s\\n}\", $1);$0"
     ],
     "description": "Prints the formatted variable value",
-    "prefix": "printfv"
+    "prefix": "__printfv"
   },
   "println": {
     "body": [
       "System.out.println(\"$1\");$0"
     ],
     "description": "Prints a String and then terminate the line",
-    "prefix": "println"
+    "prefix": "__println"
   },
   "printv": {
     "body": [
       "System.out.println(\"${1:varName} = \" + $1);$0"
     ],
     "description": "Prints the variable value",
-    "prefix": "printv"
+    "prefix": "__printv"
   },
   "return": {
     "body": [
       "return this;"
     ],
     "description": "A return this",
-    "prefix": "return"
+    "prefix": "__return"
   },
   "string_to_int": {
     "body": [
       "int i = Integer.parseInt(str);"
     ],
     "description": "Convert string to an integer",
-    "prefix": "string_to_int"
+    "prefix": "__string_to_int"
   },
   "stringb": {
     "body": [
@@ -522,7 +522,7 @@
       "    .toString();"
     ],
     "description": "A local StringBuilder variable",
-    "prefix": "stringb"
+    "prefix": "__stringb"
   },
   "stringvariable": {
     "body": [
@@ -531,7 +531,7 @@
       "    .toString();"
     ],
     "description": "A local string variable from StringBuilder",
-    "prefix": "stringvariable"
+    "prefix": "__stringvariable"
   },
   "switch": {
     "body": [
@@ -544,14 +544,14 @@
       "}"
     ],
     "description": "A switch statement",
-    "prefix": "switch"
+    "prefix": "__switch"
   },
   "throw": {
     "body": [
       "throw new IllegalStateException($0);"
     ],
     "description": "Throw a new IllegalStateException",
-    "prefix": "throw"
+    "prefix": "__throw"
   },
   "try": {
     "body": [
@@ -560,7 +560,7 @@
       "}"
     ],
     "description": "A try block",
-    "prefix": "try"
+    "prefix": "__try"
   },
   "trycatch": {
     "body": [
@@ -571,7 +571,7 @@
       "}"
     ],
     "description": "A try catch block around the selected text",
-    "prefix": "trycatch"
+    "prefix": "__trycatch"
   },
   "trycatchfinally": {
     "body": [
@@ -584,7 +584,7 @@
       "}"
     ],
     "description": "A try catch finally block around the selected text",
-    "prefix": "trycatchfinally"
+    "prefix": "__trycatchfinally"
   },
   "tryresource": {
     "body": [
@@ -593,13 +593,61 @@
       "}"
     ],
     "description": "A try with resources block",
-    "prefix": "tryresource"
+    "prefix": "__tryresource"
   },
   "type": {
     "body": [
       "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|}"
     ],
     "description": "A type",
-    "prefix": "type"
+    "prefix": "__type"
+  },
+  "__string_to_int_and_back": {
+    "body": [
+      "String a = String.valueOf(1);   //integer to numeric string",
+      "int i = Integer.parseInt(a); //numeric string to an int",
+      "Code language: Java (java)",
+      "$0",
+    ],
+    "description": "Converting between strings and ints",
+    "prefix": "__string_to_int_and_back"
+  },
+  "__append_to_file": {
+    "body": [
+      "try (BufferedWriter out = new BufferedWriter(new FileWriter(”filename”, true)) {",
+      "    out.write(”aString”);",
+      "} catch (IOException e) {",
+      "    // error processing code",
+      "}",
+      "$0",
+    ],
+    "description": "Append text to file",
+    "prefix": "__append_to_file"
+  },
+  "__method_name": {
+    "body": [
+      "String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();",
+      "$0",
+    ],
+    "description": "Get name of current meathod",
+    "prefix": "__method_name"
+  },
+  "__date_from_string": {
+    "body": [
+      "SimpleDateFormat format = new SimpleDateFormat( \"dd.MM.yyyy\" );",
+      "Date date = format.parse( myString );",
+      "$0",
+    ],
+    "description": "Convert String to date",
+    "prefix": "__date_from_string"
+  },
+  "__date_to_sql_date": {
+    "body": [
+      "java.util.Date utilDate = new java.util.Date();",
+      "java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());",
+      "$0",
+    ],
+    "description": "Convert util.date to sql.date",
+    "prefix": "__date_to_sql_date"
   }
 }

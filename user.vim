@@ -165,6 +165,21 @@ function! ExecuteCurrentLine()
     endif
 endfunction
 
+function! FigletCurrentLine()
+    let line=getline('.')
+    echo 'Bannerizing "'.line.'"'
+    normal ddk
+
+    silent exec ':read !ban "" "" "'.line.'"'
+    " let comment=split(&commentstring, '%s')
+
+    " if len(comment)==1
+        " silent exec ':read !ban "'.comment[0].'" "" "'.line.'"'
+    " else
+        " silent exec ':read !ban "'.comment[0].'" "'.comment[1].'" "'.line.'"'
+    " endif
+endfunction
+
 function! PrettyPrintFile()
     silent write
     silent exec ':!prettyPrint "'.expand("%:p").'"'

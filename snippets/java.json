@@ -8,6 +8,54 @@
     "description": "@Value",
     "prefix": "__@value"
   },
+  "__append_to_file": {
+    "body": [
+      "try (BufferedWriter out = new BufferedWriter(new FileWriter(”filename”, true)) {",
+      "    out.write(”aString”);",
+      "} catch (IOException e) {",
+      "    // error processing code",
+      "}",
+      "$0"
+    ],
+    "description": "Append text to file",
+    "prefix": "__append_to_file"
+  },
+  "__date_from_string": {
+    "body": [
+      "SimpleDateFormat format = new SimpleDateFormat( \"dd.MM.yyyy\" );",
+      "Date date = format.parse( myString );",
+      "$0"
+    ],
+    "description": "Convert String to date",
+    "prefix": "__date_from_string"
+  },
+  "__date_to_sql_date": {
+    "body": [
+      "java.util.Date utilDate = new java.util.Date();",
+      "java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());",
+      "$0"
+    ],
+    "description": "Convert util.date to sql.date",
+    "prefix": "__date_to_sql_date"
+  },
+  "__method_name": {
+    "body": [
+      "String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();",
+      "$0"
+    ],
+    "description": "Get name of current meathod",
+    "prefix": "__method_name"
+  },
+  "__string_to_int_and_back": {
+    "body": [
+      "String a = String.valueOf(1);   //integer to numeric string",
+      "int i = Integer.parseInt(a); //numeric string to an int",
+      "Code language: Java (java)",
+      "$0"
+    ],
+    "description": "Converting between strings and ints",
+    "prefix": "__string_to_int_and_back"
+  },
   "annotation": {
     "body": [
       "import static java.lang.annotation.ElementType.ANNOTATION_TYPE;",
@@ -601,53 +649,5 @@
     ],
     "description": "A type",
     "prefix": "__type"
-  },
-  "__string_to_int_and_back": {
-    "body": [
-      "String a = String.valueOf(1);   //integer to numeric string",
-      "int i = Integer.parseInt(a); //numeric string to an int",
-      "Code language: Java (java)",
-      "$0",
-    ],
-    "description": "Converting between strings and ints",
-    "prefix": "__string_to_int_and_back"
-  },
-  "__append_to_file": {
-    "body": [
-      "try (BufferedWriter out = new BufferedWriter(new FileWriter(”filename”, true)) {",
-      "    out.write(”aString”);",
-      "} catch (IOException e) {",
-      "    // error processing code",
-      "}",
-      "$0",
-    ],
-    "description": "Append text to file",
-    "prefix": "__append_to_file"
-  },
-  "__method_name": {
-    "body": [
-      "String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();",
-      "$0",
-    ],
-    "description": "Get name of current meathod",
-    "prefix": "__method_name"
-  },
-  "__date_from_string": {
-    "body": [
-      "SimpleDateFormat format = new SimpleDateFormat( \"dd.MM.yyyy\" );",
-      "Date date = format.parse( myString );",
-      "$0",
-    ],
-    "description": "Convert String to date",
-    "prefix": "__date_from_string"
-  },
-  "__date_to_sql_date": {
-    "body": [
-      "java.util.Date utilDate = new java.util.Date();",
-      "java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());",
-      "$0",
-    ],
-    "description": "Convert util.date to sql.date",
-    "prefix": "__date_to_sql_date"
   }
 }

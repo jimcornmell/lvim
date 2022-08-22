@@ -49,6 +49,7 @@ map <silent> sl :call SnippetList()<CR>
 map <silent> sL :LuaSnipListAvailable<CR>
 map <silent> ss :call SnippetSave()<CR>
 map <silent> se :call SnippetEdit()<CR>
+map <silent> ba :call FigletCurrentLine()<CR>
 
 map <silent> ge :call DeleteEndingWhiteSpace()<CR>
 map <silent> gh :call OpenHelpAndCheatSheets()<CR>

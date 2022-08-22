@@ -312,3 +312,4 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |`:g/foobar/y A`|                                                              Yank all lines matching `foobar` into copy buffer|
 |<kbd>Ctrl-l</kbd>|                                                            :heavy_check_mark: Redraws the screen and removes any search highlighting|
 |<kbd>Alt-p</kbd>|                                                             :heavy_check_mark: Pushes words to right to align with line above|
+|<kbd>ba</kbd>|                                                                Converts (and replaces) currentline to a banner, which is commented out|

@@ -6,7 +6,7 @@
       "    self.age = age"
     ],
     "description": "__init__ method",
-    "prefix": "____init__"
+    "prefix": "__init__"
   },
   "__iter__": {
     "body": [
@@ -15,7 +15,7 @@
       "    return self"
     ],
     "description": "__iter__ method",
-    "prefix": "____iter__"
+    "prefix": "__iter__"
   },
   "__next__": {
     "body": [
@@ -25,7 +25,7 @@
       "    return x"
     ],
     "description": "__next__ method",
-    "prefix": "____next__"
+    "prefix": "__next__"
   },
   "basename": {
     "body": [
@@ -49,7 +49,7 @@
       "print(n) # filename.extension"
     ],
     "description": "Example path filename extraction",
-    "prefix": "__basename"
+    "prefix": "basename"
   },
   "class=>": {
     "body": [
@@ -57,7 +57,7 @@
       "    pass"
     ],
     "description": "python class",
-    "prefix": "__class=>"
+    "prefix": "class=>"
   },
   "class=>_1": {
     "body": [
@@ -67,7 +67,7 @@
       "print(p)"
     ],
     "description": "oop inheritance example",
-    "prefix": "__class=>_1"
+    "prefix": "class=>_1"
   },
   "class=>encapsulation": {
     "body": [
@@ -94,7 +94,7 @@
       "c.sell()"
     ],
     "description": "class encapsulation example",
-    "prefix": "__class=>encapsulation"
+    "prefix": "class=>encapsulation"
   },
   "class=>inheritance_1": {
     "body": [
@@ -129,7 +129,7 @@
       "peggy.run()"
     ],
     "description": "oop inheritance example",
-    "prefix": "__class=>inheritance_1"
+    "prefix": "class=>inheritance_1"
   },
   "class=>inheritance_2": {
     "body": [
@@ -170,7 +170,7 @@
       "      member.tell()"
     ],
     "description": "oop inheritance example",
-    "prefix": "__class=>inheritance_2"
+    "prefix": "class=>inheritance_2"
   },
   "class=>polymorphism": {
     "body": [
@@ -203,7 +203,7 @@
       "flying_test(peggy)"
     ],
     "description": "class polymorphism example",
-    "prefix": "__class=>polymorphism"
+    "prefix": "class=>polymorphism"
   },
   "class=>with_attribute_1": {
     "body": [
@@ -229,7 +229,7 @@
       "print('{} is {} years old'.format( woo.name, woo.age))"
     ],
     "description": "class with attribute example",
-    "prefix": "__class=>with_attribute_1"
+    "prefix": "class=>with_attribute_1"
   },
   "class=>with_attribute_2": {
     "body": [
@@ -244,7 +244,7 @@
       "# Person('Swaroop').say_hi()"
     ],
     "description": "class with attribute example",
-    "prefix": "__class=>with_attribute_2"
+    "prefix": "class=>with_attribute_2"
   },
   "class=>with_attribute_3": {
     "body": [
@@ -289,7 +289,7 @@
       "Robot.how_many()"
     ],
     "description": "class with attribute example",
-    "prefix": "__class=>with_attribute_3"
+    "prefix": "class=>with_attribute_3"
   },
   "class=>with_method_1": {
     "body": [
@@ -314,7 +314,7 @@
       "print(blu.dance())"
     ],
     "description": "class with method example",
-    "prefix": "__class=>with_method_1"
+    "prefix": "class=>with_method_1"
   },
   "class=>with_method_2": {
     "body": [
@@ -327,14 +327,14 @@
       "# Person().say_hi()"
     ],
     "description": "class with method example",
-    "prefix": "__class=>with_method_2"
+    "prefix": "class=>with_method_2"
   },
   "comp=>": {
     "body": [
       "[ expression for item in list if conditional ]"
     ],
     "description": "List Comprehensions",
-    "prefix": "__comp=>"
+    "prefix": "comp=>"
   },
   "def": {
     "body": [
@@ -342,7 +342,7 @@
       " pass"
     ],
     "description": "Defining Function wqith default values",
-    "prefix": "__def"
+    "prefix": "def"
   },
   "dictionary.clear=>": {
     "body": [
@@ -355,7 +355,7 @@
       "print(car)"
     ],
     "description": "An example for using clear",
-    "prefix": "__dictionary.clear=>"
+    "prefix": "dictionary.clear=>"
   },
   "dictionary.copy=>": {
     "body": [
@@ -368,7 +368,7 @@
       "print(x)"
     ],
     "description": "An example for using copy",
-    "prefix": "__dictionary.copy=>"
+    "prefix": "dictionary.copy=>"
   },
   "dictionary.fromkeys=>": {
     "body": [
@@ -377,7 +377,7 @@
       "print(thisdict)"
     ],
     "description": "An example for using fromkeys",
-    "prefix": "__dictionary.fromkeys=>"
+    "prefix": "dictionary.fromkeys=>"
   },
   "dictionary.get=>": {
     "body": [
@@ -390,7 +390,7 @@
       "print(x)"
     ],
     "description": "An example for using get",
-    "prefix": "__dictionary.get=>"
+    "prefix": "dictionary.get=>"
   },
   "dictionary.items=>": {
     "body": [
@@ -404,7 +404,7 @@
       "print(x)"
     ],
     "description": "An example for using items",
-    "prefix": "__dictionary.items=>"
+    "prefix": "dictionary.items=>"
   },
   "dictionary.keys=>": {
     "body": [
@@ -418,7 +418,7 @@
       "print(x)"
     ],
     "description": "An example for using keys",
-    "prefix": "__dictionary.keys=>"
+    "prefix": "dictionary.keys=>"
   },
   "dictionary.pop=>": {
     "body": [
@@ -431,7 +431,7 @@
       "print(car)"
     ],
     "description": "An example for using pop",
-    "prefix": "__dictionary.pop=>"
+    "prefix": "dictionary.pop=>"
   },
   "dictionary.popitem=>": {
     "body": [
@@ -444,7 +444,7 @@
       "print(car)"
     ],
     "description": "An example for using popitem",
-    "prefix": "__dictionary.popitem=>"
+    "prefix": "dictionary.popitem=>"
   },
   "dictionary.setdefault=>": {
     "body": [
@@ -457,7 +457,7 @@
       "print(x)"
     ],
     "description": "An example for using setdefault",
-    "prefix": "__dictionary.setdefault=>"
+    "prefix": "dictionary.setdefault=>"
   },
   "dictionary.update=>": {
     "body": [
@@ -470,7 +470,7 @@
       "print(car)"
     ],
     "description": "An example for using update",
-    "prefix": "__dictionary.update=>"
+    "prefix": "dictionary.update=>"
   },
   "dictionary.values=>": {
     "body": [
@@ -484,7 +484,7 @@
       "print(x)"
     ],
     "description": "An example for using values",
-    "prefix": "__dictionary.values=>"
+    "prefix": "dictionary.values=>"
   },
   "else": {
     "body": [
@@ -492,7 +492,7 @@
       "    pass"
     ],
     "description": "else Statements",
-    "prefix": "__else"
+    "prefix": "else"
   },
   "environment_variables": {
     "body": [
@@ -503,7 +503,7 @@
       "HOME = str(Path.home())"
     ],
     "description": "Another way to get home env variable",
-    "prefix": "__environment_variables"
+    "prefix": "environment_variables"
   },
   "file=>deletefile": {
     "body": [
@@ -511,7 +511,7 @@
       "os.remove('demofile.txt')"
     ],
     "description": "delete a file",
-    "prefix": "__file=>deletefile"
+    "prefix": "file=>deletefile"
   },
   "fileexists": {
     "body": [
@@ -529,7 +529,7 @@
       ""
     ],
     "description": "Check if file exists",
-    "prefix": "__fileexists"
+    "prefix": "fileexists"
   },
   "fileopen": {
     "body": [
@@ -546,7 +546,7 @@
       "      f.write(str)"
     ],
     "description": "Write to an Existing File",
-    "prefix": "__fileopen"
+    "prefix": "fileopen"
   },
   "for": {
     "body": [
@@ -555,7 +555,7 @@
       "    print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for"
+    "prefix": "for"
   },
   "for=>break_statement": {
     "body": [
@@ -566,7 +566,7 @@
       "     break"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>break_statement"
+    "prefix": "for=>break_statement"
   },
   "for=>continue_statement": {
     "body": [
@@ -578,7 +578,7 @@
       " print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>continue_statement"
+    "prefix": "for=>continue_statement"
   },
   "for=>for_else": {
     "body": [
@@ -589,7 +589,7 @@
       "      print(x, y)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>for_else"
+    "prefix": "for=>for_else"
   },
   "for=>range_function_1": {
     "body": [
@@ -597,7 +597,7 @@
       " print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>range_function_1"
+    "prefix": "for=>range_function_1"
   },
   "for=>range_function_2": {
     "body": [
@@ -605,7 +605,7 @@
       " print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>range_function_2"
+    "prefix": "for=>range_function_2"
   },
   "for=>range_function_3": {
     "body": [
@@ -613,7 +613,7 @@
       " print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>range_function_3"
+    "prefix": "for=>range_function_3"
   },
   "for=>through_a_string": {
     "body": [
@@ -621,7 +621,7 @@
       "    print(x)"
     ],
     "description": "An example for using for",
-    "prefix": "__for=>through_a_string"
+    "prefix": "for=>through_a_string"
   },
   "if": {
     "body": [
@@ -629,7 +629,7 @@
       "    pass"
     ],
     "description": "if Statements",
-    "prefix": "__if"
+    "prefix": "if"
   },
   "ifelif": {
     "body": [
@@ -639,7 +639,7 @@
       "    pass"
     ],
     "description": "if/else if Statements",
-    "prefix": "__ifelif"
+    "prefix": "ifelif"
   },
   "ifelifelse": {
     "body": [
@@ -651,7 +651,7 @@
       "    pass"
     ],
     "description": "if/else if/else Statements",
-    "prefix": "__ifelifelse"
+    "prefix": "ifelifelse"
   },
   "ifelse": {
     "body": [
@@ -661,21 +661,21 @@
       "    pass"
     ],
     "description": "if/else Statements",
-    "prefix": "__ifelse"
+    "prefix": "ifelse"
   },
   "ifshort": {
     "body": [
       "print('A') if a > b else print('A')"
     ],
     "description": "ifshort Statements",
-    "prefix": "__ifshort"
+    "prefix": "ifshort"
   },
   "import=>": {
     "body": [
       "import mymodule as mx"
     ],
     "description": "import module",
-    "prefix": "__import=>"
+    "prefix": "import=>"
   },
   "list.clear=>": {
     "body": [
@@ -684,7 +684,7 @@
       "print(fruits)"
     ],
     "description": "An example for using clear",
-    "prefix": "__list.clear=>"
+    "prefix": "list.clear=>"
   },
   "list.comp=>_1": {
     "body": [
@@ -692,7 +692,7 @@
       "print(x)"
     ],
     "description": "An example for using list comprehension",
-    "prefix": "__list.comp=>_1"
+    "prefix": "list.comp=>_1"
   },
   "list.comp=>_2": {
     "body": [
@@ -700,7 +700,7 @@
       "print(x)"
     ],
     "description": "An example for using list comprehension",
-    "prefix": "__list.comp=>_2"
+    "prefix": "list.comp=>_2"
   },
   "list.comp=>_3": {
     "body": [
@@ -709,7 +709,7 @@
       "print(multiplied)"
     ],
     "description": "An example for using list comprehension",
-    "prefix": "__list.comp=>_3"
+    "prefix": "list.comp=>_3"
   },
   "list.comp=>_4": {
     "body": [
@@ -718,7 +718,7 @@
       "print(items)"
     ],
     "description": "An example for using list comprehension",
-    "prefix": "__list.comp=>_4"
+    "prefix": "list.comp=>_4"
   },
   "list.comp=>_5": {
     "body": [
@@ -726,7 +726,7 @@
       "print(x)"
     ],
     "description": "An example for using list comprehension",
-    "prefix": "__list.comp=>_5"
+    "prefix": "list.comp=>_5"
   },
   "list.copy=>": {
     "body": [
@@ -735,7 +735,7 @@
       "print(x)"
     ],
     "description": "An example for using copy",
-    "prefix": "__list.copy=>"
+    "prefix": "list.copy=>"
   },
   "list.extend=>": {
     "body": [
@@ -745,7 +745,7 @@
       "print(fruits)"
     ],
     "description": "An example for using extend",
-    "prefix": "__list.extend=>"
+    "prefix": "list.extend=>"
   },
   "list.index=>": {
     "body": [
@@ -754,7 +754,7 @@
       "print(x)"
     ],
     "description": "An example for using index",
-    "prefix": "__list.index=>"
+    "prefix": "list.index=>"
   },
   "list.insert=>": {
     "body": [
@@ -763,7 +763,7 @@
       "print(x)"
     ],
     "description": "An example for using insert",
-    "prefix": "__list.insert=>"
+    "prefix": "list.insert=>"
   },
   "list.pop=>": {
     "body": [
@@ -772,7 +772,7 @@
       "print(fruits)"
     ],
     "description": "An example for using pop",
-    "prefix": "__list.pop=>"
+    "prefix": "list.pop=>"
   },
   "list.remove=>": {
     "body": [
@@ -781,7 +781,7 @@
       "print(fruits)"
     ],
     "description": "An example for using remove",
-    "prefix": "__list.remove=>"
+    "prefix": "list.remove=>"
   },
   "list.reverse=>": {
     "body": [
@@ -790,7 +790,7 @@
       "print(fruits)"
     ],
     "description": "An example for using reverse",
-    "prefix": "__list.reverse=>"
+    "prefix": "list.reverse=>"
   },
   "list.sort=>": {
     "body": [
@@ -802,7 +802,7 @@
       "print(cars)"
     ],
     "description": "An example for using sort",
-    "prefix": "__list.sort=>"
+    "prefix": "list.sort=>"
   },
   "listfiles": {
     "body": [
@@ -811,7 +811,7 @@
       "dir_list = os.listdir(\"/some/location/\")"
     ],
     "description": "files_list",
-    "prefix": "__listfiles"
+    "prefix": "listfiles"
   },
   "richinspect": {
     "body": [
@@ -819,7 +819,7 @@
       "inspect(color, methods=True)"
     ],
     "description": "Rich inspect",
-    "prefix": "__richinspect"
+    "prefix": "richinspect"
   },
   "richstatus": {
     "body": [
@@ -832,7 +832,7 @@
       "      ... Some work..."
     ],
     "description": "Rich status",
-    "prefix": "__richstatus"
+    "prefix": "richstatus"
   },
   "sets.add=>": {
     "body": [
@@ -841,7 +841,7 @@
       "print(fruits)"
     ],
     "description": "An example for using add",
-    "prefix": "__sets.add=>"
+    "prefix": "sets.add=>"
   },
   "sets.clear=>": {
     "body": [
@@ -850,7 +850,7 @@
       "print(fruits)"
     ],
     "description": "An example for using clear",
-    "prefix": "__sets.clear=>"
+    "prefix": "sets.clear=>"
   },
   "sets.copy=>": {
     "body": [
@@ -859,7 +859,7 @@
       "print(x)"
     ],
     "description": "An example for using copy",
-    "prefix": "__sets.copy=>"
+    "prefix": "sets.copy=>"
   },
   "sets.difference=>_1": {
     "body": [
@@ -869,7 +869,7 @@
       "print(z)"
     ],
     "description": "An example for using difference",
-    "prefix": "__sets.difference=>_1"
+    "prefix": "sets.difference=>_1"
   },
   "sets.difference=>_2": {
     "body": [
@@ -879,7 +879,7 @@
       "print(z)"
     ],
     "description": "An example for using difference",
-    "prefix": "__sets.difference=>_2"
+    "prefix": "sets.difference=>_2"
   },
   "sets.difference_update=>": {
     "body": [
@@ -889,7 +889,7 @@
       "print(x)"
     ],
     "description": "An example for using difference_update",
-    "prefix": "__sets.difference_update=>"
+    "prefix": "sets.difference_update=>"
   },
   "sets.discard=>": {
     "body": [
@@ -898,7 +898,7 @@
       "print(fruits)"
     ],
     "description": "An example for using discard",
-    "prefix": "__sets.discard=>"
+    "prefix": "sets.discard=>"
   },
   "sets.intersection=>_1": {
     "body": [
@@ -908,7 +908,7 @@
       "print(z)"
     ],
     "description": "An example for using intersection",
-    "prefix": "__sets.intersection=>_1"
+    "prefix": "sets.intersection=>_1"
   },
   "sets.intersection=>_2": {
     "body": [
@@ -919,7 +919,7 @@
       "print(result)"
     ],
     "description": "An example for using intersection",
-    "prefix": "__sets.intersection=>_2"
+    "prefix": "sets.intersection=>_2"
   },
   "sets.intersection_update=>_1": {
     "body": [
@@ -929,7 +929,7 @@
       "print(x)"
     ],
     "description": "An example for using intersection_update",
-    "prefix": "__sets.intersection_update=>_1"
+    "prefix": "sets.intersection_update=>_1"
   },
   "sets.intersection_update=>_2": {
     "body": [
@@ -940,7 +940,7 @@
       "print(x)"
     ],
     "description": "An example for using intersection_update",
-    "prefix": "__sets.intersection_update=>_2"
+    "prefix": "sets.intersection_update=>_2"
   },
   "sets.isdisjoint=>_1": {
     "body": [
@@ -950,7 +950,7 @@
       "print(z)"
     ],
     "description": "An example for using isdisjoint",
-    "prefix": "__sets.isdisjoint=>_1"
+    "prefix": "sets.isdisjoint=>_1"
   },
   "sets.isdisjoint=>_2": {
     "body": [
@@ -960,7 +960,7 @@
       "print(z)"
     ],
     "description": "An example for using isdisjoint",
-    "prefix": "__sets.isdisjoint=>_2"
+    "prefix": "sets.isdisjoint=>_2"
   },
   "sets.issubset=>_2": {
     "body": [
@@ -970,7 +970,7 @@
       "print(z)"
     ],
     "description": "An example for using issubset",
-    "prefix": "__sets.issubset=>_2"
+    "prefix": "sets.issubset=>_2"
   },
   "sets.issuperset=>_1": {
     "body": [
@@ -980,7 +980,7 @@
       "print(z)"
     ],
     "description": "An example for using issuperset",
-    "prefix": "__sets.issuperset=>_1"
+    "prefix": "sets.issuperset=>_1"
   },
   "sets.issuperset=>_2": {
     "body": [
@@ -990,7 +990,7 @@
       "print(z)"
     ],
     "description": "An example for using issuperset",
-    "prefix": "__sets.issuperset=>_2"
+    "prefix": "sets.issuperset=>_2"
   },
   "sets.pop=>": {
     "body": [
@@ -999,7 +999,7 @@
       "print(fruits)"
     ],
     "description": "An example for using pop",
-    "prefix": "__sets.pop=>"
+    "prefix": "sets.pop=>"
   },
   "sets.remove=>": {
     "body": [
@@ -1008,7 +1008,7 @@
       "print(fruits)"
     ],
     "description": "An example for using remove",
-    "prefix": "__sets.remove=>"
+    "prefix": "sets.remove=>"
   },
   "sets.sets.issubset=>_1": {
     "body": [
@@ -1018,7 +1018,7 @@
       "print(z)"
     ],
     "description": "An example for using issubset",
-    "prefix": "__sets.sets.issubset=>_1"
+    "prefix": "sets.sets.issubset=>_1"
   },
   "sets.symmetric_difference=>": {
     "body": [
@@ -1028,7 +1028,7 @@
       "print(z)"
     ],
     "description": "An example for using symmetric_difference",
-    "prefix": "__sets.symmetric_difference=>"
+    "prefix": "sets.symmetric_difference=>"
   },
   "sets.symmetric_difference_update=>": {
     "body": [
@@ -1038,7 +1038,7 @@
       "print(x)"
     ],
     "description": "An example for using symmetric_difference_update",
-    "prefix": "__sets.symmetric_difference_update=>"
+    "prefix": "sets.symmetric_difference_update=>"
   },
   "sets.union=>_1": {
     "body": [
@@ -1048,7 +1048,7 @@
       "print(z)"
     ],
     "description": "An example for using union",
-    "prefix": "__sets.union=>_1"
+    "prefix": "sets.union=>_1"
   },
   "sets.union=>_2": {
     "body": [
@@ -1059,7 +1059,7 @@
       "print(result)"
     ],
     "description": "An example for using union",
-    "prefix": "__sets.union=>_2"
+    "prefix": "sets.union=>_2"
   },
   "sets.update=>": {
     "body": [
@@ -1069,58 +1069,21 @@
       "print(x)"
     ],
     "description": "An example for using update",
-    "prefix": "__sets.update=>"
-  },
-  "strftime": {
-    "body": [
-      "# strftime(format)",
-      "# Directive  Meaning                                                   Output Format",
-      "# %a         Abbreviated weekday name.                                 Sun, Mon, …",
-      "# %A         Full weekday name.                                        Sunday, Monday, …",
-      "# %w         Weekday as a decimal number.                              0, 1, …, 6",
-      "# %d         Day of the month as a zero added decimal.                 01, 02, …, 31",
-      "# %-d        Day of the month as a decimal number.                     1, 2, …, 30",
-      "# %b         Abbreviated month name.                                   Jan, Feb, …, Dec",
-      "# %B         Full month name.                                          January, February, …",
-      "# %m         Month as a zero added decimal number.                     01, 02, …, 12",
-      "# %-m        Month as a decimal number.                                1, 2, …, 12",
-      "# %y         Year without century as a zero added decimal number.      00, 01, …, 99",
-      "# %-y        Year without century as a decimal number.                 0, 1, …, 99",
-      "# %Y         Year with century as a decimal number.                    2013, 2019 etc.",
-      "# %H         Hour (24-hour clock) as a zero added decimal number.      00, 01, …, 23",
-      "# %-H        Hour (24-hour clock) as a decimal number.                 0, 1, …, 23",
-      "# %I         Hour (12-hour clock) as a zero added decimal number.      01, 02, …, 12",
-      "# %-I        Hour (12-hour clock) as a decimal number.                 1, 2, … 12",
-      "# %p         Locale’s AM or PM.                                        AM, PM",
-      "# %M         Minute as a zero added decimal number.                    00, 01, …, 59",
-      "# %-M        Minute as a decimal number.                               0, 1, …, 59",
-      "# %S         Second as a zero added decimal number.                    00, 01, …, 59",
-      "# %-S        Second as a decimal number.                               0, 1, …, 59",
-      "# %f         Microsecond as a decimal number, zero added on the left.  000000 – 999999",
-      "# %z         UTC offset in the form +HHMM or -HHMM.",
-      "# %Z         Time zone name.",
-      "# %j         Day of the year as a zero added decimal number.           001, 002, …, 366",
-      "# %-j        Day of the year as a decimal number.                      1, 2, …, 366",
-      "# %U         Week number of the year (Sunday as the first day of the week). All days in a new year preceding the first Sunday are considered to be in week 0.   00, 01, …, 53",
-      "# %W         Week number of the year (Monday as the first day of the week). All days in a new year preceding the first Monday are considered to be in week 0.",
-      "$0"
-    ],
-    "description": "Strftime format",
-    "prefix": "__strftime"
+    "prefix": "sets.update=>"
   },
   "symmetric_difference": {
     "body": [
       "x.symmetric_difference(y)"
     ],
     "description": "Returns a set with the symmetric differences of two sets",
-    "prefix": "__symmetric_difference"
+    "prefix": "symmetric_difference"
   },
   "symmetric_difference_update": {
     "body": [
       "x.symmetric_difference_update(y)"
     ],
     "description": "inserts the symmetric differences from this set and another",
-    "prefix": "__symmetric_difference_update"
+    "prefix": "symmetric_difference_update"
   },
   "trye=>": {
     "body": [
@@ -1130,7 +1093,7 @@
       "    print('An exception occurred')"
     ],
     "description": "tryexcept method",
-    "prefix": "__trye=>"
+    "prefix": "trye=>"
   },
   "tryef=>": {
     "body": [
@@ -1142,7 +1105,7 @@
       "    print('The try except is finished')"
     ],
     "description": "tryexceptfinally method",
-    "prefix": "__tryef=>"
+    "prefix": "tryef=>"
   },
   "tuple.count=>": {
     "body": [
@@ -1151,7 +1114,7 @@
       "print(x)"
     ],
     "description": "An example for using count",
-    "prefix": "__tuple.count=>"
+    "prefix": "tuple.count=>"
   },
   "while": {
     "body": [
@@ -1161,7 +1124,7 @@
       "    i += 1"
     ],
     "description": "while Statements",
-    "prefix": "__while"
+    "prefix": "while"
   },
   "while_else": {
     "body": [
@@ -1171,6 +1134,6 @@
       "    pass"
     ],
     "description": "while Statements",
-    "prefix": "__while_else"
+    "prefix": "while_else"
   }
 }

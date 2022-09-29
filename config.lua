@@ -844,6 +844,13 @@ lvim.plugins = {
   --   run = "npm install --prefix server",
   -- },
 
+
+  -- vim-bundler
+  -- lightweight support for ruby's bundler
+  {
+    'ekalinin/Dockerfile.vim'
+  },
+
   -- vim-bundler
   -- lightweight support for ruby's bundler
   -- {

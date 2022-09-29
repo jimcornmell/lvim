@@ -81,7 +81,7 @@ function! SnippetSave()
 endfunction
 
 function! OpenHelpAndCheatSheets()
-    let folder = "/home/jim/NextCloud/CheatSheets/"
+    let folder = "/home/jim/Nextcloud/CheatSheets/"
     let number = 2 " The number to display to the user.
     let cheattext = [] " The text to display to the user.
     let cheaturis = [] " The files/URL's to open.
@@ -672,6 +672,10 @@ set fillchars=stl:\ ,foldclose:,foldopen:,foldsep:┃,fold:\ ,eob:~,msgsep
 "  Celestia!
 au! Syntax cel source ~/.config/lvim/syntax/cel.vim
 au BufRead,BufNewFile *.cel set filetype=cel
+
+"  Siril
+au! Syntax siril source ~/.config/lvim/syntax/siril.vim
+au BufRead,BufNewFile *.ssf set filetype=siril
 
 " CSV files.
 au! Syntax csvfile source ~/.config/lvim/syntax/csv.vim

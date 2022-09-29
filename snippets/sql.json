@@ -401,6 +401,14 @@
     "description": "(show relations table)",
     "prefix": "__hrel"
   },
+  "id_business": {
+    "body": [
+      "id_business='b2055925-1b68-459e-afed-b4c95188d008'",
+      "$0"
+    ],
+    "description": "Business ID",
+    "prefix": "id_business"
+  },
   "idx": {
     "body": [
       "INDEX `$1_idx` (`${1:email}` ASC$2)${3:,",

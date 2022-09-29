@@ -1,6 +1,6 @@
 set termguicolors
 
-" To capture colours to a new buffer.
+" To capture colours to a new buffer. (hint remove comment and do a "gt")
 ":enew|pu=execute('hi')
 
 " Use zenburn colour scheme, but make some minor tweaks.
@@ -171,7 +171,8 @@ highlight markerLineCommentBrightRed           guifg=#000000     guibg=#FF0000
 call matchadd('markerLineCommentBrightRed', '^.*\*\{5,\}$', 50)
 
 " Hop colours.
-highlight HopNextKey                  gui=bold guifg=#ff007c
-highlight HopNextKey1                 gui=bold guifg=#00dfff
-highlight HopNextKey2                          guifg=#2b8db3
-highlight HopUnmatched                         guifg=#666666
+highlight HopNextKey                  gui=bold guifg=#ff007c  " Single key combination.
+highlight HopNextKey1                 gui=bold guifg=#00dfff  " Two key combination, first char.
+highlight HopNextKey2                          guifg=#00ccff  " Two key combination, second char.
+highlight HopUnmatched                         guifg=#aaaaaa  " Other chars.
+

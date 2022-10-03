@@ -156,11 +156,13 @@ call matchadd('markerStart', '^.*{\{3\}.*$', 50)
 call matchadd('markerEnd', '^.*}\{3\}.*$', 50)
 
 " Highlight my marker lines, Lines ending in 5 or more "." or "-" or "#" or "="
-" .....
+" +++++
 " -----
 " #####
 " =====
 " *****
+highlight markerLineCommentGrey                guifg=#000000     guibg=#999999
+call matchadd('markerLineCommentGrey',      '^.*[+]\{5,\}$', 50)
 highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
 call matchadd('markerLineCommentAmber',     '^.*\.\{5,\}$', 50)
 highlight markerLineCommentGreen               guifg=#000000     guibg=#009900

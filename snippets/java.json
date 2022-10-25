@@ -500,6 +500,15 @@
     "description": "New Java class",
     "prefix": "__new_java_class"
   },
+  "npe": {
+    "body": [
+      "if (user != null && user.getUserName() != null) {",
+      "    System.out.println(\"User Name: \" + user.getUserName().toLowerCase());",
+      "}"
+    ],
+    "description": "Null Pointer Exception block",
+    "prefix": "__npe"
+  },
   "param": {
     "body": [
       "${1|Void,String,int,Integer,long,Long,float,Float,double,Double,boolean,Boolean,short,Short,byte,Byte,char,Character,BigDecimal,StringBuilder,LocalDate,LocalDateTime,ZonedDateTime,LocalTime,Instant,YearMonth,Month,Year,MonthDay,DayOfWeek,Period,Duration,Date,Class<?>,Object,Object[],Consumer<>,BiConsumer<>,Predicate<>,BiPredicate<>,Function<>,BiFunction<>,Supplier<>,Optional<>,List<>,Set<>,Map<>,Collection<>,Stream<>|} ${2:paramName}$0"

@@ -118,7 +118,7 @@ call matchadd('longLine', '.\%>121v', 1)
 
 " Highlight git merge conflict markers.
 highlight gitMergeConflictStart                guifg=Black       guibg=Red
-call matchadd('gitMergeConflictStart', '^<\{7\} HEAD.*$', 60)
+call matchadd('gitMergeConflictStart', '^<\{7\} .*$', 60)
 
 highlight gitMergeConflictMid                  guifg=Yellow      guibg=Red
 call matchadd('gitMergeConflictMid', '^=\{7\}$', 60)

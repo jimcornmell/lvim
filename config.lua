@@ -785,6 +785,7 @@ lvim.plugins = {
   -- :TodoTrouble
   {
     "folke/todo-comments.nvim",
+    -- tag = "neovim-pre-0.8.0", -- TODO: Remove when we goto nvim 8.0.0+
     event = "BufRead",
     -- requires = "nvim-lua/plenary.nvim",
     config = function()

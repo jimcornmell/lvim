@@ -18,6 +18,7 @@
         { "language": "react-ts",      "path": "./react-ts.json" },
         { "language": "sh",            "path": "./sh.json" },
         { "language": "sql",           "path": "./sql.json" },
+        { "language": "docker-compose","path": "./yaml.docker-compose.json" },
         { "language": "typescript",    "path": "./typescript.json" }
     ]
   }

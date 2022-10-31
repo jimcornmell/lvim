@@ -17,15 +17,22 @@ highlight javaTSVariable  guifg=#CEDF99
 
 " Show white space characters
 set listchars=eol:¶,tab:»\ ,trail:·,extends:>,precedes:<,space:·
-highlight NonText                                        gui=bold guifg=#49494F
-highlight Whitespace                                     gui=bold guifg=#49494F
+highlight NonText                                        gui=bold guifg=#1D1D1D
+highlight Whitespace                                     gui=bold guifg=#1D1D1D
 
 " Highlight cursor line/column
 set colorcolumn=80,120
-highlight ColorColumn                          guifg=#ffffff     guibg=#202020
+highlight ColorColumn                          guifg=#ffffff     guibg=#181818
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#302222
 highlight CursorLine                                             guibg=#0A396F
+
+" Git changes and margins
+highlight GitSignsAdd                          guifg=#608b4e     guibg=#343434
+highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
+highlight GitSignsChange                       guifg=#FF8800     guibg=#343434
+highlight GitSignsCurrentLineBlame gui=bold    guifg=Black       guibg=#0A396F
+highlight default link gitblame GitSignsCurrentLineBlame
 
 " Selected area colour
 highlight Visual                  gui=bold     guifg=#ffffff     guibg=#1B51a3
@@ -56,13 +63,6 @@ highlight DiffAdd                              guifg=#999999     guibg=#115511
 highlight DiffChange                                             guibg=#222266
 highlight DiffDelete                           guifg=#552222     guibg=#552222
 highlight DiffText                             guifg=#CC2222     guibg=#222266
-
-" Git changes and margins
-highlight GitSignsAdd                          guifg=#608b4e     guibg=#343434
-highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
-highlight GitSignsChange                       guifg=#FF8800     guibg=#343434
-highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#0A396F
-highlight default link gitblame GitSignsCurrentLineBlame
 
 " Tab bar at top!
 highlight BufferCurrent                        guifg=Black       guibg=#CCCCCC
@@ -134,7 +134,7 @@ call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|z
 highlight sheBangBad                  gui=bold guifg=#E46600     guibg=NONE
 call matchadd('sheBangBad', '^#!.*')
 
-highlight IncSearch      gui=bold              guibg=#3f1f1f
+highlight IncSearch                            guifg=#3F6F3F     guibg=#FDFFFD
 
 highlight HighlightUrl   gui=underline,bold    guifg=#0099FF     guisp=#0099FF
 

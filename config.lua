@@ -3,21 +3,28 @@ Useful Links and TODO
 http://cheat.sh
 Buffer bar info: https://github.com/romgrk/barbar.nvim
 -- }}}1 ]]
--- Settings {{{1
+--[[ Settings {{{1
+lvim is the global options object
 
--- general
+Linters should be
+filled in as strings with either
+a global executable or a path to
+an executable
+--]]
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 lvim.log.level = "warn"
--- keymappings [view all the defaults by pressing <leader>Lk]
--- add your own keymapping
+-- keymappings [view all the defaults by pressing <leader>Lk] add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
--- edit a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+-- Edit a default keymapping
+lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 lvim.format_on_save = false
 lvim.auto_complete = true
+-- https://github.com/jnurmine/Zenburn
 lvim.colorscheme = "zenburn"
+-- lvim.colorscheme = "tokyonight"
 lvim.auto_close_tree = 0
 lvim.wrap_lines = false
 lvim.timeoutlen = 100
@@ -25,19 +32,19 @@ lvim.leader = "space"
 lvim.ignore_case = true
 lvim.smart_case = true
 lvim.termguicolors = true
--- lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
+lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
+  "c",
   "javascript",
   "json",
   "lua",
@@ -54,7 +61,6 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 lvim.builtin.lualine.options.theme = "curvywurvy"
--- lvim.builtin.lualine.options.theme = "ayu_light"
 
 lvim.builtin.gitsigns.opts.signs.add.text = ''
 lvim.builtin.gitsigns.opts.signs.change.text = ''
@@ -95,6 +101,11 @@ lvim.builtin.alpha.dashboard.section.buttons.entries = {
 { "SPC g",   "  Git status",                  "<CMD>Telescope git_status<CR>" }
 }
 --}}}
+
+-- Vim config {{{1
+vim.cmd('source ~/.config/lvim/user.vim')
+vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
+-- }}}1
 
 -- Additional Plugins {{{1
 lvim.plugins = {
@@ -546,7 +557,7 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
         require("user.dial").config()
-    end,
+    end
   },
 --    {
 --        "monaqa/dial.nvim",
@@ -670,29 +681,29 @@ lvim.plugins = {
 
   -- indent-blankline
   -- indentation guides for every line
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-      vim.g.indent_blankline_buftype_exclude = {"terminal"}
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = false
-    end
-  },
+  -- {
+    -- "lukas-reineke/indent-blankline.nvim",
+    -- event = "BufRead",
+    -- setup = function()
+      -- vim.g.indentLine_enabled = 1
+      -- vim.g.indent_blankline_char = "▏"
+      -- vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+      -- vim.g.indent_blankline_buftype_exclude = {"terminal"}
+      -- vim.g.indent_blankline_show_trailing_blankline_indent = false
+      -- vim.g.indent_blankline_show_first_indent_level = false
+    -- end
+  -- },
 
   -- markdown-preview.nvim
   -- preview markdown in the browser
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-    config = function()
-      vim.g.mkdp_auto_start = 1
-    end,
-  },
+  -- {
+    -- "iamcco/markdown-preview.nvim",
+    -- run = "cd app && npm install",
+    -- ft = "markdown",
+    -- config = function()
+      -- vim.g.mkdp_auto_start = 1
+    -- end,
+  -- },
 
   -- neoscroll
   -- smooth scrolling
@@ -785,7 +796,6 @@ lvim.plugins = {
   -- :TodoTrouble
   {
     "folke/todo-comments.nvim",
-    -- tag = "neovim-pre-0.8.0", -- TODO: Remove when we goto nvim 8.0.0+
     event = "BufRead",
     -- requires = "nvim-lua/plenary.nvim",
     config = function()
@@ -846,8 +856,7 @@ lvim.plugins = {
   -- },
 
 
-  -- vim-bundler
-  -- lightweight support for ruby's bundler
+  -- Vim syntax file for Docker's Dockerfile and snippets for snipMate.
   {
     'ekalinin/Dockerfile.vim'
   },
@@ -955,11 +964,6 @@ vim.api.nvim_set_keymap("n", "<S-h>",   ":bprevious<CR>", { noremap = true, sile
 
 -- }}}1
 
--- Vim config {{{1
-vim.cmd('source ~/.config/lvim/user.vim')
-vim.cmd('source ~/.config/lvim/lua/user/lualine.lua')
--- }}}1
-
 -- Load my snippets {{{1
 -- See ~/.config/lvim/snippets/package.json
 -- And this site to make snippets: https://snippet-generator.app
@@ -974,110 +978,5 @@ require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
 -- HACK: Link in the style so the background is correct.
---   ln -s /home/jim.cornmell/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
-
-
------ DEFAULT CONFIG FROM HERE: {{{
-
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
--- lvim.builtin.telescope.defaults.mappings = {
---   -- for input mode
---   i = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---     ["<C-n>"] = actions.cycle_history_next,
---     ["<C-p>"] = actions.cycle_history_prev,
---   },
---   -- for normal mode
---   n = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---   },
--- }
-
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
--- }
-
-
--- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
-
--- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
--- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
--- vim.list_extend(lvim.lsp.override, { "pyright" })
-
--- ---@usage setup a server -- see: https://www.lunarvim.org/languages/#overriding-the-default-configuration
--- local opts = {} -- check the lspconfig documentation for a list of all possible options
--- require("lvim.lsp.manager").setup("pylsp", opts)
-
--- -- you can set a custom on_attach function that will be used for all the language servers
--- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
-
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
-
--- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "shellcheck",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "javascript", "python" },
---   },
--- }
-
--- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
-
--- }}}
+--     ln -s /home/jim.cornmell/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

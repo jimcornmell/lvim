@@ -10,8 +10,8 @@ vmap g<C-a> g<Plug>(dial-increment)
 vmap g<C-x> g<Plug>(dial-decrement)
 
 " Buffer next and previous with tab.
-" nmap <Tab> :bnext<CR>
-" nmap <S-Tab> :bprevious<CR>
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprevious<CR>
 
 " <Ctrl-c> and yy copies to clipboard, paste with <shift-insert>
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
@@ -50,7 +50,6 @@ map <silent> sL :LuaSnipListAvailable<CR>
 map <silent> ss :call SnippetSave()<CR>
 map <silent> se :call SnippetEdit()<CR>
 map <silent> gB :call FigletCurrentLine()<CR>
-
 map <silent> ge :call DeleteEndingWhiteSpace()<CR>
 map <silent> gh :call OpenHelpAndCheatSheets()<CR>
 

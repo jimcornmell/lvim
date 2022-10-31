@@ -17,7 +17,8 @@ lvim.builtin.lualine.inactive_sections = {
 
 -- Colours, maps and icons {{{2
 local colors = {
-    bg               = '#0f1117',
+    -- bg               = '#0f1117',
+    bg               = '#3f3f3f',
     modetext         = '#000000',
 
     giticonbg        = '#FF8800',

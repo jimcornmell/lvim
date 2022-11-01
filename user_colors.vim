@@ -170,7 +170,7 @@ call matchadd('markerLineCommentBrightRed', '^.*\*\{5,\}$', 50)
 
 " Hop colours.
 highlight HopNextKey                  gui=bold guifg=#ff007c  " Single key combination.
-highlight HopNextKey1                 gui=bold guifg=#00dfff  " Two key combination, first char.
-highlight HopNextKey2                          guifg=#00ccff  " Two key combination, second char.
-highlight HopUnmatched                         guifg=#aaaaaa  " Other chars.
+highlight HopNextKey1                 gui=bold guifg=#00ccff  " Two key combination, first char.
+highlight HopNextKey2                 gui=bold guifg=#0099ff  " Two key combination, second char.
+highlight HopUnmatched                         guifg=#888888  " Other chars.
 

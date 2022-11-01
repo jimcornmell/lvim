@@ -20,25 +20,22 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- Edit a default keymapping
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
-lvim.format_on_save = false
-lvim.auto_complete = true
--- https://github.com/jnurmine/Zenburn
-lvim.colorscheme = "zenburn"
--- lvim.colorscheme = "tokyonight"
-lvim.auto_close_tree = 0
-lvim.wrap_lines = false
-lvim.timeoutlen = 100
-lvim.leader = "space"
-lvim.ignore_case = true
-lvim.smart_case = true
-lvim.termguicolors = true
-lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
-
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.use_icons                                      = true
+lvim.format_on_save                                 = false
+lvim.auto_complete                                  = true
+lvim.colorscheme                                    = "zenburn"   -- https://github.com/jnurmine/Zenburn
+lvim.auto_close_tree                                = 0
+lvim.wrap_lines                                     = false
+lvim.timeoutlen                                     = 100
+lvim.leader                                         = "space"
+lvim.ignore_case                                    = true
+lvim.smart_case                                     = true
+lvim.termguicolors                                  = true
+lvim.vsnip_dir                                      = os.getenv "HOME" .. "/.config/lvim/snippets/"
+lvim.builtin.alpha.active                           = true
+lvim.builtin.alpha.mode                             = "dashboard"
+lvim.builtin.terminal.active                        = true
+lvim.builtin.nvimtree.setup.view.side               = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -57,22 +54,50 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml"
 }
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.ignore_install              = { "haskell" }
+lvim.builtin.treesitter.highlight.enabled           = true
 
-lvim.builtin.lualine.options.theme = "curvywurvy"
+lvim.builtin.lualine.options.theme                  = "curvywurvy"
 
-lvim.builtin.gitsigns.opts.signs.add.text = ''
-lvim.builtin.gitsigns.opts.signs.change.text = ''
-lvim.builtin.gitsigns.opts.signs.delete.text = ''
-lvim.builtin.gitsigns.opts.signs.topdelete.text = ''
-lvim.builtin.gitsigns.opts.signs.changedelete.text = ''
+lvim.builtin.gitsigns.opts.signs.add.text           = ''
+lvim.builtin.gitsigns.opts.signs.change.text        = ''
+lvim.builtin.gitsigns.opts.signs.delete.text        = ''
+lvim.builtin.gitsigns.opts.signs.topdelete.text     = ''
+lvim.builtin.gitsigns.opts.signs.changedelete.text  = ''
+
+-- local iconError = ""
+-- local iconWarn  = ""
+-- local iconHint  = ""
+-- local iconInfo  = ""
+-- local iconInfo  = "i"
+local iconError = "⛔"
+local iconWarn  = "⚡"
+local iconHint  = "✨"
+local iconInfo  = "⭐"
 
 lvim.lsp.diagnostics.signs.values = {
-  { name = "LspDiagnosticsSignError", text = "" },
-  { name = "LspDiagnosticsSignWarning", text = "" },
-  { name = "LspDiagnosticsSignHint", text = '' },
-  { name = "LspDiagnosticsSignInformation", text = "" },
+    { name = "LspDiagnosticsSignError",              text = iconError },
+    { name = "LspDiagnosticsSignWarning",            text = iconWarn  },
+    { name = "LspDiagnosticsSignHint",               text = iconHint  },
+    { name = "LspDiagnosticsDefaultError",           text = iconError },
+    { name = "LspDiagnosticsDefaultWarning",         text = iconWarn  },
+    { name = "LspDiagnosticsDefaultInformation",     text = iconInfo  },
+    { name = "LspDiagnosticsDefaultHint",            text = iconHint  },
+    { name = "LspDiagnosticsFloatingError",          text = iconError },
+    { name = "LspDiagnosticsFloatingWarning",        text = iconWarn  },
+    { name = "LspDiagnosticsFloatingWarn",           text = iconWarn  },
+    { name = "LspDiagnosticsFloatingInformation",    text = iconInfo  },
+    { name = "LspDiagnosticsFloatingInfor",          text = iconInfo  },
+    { name = "LspDiagnosticsFloatingHint",           text = iconHint  },
+    { name = "LspDiagnosticsSignInformation",        text = iconInfo  },
+    { name = "LspDiagnosticsUnderlineError",         text = iconError },
+    { name = "LspDiagnosticsUnderlineWarning",       text = iconWarn  },
+    { name = "LspDiagnosticsUnderlineInformation",   text = iconInfo  },
+    { name = "LspDiagnosticsUnderlineHint",          text = iconHint  },
+    { name = "LspDiagnosticsVirtualTextError",       text = iconError },
+    { name = "LspDiagnosticsVirtualTextWarning",     text = iconWarn  },
+    { name = "LspDiagnosticsVirtualTextInformation", text = iconInfo  },
+    { name = "LspDiagnosticsVirtualTextHint",        text = iconHint  },
 }
 
 --}}}

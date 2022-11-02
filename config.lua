@@ -59,45 +59,26 @@ lvim.builtin.treesitter.highlight.enabled           = true
 
 lvim.builtin.lualine.options.theme                  = "curvywurvy"
 
-lvim.builtin.gitsigns.opts.signs.add.text           = ''
-lvim.builtin.gitsigns.opts.signs.change.text        = ''
-lvim.builtin.gitsigns.opts.signs.delete.text        = ''
-lvim.builtin.gitsigns.opts.signs.topdelete.text     = ''
-lvim.builtin.gitsigns.opts.signs.changedelete.text  = ''
-
 -- local iconError = ""
 -- local iconWarn  = ""
 -- local iconHint  = ""
 -- local iconInfo  = ""
--- local iconInfo  = "i"
 local iconError = "⛔"
 local iconWarn  = "⚡"
-local iconHint  = "✨"
-local iconInfo  = "⭐"
+local iconHint  = "⭐"
+local iconInfo  = "✨"
+
+-- lvim.builtin.gitsigns.opts.signs.add.text           = ''
+-- lvim.builtin.gitsigns.opts.signs.change.text        = ''
+-- lvim.builtin.gitsigns.opts.signs.delete.text        = ''
+-- lvim.builtin.gitsigns.opts.signs.topdelete.text     = ''
+-- lvim.builtin.gitsigns.opts.signs.changedelete.text  = ''
 
 lvim.lsp.diagnostics.signs.values = {
-    { name = "LspDiagnosticsSignError",              text = iconError },
-    { name = "LspDiagnosticsSignWarning",            text = iconWarn  },
-    { name = "LspDiagnosticsSignHint",               text = iconHint  },
-    { name = "LspDiagnosticsDefaultError",           text = iconError },
-    { name = "LspDiagnosticsDefaultWarning",         text = iconWarn  },
-    { name = "LspDiagnosticsDefaultInformation",     text = iconInfo  },
-    { name = "LspDiagnosticsDefaultHint",            text = iconHint  },
-    { name = "LspDiagnosticsFloatingError",          text = iconError },
-    { name = "LspDiagnosticsFloatingWarning",        text = iconWarn  },
-    { name = "LspDiagnosticsFloatingWarn",           text = iconWarn  },
-    { name = "LspDiagnosticsFloatingInformation",    text = iconInfo  },
-    { name = "LspDiagnosticsFloatingInfor",          text = iconInfo  },
-    { name = "LspDiagnosticsFloatingHint",           text = iconHint  },
-    { name = "LspDiagnosticsSignInformation",        text = iconInfo  },
-    { name = "LspDiagnosticsUnderlineError",         text = iconError },
-    { name = "LspDiagnosticsUnderlineWarning",       text = iconWarn  },
-    { name = "LspDiagnosticsUnderlineInformation",   text = iconInfo  },
-    { name = "LspDiagnosticsUnderlineHint",          text = iconHint  },
-    { name = "LspDiagnosticsVirtualTextError",       text = iconError },
-    { name = "LspDiagnosticsVirtualTextWarning",     text = iconWarn  },
-    { name = "LspDiagnosticsVirtualTextInformation", text = iconInfo  },
-    { name = "LspDiagnosticsVirtualTextHint",        text = iconHint  },
+    { name = "DiagnosticSignError", text = iconError },
+    { name = "DiagnosticSignWarn", text = iconWarn },
+    { name = "DiagnosticSignInfo", text = iconInfo },
+    { name = "DiagnosticSignHint", text = iconHint },
 }
 
 --}}}

@@ -353,7 +353,7 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi TabLineFill   guifg=#88b090 guibg=#313633 gui=none  ctermbg=236 ctermfg=108 cterm=none
 else
     " Original, lighter background
-    hi Normal        guifg=#dcdccc guibg=#101010           ctermfg=188 ctermbg=237
+    hi Normal        guifg=#dcdccc guibg=#000000           ctermfg=188 ctermbg=237
     hi Conceal       guifg=#8f8f8f guibg=#484848           ctermfg=246 ctermbg=238
     hi ColorColumn   guibg=#484848                         ctermbg=238
     hi CursorLine    guibg=#434443                         ctermbg=238 cterm=none

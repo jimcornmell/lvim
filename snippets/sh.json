@@ -20,6 +20,17 @@
     "description": "2>/dev/null",
     "prefix": "__2"
   },
+  "args": {
+    "body": [
+      "if [[ $# -ne 1 ]]; then",
+      "  echo 1>&2 Usage: $0 xml",
+      "  exit 127",
+      "fi",
+      "$0"
+    ],
+    "description": "Args",
+    "prefix": "args"
+  },
   "case": {
     "body": [
       "",
@@ -117,6 +128,42 @@
     "description": "Stub out a for loop",
     "prefix": "__for"
   },
+  "for var in list": {
+    "body": [
+      "for var in 1 2 3 4 ; do",
+      "        echo $var",
+      "done",
+      "$0"
+    ],
+    "description": "For file in list",
+    "prefix": "for var in list"
+  },
+  "for_every_file_do_something": {
+    "body": [
+      "for file in *.eps",
+      "do",
+      "  echo $file",
+      "  name=`basename $file .eps`",
+      "",
+      "  if [[ ! -e $name ]]; then",
+      "    gs -sDEVICE=png16m -dBATCH -DNOPAUSE -q -sOutputFile=$name.png -r100x100 -dNOPAUSE $file < quit.txt",
+      "  fi",
+      "done",
+      "$0"
+    ],
+    "description": "For every file do something",
+    "prefix": "for_every_file_do_something"
+  },
+  "for_file_in": {
+    "body": [
+      "for file in *",
+      "do",
+      "done",
+      "$0"
+    ],
+    "description": "For file in star",
+    "prefix": "for_file_in"
+  },
   "fori": {
     "body": [
       "",
@@ -144,6 +191,16 @@
   },
   "function": {
     "body": [
+      "functionName() {",
+      "    echo \\$1",
+      "}",
+      "$0"
+    ],
+    "description": "A function",
+    "prefix": "function"
+  },
+  "function_complex": {
+    "body": [
       "",
       "$1 () {",
       "",
@@ -164,7 +221,7 @@
       ""
     ],
     "description": "Stub out a function",
-    "prefix": "__function"
+    "prefix": "__function_complex"
   },
   "getopts": {
     "body": [
@@ -368,6 +425,15 @@
     "description": "Stub out a simple conditional statement that uses bash's built in conditional expression syntax to compare a string on the left hand side to a regex on the right hand side.",
     "prefix": "__ifregex"
   },
+  "increment": {
+    "body": [
+      "i=1",
+      "((i++))",
+      "$0"
+    ],
+    "description": "Increment in one command",
+    "prefix": "increment"
+  },
   "ite": {
     "body": [
       "[[ ${1:condition} ]] && ${2:echo \"true\"} || ${3:echo \"false\"}"
@@ -390,6 +456,19 @@
     "description": "Log output to console",
     "prefix": "__log"
   },
+  "make_missing_dir": {
+    "body": [
+      "if [[ ! -e results ]]; then",
+      "    echo Making results folder",
+      "    mkdir results",
+      "else",
+      "    echo Doing nothing.",
+      "fi",
+      "$0"
+    ],
+    "description": "Make a missing directory",
+    "prefix": "make_missing_dir"
+  },
   "mktemp": {
     "body": [
       "${1:tmpFile}=\\$(mktemp --tmpdir tmpPGIH${2:-pgihadmin}.XXXXXXXXXX) || \\",
@@ -408,14 +487,11 @@
   },
   "read": {
     "body": [
-      "read -r -d '' ${1:variableName} <<-EOF",
-      "${2:Content to assign to ${1}}",
-      "EOF",
-      "echo \"\\$${1}\"",
-      "$3"
+      "read -p \"Press [Enter] key to start backup...\"",
+      "$0"
     ],
-    "description": "Assign heredoc to variable",
-    "prefix": "__read"
+    "description": "Read from user",
+    "prefix": "read"
   },
   "readinput": {
     "body": [
@@ -978,6 +1054,25 @@
     "description": "Extract all files and directories from a tarball with \"-x\". Preserve permissions with \"-p\". Show progress with \"-v\". Decompress the contents of the tarball with \"-z\" Select the tar.gz file to extract from with \"-f\".",
     "prefix": "__tar-xpvzf"
   },
+  "tsv_while_loop": {
+    "body": [
+      "i=-2",
+      "",
+      "while IFS=$'\t' read -r ignore ignore ignore ignore ignore first middle last gender rest; do",
+      "    ((i++))",
+      "",
+      "    # Ignore first line.",
+      "    if [[ $i -lt 0 ]]; then",
+      "        continue",
+      "    fi",
+      "",
+      "    doSomething \"$i\" \"$first\" \"$last\" \"$gender\"",
+      "done <\"$HOME/.tk/users.tsv\"",
+      "$0"
+    ],
+    "description": "Iterate over TSV file in while loop",
+    "prefix": "tsv_while_loop"
+  },
   "until": {
     "body": [
       "EXIT_CODE_PREVIOUS=\"\\$EXIT_CODE\"",
@@ -1023,15 +1118,38 @@
   },
   "while_here_doc": {
     "body": [
-      "while read pass port user ip files directs; do",
-      "    echo \\$pass \\$port \\$files \\$user@\\$ip:\\$directs",
-      "done <<DATA",
-      "PASS    PORT    USER    IP    FILES    DIRECTS1",
-      "PASS    PORT    USER    IP    FILES    DIRECTS2",
-      "DATA"
+      "while read line; do",
+      "  ls ../$line/${line}_00??.pdf | head -2",
+      "done <<EOF",
+      "200Y06M",
+      "201Y06M",
+      "202Y07N",
+      "EOF",
+      "$0"
     ],
-    "description": "while_here_doc",
-    "prefix": "__while_here_doc"
+    "description": "While over here doc",
+    "prefix": "while_here_doc"
+  },
+  "while_infinite": {
+    "body": [
+      "while true; do",
+      "done",
+      "$0"
+    ],
+    "description": "Infinite while loop",
+    "prefix": "while_infinite"
+  },
+  "while_loop": {
+    "body": [
+      "n=1",
+      "while [[ $n -lt 100 ]]; do",
+      "    ((n++))",
+      "    echo n is $n",
+      "done",
+      "$0"
+    ],
+    "description": "While loop with counter",
+    "prefix": "while_loop"
   },
   "while_text_file": {
     "body": [

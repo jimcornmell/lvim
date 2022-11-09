@@ -20,23 +20,29 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- Edit a default keymapping
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
-lvim.use_icons                                      = true
-lvim.format_on_save                                 = false
-lvim.auto_complete                                  = true
-lvim.colorscheme                                    = "zenburn"   -- https://github.com/jnurmine/Zenburn
-lvim.auto_close_tree                                = 0
-lvim.wrap_lines                                     = false
-lvim.timeoutlen                                     = 100
-lvim.leader                                         = "space"
-lvim.ignore_case                                    = true
-lvim.smart_case                                     = true
-lvim.termguicolors                                  = true
-lvim.vsnip_dir                                      = os.getenv "HOME" .. "/.config/lvim/snippets/"
-lvim.builtin.alpha.active                           = true
-lvim.builtin.alpha.mode                             = "dashboard"
-lvim.builtin.terminal.active                        = true
-lvim.builtin.nvimtree.setup.view.side               = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.use_icons                                                = true
+lvim.format_on_save                                           = false
+lvim.auto_complete                                            = true
+lvim.colorscheme                                              = "zenburn"   -- https://github.com/jnurmine/Zenburn
+lvim.auto_close_tree                                          = 0
+lvim.wrap_lines                                               = false
+lvim.timeoutlen                                               = 100
+lvim.leader                                                   = "space"
+lvim.ignore_case                                              = true
+lvim.smart_case                                               = true
+lvim.termguicolors                                            = true
+lvim.vsnip_dir                                                = os.getenv "HOME" .. "/.config/lvim/snippets/"
+lvim.builtin.alpha.active                                     = true
+lvim.builtin.alpha.mode                                       = "dashboard"
+lvim.builtin.terminal.active                                  = true
+lvim.builtin.nvimtree.setup.view.side                         = "left"
+lvim.builtin.nvimtree.setup.renderer.icons.show.git           = true
+lvim.builtin.alpha.active                                     = true
+lvim.builtin.dap.active                                       = true
+lvim.builtin.terminal.active                                  = true
+lvim.builtin.cmp.completion.keyword_length                    = 2
+lvim.builtin.telescope.defaults.layout_config.width           = 0.95
+lvim.builtin.telescope.defaults.layout_config.preview_cutoff  = 75
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -59,28 +65,34 @@ lvim.builtin.treesitter.highlight.enabled           = true
 
 lvim.builtin.lualine.options.theme                  = "curvywurvy"
 
--- local iconError = ""
--- local iconWarn  = ""
--- local iconHint  = ""
--- local iconInfo  = ""
-local iconError = "⛔"
-local iconWarn  = "⚡"
-local iconHint  = "⭐"
-local iconInfo  = "✨"
+local iconError     = ""
+local iconWarn      = ""
+local iconHint      = ""
+local iconInfo      = ""
+-- local iconError        = "⛔"
+-- local iconWarn         = "⚡"
+-- local iconHint         = "⭐"
+-- local iconInfo         = "✨"
+local iconBar          = "▌" -- █ ▉ ▊ ▋ ▌ ▍ ▎ ▏
+local iconMark         = "◣"
+local iconPlus         = ""
+local iconMinus        = ""
+local iconExclamation  = ""
 
--- lvim.builtin.gitsigns.opts.signs.add.text           = ''
--- lvim.builtin.gitsigns.opts.signs.change.text        = ''
--- lvim.builtin.gitsigns.opts.signs.delete.text        = ''
--- lvim.builtin.gitsigns.opts.signs.topdelete.text     = ''
--- lvim.builtin.gitsigns.opts.signs.changedelete.text  = ''
+-- To set colours see GitSigns* in ~/.config/lvim/user_colors.vim
+lvim.builtin.gitsigns.opts.signs.add.text             = iconBar
+lvim.builtin.gitsigns.opts.signs.change.text          = iconBar
+lvim.builtin.gitsigns.opts.signs.delete.text          = iconMark
+-- lvim.builtin.gitsigns.opts.signs.topdelete.text    = iconMinus
+-- lvim.builtin.gitsigns.opts.signs.changedelete.text = iconExclamation
 
+-- To set colours see LspDiagnostics* in ~/.config/lvim/user_colors.vim
 lvim.lsp.diagnostics.signs.values = {
-    { name = "DiagnosticSignError", text = iconError },
-    { name = "DiagnosticSignWarn", text = iconWarn },
-    { name = "DiagnosticSignInfo", text = iconInfo },
-    { name = "DiagnosticSignHint", text = iconHint },
+    { name = "DiagnosticSignError",              text = iconError },
+    { name = "DiagnosticSignWarn",               text = iconWarn },
+    { name = "DiagnosticSignInfo",               text = iconInfo },
+    { name = "DiagnosticSignHint",               text = iconHint },
 }
-
 --}}}
 
 -- Dashboard/Alpha {{{1
@@ -976,6 +988,52 @@ vim.api.nvim_set_keymap("n", "<S-h>",   ":bprevious<CR>", { noremap = true, sile
 -- For variables see: https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
 -- }}}1
+
+local dap = require('dap')
+
+dap.adapters.python = {
+    type = 'executable';
+    command = "python3";
+    args = { '-m', 'debugpy.adapter' };
+}
+
+dap.configurations.python = dap.configurations.python or {}
+    table.insert(dap.configurations.python, {
+    type = 'python',
+    request = 'launch',
+    name = 'launch with options',
+    program = '${file}';
+    python = function() end,
+    pythonPath = function()
+        local path
+        for _, server in pairs(vim.lsp.buf_get_clients()) do
+            path = vim.tbl_get(server, 'config', 'settings', 'python', 'pythonPath')
+            if path then break end
+        end
+        path = vim.fn.input('Python path: ', path or '', 'file')
+        return path ~= '' and vim.fn.expand(path) or nil
+    end,
+    args = function()
+        local args = {}
+        local i = 1
+        while true do
+            local arg = vim.fn.input("Argument [" .. i .. "]: ")
+            if arg == '' then
+                break
+            end
+            args[i] = arg
+            i = i + 1
+        end
+        return args
+    end,
+    justMyCode = function()
+        return vim.fn.input('justMyCode? [y/n]: ') == 'y'
+    end,
+    stopOnEntry = function()
+        return vim.fn.input('justMyCode? [y/n]: ') == 'y'
+    end,
+    console = 'integratedTerminal'
+})
 
 -- See end of this file for my other config.
 --    ~/.local/share/lunarvim/lvim/init.lua

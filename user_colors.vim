@@ -1,11 +1,12 @@
 set termguicolors
 
 " To capture colours to a new buffer. (hint remove comment and do a "gt")
-":enew|pu=execute('hi')
+" :enew|pu=execute('hi')
 
 " Use zenburn colour scheme, but make some minor tweaks.
 let g:zenburn_italic_Comment=1
 " colorscheme zenburn
+"
 " Tweaks to zenburn... I only like red to mean a problem.
 highlight Boolean         guifg=#bfbfbf          ctermfg=181
 highlight Character       guifg=#a3aca3 gui=bold ctermfg=181 cterm=bold
@@ -28,9 +29,9 @@ highlight CursorColumn                         guifg=#ffffff     guibg=#302222
 highlight CursorLine                                             guibg=#0A396F
 
 " Git changes and margins
-highlight GitSignsAdd                          guifg=#608b4e     guibg=#343434
-highlight GitSignsDelete                       guifg=#D16969     guibg=#343434
-highlight GitSignsChange                       guifg=#FF8800     guibg=#343434
+highlight GitSignsAdd                          guifg=#4FC53D     guibg=#343434
+highlight GitSignsDelete                       guifg=#E13D3D     guibg=#343434
+highlight GitSignsChange                       guifg=#5585DA     guibg=#343434
 highlight GitSignsCurrentLineBlame gui=bold    guifg=Black       guibg=#0A396F
 highlight default link gitblame GitSignsCurrentLineBlame
 
@@ -51,8 +52,10 @@ highlight Pmenu                                guifg=Wheat       guibg=Black
 highlight PmenuSbar                                              guibg=Gray35
 highlight PmenuThumb                                             guibg=Wheat
 highlight PmenuSel                    gui=bold guifg=Black       guibg=Wheat
-highlight NormalFloat                 gui=NONE guifg=Wheat       guibg=#343434
+highlight NormalFloat                 gui=NONE guifg=Wheat       guibg=Black
 highlight NormalNC                                               guibg=Black
+highlight VertSplit                            guifg=#444444     guibg=Black
+
 
 " Line number colour
 highlight LineNr                               guifg=RoyalBlue1  guibg=Gray19
@@ -88,16 +91,16 @@ highlight LspDiagnosticsFloatingInfor          guifg=#FFCC66
 highlight LspDiagnosticsFloatingHint           guifg=#4FC1FF
 
 " LSP highlight in left margin.
-highlight LspDiagnosticsSignError              guifg=#F44747     guibg=Gray19
-highlight LspDiagnosticsSignWarning            guifg=#FF8800     guibg=Gray19
-highlight LspDiagnosticsSignInformation        guifg=#FFCC66     guibg=Gray19
-highlight LspDiagnosticsSignHint               guifg=#4FC1FF     guibg=Gray19
+highlight LspDiagnosticsSignError              guifg=#F44747
+highlight LspDiagnosticsSignWarning            guifg=#FF8800
+highlight LspDiagnosticsSignInformation        guifg=#FFCC66
+highlight LspDiagnosticsSignHint               guifg=#4FC1FF
 
 " LSP In-line error highlight.
-highlight LspDiagnosticsUnderlineError         guifg=Black       guibg=#F44747
-highlight LspDiagnosticsUnderlineWarning       guifg=Black       guibg=#FF8800
-highlight LspDiagnosticsUnderlineInformation   guifg=Black       guibg=#FFCC66
-highlight LspDiagnosticsUnderlineHint          guifg=Black       guibg=#4FC1FF
+highlight LspDiagnosticsUnderlineError                           guibg=#F44747
+highlight LspDiagnosticsUnderlineWarning                         guibg=#FF8800
+highlight LspDiagnosticsUnderlineInformation                     guibg=#FFCC66
+highlight LspDiagnosticsUnderlineHint                            guibg=#4FC1FF
 
 " LSP error on right side.
 highlight LspDiagnosticsVirtualTextError       guifg=#F44747
@@ -134,7 +137,9 @@ call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|z
 highlight sheBangBad                  gui=bold guifg=#E46600     guibg=NONE
 call matchadd('sheBangBad', '^#!.*')
 
-highlight IncSearch                            guifg=#3F6F3F     guibg=#FDFFFD
+" current word highlighting
+" highlight IncSearch      gui=underline           guifg=#000000     guibg=#002F1F
+highlight IncSearch      gui=bold              guibg=#3f1f1f
 
 highlight HighlightUrl   gui=underline,bold    guifg=#0099FF     guisp=#0099FF
 
@@ -167,6 +172,11 @@ highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
 call matchadd('markerLineCommentRed',       '^.*=\{5,\}$', 50)
 highlight markerLineCommentBrightRed           guifg=#000000     guibg=#FF0000
 call matchadd('markerLineCommentBrightRed', '^.*\*\{5,\}$', 50)
+" deprecated
+" DEPRECATED
+" Deprecated
+highlight deprecatedWord                       guifg=#FFFFFF     guibg=#442222
+call matchadd('deprecatedWord', '[Dd][Ee][Pp][Rr][Ee][Cc][Aa][Tt][Ee][Dd]', 50)
 
 " Hop colours.
 highlight HopNextKey                  gui=bold guifg=#ff007c  " Single key combination.

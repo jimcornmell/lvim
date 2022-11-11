@@ -66,10 +66,13 @@ function! SnippetSave()
     let txt = split(getreg('"'), '\n')
 
     for line in txt
-        call add(newlist, "      \"" . substitute(line, '"','\\\"', "g") . "\",")
+        let line = substitute(line, '\','\\\\', "g")
+        let line = substitute(line, '"','\\\"', "g")
+        let line = substitute(line, '\$','\\\\$', "g")
+        call add(newlist, "      \"" . line . "\",")
     endfor
 
-    call add(newlist, "      \"$0\",")
+    call add(newlist, "      \"$0\"")
     call add(newlist, "    ],")
     call add(newlist, "    \"description\": \"" . desc . "\",")
     call add(newlist, "    \"prefix\": \"" . keyName . "\"")

@@ -65,15 +65,25 @@
     "description": "5 Paras of Lorem Ipsum",
     "prefix": "__lorem_ipsum5para"
   },
+  "new_bash": {
+    "body": [
+      "#!/usr/bin/env bash",
+      "# shellcheck source=/home/jim/bin/libs/globals.sh",
+      ". ~/bin/libs/globals.sh",
+      "$0"
+    ],
+    "description": "New bash file, short format",
+    "prefix": "__new_bash"
+  },
   "new_bash_file": {
     "body": [
       "#!/usr/bin/env bash",
+      "# shellcheck source=/home/jim/bin/libs/globals.sh",
+      ". ~/bin/libs/globals.sh",
+      "",
       "# @version       1.0",
       "# @script        # TODO: name",
       "# @description   # TODO: desc",
-      "",
-      "# shellcheck source=/home/jim/bin/libs/globals.sh",
-      ". ~/bin/libs/globals.sh",
       "",
       "CMD=\\$(basename \"\\$0\")",
       "FORCE=false",

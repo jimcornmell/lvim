@@ -41,8 +41,6 @@ lvim.builtin.alpha.active                                     = true
 lvim.builtin.dap.active                                       = true
 lvim.builtin.terminal.active                                  = true
 lvim.builtin.cmp.completion.keyword_length                    = 2
-lvim.builtin.telescope.defaults.layout_config.width           = 0.95
-lvim.builtin.telescope.defaults.layout_config.preview_cutoff  = 75
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {

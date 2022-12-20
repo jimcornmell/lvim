@@ -149,10 +149,10 @@ lvim.plugins = {
   -- Unix commands. Try ":SudoWrite"
     -- Issue with cmp.u.k.recursive appearing when you hit enter.
     -- See: https://github.com/hrsh7th/nvim-cmp/issues/770
-  -- {
-    -- "tpope/vim-eunuch",
-    -- event = "BufRead",
-  -- },
+  {
+    "tpope/vim-eunuch",
+    event = "BufRead",
+  },
 
   -- Markers in margin. 'ma' adds marker
   {"kshenoy/vim-signature",

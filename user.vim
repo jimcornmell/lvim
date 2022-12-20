@@ -441,92 +441,92 @@ function FullScreenToggle()
     let g:neovide_fullscreen=!g:neovide_fullscreen
 endfunction
 
-function! s:SilentSudoCmd(editor) abort
-  let cmd = 'env SUDO_EDITOR=' . a:editor . ' VISUAL=' . a:editor . ' sudo -e'
-  let local_nvim = has('nvim') && len($DISPLAY . $SECURITYSESSIONID . $TERM_PROGRAM)
-  if !has('gui_running') && !local_nvim
-    return ['silent', cmd]
-  elseif !empty($SUDO_ASKPASS) ||
-        \ filereadable('/etc/sudo.conf') &&
-        \ len(filter(readfile('/etc/sudo.conf', '', 50), 'v:val =~# "^Path askpass "'))
-    return ['silent', cmd . ' -A']
-  else
-    return [local_nvim ? 'silent' : '', cmd]
-  endif
-endfunction
-
-function! s:SudoSetup(file) abort
-  if !filereadable(a:file) && !exists('#BufReadCmd#'.fnameescape(a:file))
-    execute 'autocmd BufReadCmd ' fnameescape(a:file) 'exe s:SudoReadCmd()'
-  endif
-  if !filewritable(a:file) && !exists('#BufWriteCmd#'.fnameescape(a:file))
-    execute 'autocmd BufReadPost ' fnameescape(a:file) 'set noreadonly'
-    execute 'autocmd BufWriteCmd ' fnameescape(a:file) 'exe s:SudoWriteCmd()'
-  endif
-endfunction
-
-let s:error_file = tempname()
-
-function! s:SudoError() abort
-  let error = join(readfile(s:error_file), " | ")
-  if error =~# '^sudo' || v:shell_error
-    return len(error) ? error : 'Error invoking sudo'
-  else
-    return error
-  endif
-endfunction
-
-function! s:SudoReadCmd() abort
-  if &shellpipe =~ '|&'
-    return 'echoerr ' . string('eunuch.vim: no sudo read support for csh')
-  endif
-  silent %delete_
-  silent doautocmd <nomodeline> BufReadPre
-  let [silent, cmd] = s:SilentSudoCmd('cat')
-  execute silent 'read !' . cmd . ' "%" 2> ' . s:error_file
-  let exit_status = v:shell_error
-  silent 1delete_
-  setlocal nomodified
-  if exit_status
-    return 'echoerr ' . string(s:SudoError())
-  else
-    return 'silent doautocmd BufReadPost'
-  endif
-endfunction
-
-function! s:SudoWriteCmd() abort
-  silent doautocmd <nomodeline> BufWritePre
-  let [silent, cmd] = s:SilentSudoCmd('tee')
-  let cmd .= ' "%" >/dev/null'
-  if &shellpipe =~ '|&'
-    let cmd = '(' . cmd . ')>& ' . s:error_file
-  else
-    let cmd .= ' 2> ' . s:error_file
-  endif
-  execute silent 'write !'.cmd
-  let error = s:SudoError()
-  if !empty(error)
-    return 'echoerr ' . string(error)
-  else
-    setlocal nomodified
-    return 'silent doautocmd <nomodeline> BufWritePost'
-  endif
-endfunction
-
-command! -bar -bang -complete=file -nargs=? SudoEdit
-      \ call s:SudoSetup(fnamemodify(empty(<q-args>) ? expand('%') : <q-args>, ':p')) |
-      \ if !&modified || !empty(<q-args>) |
-      \   edit<bang> <args> |
-      \ endif |
-      \ if empty(<q-args>) || expand('%:p') ==# fnamemodify(<q-args>, ':p') |
-      \   set noreadonly |
-      \ endif
-
-if exists(':SudoWrite') != 2
-command! -bar SudoWrite
-      \ call s:SudoSetup(expand('%:p')) |
-      \ write!
-endif
+" function! s:SilentSudoCmd(editor) abort
+"   let cmd = 'env SUDO_EDITOR=' . a:editor . ' VISUAL=' . a:editor . ' sudo -e'
+"   let local_nvim = has('nvim') && len($DISPLAY . $SECURITYSESSIONID . $TERM_PROGRAM)
+"   if !has('gui_running') && !local_nvim
+"     return ['silent', cmd]
+"   elseif !empty($SUDO_ASKPASS) ||
+"         \ filereadable('/etc/sudo.conf') &&
+"         \ len(filter(readfile('/etc/sudo.conf', '', 50), 'v:val =~# "^Path askpass "'))
+"     return ['silent', cmd . ' -A']
+"   else
+"     return [local_nvim ? 'silent' : '', cmd]
+"   endif
+" endfunction
+" 
+" function! s:SudoSetup(file) abort
+"   if !filereadable(a:file) && !exists('#BufReadCmd#'.fnameescape(a:file))
+"     execute 'autocmd BufReadCmd ' fnameescape(a:file) 'exe s:SudoReadCmd()'
+"   endif
+"   if !filewritable(a:file) && !exists('#BufWriteCmd#'.fnameescape(a:file))
+"     execute 'autocmd BufReadPost ' fnameescape(a:file) 'set noreadonly'
+"     execute 'autocmd BufWriteCmd ' fnameescape(a:file) 'exe s:SudoWriteCmd()'
+"   endif
+" endfunction
+" 
+" let s:error_file = tempname()
+" 
+" function! s:SudoError() abort
+"   let error = join(readfile(s:error_file), " | ")
+"   if error =~# '^sudo' || v:shell_error
+"     return len(error) ? error : 'Error invoking sudo'
+"   else
+"     return error
+"   endif
+" endfunction
+" 
+" function! s:SudoReadCmd() abort
+"   if &shellpipe =~ '|&'
+"     return 'echoerr ' . string('eunuch.vim: no sudo read support for csh')
+"   endif
+"   silent %delete_
+"   silent doautocmd <nomodeline> BufReadPre
+"   let [silent, cmd] = s:SilentSudoCmd('cat')
+"   execute silent 'read !' . cmd . ' "%" 2> ' . s:error_file
+"   let exit_status = v:shell_error
+"   silent 1delete_
+"   setlocal nomodified
+"   if exit_status
+"     return 'echoerr ' . string(s:SudoError())
+"   else
+"     return 'silent doautocmd BufReadPost'
+"   endif
+" endfunction
+" 
+" function! s:SudoWriteCmd() abort
+"   silent doautocmd <nomodeline> BufWritePre
+"   let [silent, cmd] = s:SilentSudoCmd('tee')
+"   let cmd .= ' "%" >/dev/null'
+"   if &shellpipe =~ '|&'
+"     let cmd = '(' . cmd . ')>& ' . s:error_file
+"   else
+"     let cmd .= ' 2> ' . s:error_file
+"   endif
+"   execute silent 'write !'.cmd
+"   let error = s:SudoError()
+"   if !empty(error)
+"     return 'echoerr ' . string(error)
+"   else
+"     setlocal nomodified
+"     return 'silent doautocmd <nomodeline> BufWritePost'
+"   endif
+" endfunction
+" 
+" command! -bar -bang -complete=file -nargs=? SudoEdit
+"       \ call s:SudoSetup(fnamemodify(empty(<q-args>) ? expand('%') : <q-args>, ':p')) |
+"       \ if !&modified || !empty(<q-args>) |
+"       \   edit<bang> <args> |
+"       \ endif |
+"       \ if empty(<q-args>) || expand('%:p') ==# fnamemodify(<q-args>, ':p') |
+"       \   set noreadonly |
+"       \ endif
+" 
+" if exists(':SudoWrite') != 2
+" command! -bar SudoWrite
+"       \ call s:SudoSetup(expand('%:p')) |
+"       \ write!
+" endif
 
 vnoremap <buffer> <C-x> I123<Esc>
 

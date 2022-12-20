@@ -191,6 +191,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>|:heavy_check_mark: 'aWord' to &lt;q&gt;aWord&lt;/q&gt;|
 |<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>|                                         :heavy_check_mark: 'aWord' to aWord|
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd>|                 :heavy_check_mark: aWord to [aWord]|
+|<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd>|                 :heavy_check_mark: $var_or_word to "$var_or_word"|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd>|                             :heavy_check_mark: Whole-Line to (Whole-Line)|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd>|                             :heavy_check_mark: Whole-Line to "Whole-Line"|
 |__Macros__|[`:h complex-repeat`](https://neovim.io/doc/user/repeat.html#complex-repeat)|
@@ -313,3 +314,7 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |<kbd>Ctrl-l</kbd>|                                                            :heavy_check_mark: Redraws the screen and removes any search highlighting|
 |<kbd>Alt-p</kbd>|                                                             :heavy_check_mark: Pushes words to right to align with line above|
 |<kbd>g</kbd><kbd>B</kbd>|                                                     Converts (and replaces) currentline to a banner, which is commented out gB=go banner|
+|__Sexy sequences__||
+|<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd>|                 $var_or_word to "$var_or_word"|
+|<kbd>v</kbd><kbd>t</kbd><kbd>"</kbd><kbd>r</kbd><kbd>*</kbd>|                 <kbd>v</kbd> enter visual mode, <kbd>t"</kbd> select till ", <kbd>r*</kbd> replace selected region with asterisk|
+|<kbd>g</kbd><kbd>U</kbd><kbd>t</kbd><kbd>X</kbd>|                             Uppercase until char X

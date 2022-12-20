@@ -310,6 +310,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd></th><td><img src="media/tick.png"/> 'aWord' to &lt;q&gt;aWord&lt;/q&gt;</td></tr>
 <tr><th><kbd>d</kbd><kbd>s</kbd><kbd>'</kbd></th><td>                                         <img src="media/tick.png"/> 'aWord' to aWord</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd></th><td>                 <img src="media/tick.png"/> aWord to [aWord]</td></tr>
+<tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd></th><td>                 <img src="media/tick.png"/> $var_or_word to "$var_or_word"</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to (Whole-Line)</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to "Whole-Line"</td></tr>
 </tbody></table>
@@ -477,6 +478,13 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd>Ctrl-l</kbd></th><td>                                                            <img src="media/tick.png"/> Redraws the screen and removes any search highlighting</td></tr>
 <tr><th><kbd>Alt-p</kbd></th><td>                                                             <img src="media/tick.png"/> Pushes words to right to align with line above</td></tr>
 <tr><th><kbd>g</kbd><kbd>B</kbd></th><td>                                                     Converts (and replaces) currentline to a banner, which is commented out gB=go banner</td></tr>
+</tbody></table>
+</div><div class="inner border" id="sexysequences">
+<h1>Sexy sequences </h1>
+<table><tbody>
+<tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd></th><td>                 $var_or_word to "$var_or_word"</td></tr>
+<tr><th><kbd>v</kbd><kbd>t</kbd><kbd>"</kbd><kbd>r</kbd><kbd>*</kbd></th><td>                 <kbd>v</kbd> enter visual mode, <kbd>t"</kbd> select till ", <kbd>r*</kbd> replace selected region with asterisk</td></tr>
+<tr><th><kbd>g</kbd><kbd>U</kbd><kbd>t</kbd><kbd>X</kbd></th><td>                             Uppercase until char X</td></tr>
 </tbody>
 </table>
 </div>

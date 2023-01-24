@@ -477,8 +477,8 @@ lvim.plugins = {
   -- TabNine completion engine for hrsh7th/nvim-cmp
   {
     "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
+    build = "./install.sh",
+    dependencies = "hrsh7th/nvim-cmp",
     event = "InsertEnter",
   },
 
@@ -1040,5 +1040,7 @@ dap.configurations.python = dap.configurations.python or {}
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
 -- HACK: Link in the style so the background is correct.
---     ln -s /home/jim.cornmell/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
+--     ln -s /home/jim/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
+--
+--     ln -s /home/jim/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

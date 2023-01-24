@@ -1,6 +1,9 @@
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Shortcut if you think the first option will chose the correct word.
+map z1 z=1
+
 " Dial
 nmap  <C-a>  <Plug>(dial-increment)
 nmap  <C-x>  <Plug>(dial-decrement)

@@ -454,7 +454,7 @@ endfunction
 "     return [local_nvim ? 'silent' : '', cmd]
 "   endif
 " endfunction
-" 
+"
 " function! s:SudoSetup(file) abort
 "   if !filereadable(a:file) && !exists('#BufReadCmd#'.fnameescape(a:file))
 "     execute 'autocmd BufReadCmd ' fnameescape(a:file) 'exe s:SudoReadCmd()'
@@ -464,9 +464,9 @@ endfunction
 "     execute 'autocmd BufWriteCmd ' fnameescape(a:file) 'exe s:SudoWriteCmd()'
 "   endif
 " endfunction
-" 
+"
 " let s:error_file = tempname()
-" 
+"
 " function! s:SudoError() abort
 "   let error = join(readfile(s:error_file), " | ")
 "   if error =~# '^sudo' || v:shell_error
@@ -475,7 +475,7 @@ endfunction
 "     return error
 "   endif
 " endfunction
-" 
+"
 " function! s:SudoReadCmd() abort
 "   if &shellpipe =~ '|&'
 "     return 'echoerr ' . string('eunuch.vim: no sudo read support for csh')
@@ -493,7 +493,7 @@ endfunction
 "     return 'silent doautocmd BufReadPost'
 "   endif
 " endfunction
-" 
+"
 " function! s:SudoWriteCmd() abort
 "   silent doautocmd <nomodeline> BufWritePre
 "   let [silent, cmd] = s:SilentSudoCmd('tee')
@@ -512,7 +512,7 @@ endfunction
 "     return 'silent doautocmd <nomodeline> BufWritePost'
 "   endif
 " endfunction
-" 
+"
 " command! -bar -bang -complete=file -nargs=? SudoEdit
 "       \ call s:SudoSetup(fnamemodify(empty(<q-args>) ? expand('%') : <q-args>, ':p')) |
 "       \ if !&modified || !empty(<q-args>) |
@@ -521,7 +521,7 @@ endfunction
 "       \ if empty(<q-args>) || expand('%:p') ==# fnamemodify(<q-args>, ':p') |
 "       \   set noreadonly |
 "       \ endif
-" 
+"
 " if exists(':SudoWrite') != 2
 " command! -bar SudoWrite
 "       \ call s:SudoSetup(expand('%:p')) |
@@ -684,6 +684,8 @@ au BufRead,BufNewFile *.ssf set filetype=siril
 au! Syntax csvfile source ~/.config/lvim/syntax/csv.vim
 au BufRead,BufNewFile *.csv set filetype=csvfile
 au BufRead,BufNewFile *.tsv set filetype=csvfile
+au BufRead,BufNewFile sct2*.txt set filetype=csvfile
+au BufRead,BufNewFile der2*.txt set filetype=csvfile
 
 " EDI files.
 au! Syntax edifile source $HOME/.config/lvim/syntax/edifile.vim
@@ -717,6 +719,18 @@ iab fb foobar
 iab Attr Attributes
 iab Appl Application
 iab adn and
+
+" Work related
+iab SCT SNOMED CT
+iab sct SNOMED CT
+iab sni SNOMED International
+iab SNI SNOMED International
+iab sno Snomed
+iab SNO SNOMED
+iab icd International Classification Diseases
+iab rdf Resource Definition Framework
+iab owl Web Ontology Language
+iab mrn Medical Record Number
 " }}}
 
 " Auto Commands, e.g. source init.vim {{{1

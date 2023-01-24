@@ -302,6 +302,7 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |`:g/^Foo/norm 0xxxBar`|                                                       Norm runs commands as if you typed them|
 |__Spelling__|[`:h spell`](https://neovim.io/doc/user/spell.html)|
 |<kbd>z</kbd><kbd>=</kbd>|                                                     Suggest spelling|
+|<kbd>z</kbd><kbd>1</kbd>|                                                     Pick first word (same as <kbd>z</kbd><kbd>=</kbd><kbd>1</kbd>, hope its the correct one!)|
 |<kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd>|               Add to dict, undo add|
 |__Miscellaneous__||
 |<kbd>g</kbd><kbd>Ctrl-g</kbd>|                                                Word count|

@@ -61,8 +61,6 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install              = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled           = true
 
-lvim.builtin.lualine.options.theme                  = "curvywurvy"
-
 local iconError     = ""
 local iconWarn      = ""
 local iconHint      = ""
@@ -1040,5 +1038,6 @@ dap.configurations.python = dap.configurations.python or {}
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
 -- HACK: Link in the style so the background is correct.
+-- lvim.builtin.lualine.options.theme                  = "curvywurvy"
 --     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

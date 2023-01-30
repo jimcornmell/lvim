@@ -1040,7 +1040,5 @@ dap.configurations.python = dap.configurations.python or {}
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
 -- HACK: Link in the style so the background is correct.
---     ln -s /home/jim/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/packer/start/lualine.nvim/lua/lualine/themes/curvywurvy.lua
---
---     ln -s /home/jim/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
+--     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

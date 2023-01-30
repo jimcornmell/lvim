@@ -193,53 +193,9 @@ function! SqlFlip()
     silent exec ':!$HOME/bin/sak sqlflip'
 endfunction
 
-" Jump, looks under the cursor for a URL, Hex Code, GithubProject or Word!
+" Jump, looks under the cursor for a URL, Hex Code, GithubProject, Word...!
 function! JumpToSelection()
-  let url=matchstr(expand("<cWORD>"), 'http[s]*:\/\/[^ >,;)]*')
-  " let url=matchstr(expand("<cWORD>"), 'https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/')
-  " let url=matchstr(expand("<cWORD>"), 'https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/')
-
-  " Is it a url?
-  if url != ""
-      silent exec ":!xdg-open '".url."'" | redraw!
-      echo "Opening URL ".url
-  else
-      let wordUnderCursor = expand("<cWORD>")
-      let hexcode = matchstr(wordUnderCursor, '[0-9a-fA-F]\{6}')
-
-      " Is it a hex colour code?
-      if hexcode != ""
-          let url="https://www.colorhexa.com/" . hexcode
-          silent exec ':!xdg-open "'.url.'"' | redraw!
-          echo "Opened HEX colour ".url
-      else
-          let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z-]\{3,}/[0-9a-z-A-Z\.]\{3,}')
-
-          " Is it a GitHub project?
-          if projectPath != ""
-              let url="https://github.com/" . projectPath
-              silent exec ':!xdg-open "'.url.'"' | redraw!
-              echo "Opened GitHub project : ".projectPath
-          else
-              let jiraTicket = matchstr(wordUnderCursor, '[a-zA-Z]\{2,4}-[0-9]\{1,7}')
-
-              " Is it a Jira ticket number project?
-              if jiraTicket != ""
-                  exec ':!$HOME/bin/Jira open '.jiraTicket
-              else
-                  let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
-
-                  if url != ""
-                      let $CURLCMDVIM='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
-                      term curl -s $CURLCMDVIM
-                      echo "Opened Cheat ".url
-                  else
-                      echo "No URL, HEX colour sequence, GitHub Project or Keyword under cursor."
-                  endif
-              endif
-          endif
-      endif
-  endif
+    silent exec ":!$HOME/bin/vimgj " . expand('%:p') . " " . line('.') . " " . col('.')
 endfunction
 
 " Use Jira command line tool to show info for current ticket (if under cursor)

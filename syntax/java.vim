@@ -1,6 +1,6 @@
 
 " note do not change the order...
-" some of them are overridding privous regrex 
+" some of them are overridding privous regrex
 
 "this code made with build-in syntax regrex(and key words), and with some custome regrex(and
 "key words)
@@ -52,15 +52,15 @@ syn match main "\v(\a)\w*\d"
 execute "highlight main ctermfg=4  guifg=".red
 
 "all regrex works
-" /^import (+);$/mg 
+" /^import (+);$/mg
 " import \zs.*\ze
 " \v(^import\s+)@<=.*;
 
-" imported packages 
+" imported packages
 syn match importName "\v(^import\s+)@<=.*;"
 execute "highlight importName ctermfg=4  guifg=".yellow
 
-" import 
+" import
 syn match importWord "import "
 execute "highlight importWord ctermfg=4  guifg=".purple
 
@@ -68,7 +68,7 @@ execute "highlight importWord ctermfg=4  guifg=".purple
 syn match packageName "\v(^package\s+)@<=.*;"
 execute "highlight packageName ctermfg=4  guifg=".yellow
 
-" package 
+" package
 syn match packageWord "package "
 execute "highlight packageWord ctermfg=4  guifg=".purple
 
@@ -85,11 +85,11 @@ syntax match ClassName display '\.\@<=\*'
 highlight link ClassName Identifier
 execute "highlight ClassName ctermfg=4  guifg=".yellow
 
-" Just some special color, why not?  
+" Just some special color, why not?
 " syn match print " System.out."
 " execute "highlight print ctermfg=4  guifg=".yellow
 
-"objects (ex: String) 
+"objects (ex: String)
 execute "highlight Constant ctermfg=4  guifg=".yellow
 
 " class
@@ -102,7 +102,7 @@ execute "highlight javaExternal ctermfg=4  guifg=".purple
 "if else switch
 execute "highlight javaConditional ctermfg=4  guifg=".purple
 
-"while for do 
+"while for do
 execute "highlight javaRepeat ctermfg=4  guifg=".purple
 
 "true flase
@@ -116,10 +116,10 @@ execute "highlight null ctermfg=4  guifg=".orange
 
 " this super
 execute "highlight javaTypedef ctermfg=4  guifg=".purple
-		
+
 " var new instanceof
 execute "highlight javaOperator ctermfg=4  guifg=".purple
-	
+
 " return
 execute "highlight javaStatement ctermfg=4  guifg=".purple
 
@@ -138,7 +138,7 @@ execute "highlight javaMethodDecl ctermfg=4  guifg=".red
 " extends implements interface
 execute "highlight javaClassDecl ctermfg=4  guifg=".red
 
-" interface 
+" interface
 execute "highlight javaClassDecl ctermfg=4  guifg=".purple
 
 " break continue skipwhite
@@ -154,7 +154,7 @@ execute "highlight javaScopeDecl ctermfg=4  guifg=".purple
 execute "highlight javaModuleStorageClass ctermfg=4  guifg=".purple
 
 
-" open requires exports opens uses provides 
+" open requires exports opens uses provides
 execute "highlight javaModuleStmt ctermfg=4  guifg=".yellow
 
 

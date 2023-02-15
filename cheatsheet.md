@@ -1,3 +1,4 @@
+# TITLE=VIM Cheatsheet
 The following are a mixture of standard key bindings and my own, which I find
 useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've marked mine and other non-default
 (from plugins) key-bindings with :heavy_check_mark: in the table below.

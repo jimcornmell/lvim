@@ -643,6 +643,10 @@ au BufRead,BufNewFile *.tsv set filetype=csvfile
 au BufRead,BufNewFile sct2*.txt set filetype=csvfile
 au BufRead,BufNewFile der2*.txt set filetype=csvfile
 
+" ECL files.
+au! Syntax eclfile source ~/.config/lvim/syntax/ecl.vim
+au BufRead,BufNewFile *.ecl set filetype=eclfile
+
 " EDI files.
 au! Syntax edifile source $HOME/.config/lvim/syntax/edifile.vim
 au BufRead,BufNewFile *.edi set filetype=edifile

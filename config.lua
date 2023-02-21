@@ -407,9 +407,9 @@ lvim.plugins = {
 
   -- nvim-ts-rainbow
   -- rainbow parentheses
-  {
-    "p00f/nvim-ts-rainbow",
-  },
+  -- {
+    -- "p00f/nvim-ts-rainbow",
+  -- },
 
   -- playground
   -- view treesitter information

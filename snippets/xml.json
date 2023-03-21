@@ -1,0 +1,36 @@
+{
+  "owasp": {
+    "body": [
+      "<plugin>",
+      "    <groupId>org.owasp</groupId>",
+      "    <artifactId>dependency-check-maven</artifactId>",
+      "    <version>${dependency-check-maven.version}</version>",
+      "    <configuration>",
+      "        <suppressionFiles>",
+      "            <suppressionFile>owasp-suppressions.xml</suppressionFile>",
+      "        </suppressionFiles>",
+      "        <failBuildOnCVSS>7</failBuildOnCVSS>",
+      "        <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>",
+      "        <failOnError>true</failOnError>",
+      "    </configuration>",
+      "    <dependencies>",
+      "        <dependency>",
+      "            <groupId>org.snomed</groupId>",
+      "                <artifactId>snomed-parent-owasp</artifactId>",
+      "            <version>${snomed-parent-owasp.version}</version>",
+      "        </dependency>",
+      "    </dependencies>",
+      "    <executions>",
+      "        <execution>",
+      "            <goals>",
+      "                <goal>check</goal>",
+      "            </goals>",
+      "        </execution>",
+      "    </executions>",
+      "</plugin>",
+      "$0"
+    ],
+    "description": "OWASP maven plugin",
+    "prefix": "owasp"
+  }
+}

@@ -193,6 +193,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>|                                         :heavy_check_mark: 'aWord' to aWord|
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd>|                 :heavy_check_mark: aWord to [aWord]|
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd>|                 :heavy_check_mark: $var_or_word to "$var_or_word"|
+|<kbd>f</kbd><kbd>q</kbd>|                                                     :heavy_check_mark: fix quote, SHORTCUT FOR LINE ABOVE|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd>|                             :heavy_check_mark: Whole-Line to (Whole-Line)|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd>|                             :heavy_check_mark: Whole-Line to "Whole-Line"|
 |__Macros__|[`:h complex-repeat`](https://neovim.io/doc/user/repeat.html#complex-repeat)|
@@ -271,11 +272,11 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd>|                                  Uppercase|
 `:%s/\v(\a+)/\u\1/g` Title Case regex, \u,\l=Upper/lower next char, \U,\L=Up/Low following chars<br/>`:%s/\v(\w)_(\a+)/\1\u\2/g` Change `variable_name` to camel case, `variableName`
 |__Increment/Dec a value__|[plugin](https://github.com/tpope/vim-speeddating)|
-|<kbd>Ctrl-a</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
-|<kbd>Ctrl-x</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
-|<kbd>Ctrl-h</kbd>|                                                            :heavy_check_mark: In visual block mode insert sequence starting at 1|
-|<kbd>Ctrl-j</kbd>|                                                            :heavy_check_mark: In visual block mode increment sequence|
-|<kbd>Ctrl-k</kbd>|                                                            :heavy_check_mark: In visual block mode decrement sequence|
+|<kbd>Ctrl-]</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
+|<kbd>Ctrl-[</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
+|<kbd>Ctrl-h</kbd>|                                                            :heavy_check_mark: In visual block mode insert sequence starting at count, defaults to 1|
+#|<kbd>Ctrl-j</kbd>|                                                            :heavy_check_mark: In visual block mode increment sequence|
+#|<kbd>Ctrl-k</kbd>|                                                            :heavy_check_mark: In visual block mode decrement sequence|
 A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`<br/>`:let i=1 \| g/WEEKNUMBER/s//\=i/ \| let i=i+1`
 |__Moving Lines__||
 |<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line/selection up 1 line|

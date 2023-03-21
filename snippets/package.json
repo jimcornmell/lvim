@@ -19,7 +19,8 @@
         { "language": "sh",            "path": "./sh.json" },
         { "language": "sql",           "path": "./sql.json" },
         { "language": "docker-compose","path": "./yaml.docker-compose.json" },
-        { "language": "typescript",    "path": "./typescript.json" }
+        { "language": "typescript",    "path": "./typescript.json" },
+        { "language": "xml",           "path": "./xml.json" }
     ]
   }
 }

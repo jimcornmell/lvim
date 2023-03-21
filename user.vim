@@ -56,7 +56,7 @@ function! SnippetSave()
 
     for line in readfile(fname)
         call add(alist, line)
-	endfor
+    endfor
 
     let newlist = alist[0:len(alist)-3]
 
@@ -173,14 +173,15 @@ function! FigletCurrentLine()
     echo 'Bannerizing "'.line.'"'
     normal ddk
 
-    silent exec ':read !ban "" "" "'.line.'"'
-    " let comment=split(&commentstring, '%s')
+    let comment=split(&commentstring, '%s')
+    let cs=comment[0]
+    let ce=""
 
-    " if len(comment)==1
-        " silent exec ':read !ban "'.comment[0].'" "" "'.line.'"'
-    " else
-        " silent exec ':read !ban "'.comment[0].'" "'.comment[1].'" "'.line.'"'
-    " endif
+    if len(comment)==2
+        let ce=comment[1]
+    endif
+
+    silent exec ':read !/home/jim/bin/dotfiles/bin/ban "'.cs.'" "'.ce.'" "'.line.'"'
 endfunction
 
 function! PrettyPrintFile()
@@ -213,8 +214,8 @@ function! ShowJira()
 endfunction
 
 function! OpenHelpPage()
-  let s:help_word = expand('<cword>')
-  :exe ":help " . s:help_word
+    let s:help_word = expand('<cword>')
+    :exe ":help " . s:help_word
 endfunction
 
 function! ToggleColourCursorLine()
@@ -344,20 +345,20 @@ endfunction
 " :Csv 0    " switch off highlight
 highlight CsvColHeading guifg=Yellow guibg=Black
 function! CSVH(colnr)
-  if a:colnr > 1
-    let n = a:colnr - 1
+    if a:colnr > 1
+        let n = a:colnr - 1
 
-    execute 'match CsvColHeading /^\([^,]*,\)\{'.n.'}\zs[^,]*/'
-    " execute 'match CsvColHighlight /^\([^,|\t]*[,|\t]\)\{'.n.'}\zs[^,|\t]*/'
-    execute 'normal! 0'.n.'f,'
-    execute 'syntax match csvHeading /\%1l\%(\%("\zs\%([^"]\|""\)*\ze"\)\|\%(\zs[^,"]*\ze\)\)/'
-    execute 'highlight csvHeading guifg=Yellow guibg=Black gui=bold'
-  elseif a:colnr == 1
-    match CsvColHighlight /^[^,|\t]*/
-    normal! 0
-  else
-    match
-  endif
+        execute 'match CsvColHeading /^\([^,]*,\)\{'.n.'}\zs[^,]*/'
+        " execute 'match CsvColHighlight /^\([^,|\t]*[,|\t]\)\{'.n.'}\zs[^,|\t]*/'
+        execute 'normal! 0'.n.'f,'
+        execute 'syntax match csvHeading /\%1l\%(\%("\zs\%([^"]\|""\)*\ze"\)\|\%(\zs[^,"]*\ze\)\)/'
+        execute 'highlight csvHeading guifg=Yellow guibg=Black gui=bold'
+    elseif a:colnr == 1
+        match CsvColHighlight /^[^,|\t]*/
+        normal! 0
+    else
+        match
+    endif
 endfunction
 
 function FoldingToggle()
@@ -484,45 +485,44 @@ endfunction
 "       \ write!
 " endif
 
-vnoremap <buffer> <C-x> I123<Esc>
+" vnoremap <buffer> <C-x> I123<Esc>
 
 " Increment block {{{2
 " Adapted from https://github.com/triglav/vim-visual-increment/blob/master/plugin/visual-increment.vim
-" a:step - increment step, default 1
-" a:1 - default null, when set to any value, decrement instead
-function! s:doincrement(step, ...)
-  " visual block start
-  let start_column = col("'<")
-  let start_row = line("'<")
-  " visual block end, as well as the cursor position
-  let end_row = line("'>")
-  " when 2nd parameter is passed, we are decrementing the numbers instead
-  let incrementer = (a:0 > 0 ? '' : '')
+function! s:dosequence(initial, step)
+    " visual block start
+    let start_column = col("'<")
+    let start_row = line("'<")
+    " visual block end, as well as the cursor position
+    let end_row = line("'>")
+    " when 2nd parameter is passed, we are decrementing the numbers instead
+    " let incrementer = (a:0 > 0 ? '' : '')
+    let incrementer = ''
 
-  if start_row == end_row
-    " just increment/decrement the value if only one line is selected
-    exe "normal! ".a:step.incrementer
-  else
-    " each next line is increased by <a>, from the previous one
-    let i = 0
+    if start_row == end_row
+        " just increment/decrement the value if only one line is selected
+        exe "normal! ".a:initial.incrementer
+    else
+        exe "normal! i".a:initial
+        " each next line is increased by <a>, from the previous one
+        let i = a:initial - 1
 
-    while line('.') != end_row
-      " move to the next line
-      call setpos('.', [0, line('.')+1, start_column, 0])
+        while line('.') != end_row
+            " move to the next line
+            call setpos('.', [0, line('.')+1, start_column, 0])
 
-      " if the current line is shorter, skip it
-      if start_column < col("$")
-        let i += a:step
-        " increment the current line by <i>
-        exe "normal! ".i.incrementer
-      end
-    endwhile
-  endif
+            " if the current line is shorter, skip it
+            if start_column < col("$")
+                let i += a:step
+                " increment the current line by <i>
+                exe "normal! i".i
+                exe "normal! ".incrementer
+            endif
+        endwhile
+    endif
 endfunction
 
-vnoremap <silent> <C-H> I1<esc>:<C-U>call <SID>doincrement(v:count1)<CR>
-vnoremap <silent> <C-J> :<C-U>call <SID>doincrement(v:count1)<CR>
-vnoremap <silent> <C-K> :<C-U>call <SID>doincrement(v:count1, 1)<CR>
+vnoremap <silent> <C-H> :<C-U>call <SID>dosequence(v:count1, 1)<CR>
 " }}}2
 
 " }}}1
@@ -716,21 +716,21 @@ autocmd FileType sql set commentstring=--\ %s
 
 " Ignore CamelCase words when spell checking
 fun! IgnoreCamelCaseSpell()
-  syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
-  syn cluster Spell add=CamelCase
+    syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+    syn cluster Spell add=CamelCase
 endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
 " augroup lsp
-  " au!
-  " au FileType java lua require('jdtls').start_or_attach({cmd = {'java-linux-ls'}})
+" au!
+" au FileType java lua require('jdtls').start_or_attach({cmd = {'java-linux-ls'}})
 " augroup end
 
 " Return to last edit position when opening files.
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
 " }}}
 

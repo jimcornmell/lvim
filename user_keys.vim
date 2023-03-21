@@ -11,6 +11,8 @@ vmap  <C-a>  <Plug>(dial-increment)
 vmap  <C-x>  <Plug>(dial-decrement)
 vmap g<C-a> g<Plug>(dial-increment)
 vmap g<C-x> g<Plug>(dial-decrement)
+map   <C-.>  <Plug>(dial-increment)
+map   <C-,>  <Plug>(dial-decrement)
 
 " Buffer next and previous with tab.
 nmap <Tab> :bnext<CR>
@@ -44,6 +46,9 @@ map gw gqip
 " Margin numbers.
 nmap <silent> <leader>n :set norelativenumber<cr>
 nmap <silent> <leader>r :set relativenumber<cr>
+
+" Surround with quotes shortcut.
+nmap fq ysiW"
 
 " Snippets.
 map <silent> sc :call ShowColours()<CR>

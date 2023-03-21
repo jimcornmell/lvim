@@ -52,6 +52,12 @@
             margin: 0;
             font-size: 20px;
         }
+        i{
+            color: #6688ff;
+        }
+        strong{
+            color: #ff6666;
+        }
         kbd {
             color: #ffff66;
             border-radius: 4px;
@@ -132,7 +138,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd></th><td>                       Char left, down, up, right</td></tr>
 <tr><th><kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$</th><td></kbd>                         Start, middle, end of line</td></tr>
 <tr><th><kbd>^</kbd></th><td>                                                                 First non-white character of line</td></tr>
-<tr><th><kbd>Enter</kbd></th><td>                                                             First non-white char of next line</td></tr>
+<tr><th><kbd><img src="media/enter.png"/></kbd></th><td>                                                             First non-white char of next line</td></tr>
 <tr><th><kbd>*</kbd>, <kbd>#</kbd></th><td>                                                   Find forwards/backwards word under cursor</td></tr>
 <tr><th><kbd>b</kbd>, <kbd>w</kbd></th><td>                                                   Word left, right</td></tr>
 <tr><th><kbd>B</kbd>, <kbd>W</kbd></th><td>                                                   White spaced word left, right</td></tr>
@@ -173,7 +179,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 </div><div class="inner border" id="insertmode">
 <h2>Insert Mode <a target="_new" href="https://neovim.io/doc/user/insert.html#Insert"><kbd class="cmd">:h inserting</kbd></a></h2>
 <table><tbody>
-<tr><th><kbd>ESC</kbd></th><td>                                                               Exit insert mode</td></tr>
+<tr><th><kbd><img src="media/escape.png"/></kbd></th><td>                                                               Exit insert mode</td></tr>
 <tr><th><kbd>i</kbd>, <kbd>a</kbd></th><td>                                                   Insert before, after cursor</td></tr>
 <tr><th><kbd>I</kbd>, <kbd>A</kbd></th><td>                                                   Insert start, end of line</td></tr>
 <tr><th><kbd>g</kbd><kbd>I</kbd></th><td>                                                     Insert start of line, even before whitespace</td></tr>
@@ -322,6 +328,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>d</kbd><kbd>s</kbd><kbd>'</kbd></th><td>                                         <img src="media/tick.png"/> 'aWord' to aWord</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd></th><td>                 <img src="media/tick.png"/> aWord to [aWord]</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd></th><td>                 <img src="media/tick.png"/> $var_or_word to "$var_or_word"</td></tr>
+<tr><th><kbd>f</kbd><kbd>q</kbd></th><td>                                                     <img src="media/tick.png"/> fix quote, SHORTCUT FOR LINE ABOVE</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to (Whole-Line)</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd></th><td>                             <img src="media/tick.png"/> Whole-Line to "Whole-Line"</td></tr>
 </tbody></table>
@@ -340,7 +347,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 </div><div class="inner border" id="marks">
 <h2>Marks <a target="_new" href="https://neovim.io/doc/user/motion.html#mark-motions"><kbd class="cmd">:h mark-motions</kbd></a></h2>
 <table><tbody>
-<tr><th><kbd>m</kbd><kbd>space</kbd></th><td>                                                 Remove all marks</td></tr>
+<tr><th><kbd>m</kbd><kbd><img src="media/space.png"/></kbd></th><td>                                                 Remove all marks</td></tr>
 <tr><th><kbd>m</kbd><kbd>x</kbd></th><td>                                                     Toggle mark <kbd>x</kbd></td></tr>
 <tr><th><kbd>'</kbd><kbd>x</kbd>, <kbd>`</kbd><kbd>x</kbd></th><td>                           Goto to mark <kbd class="cmd">x</kbd> (a-z), '=start of line, `=end</td></tr>
 <tr><th><kbd>m</kbd><kbd>X</kbd></th><td>                                                     Set GLOBAL mark <kbd class="cmd">X</kbd> (A-Z), i.e. a mark in another file</td></tr>
@@ -367,7 +374,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 </div><div class="inner border" id="windowsandbuffers">
 <h2>Windows and Buffers <a target="_new" href="https://neovim.io/doc/user/windows.html"><kbd class="cmd">:h windows</kbd></a></h2>
 <table><tbody>
-<tr><th><kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
+<tr><th><kbd><img src="media/tab.png"/></kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
 <tr><th><kbd class="cmd">:sp, :vsp</kbd></th><td>                                                                  Split view horizontal, vertical</td></tr>
 <tr><th><kbd>Ctrl-w</kbd> <kbd>[sv]</kbd></th><td>                                            Split view horizontal, vertical</td></tr>
 <tr><th><kbd>Ctrl-w</kbd> <kbd>w</kbd></th><td>                                               Switch view</td></tr>
@@ -427,11 +434,9 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 </div><div class="inner border" id="incrementdecavalue">
 <h2>Increment/Dec a value <a target="_new" href="https://github.com/tpope/vim-speeddating">plugin</a></h2>
 <table><tbody>
-<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times.</td></tr>
-<tr><th><kbd>Ctrl-x</kbd></th><td>                                                            <img src="media/tick.png"/> Decrement value under cursor by 1.</td></tr>
-<tr><th><kbd>Ctrl-h</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode insert sequence starting at 1</td></tr>
-<tr><th><kbd>Ctrl-j</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode increment sequence</td></tr>
-<tr><th><kbd>Ctrl-k</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode decrement sequence</td></tr>
+<tr><th><kbd>Ctrl-]</kbd></th><td>                                                            <img src="media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times.</td></tr>
+<tr><th><kbd>Ctrl-[</kbd></th><td>                                                            <img src="media/tick.png"/> Decrement value under cursor by 1.</td></tr>
+<tr><th><kbd>Ctrl-h</kbd></th><td>                                                            <img src="media/tick.png"/> In visual block mode insert sequence starting at count, defaults to 1</td></tr>
 A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd><br/><kbd class="cmd">:let i=1 | g/WEEKNUMBER/s//\=i/ | let i=i+1</kbd>
 </tbody></table>
 </div><div class="inner border" id="movinglines">
@@ -464,7 +469,7 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 </div><div class="inner border" id="executinglinescommands">
 <h2>Executing lines/commands </h2>
 <table><tbody>
-<tr><th><kbd>g</kbd><kbd>r</kbd></th><td>                                                     <img src="media/tick.png"/> Run line under cursor in shell, **USE WITH CARE!**</td></tr>
+<tr><th><kbd>g</kbd><kbd>r</kbd></th><td>                                                     <img src="media/tick.png"/> Run line under cursor in shell, <i>USE WITH CARE!</i></td></tr>
 <tr><th><kbd>g</kbd><kbd>t</kbd></th><td>                                                     <img src="media/tick.png"/> Run line under cursor as if it were a vim command</td></tr>
 <tr><th><kbd>Alt-r</kbd></th><td>                                                             <img src="media/tick.png"/> Run the current file</td></tr>
 <tr><th><kbd>Alt-e</kbd></th><td>                                                             <img src="media/tick.png"/> Make the current file executable <kbd class="cmd">chmod a+x file</kbd><br/>The Eunuch plugin also makes files starting with <kbd class="cmd">#!</kbd> executable</td></tr>

@@ -777,7 +777,7 @@ lvim.plugins = {
     'ekalinin/Dockerfile.vim'
   },
 
-  -- Codium completion...
+  -- Codeium completion...
   {
     'Exafunction/codeium.vim'
   },

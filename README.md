@@ -126,6 +126,7 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 I've added a few extra plugins I use to the configuration:
 
 - [Codi](https://github.com/metakirby5/codi.vim) I alias "bc" on the command line to get a powerful calculator scratchpad using python.
+- [Codeium](https://github.com/Exafunction/codeium.vim) "Free, ultrafast Copilot alternative for Vim and Neovim"
 - [Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
 - [Dial](https://github.com/monaqa/dial.nvim) I've enabled a bunch of the predefined "increment's", also added a few of my own, e.g: True<->False and full month names, logging levels and more.  [See the config for details](lua/user/dial.lua)I
 - [Fugitive](https://github.com/tpope/vim-fugitive) Git plugin from Tim Pope

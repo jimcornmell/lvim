@@ -1,14 +1,14 @@
 # TITLE=VIM Cheatsheet
 The following are a mixture of standard key bindings and my own, which I find
-useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've marked mine and other non-default
+useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt</kbd>-<kbd>Up</kbd> etc. I've marked mine and other non-default
 (from plugins) key-bindings with :heavy_check_mark: in the table below.
 
 | Key     | Action  |
 | ------: | :-------|
 |__Help__|[`:h topic`](https://neovim.io/doc/user/usr_02.html#02.8)|
 |`:h quickref`|                                                                Quick reference|
-|<kbd>Ctrl-]</kbd>|                                                            Follow help link|
-|<kbd>Ctrl-t</kbd>|                                                            Back to previous|
+|<kbd>Ctrl</kbd>-<kbd>]</kbd>|                                                            Follow help link|
+|<kbd>Ctrl</kbd>-<kbd>t</kbd>|                                                            Back to previous|
 |__Modes__|[`:h vim-modes`](https://neovim.io/doc/user/intro.html#vim-modes)|
 The far left of the tagline at the bottom of the screen is colour coded according to the mode
 |Normal (Blue)|Enter all the normal editor commands|
@@ -22,7 +22,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:e .` or <kbd>-</kbd> or <kbd>F12</kbd>|                                     Explore dir, opens Ranger|
 |`:e sftp://me@example.com/myfile`|                                            Open sftp|
 |`:e!`|                                                                        Revert to saved version|
-|<kbd>Ctrl-s</kbd>|                                                            :heavy_check_mark: Save the current file|
+|<kbd>Ctrl</kbd>-<kbd>s</kbd>|                                                            :heavy_check_mark: Save the current file|
 |`:w file`|                                                                    Save to `file`|
 |`:wq` or <kbd>Z</kbd><kbd>Z</kbd>|                                            Save and close|
 |`:q!` or <kbd>Z</kbd><kbd>Q</kbd>|                                            Close without saving|
@@ -40,9 +40,9 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd>|                           Next, previous character `x`|
 |<kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd>|                                     Top, middle, bottom of screen|
 |<kbd>z</kbd><kbd>z</kbd>, <kbd>z</kbd><kbd>t</kbd>, <kbd>z</kbd><kbd>b</kbd>| View line center, top, bottom|
-|<kbd>Ctrl-e</kbd>, <kbd>Ctrl-y</kbd>|                                         Move up/down, keeping cursor on same line|
-|<kbd>Ctrl-f</kbd>, <kbd>Ctrl-b</kbd>|                                         Next, previous screen|
-|<kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd>|                                         Next, previous half-screen|
+|<kbd>Ctrl</kbd>-<kbd>e</kbd>, <kbd>Ctrl</kbd>-<kbd>y</kbd>|                                         Move up/down, keeping cursor on same line|
+|<kbd>Ctrl</kbd>-<kbd>f</kbd>, <kbd>Ctrl</kbd>-<kbd>b</kbd>|                                         Next, previous screen|
+|<kbd>Ctrl</kbd>-<kbd>d</kbd>, <kbd>Ctrl</kbd>-<kbd>u</kbd>|                                         Next, previous half-screen|
 |<kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd>|                                       Start, end of file|
 |<kbd>g</kbd><kbd>;</kbd>, <kbd>g</kbd><kbd>,</kbd>|                           Previous, next change|
 |<kbd>%</kbd>|                                                                 Jump forward or backwards to matching brace|
@@ -77,13 +77,14 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>C</kbd>|                                                                 Change to end of line|
 |<kbd>S</kbd>|                                                                 Substitute line|
 |<kbd>s</kbd>|                                                                 Substitute character|
-|<kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd>|                                         Complete word|
-|<kbd>Ctrl-x-l</kbd>|                                                          Complete line|
-|<kbd>Ctrl-d</kbd>|                                                            De-indent|
+|<kbd>Ctrl</kbd>-<kbd>n</kbd>, <kbd>Ctrl</kbd>-<kbd>p</kbd>|                                         Complete word|
+|<kbd>Ctrl</kbd>-<kbd>x-l</kbd>|                                                          Complete line|
+|<kbd>Ctrl</kbd>-<kbd>d</kbd>|                                                            De-indent|
+|<kbd>Alt</kbd>-<kbd>Right</kbd>|                                                         Codeium accept suggestion|
 |__Visual Mode And Selection__|[`:h visual-mode`](https://neovim.io/doc/user/visual.html#Visual)|
 |<kbd>v</kbd>|                                                                 Enter visual mode|
 |<kbd>V</kbd>|                                                                 Enter line-wise visual mode|
-|<kbd>Ctrl-v</kbd>|                                                            Block mode|
+|<kbd>Ctrl</kbd>-<kbd>v</kbd>|                                                            Block mode|
 |<kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd>|                                     Prepend, append, delete block selection|
 |<kbd>&lt;</kbd>, <kbd>&gt;</kbd>|                                             Indent selection|
 |<kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd>|                             Select whole file|
@@ -161,7 +162,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>c</kbd>|                                                                 Change|
 |<kbd>u</kbd>|                                                                 Undo|
 |<kbd>U</kbd>|                                                                 Undo all changes to line|
-|<kbd>Ctrl-r</kbd>|                                                            Redo|
+|<kbd>Ctrl</kbd>-<kbd>r</kbd>|                                                            Redo|
 |<kbd>r</kbd>|                                                                 Replace character|
 |<kbd>R</kbd>|                                                                 Type over|
 |<kbd>.</kbd>|                                                                 Repeat last operation|
@@ -227,13 +228,13 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:set OPT?`|                                                                  Show value of `opt`|
 |`:set`|                                                                       Show current options|
 |__Windows and Buffers__|[`:h windows`](https://neovim.io/doc/user/windows.html)|
-|<kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd>|               Buffer next, previous, delete (close)|
+|<kbd>tab</kbd>, <kbd>shift</kbd>-<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>|               Buffer next, previous, delete (close)|
 |`:sp, :vsp`|                                                                  Split view horizontal, vertical|
-|<kbd>Ctrl-w</kbd> <kbd>[sv]</kbd>|                                            Split view horizontal, vertical|
-|<kbd>Ctrl-w</kbd> <kbd>w</kbd>|                                               Switch view|
-|<kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd>|                                          Switch view|
-|<kbd>Ctrl-w</kbd> <kbd>q</kbd>|                                               Close view|
-|<kbd>Ctrl-w</kbd> [-+=_]|                                                     Resize view|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd> <kbd>[sv]</kbd>|                                            Split view horizontal, vertical|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd> <kbd>w</kbd>|                                               Switch view|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd> <kbd>Ctrl</kbd>-<kbd>w</kbd>|                                          Switch view|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd> <kbd>q</kbd>|                                               Close view|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd> [-+=_]|                                                     Resize view|
 |`:bufdo %s/foo/bar`|                                                          Do to all buffers|
 |__Registers__|[`:h registers`](https://neovim.io/doc/user/fold.html#Folding)|
 |`:reg`|                                                                       Show register contents|
@@ -257,7 +258,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:set textwidth=80`|                                                          Set default width to 80 columns|
 |`:set formatprg=par\ -w79`|                                                   Format using paragraph to at most 79 chars|
 |<kbd>g</kbd><kbd>q</kbd><kbd>[motion]</kbd>|                                  like gqip to format around paragraph|
-|<kbd>Ctrl-w</kbd>|                                                            does a gqip|
+|<kbd>Ctrl</kbd>-<kbd>w</kbd>|                                                            does a gqip|
 |<kbd>g</kbd><kbd>s</kbd>|                                                     Delete trailing whitespace in whole file|
 |<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>|                             Auto (re)indent entire document|
 |<kbd>=</kbd>|                                                                 (re)indent the text on the current line or on the area selected (SUPER)|
@@ -272,17 +273,17 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd>|                                  Uppercase|
 `:%s/\v(\a+)/\u\1/g` Title Case regex, \u,\l=Upper/lower next char, \U,\L=Up/Low following chars<br/>`:%s/\v(\w)_(\a+)/\1\u\2/g` Change `variable_name` to camel case, `variableName`
 |__Increment/Dec a value__|[plugin](https://github.com/tpope/vim-speeddating)|
-|<kbd>Ctrl-]</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
-|<kbd>Ctrl-[</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
-|<kbd>Ctrl-h</kbd>|                                                            :heavy_check_mark: In visual block mode insert sequence starting at count, defaults to 1|
-#|<kbd>Ctrl-j</kbd>|                                                            :heavy_check_mark: In visual block mode increment sequence|
-#|<kbd>Ctrl-k</kbd>|                                                            :heavy_check_mark: In visual block mode decrement sequence|
+|<kbd>Ctrl</kbd>-<kbd>]</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
+|<kbd>Ctrl</kbd>-<kbd>[</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
+|<kbd>Ctrl</kbd>-<kbd>h</kbd>|                                                            :heavy_check_mark: In visual block mode insert sequence starting at count, defaults to 1|
+#|<kbd>Ctrl</kbd>-<kbd>j</kbd>|                                                            :heavy_check_mark: In visual block mode increment sequence|
+#|<kbd>Ctrl</kbd>-<kbd>k</kbd>|                                                            :heavy_check_mark: In visual block mode decrement sequence|
 A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`<br/>`:let i=1 \| g/WEEKNUMBER/s//\=i/ \| let i=i+1`
 |__Moving Lines__||
-|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line/selection up 1 line|
-|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line/selection down 1 line|
+|<kbd>Alt</kbd>-<kbd>Up</kbd>|                                                            :heavy_check_mark: Move current line/selection up 1 line|
+|<kbd>Alt</kbd>-<kbd>Down</kbd>|                                                          :heavy_check_mark: Move current line/selection down 1 line|
 |__Commenting__||
-|<kbd>Ctrl-/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!|
+|<kbd>Ctrl</kbd>-<kbd>/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!|
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|
@@ -299,23 +300,23 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |__Executing lines/commands__||
 |<kbd>g</kbd><kbd>r</kbd>|                                                     :heavy_check_mark: Run line under cursor in shell, **USE WITH CARE!**|
 |<kbd>g</kbd><kbd>t</kbd>|                                                     :heavy_check_mark: Run line under cursor as if it were a vim command|
-|<kbd>Alt-r</kbd>|                                                             :heavy_check_mark: Run the current file|
-|<kbd>Alt-e</kbd>|                                                             :heavy_check_mark: Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable|
+|<kbd>Alt</kbd>-<kbd>r</kbd>|                                                             :heavy_check_mark: Run the current file|
+|<kbd>Alt</kbd>-<kbd>e</kbd>|                                                             :heavy_check_mark: Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable|
 |`:g/^Foo/norm 0xxxBar`|                                                       Norm runs commands as if you typed them|
 |__Spelling__|[`:h spell`](https://neovim.io/doc/user/spell.html)|
 |<kbd>z</kbd><kbd>=</kbd>|                                                     Suggest spelling|
 |<kbd>z</kbd><kbd>1</kbd>|                                                     Pick first word (same as <kbd>z</kbd><kbd>=</kbd><kbd>1</kbd>, hope its the correct one!)|
 |<kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd>|               Add to dict, undo add|
 |__Miscellaneous__||
-|<kbd>g</kbd><kbd>Ctrl-g</kbd>|                                                Word count|
+|<kbd>g</kbd><kbd>Ctrl</kbd>-<kbd>g</kbd>|                                                Word count|
 |<kbd>g</kbd><kbd>?</kbd>|                                                     Rot 13|
 |`:ascii` or <kbd>g</kbd><kbd>a</kbd>|                                         Ascii, octal val of char under cursor|
 |`:r !date`|                                                                   Insert external command output (e.g. date)|
 |`:so ~/.vimrc`|                                                               Reload .vimrc|
 |`:v/pattern/[command]`|                                                       Like :g but finds NON-matching lines|
 |`:g/foobar/y A`|                                                              Yank all lines matching `foobar` into copy buffer|
-|<kbd>Ctrl-l</kbd>|                                                            :heavy_check_mark: Redraws the screen and removes any search highlighting|
-|<kbd>Alt-p</kbd>|                                                             :heavy_check_mark: Pushes words to right to align with line above|
+|<kbd>Ctrl</kbd>-<kbd>l</kbd>|                                                            :heavy_check_mark: Redraws the screen and removes any search highlighting|
+|<kbd>Alt</kbd>-<kbd>p</kbd>|                                                             :heavy_check_mark: Pushes words to right to align with line above|
 |<kbd>g</kbd><kbd>B</kbd>|                                                     Converts (and replaces) currentline to a banner, which is commented out gB=go banner|
 |__Sexy sequences__||
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd>|                 $var_or_word to "$var_or_word"|

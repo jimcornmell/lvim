@@ -4,6 +4,15 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Shortcut if you think the first option will chose the correct word.
 map z1 z=1
 
+" Codeium: See: https://github.com/Exafunction/codeium.vim
+imap <script><silent><nowait><expr> <A-Right> codeium#Accept()
+" imap <script><silent><nowait><expr> <A-PgUP> <Cmd>call codeium#CycleCompletions(1)<CR>
+" imap <script><silent><nowait><expr> <A-PgDown> <Cmd>call codeium#CycleCompletions(-1)<CR>
+" imap <script><silent><nowait><expr> <A-#> codeium#Accept()
+" imap <C-;>   <Cmd>call codeium#CycleCompletions(1)<CR>
+" imap <C-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+" imap <C-x>   <Cmd>call codeium#Clear()<CR>
+
 " Dial
 nmap  <C-a>  <Plug>(dial-increment)
 nmap  <C-x>  <Plug>(dial-decrement)

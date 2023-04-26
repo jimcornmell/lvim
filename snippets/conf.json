@@ -1,0 +1,30 @@
+{
+  "httpPreScript": {
+    "body": [
+      "< {%",
+      "    const timestamp = Math.floor(new Date().getTime() / 1000);",
+      "    request.variables.set(\"timestamp\", timestamp)",
+      "    request.variables.set(\"signature\", crypto.hmac.sha256().withTextSecret(API_KEY).updateWithText(\"timestamp=\" + timestamp).digest().toHex());",
+      "%}",
+      "$0"
+    ],
+    "description": "HTTP request pre script",
+    "prefix": "httpPreScript"
+  },
+  "httpPostScript": {
+    "body": [
+      "> {%",
+      "    client.test(\"Request executed successfully\", function() {",
+      "            client.assert(response.status === 200, \"Response status is not 200: \" + response.status);",
+      "            });",
+      "    client.test(\"Response content-type is json\", function() {",
+      "            var type = response.contentType.mimeType;",
+      "            client.assert(type === \"application/json\", \"Expected 'application/json' but received '\" + type + \"'\");",
+      "            });",
+      "    %}",
+      "$0"
+    ],
+    "description": "HTTP Post Script",
+    "prefix": "httpPostScript"
+  }
+}

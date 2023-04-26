@@ -8,6 +8,7 @@
     "snippets": [
         { "language": "all",           "path": "./all.json" },
         { "language": "cpp",           "path": "./cpp.json" },
+        { "language": "conf",          "path": "./conf.json" },
         { "language": "groovy",        "path": "./groovy.json" },
         { "language": "java",          "path": "./java.json" },
         { "language": "javascript",    "path": "./javascript.json" },

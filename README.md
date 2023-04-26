@@ -93,10 +93,10 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
 The status line configuration can be found [here](https://github.com/jimcornmell/lvim/blob/main/lua/user/lualine.lua)
 
-![Status Line Normal](./media/status-line-normal.png)
-![Status Line Insert](./media/status-line-insert.png)
-![Status Line Visual](./media/status-line-visual.png)
-![Status Line Replace](./media/status-line-replace.png)
+![Status Line Normal](./media/status_line_normal.png)
+![Status Line Insert](./media/status_line_insert.png)
+![Status Line Visual](./media/status_line_visual.png)
+![Status Line Replace](./media/status_line_replace.png)
 
 This image shows what is in the different sections.
 

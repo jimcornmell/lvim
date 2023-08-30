@@ -42,6 +42,20 @@ lvim.builtin.dap.active                                       = true
 lvim.builtin.terminal.active                                  = true
 lvim.builtin.cmp.completion.keyword_length                    = 2
 
+-- SQLLS setup. https://github.com/joe-re/sql-language-server
+lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+  return server ~= "sqlls"
+end, lvim.lsp.automatic_configuration.skipped_servers)
+
+require("lvim.lsp.manager").setup("sqlls", {
+    cmd = {"sql-language-server", "up", "--method", "stdio"};
+    filetypes = {"sql", "mysql"};
+    root_dir = function() return vim.loop.cwd() end;
+    -- config = function()
+        -- require("user.sqlls").config()
+    -- end;
+})
+
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
@@ -76,19 +90,29 @@ local iconMinus        = ""
 local iconExclamation  = ""
 
 -- To set colours see GitSigns* in ~/.config/lvim/user_colors.vim
-lvim.builtin.gitsigns.opts.signs.add.text             = iconBar
-lvim.builtin.gitsigns.opts.signs.change.text          = iconBar
-lvim.builtin.gitsigns.opts.signs.delete.text          = iconMark
--- lvim.builtin.gitsigns.opts.signs.topdelete.text    = iconMinus
--- lvim.builtin.gitsigns.opts.signs.changedelete.text = iconExclamation
+lvim.builtin.gitsigns.opts.signs.add.text          = iconBar
+lvim.builtin.gitsigns.opts.signs.change.text       = iconBar
+lvim.builtin.gitsigns.opts.signs.delete.text       = iconMark
+lvim.builtin.gitsigns.opts.signs.topdelete.text    = iconMinus
+lvim.builtin.gitsigns.opts.signs.changedelete.text = iconExclamation
 
 -- To set colours see LspDiagnostics* in ~/.config/lvim/user_colors.vim
-lvim.lsp.diagnostics.signs.values = {
-    { name = "DiagnosticSignError",              text = iconError },
-    { name = "DiagnosticSignWarn",               text = iconWarn },
-    { name = "DiagnosticSignInfo",               text = iconInfo },
-    { name = "DiagnosticSignHint",               text = iconHint },
-}
+-- local config = { -- your config
+    -- virtual_text = {prefix = '!'} ,
+    -- signs = lvim.lsp.diagnostics.signs,
+    -- underline = lvim.lsp.diagnostics.underline,
+    -- update_in_insert = lvim.lsp.diagnostics.update_in_insert,
+    -- severity_sort = lvim.lsp.diagnostics.severity_sort,
+    -- float = lvim.lsp.diagnostics.float,
+-- }
+-- vim.diagnostic.config(config)
+
+-- lvim.lsp.diagnostics.signs.values = {
+    -- { name = "DiagnosticSignError",              text = iconError },
+    -- { name = "DiagnosticSignWarn",               text = iconWarn },
+    -- { name = "DiagnosticSignInfo",               text = iconInfo },
+    -- { name = "DiagnosticSignHint",               text = iconHint },
+-- }
 --}}}
 
 -- Dashboard/Alpha {{{1
@@ -133,14 +157,14 @@ lvim.plugins = {
   },
 
   -- SQL LSP.
-  {
-    "nanotee/sqls.nvim",
-    event = "BufRead",
-    ft = "sql",
-    config = function()
-      require("user.sqls").config()
-    end,
-  },
+  -- {
+    -- "nanotee/sqls.nvim",
+    -- event = "BufRead",
+    -- ft = "sql",
+    -- config = function()
+      -- require("user.sqls").config()
+    -- end,
+  -- },
 
   -- Unix commands. Try ":SudoWrite"
     -- Issue with cmp.u.k.recursive appearing when you hit enter.

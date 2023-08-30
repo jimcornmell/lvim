@@ -132,7 +132,7 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
 
 " Highlight #! lines... Both good and bad.
 highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
-call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\)$', 20)
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\|ruby\)$', 20)
 
 highlight sheBangBad                  gui=bold guifg=#E46600     guibg=NONE
 call matchadd('sheBangBad', '^#!.*')

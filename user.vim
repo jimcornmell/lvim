@@ -707,9 +707,9 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 
 " Remove white space on save for certain file types.
 autocmd BufWrite *.py :call DeleteEndingWhiteSpace()
-autocmd BufWrite *.java :call DeleteEndingWhiteSpace()
-autocmd BufWrite * if &ft=="sh" | :call DeleteEndingWhiteSpace() | endif
-autocmd BufWrite * if &ft=="vim" | :call DeleteEndingWhiteSpace() | endif
+" autocmd BufWrite *.java :call DeleteEndingWhiteSpace()
+" autocmd BufWrite * if &ft=="sh" | :call DeleteEndingWhiteSpace() | endif
+" autocmd BufWrite * if &ft=="vim" | :call DeleteEndingWhiteSpace() | endif
 
 " I prefer -- for comments in SQL
 autocmd FileType sql set commentstring=--\ %s

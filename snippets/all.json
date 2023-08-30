@@ -13,6 +13,39 @@
     "description": "FIXJC command block with date",
     "prefix": "__fixjc"
   },
+  "httpGetScript": {
+    "body": [
+      "### Get $0",
+      "",
+      "GET {{host}}/api/version",
+      "Accept: application/json",
+      "",
+      "> {%",
+      "    client.test(\"Expect request to return 200\", function() {",
+      "            client.assert(response.status === 200, \"Response status is not 200: \" + response.status);",
+      "            });",
+      "    client.test(\"Expect response content-type to be json\", function() {",
+      "            var type = response.contentType.mimeType;",
+      "            client.assert(type === \"application/json\", \"Expected 'application/json' but received '\" + type + \"'\");",
+      "            });",
+      "%}",
+      ""
+    ],
+    "description": "HTTP Post Script",
+    "prefix": "__httpPostScript"
+  },
+  "httpPreScript": {
+    "body": [
+      "< {%",
+      "    const timestamp = Math.floor(new Date().getTime() / 1000);",
+      "    request.variables.set(\"timestamp\", timestamp)",
+      "    request.variables.set(\"signature\", crypto.hmac.sha256().withTextSecret(API_KEY).updateWithText(\"timestamp=\" + timestamp).digest().toHex());",
+      "%}",
+      "$0"
+    ],
+    "description": "HTTP request pre script",
+    "prefix": "__httpPreScript"
+  },
   "line80chars": {
     "body": [
       "$LINE_COMMENT --------------------------------------------------------------------------------"

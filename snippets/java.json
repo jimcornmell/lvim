@@ -425,7 +425,7 @@
   },
   "log": {
     "body": [
-      " private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      " private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
       " $0"
     ],
     "description": "New static log var for a class",
@@ -436,7 +436,7 @@
       "import org.slf4j.Logger;",
       "import org.slf4j.LoggerFactory;",
       "",
-      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      " private static final Logger LOGGER = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
       " $0"
     ],
     "description": "New static log var (with imports)",
@@ -485,7 +485,7 @@
       " */",
       "public final class $TM_FILENAME_BASE {",
       " /** Logger! */",
-      " private static final Logger log = LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      " private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
       "",
       " /**",
       "  * Main.",

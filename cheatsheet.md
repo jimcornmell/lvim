@@ -259,7 +259,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:set formatprg=par\ -w79`|                                                   Format using paragraph to at most 79 chars|
 |<kbd>g</kbd><kbd>q</kbd><kbd>[motion]</kbd>|                                  like gqip to format around paragraph|
 |<kbd>Ctrl</kbd>-<kbd>w</kbd>|                                                            does a gqip|
-|<kbd>g</kbd><kbd>s</kbd>|                                                     Delete trailing whitespace in whole file|
+|<kbd>g</kbd><kbd>e</kbd>|                                                     Delete trailing whitespace in whole file|
 |<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>|                             Auto (re)indent entire document|
 |<kbd>=</kbd>|                                                                 (re)indent the text on the current line or on the area selected (SUPER)|
 |<kbd>=</kbd><kbd>%</kbd>|                                                     (re)indent the current braces { ... }|

@@ -441,6 +441,50 @@
     "description": "[[ ]] && true || false",
     "prefix": "__ite"
   },
+  "jira_example": {
+    "body": [
+      "#!/usr/bin/env bash",
+      "",
+      "HOST=https://jira.sometghin.org",
+      "TOKEN=TOKEN_HERE_FOR_JIRACLI",
+      "",
+      "runHttp() {",
+      "    https GET \"\\${HOST}/\\${1}\" -A bearer -a \"\\${TOKEN}\"",
+      "}",
+      "",
+      "runCurlPost() {",
+      "    API=\\$1",
+      "    DATA=\\$2",
+      "    # echo \"\\$DATA\" | https POST \\",
+      "        # \"\\${HOST}/\\${API}\" \\",
+      "        # -A bearer -a \"\\${TOKEN}\"",
+      "}",
+      "",
+      "runHttp \"rest/api/2/search?jql=assignee=jcornmell\"",
+      "runHttp \"rest/api/2/project\"",
+      "",
+      "# List all issue types.",
+      "runHttp \"rest/api/2/issue/createmeta/PIP/issuetypes\"",
+      "",
+      "while read -r string; do",
+      "    runCurlPost \"rest/api/2/issue\" \"{",
+      "    \\\"fields\\\": {",
+      "       \\\"project\\\": { \\\"key\\\": \\\"PIP\\\" },",
+      "       \\\"summary\\\": \\\"Mitigate \\$string\\\",",
+      "       \\\"description\\\": \\\"Mitigate CVE issue: \\$string\\\",",
+      "       \\\"issuetype\\\": { \\\"name\\\": \\\"Risk\\\" }",
+      "   }",
+      "}",
+      "\"",
+      "done<<EOF",
+      "elasticsearch-7.15.2.jar: CVE-2023-31418(7.5)",
+      "EOF",
+      "",
+      "$0"
+    ],
+    "description": "jira_example",
+    "prefix": "jira_example"
+  },
   "lengthofvariablestring": {
     "body": [
       "\\${#${0:variable-name-here}\\}"
@@ -798,6 +842,46 @@
     ],
     "description": "use sed to replace part of a string. Super useful for updating key value pairs in configuration files.",
     "prefix": "__replace"
+  },
+  "reporting_get_json_files": {
+    "body": [
+      "while read -r file",
+      "do",
+      "    p=\\${file%/*}",
+      "    f=\\${file##*/}",
+      "",
+      "    if [[ -e \"\\$p/\\$f\" ]]; then",
+      "        echo \"Skipping \\$p/\\$f\"",
+      "    else",
+      "        echo \"\\$file\"",
+      "        mkdir -p \"\\$p\"",
+      "        aws s3 cp \"s3://snomed-reporting-public/authoring/reporting-service/prod/jobs/\\$file\" .",
+      "        mv \"\\$f\" \"\\$p\"",
+      "    fi",
+      "done<<<\\$(aws s3 ls --recursive s3://snomed-reporting-public/authoring/reporting-service/prod/jobs/ | grep 'SnomedCT' | grep 'json\\$' | awk '{print \\$4}' | sed -e 's/authoring\\/reporting-service\\/prod\\/jobs\\///' | sort -u)",
+      "",
+      "$0"
+    ],
+    "description": "Reporting get JSON files",
+    "prefix": "reporting_get_json_files"
+  },
+  "reporting_get_refset_zip_files": {
+    "body": [
+      "while read -r file",
+      "do",
+      "    f=\\${file/.zip/}",
+      "",
+      "    if [[ ! -e \\$f ]]; then",
+      "        echo \"\\$file\"",
+      "        aws s3 cp \"s3://snomed-international/authoring/versioned-content/\\$file\" .",
+      "        unzip -o \"\\$file\" '*StatedRelationship_Snap*'",
+      "        rm \"\\$file\"",
+      "    fi",
+      "done<<<\\$(aws s3 ls s3://snomed-international/authoring/versioned-content/ | grep ' SnomedCT' | grep zip | awk '{print \\$4}' | sort -u)",
+      "$0"
+    ],
+    "description": "Reporting get RefSet ZIP files",
+    "prefix": "reporting_get_refset_zip_files"
   },
   "script": {
     "body": [

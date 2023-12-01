@@ -103,7 +103,17 @@
       "#!/usr/bin/env bash",
       "# shellcheck source=/home/jim/bin/libs/globals.sh",
       ". ~/bin/libs/globals.sh",
-      "$0"
+      "",
+      "while read -r string; do",
+      "    outnl \\$red \"$string\"",
+      "    $0",
+      "done<<EOF",
+      "Wibble",
+      "Wobble",
+      "Foo",
+      "Bar",
+      "EOF",
+      ""
     ],
     "description": "New bash file, short format",
     "prefix": "__new_bash"
@@ -261,6 +271,14 @@
     ],
     "description": "New Python3 script template",
     "prefix": "__new_python_file"
+  },
+  "shrug": {
+    "body": [
+      "¯\\_(ツ)_/¯",
+      "$0"
+    ],
+    "description": "shrug",
+    "prefix": "shrug"
   },
   "snippet": {
     "body": [

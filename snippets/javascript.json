@@ -1,4 +1,35 @@
 {
+  "Cypress": {
+    "body": [
+      "const {defineConfig} = require(\"cypress\");",
+      "",
+      "// See: https://docs.cypress.io/guides/references/configuration",
+      "// https://docs.cypress.io/guides/guides/command-line",
+      "",
+      "module.exports = defineConfig({",
+      "    reporter: 'cypress-mochawesome-reporter',",
+      "    video: true,",
+      "    viewportWidth: 1920,",
+      "    viewportHeight: 1200,",
+      "",
+      "    e2e: {",
+      "        setupNodeEvents(on, config) {",
+      "            // on(\"task\", {",
+      "            //     log(args) {",
+      "            //         console.log(...args);",
+      "            //         return null;",
+      "            //     }",
+      "            // });",
+      "",
+      "            require('cypress-mochawesome-reporter/plugin')(on);",
+      "        },",
+      "    },",
+      "});",
+      "$0"
+    ],
+    "description": "__cypress",
+    "prefix": "__cypress"
+  },
   "class": {
     "body": [
       "/**",

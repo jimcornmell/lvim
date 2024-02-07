@@ -1,20 +1,4 @@
 {
-  "gradle_new_file": {
-    "body": [
-      "apply plugin: 'java'",
-      "",
-      "repositories {",
-      "    mavenCentral()",
-      "}",
-      "",
-      "dependencies {",
-      "    testCompile 'junit:junit:+'",
-      "}",
-      ""
-    ],
-    "description": "New Gradle File",
-    "prefix": "__gradle_new_file"
-  },
   "spocktest": {
     "body": [
       "def \"Name #variable\"() {",
@@ -43,5 +27,32 @@
     ],
     "description": "New Spock test",
     "prefix": "__spocktest"
+  },
+  "switch": {
+    "body": [
+      "switch (x) {",
+      "    case Integer:",
+      "        result = \"integer\"",
+      "        break",
+      "    default:",
+      "        result = \"default\"",
+      "}",
+      "$0"
+    ],
+    "description": "Switch",
+    "prefix": "switch"
+  },
+  "switch_assign": {
+    "body": [
+      "def partner = switch(person) {",
+      "    case 'Romeo'  -> 'Juliet'",
+      "    case 'Adam'   -> 'Eve'",
+      "    case 'Antony' -> 'Cleopatra'",
+      "    case 'Bonnie' -> 'Clyde'",
+      "}",
+      "$0"
+    ],
+    "description": "Switch Assignment",
+    "prefix": "switch_assign"
   }
 }

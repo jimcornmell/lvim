@@ -194,7 +194,9 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>|                                         :heavy_check_mark: 'aWord' to aWord|
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd>|                 :heavy_check_mark: aWord to [aWord]|
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>W</kbd><kbd>"</kbd>|                 :heavy_check_mark: $var_or_word to "$var_or_word"|
-|<kbd>f</kbd><kbd>q</kbd>|                                                     :heavy_check_mark: fix quote, SHORTCUT FOR LINE ABOVE|
+|<kbd>g</kbd><kbd>"</kbd>|                                                     :heavy_check_mark: fix quote, SHORTCUT FOR LINE ABOVE|
+|<kbd>g</kbd><kbd>'</kbd>|                                                     :heavy_check_mark: fix quote, SHORTCUT FOR LINE ABOVE but '|
+|<kbd>g</kbd><kbd>`</kbd>|                                                     :heavy_check_mark: fix quote, SHORTCUT FOR LINE ABOVE but `|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd>|                             :heavy_check_mark: Whole-Line to (Whole-Line)|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd>|                             :heavy_check_mark: Whole-Line to "Whole-Line"|
 |__Macros__|[`:h complex-repeat`](https://neovim.io/doc/user/repeat.html#complex-repeat)|

@@ -57,7 +57,9 @@ nmap <silent> <leader>n :set norelativenumber<cr>
 nmap <silent> <leader>r :set relativenumber<cr>
 
 " Surround with quotes shortcut.
-nmap fq ysiW"
+nmap g" ysiW"
+nmap g' ysiW'
+nmap g` ysiW`
 
 " Snippets.
 map <silent> sc :call ShowColours()<CR>

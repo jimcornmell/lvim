@@ -476,6 +476,31 @@
     ],
     "prefix": "__jleft"
   },
+  "job_run": {
+    "body": [
+      "SELECT job_name,",
+      "       CASE",
+      "           WHEN status = 0 THEN \"Scheduled\"",
+      "           WHEN status = 1 THEN \"Running\"",
+      "           WHEN status = 2 THEN \"Failed\"",
+      "           WHEN status = 3 THEN \"Complete\"",
+      "           WHEN status = 4 THEN \"Cancelled\" END                   AS status,",
+      "       CONCAT(\"[\", IF(result_url IS NULL, NULL, \"REPORT\"), \"](\", result_url, \")\") AS report_url,",
+      "       debug_info,",
+      "       result_time,",
+      "       request_time,",
+      "       run_batch_id,",
+      "       issues_reported,",
+      "       Project,",
+      "       CONCAT(\"[\", IF(terminology_server_url IS NULL, NULL, \"TS\"), \"](\", terminology_server_url, \")\") AS terminology_server_url",
+      "FROM job_run",
+      "WHERE request_time > '2024-02-06'",
+      "ORDER BY job_run.status, result_time;",
+      "$0"
+    ],
+    "description": "__job_run",
+    "prefix": "__job_run"
+  },
   "jright": {
     "body": [
       "RIGHT JOIN `$1` AS `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}` ON ( `${2:${1/(.)[^_]*(?:_(.))?.*/$1$2/}}`.`${4:id}` = `$5`.`${6:id}` )"

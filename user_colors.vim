@@ -179,8 +179,8 @@ highlight deprecatedWord                       guifg=#FFFFFF     guibg=#442222
 call matchadd('deprecatedWord', '[Dd][Ee][Pp][Rr][Ee][Cc][Aa][Tt][Ee][Dd]', 50)
 
 " Hop colours.
-highlight HopNextKey                  gui=bold guifg=#ff007c  " Single key combination.
-highlight HopNextKey1                 gui=bold guifg=#00ccff  " Two key combination, first char.
-highlight HopNextKey2                 gui=bold guifg=#0099ff  " Two key combination, second char.
+highlight HopNextKey                  gui=bold guifg=#ff007c  " Single key combination.  In Kjump/IJ 1hit font colour use ffff007c (Background ff000000)
+highlight HopNextKey1                 gui=bold guifg=#00ccff  " Two key combination, first char.  KJump = ff00ccff
+highlight HopNextKey2                 gui=bold guifg=#0099ff  " Two key combination, second char.  KJump = ff0099ff
 highlight HopUnmatched                         guifg=#888888  " Other chars.
 

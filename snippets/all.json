@@ -1,4 +1,11 @@
 {
+  "SCT": {
+    "body": [
+      "Snomed CT $0"
+    ],
+    "description": "SnomedCT",
+    "prefix": "__SCT"
+  },
   "date": {
     "body": [
       "$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $0"
@@ -243,6 +250,104 @@
     "description": "New BASH script template",
     "prefix": "__new_bash_file"
   },
+  "new_gradle_file": {
+    "body": [
+      "apply plugin: 'java'",
+      "",
+      "repositories {",
+      "    mavenCentral()",
+      "}",
+      "",
+      "dependencies {",
+      "    testCompile 'junit:junit:+'",
+      "}",
+      ""
+    ],
+    "description": "New Gradle File",
+    "prefix": "__gradle_new_file"
+  },
+  "new_groovy_file": {
+    "body": [
+      "#!/usr/bin/env groovy",
+      "$0"
+    ],
+    "description": "New Groovy Header",
+    "prefix": "__new_groovy"
+  },
+  "new_html_file": {
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en-GB\">",
+      "",
+      "<head>",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "    <title>My web page</title>",
+      "    <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">",
+      "    <style>",
+      "        html {",
+      "            font-size: 12px;",
+      "            font-family: sans-serif;",
+      "        }",
+      "",
+      "        h1 {",
+      "            font-size: 20px;",
+      "            font-weight: bold;",
+      "            text-align: center;",
+      "            color: white;",
+      "            background-color: black;",
+      "            border-radius: 10px;",
+      "            border-color: black;",
+      "        }",
+      "    </style>",
+      "    <script>",
+      "        var environment = 'dev';",
+      "",
+      "        function fixUrl(url) {",
+      "        }",
+      "    </script>",
+      "    <title>Links</title>",
+      "</head>",
+      "",
+      "<body>",
+      "<div class=\"links\">",
+      "    <h1>Hello, world!</h1>",
+      "    <p>This is my first web page.</p>",
+      "    <p>It contains a",
+      "        <strong>main heading</strong> and <em> paragraph </em>.",
+      "    </p>",
+      "</div>",
+      "</body>",
+      "",
+      "</html>",
+      "$0"
+    ],
+    "description": "New HTML",
+    "prefix": "__newhtml"
+  },
+  "new_markdown_issue": {
+    "body": [
+      "# 2020_00_00_Template",
+      "",
+      "# Issue:",
+      "",
+      "* https://jira.ihtsdotools.org/browse/MSSP-0000",
+      "* https://jira.ihtsdotools.org/browse/INFRA-0000",
+      "* https://jira.ihtsdotools.org/browse/PIP-000",
+      "",
+      "# Issue symptoms.",
+      "",
+      "# Research path.",
+      "",
+      "# Underlying cause of issue.",
+      "",
+      "# How it was fixed.",
+      "",
+      "# How we verified it was fixed so it could be closed.",
+      "$0"
+    ],
+    "description": "New issue template in markdown",
+    "prefix": "__new_markdown_issue"
+  },
   "new_python_file": {
     "body": [
       "#!/usr/bin/env python3",
@@ -278,7 +383,7 @@
       "$0"
     ],
     "description": "shrug",
-    "prefix": "shrug"
+    "prefix": "__shrug"
   },
   "snippet": {
     "body": [

@@ -14,14 +14,16 @@ imap <script><silent><nowait><expr> <A-Right> codeium#Accept()
 " imap <C-x>   <Cmd>call codeium#Clear()<CR>
 
 " Dial
-nmap  <C-a>  <Plug>(dial-increment)
-nmap  <C-x>  <Plug>(dial-decrement)
-vmap  <C-a>  <Plug>(dial-increment)
-vmap  <C-x>  <Plug>(dial-decrement)
-vmap g<C-a> g<Plug>(dial-increment)
-vmap g<C-x> g<Plug>(dial-decrement)
+" nmap  <C-a>  <Plug>(dial-increment)
+" nmap  <C-x>  <Plug>(dial-decrement)
+" vmap  <C-a>  <Plug>(dial-increment)
+" vmap  <C-x>  <Plug>(dial-decrement)
+" vmap g<C-a> g<Plug>(dial-increment)
+" vmap g<C-x> g<Plug>(dial-decrement)
 map   <C-.>  <Plug>(dial-increment)
 map   <C-,>  <Plug>(dial-decrement)
+
+map <C-a> <esc>ggVGy+<CR>
 
 " Buffer next and previous with tab.
 nmap <Tab> :bnext<CR>

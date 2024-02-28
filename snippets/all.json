@@ -1,4 +1,41 @@
 {
+  "Cypress": {
+    "body": [
+      "const {defineConfig} = require(\"cypress\");",
+      "",
+      "// See: https://docs.cypress.io/guides/references/configuration",
+      "// https://docs.cypress.io/guides/guides/command-line",
+      "",
+      "module.exports = defineConfig({",
+      "    reporter: 'cypress-mochawesome-reporter',",
+      "    video: true,",
+      "    videoCompression: true,",
+      "    viewportWidth: 1920,",
+      "    viewportHeight: 1080,",
+      "    // viewportWidth: 1280,",
+      "    // viewportHeight: 1024,",
+      "",
+      "    e2e: {",
+      "        experimentalStudio: true,",
+      "        testIsolation: false,",
+      "",
+      "        setupNodeEvents(on, config) {",
+      "            // on(\"task\", {",
+      "            //     log(args) {",
+      "            //         console.log(...args);",
+      "            //         return null;",
+      "            //     }",
+      "            // });",
+      "",
+      "            require('cypress-mochawesome-reporter/plugin')(on);",
+      "        },",
+      "    },",
+      "});",
+      "$0"
+    ],
+    "description": "__cypress",
+    "prefix": "__cypress"
+  },
   "SCT": {
     "body": [
       "Snomed CT $0"

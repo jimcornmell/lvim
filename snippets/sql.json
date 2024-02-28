@@ -6,6 +6,28 @@
     "description": "(declare .. varchar .. default)",
     "prefix": "__-dec-s"
   },
+  "__listDups": {
+    "body": [
+      "SELECT business_key, COUNT(business_key)",
+      "FROM product",
+      "GROUP BY business_key",
+      "HAVING COUNT(business_key) > 1;",
+      "$0"
+    ],
+    "description": "__listDups",
+    "prefix": "__listDups"
+  },
+  "__longestString": {
+    "body": [
+      "SELECT LENGTH(business_key), business_key",
+      "FROM product",
+      "ORDER BY LENGTH(business_key) DESC",
+      "LIMIT 1;",
+      "$0"
+    ],
+    "description": "__longestString",
+    "prefix": "__longestString"
+  },
   "alias": {
     "body": [
       "`$1`.`$2` AS `$3`"

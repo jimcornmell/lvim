@@ -8,6 +8,28 @@
     "description": "@Value",
     "prefix": "__@value"
   },
+  "__Exception": {
+    "body": [
+      "package name.of.package;",
+      "",
+      "public class SomeException extends Exception {",
+      "    public SomeException(String message) {",
+      "        super(message);",
+      "    }",
+      "",
+      "    public SomeException(String message, Throwable cause) {",
+      "        super(message, cause);",
+      "    }",
+      "",
+      "    public SomeException(String message, Object... args) {",
+      "        super(String.format(message, args));",
+      "    }",
+      "}",
+      "$0"
+    ],
+    "description": "Exception",
+    "prefix": "__Exception"
+  },
   "__append_to_file": {
     "body": [
       "try (BufferedWriter out = new BufferedWriter(new FileWriter(”filename”, true)) {",
@@ -425,8 +447,8 @@
   },
   "log": {
     "body": [
-      " private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
-      " $0"
+      "private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger($TM_FILENAME_BASE.class);",
+      "$0"
     ],
     "description": "New static log var for a class",
     "prefix": "__log"

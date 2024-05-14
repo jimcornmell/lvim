@@ -51,7 +51,7 @@ let g:devdocs_filetype_map = {
 
 " gq to format selection as 80 char justified.
 " set formatoptions q
-set formatprg=par\ -w79
+set formatprg=par\ -w119
 map gw gqip
 
 " Margin numbers.

@@ -60,6 +60,37 @@
     "description": "Convert util.date to sql.date",
     "prefix": "__date_to_sql_date"
   },
+  "__deletemapping": {
+    "body": [
+      "@DeleteMapping(\"/somethings/{id}\")",
+      "public Map<String, Boolean> deleteSomething(@PathVariable(value = \"id\") Long somethingId) throws ResourceNotFoundException {",
+      "    Something something = somethingRepository.findById(somethingId)",
+      "        .orElseThrow(() -> new ResourceNotFoundException(\"Something not found for this id :: \" + somethingId));",
+      "",
+      "    somethingRepository.delete(something);",
+      "    Map<String, Boolean> response = new HashMap<>();",
+      "    response.put(\"deleted\", Boolean.TRUE);",
+      "    return response;",
+      "}",
+      "$0"
+    ],
+    "description": "Delete mapping",
+    "prefix": "__deletemapping"
+  },
+  "__getmapping": {
+    "body": [
+      "@GetMapping(\"/something/{id}\")",
+      "public ResponseEntity<Something> getSomethingById(@PathVariable(value = \"id\") Long anId) throws ResourceNotFoundException {",
+      "    // Find something by Id.",
+      "    Something something = somethingRepository.findById(somethingId)",
+      "        .orElseThrow(() -> new ResourceNotFoundException(\"Something not found for this id :: \" + somethingId));",
+      "    return ResponseEntity.ok().body(something);",
+      "}",
+      "$0"
+    ],
+    "description": "Get Mapping",
+    "prefix": "__getmapping"
+  },
   "__method_name": {
     "body": [
       "String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();",
@@ -67,6 +98,38 @@
     ],
     "description": "Get name of current meathod",
     "prefix": "__method_name"
+  },
+  "__postmapping": {
+    "body": [
+      "@PostMapping(\"/somethings\")",
+      "public Something createSomething(@Valid @RequestBody Something something) {",
+      "    return somethingRepository.save(something);",
+      "}",
+      "$0"
+    ],
+    "description": "Post Mapping",
+    "prefix": "__postmapping"
+  },
+  "__putmapping": {
+    "body": [
+      "@PutMapping(\"/somethings/{id}\")",
+      "public ResponseEntity<Something> updateSomething(@PathVariable(value = \"id\") Long somethingId,",
+      "        @Valid @RequestBody Something somethingDetails) throws ResourceNotFoundException {",
+      "    Something something = somethingRepository.findById(somethingId)",
+      "        .orElseThrow(() -> new ResourceNotFoundException(\"Something not found for this id :: \" + somethingId));",
+      "",
+      "    something.setEmailId(somethingDetails.getEmailId());",
+      "    something.setLastName(somethingDetails.getLastName());",
+      "    something.setFirstName(somethingDetails.getFirstName());",
+      "",
+      "    final Something updatedSomething = somethingRepository.save(something);",
+      "",
+      "    return ResponseEntity.ok(updatedSomething);",
+      "}",
+      "$0"
+    ],
+    "description": "Put Mapping",
+    "prefix": "__putmapping"
   },
   "__string_to_int_and_back": {
     "body": [

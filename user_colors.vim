@@ -132,7 +132,10 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
 
 " Highlight #! lines... Both good and bad.
 highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
-call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\|ruby\)$', 20)
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\|ruby\|nix-shell\)$', 20)
+
+highlight sheBangNix gui=bold,italic,underline guifg=#54db54     guibg=NONE
+call matchadd('sheBangNix', '^#! nix-shell .*$', 20)
 
 highlight sheBangBad                  gui=bold guifg=#E46600     guibg=NONE
 call matchadd('sheBangBad', '^#!.*')
@@ -160,14 +163,15 @@ call matchadd('markerEnd', '^.*}\{3\}.*$', 50)
 " +++++
 " -----
 " #####
+" .....
 " =====
 " *****
 highlight markerLineCommentGrey                guifg=#000000     guibg=#999999
 call matchadd('markerLineCommentGrey',      '^.*[+]\{5,\}$', 50)
-highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
-call matchadd('markerLineCommentAmber',     '^.*\.\{5,\}$', 50)
 highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
 call matchadd('markerLineCommentGreen',     '^.*[-#]\{5,\}$', 50)
+highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
+call matchadd('markerLineCommentAmber',     '^.*\.\{5,\}$', 50)
 highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
 call matchadd('markerLineCommentRed',       '^.*=\{5,\}$', 50)
 highlight markerLineCommentBrightRed           guifg=#000000     guibg=#FF0000

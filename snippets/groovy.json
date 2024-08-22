@@ -1,6 +1,14 @@
 {
   "spocktest": {
     "body": [
+      "// import org.springframework.boot.test.web.server.LocalServerPort",
+      "",
+      "// @LocalServerPort",
+      "// private int port",
+      "// def userDTO = [login: \"\", password: \"password\"]",
+      "// def url = \"http://localhost:\\${port}/authenticate\"",
+      "",
+      "$0",
       "def \"Name #variable\"() {",
       "    given:",
       "        Map<String, Object> settings = [:]",

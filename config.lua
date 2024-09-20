@@ -43,9 +43,9 @@ lvim.builtin.terminal.active                                  = true
 lvim.builtin.cmp.completion.keyword_length                    = 2
 
 -- SQLLS setup. https://github.com/joe-re/sql-language-server
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return server ~= "sqlls"
-end, lvim.lsp.automatic_configuration.skipped_servers)
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+  -- return server ~= "sqlls"
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 require("lvim.lsp.manager").setup("sqlls", {
     cmd = {"sql-language-server", "up", "--method", "stdio"};

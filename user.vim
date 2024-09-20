@@ -681,16 +681,10 @@ iab Appl Application
 iab adn and
 
 " Work related
-iab SCT SNOMED CT
-iab sct SNOMED CT
-iab sni SNOMED International
-iab SNI SNOMED International
-iab sno Snomed
-iab SNO SNOMED
-iab icd International Classification Diseases
-iab rdf Resource Definition Framework
-iab owl Web Ontology Language
-iab mrn Medical Record Number
+iab JLP jim.cornmell@johnlewis.co.uk
+iab GBP £
+iab EUR €
+
 " }}}
 
 " Auto Commands, e.g. source init.vim {{{1

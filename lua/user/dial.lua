@@ -41,6 +41,14 @@ M.config = function()
                 word = true, cyclic = true,
             },
             augend.constant.new{
+                elements = {"enable", "disable"},
+                word = true, cyclic = true,
+            },
+            augend.constant.new{
+                elements = {"enabled", "disabled"},
+                word = true, cyclic = true,
+            },
+            augend.constant.new{
                 elements = {"&&", "||"},
                 word = false, cyclic = true,
             },

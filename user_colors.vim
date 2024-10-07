@@ -22,7 +22,7 @@ highlight NonText                                        gui=bold guifg=#1D1D1D
 highlight Whitespace                                     gui=bold guifg=#1D1D1D
 
 " Highlight cursor line/column
-set colorcolumn=80,120
+set colorcolumn=80,120,200
 highlight ColorColumn                          guifg=#ffffff     guibg=#181818
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#302222

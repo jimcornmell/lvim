@@ -238,7 +238,7 @@ endfunction
 
 function! ToggleColourLineTooLong()
     if &colorcolumn == 0
-        set colorcolumn=80,120
+        set colorcolumn=80,120,200
         highlight longLine                          guibg=#5F3F3F
     else
         set colorcolumn=0

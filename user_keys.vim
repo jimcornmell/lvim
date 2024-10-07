@@ -62,6 +62,8 @@ nmap <silent> <leader>r :set relativenumber<cr>
 nmap g" ysiW"
 nmap g' ysiW'
 nmap g` ysiW`
+nmap g* ysiW*
+nmap g_ ysiW_
 
 " Snippets.
 map <silent> sc :call ShowColours()<CR>

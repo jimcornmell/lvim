@@ -3,6 +3,7 @@ Useful Links and TODO
 http://cheat.sh
 Buffer bar info: https://github.com/romgrk/barbar.nvim
 -- }}}1 ]]
+
 --[[ Settings {{{1
 lvim is the global options object
 
@@ -47,14 +48,14 @@ lvim.builtin.cmp.completion.keyword_length                    = 2
   -- return server ~= "sqlls"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
-require("lvim.lsp.manager").setup("sqlls", {
-    cmd = {"sql-language-server", "up", "--method", "stdio"};
-    filetypes = {"sql", "mysql"};
-    root_dir = function() return vim.loop.cwd() end;
-    -- config = function()
-        -- require("user.sqlls").config()
-    -- end;
-})
+-- require("lvim.lsp.manager").setup("sqlls", {
+    -- cmd = {"sql-language-server", "up", "--method", "stdio"};
+    -- filetypes = {"sql", "mysql"};
+    -- root_dir = function() return vim.loop.cwd() end;
+    -- -- config = function()
+        -- -- require("user.sqlls").config()
+    -- -- end;
+-- })
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -156,16 +157,6 @@ lvim.plugins = {
     end,
   },
 
-  -- SQL LSP.
-  -- {
-    -- "nanotee/sqls.nvim",
-    -- event = "BufRead",
-    -- ft = "sql",
-    -- config = function()
-      -- require("user.sqls").config()
-    -- end,
-  -- },
-
   -- Unix commands. Try ":SudoWrite"
     -- Issue with cmp.u.k.recursive appearing when you hit enter.
     -- See: https://github.com/hrsh7th/nvim-cmp/issues/770
@@ -241,16 +232,16 @@ lvim.plugins = {
 
   -- numb
   -- jump to the line
-  {
-    "nacro90/numb.nvim",
-    event = "BufRead",
-    config = function()
-      require("numb").setup {
-        show_numbers = true, -- Enable 'number' for the window while peeking
-        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-      }
-    end,
-  },
+  -- {
+    -- "nacro90/numb.nvim",
+    -- event = "BufRead",
+    -- config = function()
+      -- require("numb").setup {
+        -- show_numbers = true, -- Enable 'number' for the window while peeking
+        -- show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      -- }
+    -- end,
+  -- },
 
   -- nvim-bqf
   -- better quickfix window
@@ -294,15 +285,15 @@ lvim.plugins = {
   -- rnvimr
   -- ranger file explorer window
   -- Ranger, Leader r
-  {
-    "kevinhwang91/rnvimr",
-    cmd = "RnvimrToggle",
+  -- {
+    -- "kevinhwang91/rnvimr",
+    -- cmd = "RnvimrToggle",
   --   config = function()
   --     vim.g.rnvimr_draw_border = 1
   --     vim.g.rnvimr_pick_enable = 1
   --     vim.g.rnvimr_bw_enable = 1
   --   end,
-  },
+  -- },
 
   -- snap
   -- fast finder system
@@ -382,26 +373,26 @@ lvim.plugins = {
 
   -- vim-fugitive
   -- git wrapper Try ":Git "
-  {
-    "tpope/vim-fugitive",
+  -- {
+    -- "tpope/vim-fugitive",
     -- event = "BufRead",
-    cmd = {
-      "G",
-      "Git",
-      "Gdiffsplit",
-      "Gread",
-      "Gwrite",
-      "Ggrep",
-      "GMove",
-      "GDelete",
-      "GBrowse",
-      "GRemove",
-      "GRename",
-      "Glgrep",
-      "Gedit"
-    },
-    ft = {"fugitive"}
-  },
+    -- cmd = {
+      -- "G",
+      -- "Git",
+      -- "Gdiffsplit",
+      -- "Gread",
+      -- "Gwrite",
+      -- "Ggrep",
+      -- "GMove",
+      -- "GDelete",
+      -- "GBrowse",
+      -- "GRemove",
+      -- "GRename",
+      -- "Glgrep",
+      -- "Gedit"
+    -- },
+    -- ft = {"fugitive"}
+  -- },
 
   -- vim-gist
   -- create/edit Github gists
@@ -497,21 +488,21 @@ lvim.plugins = {
   -- LSP Enhancement
   -- cmp-tabnine
   -- TabNine completion engine for hrsh7th/nvim-cmp
-  {
-    "tzachar/cmp-tabnine",
-    build = "./install.sh",
-    dependencies = "hrsh7th/nvim-cmp",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 10,
-        sort = true,
-      }
-    end,
-    lazy = true,
-    event = "InsertEnter",
-  },
+  -- {
+  --   "tzachar/cmp-tabnine",
+  --   build = "./install.sh",
+  --   dependencies = "hrsh7th/nvim-cmp",
+  --   config = function()
+  --     local tabnine = require "cmp_tabnine.config"
+  --     tabnine:setup {
+  --       max_lines = 1000,
+  --       max_num_results = 10,
+  --       sort = true,
+  --     }
+  --   end,
+  --   lazy = true,
+  --   event = "InsertEnter",
+  -- },
 
   -- goto-preview
   -- previewing goto definition calls
@@ -546,20 +537,20 @@ lvim.plugins = {
 
   -- lsp_signature.nvim
   -- hint when you type
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require "lsp_signature".setup()
-    end
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require "lsp_signature".setup()
+  --   end
+  -- },
 
   -- symbols-outline.nvim - F12
   -- a tree like view for symbols
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-  },
+  -- {
+  --   "simrat39/symbols-outline.nvim",
+  --   cmd = "SymbolsOutline",
+  -- },
 
   -- trouble.nvim
   -- diagnostics, references, telescope results, quickfix and location lists
@@ -591,10 +582,10 @@ lvim.plugins = {
 
   -- codi.vim
   -- interactive scratchpad for hackers
-  {
-    "metakirby5/codi.vim",
-    cmd = "Codi",
-  },
+  -- {
+  --   "metakirby5/codi.vim",
+  --   cmd = "Codi",
+  -- },
 
   -- Enhanced increment/decrement : True, true, January
   -- dial.nvim
@@ -646,24 +637,24 @@ lvim.plugins = {
 
   -- neoscroll
   -- smooth scrolling
-  {
-    "karb94/neoscroll.nvim",
-    event = "WinScrolled",
-    config = function()
-      require('neoscroll').setup({
+  -- {
+    -- "karb94/neoscroll.nvim",
+    -- event = "WinScrolled",
+    -- config = function()
+      -- require('neoscroll').setup({
         -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-        hide_cursor = true,          -- Hide cursor while scrolling
-        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil,        -- Default easing function
-        pre_hook = nil,              -- Function to run before the scrolling animation starts
-        post_hook = nil,              -- Function to run after the scrolling animation ends
-      })
-    end
-  },
+    --     mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+    --     hide_cursor = true,          -- Hide cursor while scrolling
+    --     stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    --     use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+    --     respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+    --     cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    --     easing_function = nil,        -- Default easing function
+    --     pre_hook = nil,              -- Function to run before the scrolling animation starts
+    --     post_hook = nil,              -- Function to run after the scrolling animation ends
+    --   })
+    -- end
+  -- },
 
   -- neuron
   -- next generation note-taking
@@ -710,7 +701,6 @@ lvim.plugins = {
   -- todo-comments.nvim
   -- highlight and search for todo comments
   -- FIX:Something to describe.
-  -- FIXJCO:Something to describe.
   -- FIXJC:Something to describe.
   -- FIXME: Something to describe.
   -- BUG:Something to describe.
@@ -802,9 +792,9 @@ lvim.plugins = {
   },
 
   -- Codeium completion...
-  {
-    'Exafunction/codeium.vim'
-  },
+  -- {
+    -- 'Exafunction/codeium.vim'
+  -- },
 
   -- vim-bundler
   -- lightweight support for ruby's bundler
@@ -916,6 +906,7 @@ vim.api.nvim_set_keymap("n", "<S-h>",   ":bprevious<CR>", { noremap = true, sile
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
 -- }}}1
 
+-- DAP {{{1
 local dap = require('dap')
 
 dap.adapters.python = {
@@ -961,6 +952,7 @@ dap.configurations.python = dap.configurations.python or {}
     end,
     console = 'integratedTerminal'
 })
+-- }}}1
 
 -- See end of this file for my other config.
 --    ~/.local/share/lunarvim/lvim/init.lua
@@ -969,6 +961,6 @@ dap.configurations.python = dap.configurations.python or {}
 --     vim.cmd('source ~/.config/lvim/user_keys.vim')
 
 -- HACK: Link in the style so the background is correct.
--- lvim.builtin.lualine.options.theme                  = "curvywurvy"
---     ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
+lvim.builtin.lualine.options.theme                  = "curvywurvy"
+--    ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
 

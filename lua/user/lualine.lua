@@ -106,47 +106,31 @@ local icons = {
     bracketleft       = '',
     bracketright      = '',
     vim               = '',
-    -- vim            = '',
     git               = '',
-    -- git            = '',
     github            = '',
     gitlab            = '',
     gitbitbucket      = '',
     hg                = '',
     gitadd            = ' ',
-    -- gitadd         = ' ',
     gitmod            = ' ',
-    -- gitmod         = '柳',
     gitdel            = ' ',
-    -- gitdel         = ' ',
-    -- lsp               = '',
     lsp               = '',
     lspdiagerror      = ' ',
-    -- lspdiagerror   = ' ',
     lspdiagwarning    = ' ',
-    -- lspdiagwarning = ' ',
     lspdiaginfo       = ' ',
-    -- lspdiaginfo    = ' ',
-    lspdiaghint       = ' ',
-    -- lspdiaghint    = ' ',
+    lspdiaghint       = ' ',
     dos               = '',
     unix              = '',
-    -- unix           = '',
     mac               = '',
     typewriteable     = '',
-    -- typewriteable  = '',
-    -- typewriteable  = '',
     typereadonly      = '',
     typesize          = '',
-    -- typesize       = '',
     typeenc           = '',
     stats             = '⅑',
-    -- statsvert      = '⇳',
     statsvert         = '⬍',
-    -- statshoriz     = '⇔',
     statshoriz        = '⬌',
-    statsspace        = '⯀',
-    statstab          = '⯈',
+    statsspace        = '󱁐',
+    statstab          = '󰌒',
 }
 -- }}}2
 
@@ -294,56 +278,56 @@ ins_left {
 -- Git info {{{2
 
 -- Git Branch Name {{{3
-ins_left {
-    function()
-        highlightGroup('Git', colors.giticonbg, colors.gitbg, colors.gittext)
-        return icons['bracketleft']
-    end,
-    color = 'LualineGitLft',
-    cond = conditions.display_git,
-    padding = { left = 1, right = 0 }
-}
-ins_left {
-    function() return getGitIcon() end,
-    color = 'LualineGitMidInv',
-    cond = conditions.display_git,
-    padding = { left = 0, right = 0 }
-}
-ins_left {
-    function() return icons['bracketright'] end,
-    color = 'LualineGitMid',
-    cond = conditions.display_git,
-    padding = { left = 0, right = 0 }
-}
-ins_left {
-    'branch',
-    color = 'LualineGitTxt',
-    cond = conditions.display_git,
-    icon='',
-    padding = { left = 0, right = 0 }
-}
+-- ins_left {
+--     function()
+--         highlightGroup('Git', colors.giticonbg, colors.gitbg, colors.gittext)
+--         return icons['bracketleft']
+--     end,
+--     color = 'LualineGitLft',
+--     cond = conditions.display_git,
+--     padding = { left = 1, right = 0 }
+-- }
+-- ins_left {
+--     function() return getGitIcon() end,
+--     color = 'LualineGitMidInv',
+--     cond = conditions.display_git,
+--     padding = { left = 0, right = 0 }
+-- }
+-- ins_left {
+--     function() return icons['bracketright'] end,
+--     color = 'LualineGitMid',
+--     cond = conditions.display_git,
+--     padding = { left = 0, right = 0 }
+-- }
+-- ins_left {
+    -- 'branch',
+    -- color = 'LualineGitTxt',
+    -- cond = conditions.display_git,
+    -- icon='',
+    -- padding = { left = 0, right = 0 }
+-- }
 -- }}}3
 
 -- Git diffs {{{3
-ins_left {
-    'diff',
-    color = 'LualineGitTxt',
-    symbols = {added = icons['gitadd'], modified = icons['gitmod'], removed = icons['gitdel']},
-    diff_color = {
-        added = {fg = colors.green, bg=colors.gitbg},
-        modified = {fg = colors.orange, bg=colors.gitbg},
-        removed = {fg = colors.red, bg=colors.gitbg},
-    },
-    cond = conditions.display_git,
-    icon='',
-    padding = { left = 0, right = 0 }
-}
-ins_left {
-    function() return icons['bracketright'] end,
-    color = 'LualineGitEnd',
-    cond = conditions.display_git,
-    padding = { left = 0, right = 0 }
-}
+-- ins_left {
+--     'diff',
+--     color = 'LualineGitTxt',
+--     symbols = {added = icons['gitadd'], modified = icons['gitmod'], removed = icons['gitdel']},
+--     diff_color = {
+--         added = {fg = colors.green, bg=colors.gitbg},
+--         modified = {fg = colors.orange, bg=colors.gitbg},
+--         removed = {fg = colors.red, bg=colors.gitbg},
+--     },
+--     cond = conditions.display_git,
+--     icon='',
+--     padding = { left = 0, right = 0 }
+-- }
+-- ins_left {
+--     function() return icons['bracketright'] end,
+--     color = 'LualineGitEnd',
+--     cond = conditions.display_git,
+--     padding = { left = 0, right = 0 }
+-- }
 -- }}}3
 
 -- }}}2

@@ -680,11 +680,10 @@ iab Attr Attributes
 iab Appl Application
 iab adn and
 
-" Work related
-iab JLP jim.cornmell@johnlewis.co.uk
+" Symbols
 iab GBP £
 iab EUR €
-
+iab MAC 
 " }}}
 
 " Auto Commands, e.g. source init.vim {{{1

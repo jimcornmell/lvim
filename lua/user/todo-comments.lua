@@ -6,9 +6,13 @@ M.config = function()
             OK = { icon = "✔ ", color = "ok" },
             ISH = { icon = "☛ ", color = "ish" },
             BAD = { icon = "✘ ", color = "bad" },
-            TEST = { icon = "⚖ ", color = "test" },
-            FIXJC = { icon = "⚖ ", color = "fixjc" },
-            FIXJCO = { icon = "⚖ ", color = "fixjc" }
+            TEST = { icon = " ", color = "test" },
+            FIXJC = { icon = " ", color = "fixjc" },
+            FIXME = { icon = " ", color = "fixjc" },
+            FIX = { icon = " ", color = "fixjc" },
+            BUG = { icon = " ", color = "fixjc" },
+            ISSUE = { icon = " ", color = "fixjc" },
+            FIXIT = { icon = " ", color = "fixjc" },
         },
         colors = {
             ok = { "#10B981" },

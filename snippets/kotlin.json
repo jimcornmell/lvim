@@ -1,6 +1,14 @@
 {
   "log": {
     "body": [
+      "private val logger = io.github.oshai.kotlinlogging.KotlinLogging.logger {}",
+      "$0"
+    ],
+    "description": "Logging kotlin",
+    "prefix": "__log"
+  },
+  "logold": {
+    "body": [
       "package com.johnlewis.something to complete",
       "",
       "import org.slf4j.LoggerFactory.getLogger",
@@ -8,6 +16,6 @@
       "internal val logger = getLogger(\"com.johnlewis.$0 something to complete\")"
     ],
     "description": "New static log var for a class",
-    "prefix": "__log"
+    "prefix": "__logold"
   }
 }

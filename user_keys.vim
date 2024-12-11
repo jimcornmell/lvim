@@ -64,6 +64,10 @@ nmap g' ysiW'
 nmap g` ysiW`
 nmap g* ysiW*
 nmap g_ ysiW_
+nmap g: ysiW:
+nmap g( ysiW(
+nmap g[ ysiW[
+nmap g{ ysiW{
 
 " Snippets.
 map <silent> sc :call ShowColours()<CR>
@@ -75,6 +79,7 @@ map <silent> se :call SnippetEdit()<CR>
 map <silent> gB :call FigletCurrentLine()<CR>
 map <silent> ge :call DeleteEndingWhiteSpace()<CR>
 map <silent> gh :call OpenHelpAndCheatSheets()<CR>
+map <silent> gk :call UpdateChangeHistory()<CR>
 
 " Saves a few key presses.
 " nnoremap ; :

@@ -142,7 +142,7 @@ call matchadd('sheBangBad', '^#!.*')
 
 " current word highlighting
 " highlight IncSearch      gui=underline           guifg=#000000     guibg=#002F1F
-highlight IncSearch      gui=bold              guibg=#3f1f1f
+highlight IncSearch      gui=bold              guibg=#007D9E
 
 highlight HighlightUrl   gui=underline,bold    guifg=#0099FF     guisp=#0099FF
 

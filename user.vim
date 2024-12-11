@@ -157,6 +157,9 @@ function! OpenHelpAndCheatSheets()
     endif
 endfunction
 
+function! UpdateChangeHistory()
+    silent exec ":!$HOME/bin/updateChangeHistory " . expand('%:p')
+endfunction
 function! ExecuteCurrentLine()
     let line=getline('.')
     if line != ""

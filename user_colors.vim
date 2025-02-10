@@ -132,7 +132,7 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
 
 " Highlight #! lines... Both good and bad.
 highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
-call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\|ruby\|nix-shell\)$', 20)
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|-S bash -e\|sh\|python3\|zsh\|groovy\|perl\|ruby\|nix-shell\|kotlin\)$', 20)
 
 highlight sheBangNix gui=bold,italic,underline guifg=#54db54     guibg=NONE
 call matchadd('sheBangNix', '^#! nix-shell .*$', 20)
@@ -152,6 +152,9 @@ highlight Todo           gui=bold              guifg=LightGreen
 " Highlight folds
 highlight Folded                               guifg=#777777     guibg=#000000
 set foldcolumn=1
+
+" Copilot colours
+highlight CopilotSuggestion                    guifg=#025FB0     ctermfg=8
 
 " Highlight markers.
 highlight markerStart                          guifg=#777777     guibg=#000000

@@ -485,24 +485,27 @@ lvim.plugins = {
     end,
   },
 
+  { 'github/copilot.vim' },
+
   -- LSP Enhancement
   -- cmp-tabnine
   -- TabNine completion engine for hrsh7th/nvim-cmp
-  {
-    "tzachar/cmp-tabnine",
-    build = "./install.sh",
-    dependencies = "hrsh7th/nvim-cmp",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 10,
-        sort = true,
-      }
-    end,
-    lazy = true,
-    event = "InsertEnter",
-  },
+  -- {
+    -- "tzachar/cmp-tabnine",
+    -- build = "./install.sh",
+    -- dependencies = "hrsh7th/nvim-cmp",
+    -- config = function()
+      -- local tabnine = require "cmp_tabnine.config"
+      -- tabnine:setup {
+        -- max_lines = 1000,
+        -- max_num_results = 10,
+        -- sort = true,
+      -- }
+    -- end,
+    -- lazy = true,
+    -- event = "InsertEnter",
+  -- },
+
   -- Handle opening files with line numbers from command line.
   { 'bogado/file-line' },
 -- { "wsdjeg/vim-fetch" },

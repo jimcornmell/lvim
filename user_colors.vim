@@ -18,8 +18,8 @@ highlight javaTSVariable  guifg=#CEDF99
 
 " Show white space characters
 set listchars=eol:¶,tab:»\ ,trail:·,extends:>,precedes:<,space:·
-highlight NonText                                        gui=bold guifg=#1D1D1D
-highlight Whitespace                                     gui=bold guifg=#1D1D1D
+highlight NonText                                        gui=bold guifg=#151515
+highlight Whitespace                                     gui=bold guifg=#151515
 
 " Highlight cursor line/column
 set colorcolumn=80,120,200

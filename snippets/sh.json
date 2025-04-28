@@ -1,4 +1,12 @@
 {
+  "": {
+    "body": [
+      "    # swaggerUrl=\"https://\\${ENVIRONMENT}-\\${NAMESPACE}-ui.\\${NAMESPACE}.flex.jl-digital.net/car-quote/find-car\"",
+      "$0"
+    ],
+    "description": "",
+    "prefix": ""
+  },
   "1": {
     "body": [
       ">/dev/null"

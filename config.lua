@@ -24,7 +24,7 @@ lvim.keys.normal_mode["<C-q>"]                       = ":q<cr>"
 lvim.use_icons                                       = true
 lvim.format_on_save                                  = false
 lvim.auto_complete                                   = true
-lvim.colorscheme                                     = "zenburn"          -- https://github.com/jnurmine/Zenburn
+lvim.colorscheme                                     = "zenburn" -- https://github.com/jnurmine/Zenburn
 lvim.auto_close_tree                                 = 0
 lvim.wrap_lines                                      = false
 lvim.timeoutlen                                      = 100
@@ -243,39 +243,41 @@ lvim.plugins = {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup({ "*" }, {
-                names    = true, -- "Name" codes, see https://www.w3schools.com/colors/colors_hex.asp   Blue, HotPink, OldLace, Plum, LightGreen, Coral
-                RGB      = true, -- #RGB hex codes                                                      #f0f #FAB
-                RRGGBB   = true, -- #RRGGBB hex codes                                                   #ffff00 #FF00FF
-                RRGGBBAA = true, -- #RRGGBBAA hex codes                                                 #ffff00ff #AbCdEf
-                rgb_fn   = true, -- CSS rgb() and rgba() functions                                      rgb(100,200,50) rgba(255,255,255,1.0) rgb(100%, 0%, 0%)
-                hsl_fn   = true, -- CSS hsl() and hsla() functions                                      hsl(120,100%,50%) hsla(20,100%,40%,0.7)
-                css      = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn   = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                names    = true,         -- "Name" codes, see https://www.w3schools.com/colors/colors_hex.asp   Blue, HotPink, OldLace, Plum, LightGreen, Coral
+                RGB      = true,         -- #RGB hex codes                                                      #f0f #FAB
+                RRGGBB   = true,         -- #RRGGBB hex codes                                                   #ffff00 #FF00FF
+                RRGGBBAA = true,         -- #RRGGBBAA hex codes                                                 #ffff00ff #AbCdEf
+                rgb_fn   = true,         -- CSS rgb() and rgba() functions                                      rgb(100,200,50) rgba(255,255,255,1.0) rgb(100%, 0%, 0%)
+                hsl_fn   = true,         -- CSS hsl() and hsla() functions                                      hsl(120,100%,50%) hsla(20,100%,40%,0.7)
+                css      = true,         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn   = true,         -- Enable all CSS *functions*: rgb_fn, hsl_fn
                 mode     = 'background', -- Set the display mode.
             })
         end,
     },
 
     {
-        "zbirenbaum/copilot-cmp",
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
         event = "InsertEnter",
-        dependencies = { "zbirenbaum/copilot.lua" },
-
         config = function()
-            vim.defer_fn(function()
+            require("copilot").setup({
                 -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
-                require("copilot").setup({
-                    suggestion = {
-                        enabled = false
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    hide_during_completion = true,
+                    debounce = 75,
+                    keymap = {
+                        accept_word = false,
+                        accept_line = false,
+                        accept = "<C-\\>", -- kitty maps ctrl+space to this
+                        next = "<M-]>",
+                        prev = "<M-[>",
+                        dismiss = "<C-]>",
                     },
-                    panel = {
-                        enabled = false
-                    },
-                })
-
-                -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
-                require("copilot_cmp").setup()
-            end, 100)
+                },
+            })
         end,
     },
 
@@ -484,4 +486,3 @@ table.insert(dap.configurations.python, {
 -- HACK: Link in the style so the background is correct.
 lvim.builtin.lualine.options.theme = "curvywurvy"
 --    ln -s ~/.config/lvim/lua/user/lualine-curvywurvy-theme.lua ~/.local/share/lunarvim/site/pack/lazy/opt/lualine.nvim/lua/lualine/themes/curvywurvy.lua
-

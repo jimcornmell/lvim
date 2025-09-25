@@ -170,15 +170,15 @@ call matchadd('markerEnd', '^.*}\{3\}.*$', 50)
 " =====
 " *****
 highlight markerLineCommentGrey                guifg=#000000     guibg=#999999
-call matchadd('markerLineCommentGrey',      '^.*[+]\{5,\}$', 50)
+call matchadd('markerLineCommentGrey',      '[^ ]*[+]\{5,\}$', 50)
 highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
-call matchadd('markerLineCommentGreen',     '^.*[-#]\{5,\}$', 50)
+call matchadd('markerLineCommentGreen',     '[^ ]*[-#]\{5,\}$', 50)
 highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
-call matchadd('markerLineCommentAmber',     '^.*\.\{5,\}$', 50)
+call matchadd('markerLineCommentAmber',     '[^ ]*\.\{5,\}$', 50)
 highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
-call matchadd('markerLineCommentRed',       '^.*=\{5,\}$', 50)
+call matchadd('markerLineCommentRed',       '[^ ]*=\{5,\}$', 50)
 highlight markerLineCommentBrightRed           guifg=#000000     guibg=#FF0000
-call matchadd('markerLineCommentBrightRed', '^.*\*\{5,\}$', 50)
+call matchadd('markerLineCommentBrightRed', '[^ ]*\*\{5,\}$', 50)
 " deprecated
 " DEPRECATED
 " Deprecated

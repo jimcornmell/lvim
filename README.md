@@ -19,6 +19,9 @@
 <!-- Introduction -->
 <!-- {{{1 -->
 
+> [!IMPORTANT]
+> Note I've moved over to LazyVim, see my repository [here](https://github.com/jimcornmell/nvim).
+
 This is a set of config files for the **brilliant** configuration project
 [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian
 Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).

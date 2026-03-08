@@ -25,7 +25,7 @@
 This is a set of config files for the **brilliant** configuration project
 [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian
 Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
-I've been using VI on and off as my daily editor since the early 1990's and
+I've been using VI on and off as my daily editor since the 1980's and
 Christian's setup is the best I've seen so I've just plagiarized it and added a
 few of my own twists.
 
